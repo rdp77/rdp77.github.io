@@ -1,0 +1,10 @@
+ErrorDocument 400 https://ravidwiputra.my.id/400
+ErrorDocument 401 https://ravidwiputra.my.id/401
+ErrorDocument 403 https://ravidwiputra.my.id/403
+ErrorDocument 404 https://ravidwiputra.my.id/404
+ErrorDocument 503 https://ravidwiputra.my.id/503
+RewriteEngine On
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R]
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^ %{REQUEST_URI}.html [NC,L]
