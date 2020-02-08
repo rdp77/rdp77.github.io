@@ -1,6 +1,6 @@
 {
   "name": "Backup Otak",
-  "short_name": "BackupOtak",
+  "short_name": "Backup Otak",
   "start_url": "https://backupotak.com/",
   "display": "standalone",
   "background_color": "#fff",
