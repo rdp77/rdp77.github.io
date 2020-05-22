@@ -1,7 +1,7 @@
 {
   "name": "Backup Otak",
   "short_name": "Backup Otak",
-  "start_url": "https://backupotak.com/",
+  "start_url": "https://www.backupotak.com/",
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#f37d21",
