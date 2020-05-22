@@ -2,12 +2,23 @@
   "@context": "https://www.schema.org",
   "@type": "person",
   "name": "Moh Ravi Dwi Putra",
-  "url": "ravidwiputra.my.id",
+  "gender": "male",
+  "url": "https://ravidwiputra.my.id",
+  "sameAs": [
+    "https://web.facebook.com/ravidwiputra77/",
+    "https://www.instagram.com/raviravdp/",
+    "https://twitter.com/ravi77__",
+    "https://www.youtube.com/channel/UCgy1w-3_8D1VMfarucu2lrA",
+    "https://github.com/rdp77",
+    "https://www.linkedin.com/in/moh-ravi-dwi-putra/"
+  ],
+  "image": "https://ravidwiputra.my.id/data/img/My%20Profile.png",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Kapas Madya",
     "addressLocality": "Surabaya",
-    "addressRegion": "JAWA TIMUR",
+    "addressRegion": "Jawa Timur",
     "addressCountry": "Indonesia"
-  }
+  },
+  "nationality": "Indonesia"
 }
