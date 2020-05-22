@@ -1,0 +1,13 @@
+{
+  "@context": "https://www.schema.org",
+  "@type": "person",
+  "name": "Moh Ravi Dwi Putra",
+  "url": "ravidwiputra.my.id",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kapas Madya",
+    "addressLocality": "Surabaya",
+    "addressRegion": "JAWA TIMUR",
+    "addressCountry": "Indonesia"
+  }
+}
