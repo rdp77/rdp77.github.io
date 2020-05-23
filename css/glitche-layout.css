@@ -84,11 +84,6 @@ header.active .head-top .top-menu ul li {
   header {
     top: 15px;
   }
-
-  .cursor {
-    display: none;
-  }
-
 }
 
 header .head-top {

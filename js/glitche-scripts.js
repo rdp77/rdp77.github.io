@@ -264,6 +264,56 @@ $(function () {
 		return false;
 	});
 
+	/*
+		Custom Cursor
+	*/
+
+	var cursor = $(".cursor");
+
+	$(window).mousemove(function (e) {
+		cursor.css({
+			top: e.clientY - cursor.height() / 2,
+			left: e.clientX - cursor.width() / 2
+		});
+	});
+
+	$(window)
+		.mouseleave(function () {
+			cursor.css({
+				opacity: "0"
+			});
+		})
+		.mouseenter(function () {
+			cursor.css({
+				opacity: "1"
+			});
+		});
+
+	$(".link")
+		.mouseenter(function () {
+			cursor.css({
+				transform: "scale(3.2)"
+			});
+		})
+		.mouseleave(function () {
+			cursor.css({
+				transform: "scale(1)"
+			});
+		});
+
+	$(window)
+		.mousedown(function () {
+			cursor.css({
+				transform: "scale(.2)"
+			});
+		})
+		.mouseup(function () {
+			cursor.css({
+				transform: "scale(1)",
+				opacity: "0"
+			});
+		});
+
 	/* Resize function */
 	$(window).resize(function () {
 		var width = $(window).width();
@@ -286,6 +336,9 @@ $(function () {
 	if (width < 840) {
 		$('.section.started').css({
 			'height': height - 30
+		});
+		cursor.css({
+			display: "none"
 		});
 	}
 
@@ -347,54 +400,5 @@ $(function () {
 		return Math.abs(age_dt.getUTCFullYear() - 1970);
 	}
 	$("#myage").text(calculate_age(new Date(2000, 8, 26)));
-
-	/*
-		Custom Cursor
-	*/
-
-	var cursor = $(".cursor");
-
-	$(window).mousemove(function (e) {
-		cursor.css({
-			top: e.clientY - cursor.height() / 2,
-			left: e.clientX - cursor.width() / 2
-		});
-	});
-
-	$(window)
-		.mouseleave(function () {
-			cursor.css({
-				opacity: "0"
-			});
-		})
-		.mouseenter(function () {
-			cursor.css({
-				opacity: "1"
-			});
-		});
-
-	$(".link")
-		.mouseenter(function () {
-			cursor.css({
-				transform: "scale(3.2)"
-			});
-		})
-		.mouseleave(function () {
-			cursor.css({
-				transform: "scale(1)"
-			});
-		});
-
-	$(window)
-		.mousedown(function () {
-			cursor.css({
-				transform: "scale(.2)"
-			});
-		})
-		.mouseup(function () {
-			cursor.css({
-				transform: "scale(1)"
-			});
-		});
 
 });
