@@ -396,4 +396,17 @@ $(function () {
 				transform: "scale(1)"
 			});
 		});
+
+	$(function () {
+		$.getJSON("/json/awards.json", function (data) {
+			$('.json').text(data);
+		});
+	});
+
+	$(function () {
+		$.getJSON("/json/resume.jsonld", function (data) {
+			$('.jsonld').text(data);
+		});
+	});
+
 });
