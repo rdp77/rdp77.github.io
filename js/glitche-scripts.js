@@ -298,7 +298,8 @@ $(function () {
 	$(window)
 		.mousedown(function () {
 			cursor.css({
-				transform: "scale(.2)"
+				transform: "scale(.2)",
+				opacity: "1"
 			});
 		})
 		.mouseup(function () {
@@ -329,6 +330,7 @@ $(function () {
 			$('.section.started').css({
 				'height': height - 30
 			});
+			cursor.css("display", "none");
 		}
 	});
 
