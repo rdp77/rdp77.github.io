@@ -338,7 +338,8 @@ $(function () {
 			'height': height - 30
 		});
 		cursor.css({
-			display: "none"
+			"display": "none",
+			"opacity": "0"
 		});
 	}
 
