@@ -38,6 +38,7 @@ $(function () {
 			$('.preloader').fadeOut();
 			$('body').addClass('loaded');
 			$("body").css("overflow", "visible");
+			$(".cursor").css("display", "unset");
 
 			/* Typed subtitle */
 			$('.typed-subtitle').typed({
