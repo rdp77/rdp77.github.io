@@ -330,7 +330,13 @@ $(function () {
 		$('.section.started').css({
 			'height': height - 30
 		});
-		cursor.css("display", "none");
+		$(window)
+			.mouseenter(function () {
+				cursor.css({
+					opacity: "0",
+					displa: "none"
+				});
+			});
 	}
 
 	/* One Page Menu Nav */
