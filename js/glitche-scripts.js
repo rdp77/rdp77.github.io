@@ -334,7 +334,7 @@ $(function () {
 			.mouseenter(function () {
 				cursor.css({
 					opacity: "0",
-					displa: "none"
+					display: "none"
 				});
 			});
 	}
