@@ -325,14 +325,14 @@ $(function () {
 				'width': skills_dotted_w + 1
 			});
 		}
+		if (width < 840) {
+			$('.section.started').css({
+				'height': height - 30
+			});
+		}
 	});
 
-	if (width < 840) {
-		$('.section.started').css({
-			'height': height - 30
-		});
-		cursor.css("display", "none");
-	}
+
 
 	/* One Page Menu Nav */
 	if ($('.section').length && $('.top-menu li a').length) {
