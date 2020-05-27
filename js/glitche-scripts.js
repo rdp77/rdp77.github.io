@@ -299,13 +299,11 @@ $(function () {
 		.mousedown(function () {
 			cursor.css({
 				transform: "scale(.2)",
-				opacity: "1"
 			});
 		})
 		.mouseup(function () {
 			cursor.css({
 				transform: "scale(1)",
-				opacity: "0"
 			});
 		});
 
@@ -326,15 +324,14 @@ $(function () {
 				'width': skills_dotted_w + 1
 			});
 		}
-		if (width < 840) {
-			$('.section.started').css({
-				'height': height - 30
-			});
-			cursor.css("display", "none");
-		}
 	});
 
-
+	if (width < 840) {
+		$('.section.started').css({
+			'height': height - 30
+		});
+		cursor.css("display", "none");
+	}
 
 	/* One Page Menu Nav */
 	if ($('.section').length && $('.top-menu li a').length) {
