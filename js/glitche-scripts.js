@@ -1,10 +1,4 @@
-/**
- *	Glitche - CV/Resume/Portfolio Template (HTML)
- *	Version: 1.3
- *	Author: beshleyua
- *	Author URL: http://themeforest.net/user/beshleyua
- *	Copyright © Cvio by beshleyua. All Rights Reserved.
- **/
+// Version: 1.3
 
 $(function () {
 	'use strict';
@@ -337,10 +331,7 @@ $(function () {
 		$('.section.started').css({
 			'height': height - 30
 		});
-		cursor.css({
-			"display": "none",
-			"opacity": "0"
-		});
+		cursor.css("display", "none");
 	}
 
 	/* One Page Menu Nav */
