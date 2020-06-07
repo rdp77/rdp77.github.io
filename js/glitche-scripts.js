@@ -337,6 +337,14 @@ $(function () {
 					display: "none"
 				});
 			});
+	} else {
+		$(window)
+			.mouseenter(function () {
+				cursor.css({
+					opacity: "1",
+					display: "unset"
+				});
+			});
 	}
 
 	/* One Page Menu Nav */
