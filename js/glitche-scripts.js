@@ -33,7 +33,7 @@ $(function () {
 	$(window).load(function () {
 		$("body").css("overflow", "hidden");
 		$(".cursor").css("display", "none");
-		$(".preloader .pre-inner").fadeOut(5000, function () {
+		$(".preloader .pre-inner").fadeOut(3000, function () {
 			/* Preload hide */
 			$('.preloader').fadeOut();
 			$('body').addClass('loaded');
