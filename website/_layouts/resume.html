@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include header.html %}
+
+<body>
+
+    {% include loading.html %}
+
+    <!-- Container -->
+    <div class="container">
+
+        {% include navigation.html %}
+
+        <!-- Wrapper -->
+        <div class="wrapper">
+
+            <!-- Started -->
+            <div class="section started">
+                <div class="centrize full-width">
+                    <div class="vertical-center">
+                        <div class="started-content">
+                            <div class="h-title glitch-effect" data-text="{{ page.titlecontent }}">
+                                {{ page.titlecontent }}
+                            </div>
+                            {% if page.name == 'index.md' %}
+                            <div class="h-subtitle typing-subtitle">
+                                {% for desc in site.data.description %}
+                                <p>{{ desc.desc }}</p>
+                                {% endfor %}
+                            </div>
+                            <span class="typed-subtitle"></span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% include footer.html %}
+</body>
+
+</html>
