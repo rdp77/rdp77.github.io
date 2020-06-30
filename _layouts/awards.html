@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include header.html %}
+
+<body>
+
+    {% include loading.html %}
+
+    <!-- Container -->
+    <div class="container">
+
+        {% include navigation.html %}
+
+        <!-- Wrapper -->
+        <div class="wrapper">
+
+            <!-- Started -->
+            <div class="section started">
+                <div class="centrize full-width">
+                    <div class="vertical-center">
+                        <div class="started-content">
+                            <div class="h-title glitch-effect" data-text="{{ page.titlecontent }}">
+                                {{ page.titlecontent }}
+                            </div>
+                            <div class="h-subtitle typing-bread">
+                                <p><a href="/index">Home</a> / <a href="/awards">{{ page.titlecontent }}</a></p>
+                            </div>
+                            <span class="typed-bread link"></span>
+                        </div>
+                    </div>
+                </div>
+                <a href="javascript:void(0)" class="mouse_btn link"><span class="ion ion-mouse"></span></a>
+            </div>
+
+            <!-- Section -->
+            <div class="section works">
+                <div class="content">
+
+                    {% include filter.html %}
+
+                    <div class="box-items portfolio-items">
+
+                        <div class="box-item f-awards link">
+                            <div class="image">
+                                <a href="images/works/work4.jpg" class="has-popup-image">
+                                    <img src="images/works/work4.jpg" alt="" />
+                                    <span class="info">
+                                        <span class="centrize full-width">
+                                            <span class="vertical-center">
+                                                <span class="ion ion-image"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="desc">
+                                <div class="category">Image</div>
+                                <a href="images/works/work4.jpg" class="name has-popup-image">Shopping gift bag</a>
+                            </div>
+                        </div>
+
+                        {% include certification.html %}
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        {% include footer.html %}
+</body>
+
+</html>

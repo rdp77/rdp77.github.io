@@ -1,0 +1,20 @@
+{% for cert in site.data.certification %}
+<div class="box-item f-certification link">
+    <div class="image">
+        <a href="{{ cert.image }}" class="has-popup-image">
+            <img src="{{ cert.image }}" />
+            <span class="info">
+                <span class="centrize full-width">
+                    <span class="vertical-center">
+                        <span class="ion ion-image"></span>
+                    </span>
+                </span>
+            </span>
+        </a>
+    </div>
+    <div class="desc">
+        <div class="category">Certification</div>
+        <a href="{{ cert.image }}" class="name has-popup-image">{{ cert.title }}</a>
+    </div>
+</div>
+{% endfor %}

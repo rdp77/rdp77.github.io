@@ -1,0 +1,39 @@
+            <!-- Resume -->
+            <div class="section resume">
+                <div class="content">
+                    <div class="cols">
+                        <div class="col col-md">
+                            <div class="title">
+                                <div class="title_inner">Experience</div>
+                            </div>
+                            <div class="resume-items">
+                                {% for exp in site.data.experience %}
+                                <div class="resume-item active">
+                                    <div class="date">{{ exp.date }}</div>
+                                    <div class="name">{{ exp.name }}</div>
+                                    <p>
+                                        {{ exp.desc }}
+                                    </p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col col-md">
+                            <div class="title">
+                                <div class="title_inner">Education</div>
+                            </div>
+                            <div class="resume-items">
+                                {% for edu in site.data.education %}
+                                <div class="resume-item">
+                                    <div class="date">{{ edu.date }}</div>
+                                    <div class="name">{{ edu.name }}</div>
+                                    <p>
+                                        {{ edu.desc }}
+                                    </p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

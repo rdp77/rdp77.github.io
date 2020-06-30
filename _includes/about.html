@@ -1,0 +1,26 @@
+<!-- About -->
+<div class="section about">
+    <div class="content">
+        <div class="title">
+            <div class="title_inner">About Me</div>
+        </div>
+        <div class="image">
+            <img src="{{ "/assets/img/avatar.png" | relative_url }}" />
+        </div>
+        <div class="desc">
+            <p>
+                {{ content }}
+            </p>
+            <div class="info-list">
+                <ul>
+                    {% for abt in site.data.about %}
+                    <li><strong>{{ abt.title }}:</strong> {{ abt.desc }}</li>
+                    {% endfor %}
+                    <li><strong>Age:</strong> <span id="myage"></span></li>
+                </ul>
+            </div>
+            <div class="bts"><a href="#" class="btn fill link" data-text="Download CV">Download CV</a></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
