@@ -15,8 +15,10 @@
                 <ul>
                     {% for abt in site.data.about %}
                     <li><strong>{{ abt.title }}:</strong> {{ abt.desc }}</li>
-                    {% endfor %}
+                    {% if forloop.index == 1 %}
                     <li><strong>Age:</strong> <span id="myage"></span></li>
+                    {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
             <div class="bts"><a href="#" class="btn fill link" data-text="Download CV">Download CV</a></div>

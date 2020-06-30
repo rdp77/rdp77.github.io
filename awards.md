@@ -1,6 +1,6 @@
 ---
 title: Moh Ravi Dwi Putra - Awards & Certification
 titlecontent: Awards & Certification
-layout: awards
+layout: content
 permalink: /awards
 ---

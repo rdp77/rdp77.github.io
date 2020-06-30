@@ -24,7 +24,7 @@
                                 {{ page.titlecontent }}
                             </div>
                             <div class="h-subtitle typing-bread">
-                                <p><a href="/index">Home</a> / <a href="/awards">{{ page.titlecontent }}</a></p>
+                                <p><a href="/">Home</a> / <a href="/awards">{{ page.titlecontent }}</a></p>
                             </div>
                             <span class="typed-bread link"></span>
                         </div>
@@ -41,26 +41,11 @@
 
                     <div class="box-items portfolio-items">
 
-                        <div class="box-item f-awards link">
-                            <div class="image">
-                                <a href="images/works/work4.jpg" class="has-popup-image">
-                                    <img src="images/works/work4.jpg" alt="" />
-                                    <span class="info">
-                                        <span class="centrize full-width">
-                                            <span class="vertical-center">
-                                                <span class="ion ion-image"></span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="desc">
-                                <div class="category">Image</div>
-                                <a href="images/works/work4.jpg" class="name has-popup-image">Shopping gift bag</a>
-                            </div>
-                        </div>
-
-                        {% include certification.html %}
+                        {% if page.name == 'porfolio.md' %}
+                        {% include portfolio.html %}
+                        {% else %}
+                        {% include awards.html %}
+                        {% endif %}
 
                         <div class="clear"></div>
                     </div>
