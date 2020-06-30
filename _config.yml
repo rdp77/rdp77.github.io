@@ -30,8 +30,8 @@ github_username: rdp77
 permalink: pretty
 # Build settings
 # theme: minima
-# plugins:
-# - jekyll-feed
+plugins:
+  - jekyll-seo-tag
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

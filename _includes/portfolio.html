@@ -1,0 +1,35 @@
+{% for port in site.data.portfolio %}
+<div class="box-item {{ port.class }} link">
+    <div class="image">
+        <a href="#popup-{{ forloop.index }}" class="has-popup-media">
+            <img src="{{ port.image }}" />
+            <span class="info">
+                <span class="centrize full-width">
+                    <span class="vertical-center">
+                        <span class="ion ion-ios-plus-empty"></span>
+                    </span>
+                </span>
+            </span>
+        </a>
+    </div>
+    <div class="desc">
+        <div class="category">{{ port.category }}</div>
+        <a href="#popup-{{ forloop.index }}" class="name has-popup-media">{{ port.title }}</a>
+    </div>
+    <div id="popup-{{ forloop.index }}" class="popup-box mfp-fade mfp-hide">
+        <div class="content">
+            <div class="image">
+                <img src="{{ port.image }}">
+            </div>
+            <div class="desc">
+                <div class="category">{{ port.category }}</div>
+                <h4>{{ port.titlecontent }}</h4>
+                <p>
+                    {{ port.content }}
+                </p>
+                <a href="{{ port.link }}" class="btn" data-text="{{ port.action }}">{{ port.action }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
