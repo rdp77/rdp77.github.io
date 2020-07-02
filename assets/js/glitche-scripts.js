@@ -4,13 +4,6 @@ $(function () {
 	'use strict';
 	$(document).ready(function () {
 		window.dataLayer = window.dataLayer || [];
-
-		// function gtag() {
-		// 	dataLayer.push(arguments);
-		// }
-		// gtag('js', new Date());
-
-		// gtag('config', 'UA-56428090-2');
 	});
 
 	$(window).unload(function () {});

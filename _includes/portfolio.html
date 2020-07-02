@@ -2,7 +2,7 @@
 <div class="box-item {{ port.class }} link">
     <div class="image">
         <a href="#popup-{{ forloop.index }}" class="has-popup-media">
-            <img src="{{ port.image }}" />
+            <img src="{{ port.image | absolute_url }}" />
             <span class="info">
                 <span class="centrize full-width">
                     <span class="vertical-center">
@@ -19,7 +19,7 @@
     <div id="popup-{{ forloop.index }}" class="popup-box mfp-fade mfp-hide">
         <div class="content">
             <div class="image">
-                <img src="{{ port.image }}">
+                <img src="{{ port.image | absolute_url }}">
             </div>
             <div class="desc">
                 <div class="category">{{ port.category }}</div>
