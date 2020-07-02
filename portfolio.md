@@ -1,5 +1,5 @@
 ---
-title: Moh Ravi Dwi Putra - Portfolio
+title: Portfolio | Moh Ravi Dwi Putra
 titlecontent: Portfolio
 layout: content
 permalink: /portfolio

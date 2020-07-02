@@ -5,12 +5,12 @@ $(function () {
 	$(document).ready(function () {
 		window.dataLayer = window.dataLayer || [];
 
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
+		// function gtag() {
+		// 	dataLayer.push(arguments);
+		// }
+		// gtag('js', new Date());
 
-		gtag('config', 'UA-56428090-2');
+		// gtag('config', 'UA-56428090-2');
 	});
 
 	$(window).unload(function () {});
@@ -183,6 +183,7 @@ $(function () {
 	$('.has-popup-media').magnificPopup({
 		type: 'inline',
 		overflowY: 'auto',
+		fixedContentPos: true,
 		closeBtnInside: true,
 		mainClass: 'mfp-fade'
 	});

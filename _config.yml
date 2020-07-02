@@ -1,35 +1,28 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you:
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-
 title: Moh Ravi Dwi Putra
 email: ravidwiputra@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://ravidwiputra.my.id" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: rdp77
+author: Moh Ravi Dwi Putra
+description: >-
+  Moh Ravi Dwi Putra's profile website, which contains important information 
+  about him such as your resume, portfolio, awards, certification, and contact.
+keywords:
+  Moh Ravi Dwi Putra, Rafi Dwi Putra, Profile Ravi, Profile Rafi, Profile Website, Resume,
+  Portfolio, Awards, Certification, and contact
+copyright: Make it as beautiful and functional as possible.
+social:
+  name: Moh Ravi Dwi Putra
+  links:
+    - https://github.com/rdp77
+    - https://facebook.com/ravidwiputra77
+    - https://www.linkedin.com/in/moh-ravi-dwi-putra/
+    - https://www.instagram.com/raviravdp/
+    - https://www.youtube.com/channel/UCgy1w-3_8D1VMfarucu2lrA
+url: https://ravidwiputra.my.id
 permalink: pretty
-# Build settings
-# theme: minima
+lang: en_ID
+google_site_verification: 23XGywZf8ZI_3Rr2eQBwH54Sp5IUp_wDNDUCnDohTpc
+logo: /assets/img/avatar.png
+image: /assets/img/avatar.png
 plugins:
   - jekyll-seo-tag
 # Exclude from processing.

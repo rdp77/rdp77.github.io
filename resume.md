@@ -1,5 +1,5 @@
 ---
-title: Moh Ravi Dwi Putra - Resume
+title: Resume | Moh Ravi Dwi Putra
 titlecontent: Resume
 layout: resume
 permalink: /resume
