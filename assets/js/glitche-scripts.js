@@ -195,6 +195,7 @@ $(function () {
 	$('.has-popup-image').magnificPopup({
 		type: 'image',
 		closeOnContentClick: true,
+		fixedContentPos: true,
 		mainClass: 'mfp-fade',
 		image: {
 			verticalFit: true
