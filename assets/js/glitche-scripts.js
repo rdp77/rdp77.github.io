@@ -173,6 +173,7 @@ $(function () {
 			},
 			type: 'image',
 			closeBtnInside: false,
+			fixedContentPos: true,
 			mainClass: 'mfp-fade'
 		});
 	}
