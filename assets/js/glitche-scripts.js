@@ -4,6 +4,7 @@ $(function () {
 	'use strict';
 
 	$(window).unload(function () {});
+
 	/* Set full height in blocks */
 
 	var width = $(window).width();
@@ -21,12 +22,15 @@ $(function () {
 	/* Preloader */
 	$(window).load(function () {
 		// $("body").css("overflow", "hidden");
-		// $(".cursor").css("display", "none");
-		/* Preload hide */
-		$('.preloader').fadeOut();
+		$(".cursor").css("display", "none");
 		$('body').addClass('loaded');
+
+		// $(".preloader .pre-inner").fadeOut(3000, function () {
+		// 	/* Preload hide */
+		// 	$('.preloader').fadeOut();
+		// 	$('body').addClass('loaded');
 		$("body").css("overflow", "visible");
-		$(".cursor").css("display", "unset");
+		// 	$(".cursor").css("display", "unset");
 
 		/* Typed subtitle */
 		$('.typed-subtitle').typed({
@@ -48,8 +52,6 @@ $(function () {
 				scrollTop: $(url_hash).offset().top - 70
 			}, 400);
 		}
-		// $(".preloader .pre-inner").fadeOut(500, function () {
-
 		// });
 	});
 

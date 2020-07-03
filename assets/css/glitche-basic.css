@@ -40,7 +40,7 @@ body {
 	overflow: hidden;
 }
 
-/* body header,
+body header,
 body footer,
 body .section {
 	opacity: 0;
@@ -52,7 +52,7 @@ body.loaded footer,
 body.loaded .section {
 	opacity: 1;
 	visibility: visible;
-} */
+}
 
 body::-webkit-scrollbar {
 	width: 5px;
