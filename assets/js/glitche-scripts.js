@@ -3,7 +3,9 @@
 $(function () {
 	'use strict';
 
-	$(window).unload(function () {});
+	// $(window).unload(function () {});
+	// $(window).on('load', function () {});
+
 
 	/* Set full height in blocks */
 
@@ -20,7 +22,7 @@ $(function () {
 	});
 
 	/* Preloader */
-	$(window).load(function () {
+	$(window).on('load', function () {
 		// $("body").css("overflow", "hidden");
 		$(".cursor").css("display", "none");
 		$('body').addClass('loaded');
@@ -56,7 +58,7 @@ $(function () {
 	});
 
 	/*Fade-out animation between load pages*/
-	$('header .top-menu, .typed-bread').on('click', 'a', function () {
+	$('header .top-menu, .typed-bread').on('click', 'div', function () {
 		var link = $(this).attr('href');
 		if (link.indexOf('#section-') == 0) {
 			if (!$('body').hasClass('home')) {

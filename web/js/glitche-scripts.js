@@ -30,7 +30,7 @@ $(function () {
 	});
 
 	/* Preloader */
-	$(window).load(function () {
+	$(window).on('load', function () {
 		$("body").css("overflow", "hidden");
 		$(".cursor").css("display", "none");
 		$(".preloader .pre-inner").fadeOut(3000, function () {

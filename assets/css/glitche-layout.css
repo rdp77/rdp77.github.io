@@ -89,6 +89,7 @@ header .head-top .menu-btn {
   margin: 0 auto;
   width: 26px;
   height: 20px;
+  display: none;
 }
 
 header .head-top .menu-btn:before,
