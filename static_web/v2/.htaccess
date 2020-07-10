@@ -1,0 +1,11 @@
+ErrorDocument 400 http://ravidwiputra.com/400
+ErrorDocument 401 http://ravidwiputra.com/401
+ErrorDocument 403 http://ravidwiputra.com/403
+ErrorDocument 404 http://ravidwiputra.com/404
+ErrorDocument 503 http://ravidwiputra.com/503
+Redirect 301 /img https://ravidwiputra.com
+RewriteEngine On
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R]
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^ %{REQUEST_URI}.html [NC,L]
