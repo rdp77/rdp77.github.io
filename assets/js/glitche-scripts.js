@@ -7,11 +7,8 @@ $(function () {
   if (window.location.hostname == "rdp77.github.io") {
     window.location.replace("https://ravidwiputra.my.id");
   }
-  console.log(window.location.href);
-  console.log(window.location.hostname);
 
   /* Set full height in blocks */
-
   var width = $(window).width();
   var height = $(window).height();
   $(".section.started").css({
