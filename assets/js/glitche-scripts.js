@@ -4,7 +4,10 @@ $(function () {
   "use strict";
 
   /* Check Link */
-  if (window.location.hostname != "www.ravidwiputra.my.id") {
+  if (
+    window.location.href !== "www.ravidwiputra.my.id" ||
+    window.location.href !== "ravidwiputra.my.id"
+  ) {
     window.location.replace("https://ravidwiputra.my.id");
   }
 
