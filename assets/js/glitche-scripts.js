@@ -4,12 +4,9 @@ $(function () {
   "use strict";
 
   /* Check Link */
-  // if (
-  //   window.location.href !== "www.ravidwiputra.my.id" ||
-  //   window.location.href !== "ravidwiputra.my.id"
-  // ) {
-  //   window.location.replace("https://ravidwiputra.my.id");
-  // }
+  if (window.location.hostname == "rdp77.github.io") {
+    window.location.replace("https://ravidwiputra.my.id");
+  }
   console.log(window.location.href);
   console.log(window.location.hostname);
 
