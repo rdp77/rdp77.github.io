@@ -1,0 +1,4 @@
+[plugins.inputs.minifierOptions]
+    removeComments = true
+    collapseInlineTagWhitespace = false
+    collapseWhitespace = true

@@ -21,7 +21,11 @@
                     <div class="vertical-center">
                         <div class="started-content">
                             <div class="h-title glitch-effect" data-text="{{ page.titlecontent }}">
+                                {% if page.name == 'awards.md' %}
+                                {{ page.first }} <span>{{ page.last }}</span>
+                                {% else %}
                                 {{ page.titlecontent }}
+                                {% endif %}
                             </div>
                             <div class="h-subtitle typing-bread">
                                 <p><a href="/">Home</a> / <a href="/awards">{{ page.titlecontent }}</a></p>
