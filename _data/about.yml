@@ -1,6 +1,9 @@
 - title: Name
   desc: Moh Ravi Dwi Putra
 
+- title: Gender
+  desc: Male
+
 - title: Job
   desc: Collage Student
 
@@ -9,6 +12,3 @@
 
 - title: Residence
   desc: Surabaya
-
-- title: E-mail
-  desc: ravidwiputra@gmail.com

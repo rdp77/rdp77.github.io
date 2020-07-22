@@ -48,8 +48,7 @@ $(function () {
       var url_hash = location.hash;
       var sectionElem = $(url_hash);
       if (url_hash.indexOf("#section-") == 0 && sectionElem.length) {
-        $("body, html").animate(
-          {
+        $("body, html").animate({
             scrollTop: $(url_hash).offset().top - 70,
           },
           400
@@ -66,8 +65,7 @@ $(function () {
         location.href = "/" + link;
       }
 
-      $("body, html").animate(
-        {
+      $("body, html").animate({
           scrollTop: $(link).offset().top - 110,
         },
         400
@@ -84,6 +82,23 @@ $(function () {
     return false;
   });
 
+  /*Pop Up*/
+  function popup() {
+    var qs, js, q, s, d = document,
+      gi = d.getElementById,
+      ce = d.createElement,
+      gt = d.getElementsByTagName,
+      id = "typef_orm_share",
+      b = "https://embed.typeform.com/";
+    if (!gi.call(d, id)) {
+      js = ce.call(d, "script");
+      js.id = id;
+      js.src = b + "embed.js";
+      q = gt.call(d, "script")[0];
+      q.parentNode.insertBefore(js, q)
+    }
+  };
+
   /*Menu mobile*/
   $("header").on("click", ".menu-btn", function () {
     if ($("header").hasClass("active")) {
@@ -98,7 +113,7 @@ $(function () {
 
   /* Hide mouse button on scroll */
   $(window).scroll(function () {
-    if ($(this).scrollTop() >= 1 /*$('#blue_bor').offset().top*/) {
+    if ($(this).scrollTop() >= 1 /*$('#blue_bor').offset().top*/ ) {
       $(".mouse_btn").fadeOut();
     } else {
       $(".mouse_btn").fadeIn();
@@ -107,16 +122,14 @@ $(function () {
 
   /* On click mouse button, page scroll down */
   $(".section").on("click", ".mouse_btn", function () {
-    $("body,html").animate(
-      {
+    $("body,html").animate({
         scrollTop: height - 150,
       },
       800
     );
   });
 
-  $("body").on(
-    {
+  $("body").on({
       mouseenter: function () {
         $(this).addClass("glitch-effect-white");
       },
