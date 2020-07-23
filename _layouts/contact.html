@@ -36,34 +36,8 @@
             <!-- Section -->
             <div class="section contacts">
                 <div class="content">
-                    <div class="title">
-                        <div class="title_inner">Contacts</div>
-                    </div>
-                    <div class="service-items">
-                        <div class="service-item">
-                            <div class="icon"><span class="ion ion-android-phone-portrait"></span></div>
-                            <div class="name">Phone</div>
-                            <p>
-                                + (231) 456 67 89
-                            </p>
-                        </div>
-                        <div class="service-item">
-                            <div class="icon"><span class="ion ion-email"></span></div>
-                            <div class="name">Email</div>
-                            <p>
-                                <a href="mailto:ravidwiputra@gmail.com">ravidwiputra@gmail.com</a>
-                            </p>
-                        </div>
-                        <div class="service-item">
-                            <div class="icon"><span class="ion ion-ios-location"></span></div>
-                            <div class="name">Address</div>
-                            <p>
-                                2621 W Pico Blvd, Los Angeles
-                            </p>
-                        </div>
-                    </div>
                     <div class="contact_form">
-                        <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+                        <form name="contact" method="POST" action="/contact" data-netlify="true">
                             <div class="group-val">
                                 <input type="text" name="name" placeholder="Name">
                             </div>
@@ -75,8 +49,7 @@
                             </div>
                             <!-- <a href="#" class="btn fill" onclick="$('#cform').submit(); return false;"
                                 data-text="Send Message">Send Message</a> -->
-                            <div data-netlify-recaptcha="true"></div>
-                            <button type="submit">Send Message</button>
+                            <button class="btn fill" type="submit">Send Message</button>
                         </form>
                         <div class="alert-success d-none">
                             <p>
