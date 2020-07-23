@@ -5,9 +5,7 @@
 
 <body>
 
-    {% if page.name == 'index.md' %}
     {% include loading.html %}
-    {% endif %}
 
     <!-- Container -->
     <div class="container">
@@ -33,7 +31,7 @@
                             </div>
                             <span class="typed-subtitle"></span>
                             {% else %}
-                            <div class="h-title glitch-effect" data-text="{{ page.title }}">
+                            <div class="h-title glitch-effect" data-text="{{ page.titlecontent }}">
                                 {{ page.titlecontent }}
                             </div>
                             <div class="h-subtitle typing-bread">
