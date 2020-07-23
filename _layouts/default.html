@@ -5,7 +5,9 @@
 
 <body>
 
+    {% if page.name == 'index.md' %}
     {% include loading.html %}
+    {% endif %}
 
     <!-- Container -->
     <div class="container">
@@ -20,16 +22,24 @@
                 <div class="centrize full-width">
                     <div class="vertical-center">
                         <div class="started-content">
+                            {% if page.name == 'index.md' %}
                             <div class="h-title glitch-effect" data-text="{{ page.title }}">
                                 {{ page.first }} <span>{{ page.last }}</span>
                             </div>
-                            {% if page.name == 'index.md' %}
                             <div class="h-subtitle typing-subtitle">
                                 {% for desc in site.data.description %}
                                 <p>{{ desc.desc }}</p>
                                 {% endfor %}
                             </div>
                             <span class="typed-subtitle"></span>
+                            {% else %}
+                            <div class="h-title glitch-effect" data-text="{{ page.title }}">
+                                {{ page.titlecontent }}
+                            </div>
+                            <div class="h-subtitle typing-bread">
+                                <p>{{ page.desc }}</p>
+                            </div>
+                            <span class="typed-bread link"></span>
                             {% endif %}
                         </div>
                     </div>

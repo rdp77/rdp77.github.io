@@ -38,6 +38,33 @@
             </div>
 
             <!-- Section -->
+            {% if page.name == 'contact.md' %}
+            <div class="section contacts">
+                <div class="content">
+                    <div class="contact_form">
+                        <form name="contact" method="POST" action="/contact" data-netlify="true">
+                            <div class="group-val">
+                                <input type="text" name="name" placeholder="Name" required>
+                            </div>
+                            <div class="group-val">
+                                <input type="email" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="group-val ct-gr">
+                                <textarea name="message" placeholder="Message" required></textarea>
+                            </div>
+                            <!-- <a href="#" class="btn fill" onclick="$('#cform').submit(); return false;"
+                                data-text="Send Message">Send Message</a> -->
+                            <button class="btn fill" type="submit">Send Message</button>
+                        </form>
+                        <div class="alert-success d-none">
+                            <p>
+                                Thanks, your message is sent successfully. We will contact you shortly!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
             <div class="section works">
                 <div class="content">
 
@@ -54,8 +81,8 @@
                         <div class="clear"></div>
                     </div>
                 </div>
-
             </div>
+            {% endif %}
 
         </div>
         {% include footer.html %}
