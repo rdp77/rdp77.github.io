@@ -3,6 +3,8 @@
 $(function () {
   "use strict";
 
+  $(window).on("unload", function () {});
+
   /* Check Link */
   if (window.location.hostname == "rdp77.github.io") {
     window.location.replace("https://ravidwiputra.my.id");
@@ -23,8 +25,8 @@ $(function () {
 
   /* Preloader */
   $(window).on("load", function () {
-    $("body").css("overflow", "hidden");
-    $(".cursor").css("display", "none");
+    // $("body").css("overflow", "hidden");
+    // $(".cursor").css("display", "none");
     $(".preloader .pre-inner").fadeOut(3000, function () {
       /* Preload hide */
       $(".preloader").fadeOut();

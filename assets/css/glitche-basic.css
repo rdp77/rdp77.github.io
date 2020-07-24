@@ -602,6 +602,7 @@ blockquote {
   transition: transform 0.2s;
   background-color: #f26b38;
   mix-blend-mode: difference;
+  display: none;
 }
 
 /* 16. Animations */
