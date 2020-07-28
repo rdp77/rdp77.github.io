@@ -1,5 +1,24 @@
 // Version: 1.3
 
+// Load Service Worker
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("/assets/js/sw.js").then(
+      function (registration) {
+        // Registration was successful
+        console.log(
+          "ServiceWorker registration successful with scope: ",
+          registration.scope
+        );
+      },
+      function (err) {
+        // registration failed :(
+        console.log("ServiceWorker registration failed: ", err);
+      }
+    );
+  });
+}
+
 $(function () {
   "use strict";
 
@@ -27,37 +46,37 @@ $(function () {
   $(window).on("load", function () {
     // $("body").css("overflow", "hidden");
     // $(".cursor").css("display", "none");
-    $(".preloader").fadeOut(3000, function () {
-      /* Preload hide */
-      $(".preloader").fadeOut();
-      $("body").addClass("loaded");
-      $("body").css("overflow", "visible");
-      $(".cursor").css("display", "unset");
+    // $(".preloader").fadeOut(3000, function () {
+    /* Preload hide */
+    $(".preloader").fadeOut();
+    $("body").addClass("loaded");
+    $("body").css("overflow", "visible");
+    $(".cursor").css("display", "unset");
 
-      /* Typed subtitle */
-      $(".typed-subtitle").typed({
-        stringsElement: $(".typing-subtitle"),
-        loop: true,
-      });
-
-      /* Typed breadcrumbs */
-      $(".typed-bread").typed({
-        stringsElement: $(".typing-bread"),
-        showCursor: false,
-      });
-
-      /* One Page Nav */
-      var url_hash = location.hash;
-      var sectionElem = $(url_hash);
-      if (url_hash.indexOf("#section-") == 0 && sectionElem.length) {
-        $("body, html").animate(
-          {
-            scrollTop: $(url_hash).offset().top - 70,
-          },
-          400
-        );
-      }
+    /* Typed subtitle */
+    $(".typed-subtitle").typed({
+      stringsElement: $(".typing-subtitle"),
+      loop: true,
     });
+
+    /* Typed breadcrumbs */
+    $(".typed-bread").typed({
+      stringsElement: $(".typing-bread"),
+      showCursor: false,
+    });
+
+    /* One Page Nav */
+    var url_hash = location.hash;
+    var sectionElem = $(url_hash);
+    if (url_hash.indexOf("#section-") == 0 && sectionElem.length) {
+      $("body, html").animate(
+        {
+          scrollTop: $(url_hash).offset().top - 70,
+        },
+        400
+      );
+    }
+    // });
   });
 
   /*Fade-out animation between load pages*/
