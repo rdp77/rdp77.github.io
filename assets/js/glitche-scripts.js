@@ -27,7 +27,7 @@ $(function () {
   $(window).on("load", function () {
     // $("body").css("overflow", "hidden");
     // $(".cursor").css("display", "none");
-    $(".preloader .pre-inner").fadeOut(3000, function () {
+    $(".preloader").fadeOut(3000, function () {
       /* Preload hide */
       $(".preloader").fadeOut();
       $("body").addClass("loaded");
@@ -50,7 +50,8 @@ $(function () {
       var url_hash = location.hash;
       var sectionElem = $(url_hash);
       if (url_hash.indexOf("#section-") == 0 && sectionElem.length) {
-        $("body, html").animate({
+        $("body, html").animate(
+          {
             scrollTop: $(url_hash).offset().top - 70,
           },
           400
@@ -67,7 +68,8 @@ $(function () {
         location.href = "/" + link;
       }
 
-      $("body, html").animate({
+      $("body, html").animate(
+        {
           scrollTop: $(link).offset().top - 110,
         },
         400
@@ -98,7 +100,7 @@ $(function () {
 
   /* Hide mouse button on scroll */
   $(window).scroll(function () {
-    if ($(this).scrollTop() >= 1 /*$('#blue_bor').offset().top*/ ) {
+    if ($(this).scrollTop() >= 1 /*$('#blue_bor').offset().top*/) {
       $(".mouse_btn").fadeOut();
     } else {
       $(".mouse_btn").fadeIn();
@@ -107,14 +109,16 @@ $(function () {
 
   /* On click mouse button, page scroll down */
   $(".section").on("click", ".mouse_btn", function () {
-    $("body,html").animate({
+    $("body,html").animate(
+      {
         scrollTop: height - 150,
       },
       800
     );
   });
 
-  $("body").on({
+  $("body").on(
+    {
       mouseenter: function () {
         $(this).addClass("glitch-effect-white");
       },
