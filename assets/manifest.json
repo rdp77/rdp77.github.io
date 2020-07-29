@@ -1,7 +1,7 @@
 {
   "name": "Moh Ravi Dwi Putra",
   "short_name": "Moh Ravi Dwi Putra",
-  "start_url": "/index.html",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#28282f",
