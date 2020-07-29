@@ -1,4 +1,8 @@
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js"
+);
 var CACHE_NAME = "rdp77-cache-v1";
+const IMAGE_CACHE = "/assets/img";
 var urlsToCache = [
   "/",
   "/index.html",
@@ -6,9 +10,19 @@ var urlsToCache = [
   "/portfolio",
   "/awards",
   "/offline.html",
-  "/assets/img/avatar.png",
-  "/assets/manifest.json",
 ];
+
+workbox.routing.registerRoute(
+  ({ event }) => event.request.destination === "image",
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: IMAGE_CACHE,
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxEntries: 15,
+      }),
+    ],
+  })
+);
 
 self.addEventListener("install", function (event) {
   // Perform install steps
