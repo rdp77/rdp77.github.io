@@ -46,7 +46,7 @@ $(function () {
   // $(window).on("load", function () {
   $("body").css("overflow", "hidden");
   $(".cursor").css("display", "none");
-  $(".preloader .pre-inner").fadeOut(1500, function () {
+  $(".preloader .pre-inner").fadeOut(2000, function () {
     /* Preload hide */
     $(".preloader").fadeOut();
     $("body").addClass("loaded");

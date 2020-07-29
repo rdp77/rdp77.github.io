@@ -5,6 +5,9 @@ var urlsToCache = [
   "/resume.html",
   "/portfolio.html",
   "/awards.html",
+  "/resume",
+  "/portfolio",
+  "/awards",
   "/offline.html",
 ];
 
