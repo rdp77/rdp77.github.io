@@ -1,19 +1,22 @@
 {% for awd in site.data.awards %}
 <div class="box-item {{ awd.class }} link">
-    <div class="image">
-        <a href="{{ awd.image | absolute_url }}" class="has-popup-image">
-            <img src="{{ awd.image | absolute_url }}" />
-            <span class="info">
-                <span class="centrize full-width">
-                    <span class="vertical-center">
-                        <span class="ion ion-image"></span>
-                    </span>
-                </span>
-            </span>
-        </a>
-    </div>
-    <div class="desc">
-        <div class="category">{{ awd.category }}</div>
-        <a href="{{ awd.image | absolute_url }}" class="name has-popup-image">{{ awd.title }}</a>
-    </div>
-</div>{% endfor %}
+  <div class="image">
+    <a href="{{ awd.image | absolute_url }}" class="has-popup-image">
+      <img class="lazy" src="{{ awd.image | absolute_url }}" />
+      <span class="info">
+        <span class="centrize full-width">
+          <span class="vertical-center">
+            <span class="ion ion-image"></span>
+          </span>
+        </span>
+      </span>
+    </a>
+  </div>
+  <div class="desc">
+    <div class="category">{{ awd.category }}</div>
+    <a href="{{ awd.image | absolute_url }}" class="name has-popup-image">
+      {{ awd.title }}
+    </a>
+  </div>
+</div>
+{% endfor %}

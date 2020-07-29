@@ -46,7 +46,7 @@ $(function () {
   // $(window).on("load", function () {
   $("body").css("overflow", "hidden");
   $(".cursor").css("display", "none");
-  $(".preloader .pre-inner").fadeOut(1000, function () {
+  $(".preloader .pre-inner").fadeOut(1500, function () {
     /* Preload hide */
     $(".preloader").fadeOut();
     $("body").addClass("loaded");
@@ -148,6 +148,15 @@ $(function () {
     },
     "a.btn, .btn"
   );
+
+  /*Lazy image*/
+  $(function () {
+    $(".lazy").lazy({
+      effect: "fadeIn",
+      effectTime: 2000,
+      threshold: 0,
+    });
+  });
 
   /* Initialize masonry items */
   var $container_clients = $(".section.clients .box-items");

@@ -1,29 +1,41 @@
 <!-- About -->
 <div class="section about">
-    <div class="content">
-        <div class="title">
-            <div class="title_inner">About Me</div>
-        </div>
-        <div class="image">
-            <img src="{{ "/assets/img/avatar.png" | absolute_url }}" />
-        </div>
-        <div class="desc">
-            <p>
-                {{ content }}
-            </p>
-            <div class="info-list">
-                <ul>
-                    {% for abt in site.data.about %}
-                    <li><strong>{{ abt.title }}:</strong> {{ abt.desc }}</li>
-                    {% if forloop.index == 1 %}
-                    <li><strong>Age:</strong> <span id="myage"></span></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="bts"><a href="javascript:void(0)" class="btn fill link" data-text="Download CV">Download CV</a>
-            </div>
-        </div>
-        <div class="clear"></div>
+  <div class="content">
+    <div class="title">
+      <div class="title_inner">About Me</div>
     </div>
+    <div class="image">
+      <img class="lazy" src="{{ "/assets/img/avatar.png" | absolute_url }}" />
+    </div>
+    <div class="desc">
+      <p>
+        {{ content }}
+      </p>
+      <div class="info-list">
+        <ul>
+          {% for abt in site.data.about %}
+          <li>
+            <strong>{{ abt.title }}:</strong>
+            {{ abt.desc }}
+          </li>
+          {% if forloop.index == 1 %}
+          <li>
+            <strong>Age:</strong>
+            <span id="myage"></span>
+          </li>
+          {% endif %} {% endfor %}
+        </ul>
+      </div>
+      <div class="bts">
+        <a
+          href="javascript:void(0)"
+          class="btn fill link"
+          data-text="Download CV"
+        >
+          Download CV
+        </a>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
 </div>
