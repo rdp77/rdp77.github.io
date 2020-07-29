@@ -14,11 +14,6 @@ const assetRoute = new workbox.routing.RegExpRoute({
 });
 
 const router = new workbox.routing.Router();
-//router.addFetchListener();
-router.registerRoutes({ routes: [assetRoute] });
-router.setDefaultHandler({
-  handler: new workbox.runtimeCaching.CacheFirst(),
-});
 var CACHE_NAME = "rdp77-cache-v1";
 var urlsToCache = [
   "/",
@@ -86,6 +81,12 @@ self.addEventListener("fetch", function (event) {
         // Eg, a fallback silhouette image for avatars.
       })
   );
+});
+
+//router.addFetchListener();
+router.registerRoutes({ routes: [assetRoute] });
+router.setDefaultHandler({
+  handler: new workbox.runtimeCaching.CacheFirst(),
 });
 
 self.addEventListener("activate", function (event) {
