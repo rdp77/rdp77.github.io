@@ -13,7 +13,7 @@ var urlsToCache = [
 ];
 
 workbox.routing.registerRoute(
-  ({ event }) => event.request.destination === "image",
+  ({ event }) => event.request.destination === "/assets/img",
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: IMAGE_CACHE,
     plugins: [
