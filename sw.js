@@ -2,6 +2,7 @@ var CACHE_NAME = "rdp77-cache-v1";
 var urlsToCache = [
   "/",
   "/index.html",
+  "/resume.html",
   "/portfolio.html",
   "/awards.html",
   "/offline.html",
