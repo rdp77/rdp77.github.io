@@ -7,7 +7,7 @@ var urlsToCache = [
   "/awards",
   "/offline.html",
   "/assets/img/avatar.png",
-  "/assets/img/*",
+  "/assets/manifest.json",
 ];
 
 self.addEventListener("install", function (event) {
