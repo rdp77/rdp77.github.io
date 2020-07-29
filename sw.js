@@ -1,19 +1,3 @@
-importScripts(
-  "https://unpkg.com/workbox-sw@0.0.2/build/importScripts/workbox-sw.dev.v0.0.2.js"
-);
-importScripts(
-  "https://unpkg.com/workbox-runtime-caching@1.3.0/build/importScripts/workbox-runtime-caching.prod.v1.3.0.js"
-);
-importScripts(
-  "https://unpkg.com/workbox-routing@1.3.0/build/importScripts/workbox-routing.prod.v1.3.0.js"
-);
-
-const assetRoute = new workbox.routing.RegExpRoute({
-  regExp: new RegExp("^/assets/img/*"),
-  handler: new workbox.runtimeCaching.CacheFirst(),
-});
-
-const router = new workbox.routing.Router();
 var CACHE_NAME = "rdp77-cache-v1";
 var urlsToCache = [
   "/",
@@ -22,6 +6,16 @@ var urlsToCache = [
   "/portfolio",
   "/awards",
   "/offline.html",
+  "/assets/img/avatar.png",
+  "/assets/img/certification/css_sololearn.jpg",
+  "/assets/img/certification/html_sololearn.jpg",
+  "/assets/img/certification/lintasarta2.png",
+  "/assets/img/certification/lintasarta3.png",
+  "/assets/img/certification/lintasarta4.png",
+  "/assets/img/certification/php_sololearn.jpg",
+  "/assets/img/certification/seo_skillacademy.jpg",
+  "/assets/img/certification/seo_skillacademy1.jpg",
+  "/assets/img/works/work3.jpg",
 ];
 
 self.addEventListener("install", function (event) {
@@ -81,12 +75,6 @@ self.addEventListener("fetch", function (event) {
         // Eg, a fallback silhouette image for avatars.
       })
   );
-});
-
-//router.addFetchListener();
-router.registerRoutes({ routes: [assetRoute] });
-router.setDefaultHandler({
-  handler: new workbox.runtimeCaching.CacheFirst(),
 });
 
 self.addEventListener("activate", function (event) {
