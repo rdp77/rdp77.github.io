@@ -1,10 +1,10 @@
 var CACHE_NAME = "rdp77-cache-v1";
 var urlsToCache = [
   "/",
-  "/index.html",
-  "/portfolio.html",
-  "/awards.html",
-  "/offline.html",
+  "_site/index.html",
+  "_site/portfolio.html",
+  "_site/awards.html",
+  "_site/offline.html",
 ];
 
 self.addEventListener("install", function (event) {
@@ -58,7 +58,7 @@ self.addEventListener("fetch", function (event) {
       })
       .catch(function () {
         // If both fail, show a generic fallback:
-        return caches.match("/offline.html");
+        return caches.match("_site/offline.html");
         // However, in reality you'd have many different
         // fallbacks, depending on URL & headers.
         // Eg, a fallback silhouette image for avatars.

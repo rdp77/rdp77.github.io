@@ -43,10 +43,10 @@ $(function () {
   });
 
   /* Preloader */
-  $(window).on("load", function () {
-    // $("body").css("overflow", "hidden");
-    // $(".cursor").css("display", "none");
-    // $(".preloader").fadeOut(3000, function () {
+  // $(window).on("load", function () {
+  $("body").css("overflow", "hidden");
+  $(".cursor").css("display", "none");
+  $(".preloader .pre-inner").fadeOut(1000, function () {
     /* Preload hide */
     $(".preloader").fadeOut();
     $("body").addClass("loaded");
@@ -76,8 +76,8 @@ $(function () {
         400
       );
     }
-    // });
   });
+  // });
 
   /*Fade-out animation between load pages*/
   $("header .top-menu, .typed-bread").on("click", "div", function () {
