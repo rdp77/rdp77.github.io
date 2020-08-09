@@ -1,6 +1,6 @@
 - title: Cardboard Box
   category: Programming
-  image: assets/img/works/work3.jpg
+  image: assets/img/portfolio/code.jpg
   titlecontent: Hello World Paper
   content:
     Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
@@ -11,7 +11,7 @@
   link: google.com
   class: f-programming
 
-- title: Cardboard Box
+- title: Dryas Library
   category: Programmingsssss
   image: assets/img/works/work3.jpg
   titlecontent: Hello World
@@ -22,4 +22,4 @@
     vis. Cu vim quem quod cibo.
   action: View Project
   link: google.com
-  class: f-programming
+  class: f-networking
