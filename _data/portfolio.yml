@@ -1,3 +1,16 @@
+- title: Network Installation
+  category: Networking
+  image: assets/img/portfolio/network.png
+  titlecontent: Hello World
+  content:
+    Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
+    volumus explicari sed. Mel mutat vituperata
+    suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
+    vis. Cu vim quem quod cibo.
+  action: View Project
+  link: javascript:void(0)
+  class: f-networking
+
 - title: Dryas Library
   category: Programming
   image: assets/img/portfolio/code.png
@@ -11,7 +24,7 @@
   link: google.com
   class: f-programming
 
-- title: Network Installation
+- title: Network Installation and Configuration
   category: Networking
   image: assets/img/portfolio/network.png
   titlecontent: Hello World
@@ -23,3 +36,42 @@
   action: View Project
   link: javascript:void(0)
   class: f-networking
+
+- title: Corona
+  category: Programming
+  image: assets/img/portfolio/code.png
+  titlecontent: Hello World Paper
+  content:
+    Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
+    volumus explicari sed. Mel mutat vituperata
+    suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
+    vis. Cu vim quem quod cibo.
+  action: View Project
+  link: google.com
+  class: f-programming
+
+- title: Traffic Light
+  category: Programming
+  image: assets/img/portfolio/code.png
+  titlecontent: Hello World Paper
+  content:
+    Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
+    volumus explicari sed. Mel mutat vituperata
+    suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
+    vis. Cu vim quem quod cibo.
+  action: View Project
+  link: google.com
+  class: f-programming
+
+- title: Sports Skuyy
+  category: Programming
+  image: assets/img/portfolio/code.png
+  titlecontent: Hello World Paper
+  content:
+    Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
+    volumus explicari sed. Mel mutat vituperata
+    suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
+    vis. Cu vim quem quod cibo.
+  action: View Project
+  link: google.com
+  class: f-programming

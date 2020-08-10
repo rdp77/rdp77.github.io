@@ -1,7 +1,15 @@
-- date: 2007 - 2008
-  name: Art University of New York
+- date: 2006 - 2011
+  name: SDN Gading VII
   desc: Morbi nulla arcu, pellentesque sed egestas in, tempor eget felis. Nullam tincidunt augue in leo feugiat, quis interdum nisi sollicitudin.
 
-- date: 2004 - 2006
-  name: Front-end Course
+- date: 2012 - 2014
+  name: SMP PGRI 1
+  desc: Duis ipsum ligula, feugiat nec auctor vitae, porta sit amet urna. Praesent ex lorem, porta nec aliquet eu, ullamcorper eget nibh.
+
+- date: 2015 - 2017
+  name: SMK RAJASA
+  desc: Duis ipsum ligula, feugiat nec auctor vitae, porta sit amet urna. Praesent ex lorem, porta nec aliquet eu, ullamcorper eget nibh.
+
+- date: 2018 - Now
+  name: Universitas 17 Agustus Surabaya
   desc: Duis ipsum ligula, feugiat nec auctor vitae, porta sit amet urna. Praesent ex lorem, porta nec aliquet eu, ullamcorper eget nibh.
