@@ -1,40 +1,39 @@
-- title: Network Installation
+- title: "Network Installation: Universitas Airlangga"
   category: Networking
   image: assets/img/portfolio/network.png
-  titlecontent: Hello World
-  content:
-    Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
-    volumus explicari sed. Mel mutat vituperata
-    suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
-    vis. Cu vim quem quod cibo.
+  titlecontent: "Network Installation: Universitas Airlangga Kampus B"
+  content: At the Airlangga University campus B, precisely at the address
+    Jl. Airlangga No.4 - 6, Airlangga, Kec. Gubeng, Surabaya City.
+    We did the network installation installed on the 5th floor of the building,
+    the installation was carried out by 6 people and also including me.
   action: View Project
-  link: javascript:void(0)
+  link: https://goo.gl/maps/ZkWpsyRzMRwq2LwR8
   class: f-networking
 
 - title: Dryas Library
   category: Programming
   image: assets/img/portfolio/code.png
-  titlecontent: Hello World Paper
+  titlecontent: "Dryas Library: Laravel Framework"
   content:
-    Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
-    volumus explicari sed. Mel mutat vituperata
-    suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
-    vis. Cu vim quem quod cibo.
+    Dryas Library is a site created in the PHP programming language and uses
+    the very popular framework, Laravel. Meanwhile, the database uses PostGreSQL
+    to manage data, to manage data live using AJAX. Dryas library was developed in
+    a team and to handle the project using Github as version control in order to avoid unwanted errors.
   action: View Project
-  link: google.com
+  link: https://dryaslibrary.herokuapp.com/
   class: f-programming
 
 - title: Network Installation and Configuration
   category: Networking
   image: assets/img/portfolio/network.png
-  titlecontent: Hello World
+  titlecontent: "Network Installation and Configuration: WARUNK ZAMAN NOW"
   content:
-    Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
-    volumus explicari sed. Mel mutat vituperata
-    suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
-    vis. Cu vim quem quod cibo.
+    Precisely at the address Jl. Taman Apsari, Surabaya City WARUNK ZAMAN NOW
+    (Formerly Sisha Al-Ajib) initiates network setup requests and performs configuration services.
+    The installation is carried out in 3 points and uses the telkom network which is used to control
+    the traffic using the MikroTik as a router.
   action: View Project
-  link: javascript:void(0)
+  link: jhttps://goo.gl/maps/MhkcngqNK75H7Tan8
   class: f-networking
 
 - title: Corona
@@ -42,36 +41,36 @@
   image: assets/img/portfolio/code.png
   titlecontent: Hello World Paper
   content:
-    Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
-    volumus explicari sed. Mel mutat vituperata
-    suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
-    vis. Cu vim quem quod cibo.
+    In 2020 all countries will experience a very serious chaos, the chaos originates from the new virus,
+    namely corona (COVID-19). Therefore this website was created, this website aims to provide information
+    on victims who were affected by this deadly virus. This website provides information about total,
+    positive, recovery and death and can also be viewed by province. This website is built with the Laravel
+    framework and data based on the country of Indonesia, where the data is distributed via third party APIs.
   action: View Project
-  link: google.com
+  link: https://statuscorona.herokuapp.com/
   class: f-programming
 
-- title: Traffic Light
+- title: Traffic Light Simulation
   category: Programming
   image: assets/img/portfolio/code.png
-  titlecontent: Hello World Paper
+  titlecontent: Traffic Light Simulation with VB.NET
   content:
-    Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
-    volumus explicari sed. Mel mutat vituperata
-    suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
-    vis. Cu vim quem quod cibo.
+    This is a simple program that simulates a traffic light at a crossroad, this simulation uses a car
+    that will run alternately with the time it runs at the traffic light. This program is built with the
+    VB.NET programming language.
   action: View Project
-  link: google.com
+  link: http://www.youtube.com/watch?v=k47bCNacV9M
   class: f-programming
 
 - title: Sports Skuyy
   category: Programming
   image: assets/img/portfolio/code.png
-  titlecontent: Hello World Paper
+  titlecontent: "Sports Skuyy: The Android application keeps track of sports activities"
   content:
-    Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
-    volumus explicari sed. Mel mutat vituperata
-    suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
-    vis. Cu vim quem quod cibo.
+    This application is a simple application that functions to track exercise activities based on the
+    level that has been executed, this application also records calories from the movements that have been
+    done. In each movement, the number of calories burned is set and this is based on our team's analysis.
+    This application is built using Java and Firebase as realtime data.
   action: View Project
-  link: google.com
+  link: https://github.com/rdp77/SportsSkuyy/releases
   class: f-programming
