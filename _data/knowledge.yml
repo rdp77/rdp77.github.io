@@ -10,7 +10,7 @@
 - name: CSS framework (Bootstrap, Materialize, etc)
 - name: Library
 - name: Github version control
-- name: Docker container
+- name: Network Installation
 - name: Search engine optimization
 - name: Apps design (Prototype and Mockup)
 - name: Web design (Prototype and Mockup)
@@ -19,3 +19,4 @@
 - name: Database management
 - name: Modern style web and apps
 - name: Operating system optimization and repair
+- name: Mikrotik

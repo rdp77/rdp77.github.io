@@ -1,6 +1,6 @@
-- title: Cardboard Box
+- title: Dryas Library
   category: Programming
-  image: assets/img/portfolio/code.jpg
+  image: assets/img/portfolio/code.png
   titlecontent: Hello World Paper
   content:
     Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
@@ -11,9 +11,9 @@
   link: google.com
   class: f-programming
 
-- title: Dryas Library
-  category: Programmingsssss
-  image: assets/img/works/work3.jpg
+- title: Network Installation
+  category: Networking
+  image: assets/img/portfolio/network.png
   titlecontent: Hello World
   content:
     Consul latine iudicabit eu vel. Cu has animal eruditi voluptatibus. Eu
@@ -21,5 +21,5 @@
     suscipiantur et, et fabellas explicari adipiscing quo, no mucius euismod
     vis. Cu vim quem quod cibo.
   action: View Project
-  link: google.com
+  link: javascript:void(0)
   class: f-networking
