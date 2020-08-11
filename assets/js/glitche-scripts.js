@@ -1,5 +1,14 @@
 // Version: 1.3
 
+//Google Analytics
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  dataLayer.push(arguments);
+}
+gtag("js", new Date());
+
+gtag("config", "UA-56428090-2");
+
 // Load Service Worker
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
