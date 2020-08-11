@@ -12,7 +12,7 @@
 
 - title: Dryas Library
   category: Programming
-  image: assets/img/portfolio/code.png
+  image: assets/img/portfolio/dryaslibrary.png
   titlecontent: "Dryas Library: Laravel Framework"
   content:
     Dryas Library is a site created in the PHP programming language and uses
@@ -38,7 +38,7 @@
 
 - title: Corona
   category: Programming
-  image: assets/img/portfolio/code.png
+  image: assets/img/portfolio/corona.png
   titlecontent: Hello World Paper
   content:
     In 2020 all countries will experience a very serious chaos, the chaos originates from the new virus,
@@ -64,7 +64,7 @@
 
 - title: Sports Skuyy
   category: Programming
-  image: assets/img/portfolio/code.png
+  image: assets/img/portfolio/sportsskuyy.png
   titlecontent: "Sports Skuyy: The Android application keeps track of sports activities"
   content:
     This application is a simple application that functions to track exercise activities based on the

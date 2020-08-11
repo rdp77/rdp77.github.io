@@ -12,7 +12,7 @@ gtag("config", "UA-56428090-2");
 // Load Service Worker
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
-    navigator.serviceWorker.register("/sw.js").then(
+    navigator.serviceWorker.register("/sw.js", { scope: "/" }).then(
       function (registration) {
         // Registration was successful
         console.log(

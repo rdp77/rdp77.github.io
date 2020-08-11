@@ -15,7 +15,8 @@ var urlsToCache = [
   "/assets/img/certification/php_sololearn.jpg",
   "/assets/img/certification/seo_skillacademy.jpg",
   "/assets/img/certification/seo_skillacademy1.jpg",
-  "/assets/img/works/work3.jpg",
+  "/assets/img/portfolio/code.png",
+  "/assets/img/portfolio/network.png",
 ];
 
 self.addEventListener("install", function (event) {
