@@ -1,23 +1,23 @@
-- icon:
-  name:
-  desc:
+- icon: ion-social-html5
+  name: Front-end
+  desc: Morbi nulla arcu, pellentesque sed egestas in.
 
-- icon:
-  name:
-  desc:
+- icon: ion-ipad
+  name: Mobile Application
+  desc: Morbi nulla arcu, pellentesque sed egestas in.
 
-- icon:
-  name:
-  desc:
+- icon: ion-ios-search-strong
+  name: Investigation
+  desc: Morbi nulla arcu, pellentesque sed egestas in.
 
-- icon:
-  name:
-  desc:
+- icon: ion-code
+  name: Programming
+  desc: Morbi nulla arcu, pellentesque sed egestas in.
 
-- icon:
-  name:
-  desc:
+- icon: ion-help-buoy
+  name: Awesome Supports
+  desc: Morbi nulla arcu, pellentesque sed egestas in.
 
-- icon:
-  name:
-  desc:
+- icon: ion-social-chrome
+  name: Web Development
+  desc: Morbi nulla arcu, pellentesque sed egestas in.
