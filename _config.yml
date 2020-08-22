@@ -18,8 +18,15 @@ social:
     - https://www.instagram.com/raviravdp/
     - https://www.youtube.com/channel/UCgy1w-3_8D1VMfarucu2lrA
 url: https://ravidwiputra.my.id
-lang: en_ID
+lang: en_US
 google_site_verification: 23XGywZf8ZI_3Rr2eQBwH54Sp5IUp_wDNDUCnDohTpc
+twitter:
+  username: ravi77__
+  card: summary
+facebook:
+  app_id: 273593853241776
+  publisher: https://facebook.com/ravidwiputra77
+  admins: 100003118966989
 logo: /assets/img/avatar.png
 image: /assets/img/avatar.png
 plugins:
