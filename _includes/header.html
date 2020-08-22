@@ -53,14 +53,9 @@
   <link rel="stylesheet" href="/assets/css/dark.css" />
 
   <!-- Breadcrumb Structured Data -->
-  {% if page.name == 'awards.md' %}
-  {% include breadcrumb_awards.html %}
-  {% elseif page.name == 'resume.md' %}
-  {% include breadcrumb_resume.html %}
-  {% elseif page.name == 'portfolio.md' %}
-  {% include breadcrumb_portfolio.html %}
-  {% elseif page.name == 'contact.md' %}
-  {% include breadcrumb_contact.html %}
-  {% endif %}
-
+  {% if page.name == 'awards.md' %} {% include breadcrumb_awards.html %} {%
+  elsif page.name == 'resume.md' %} {% include breadcrumb_resume.html %} {%
+  elsif page.name == 'portfolio.md' %} {% include breadcrumb_portfolio.html %}
+  {% elsif page.name == 'contact.md' %} {% include breadcrumb_contact.html %} {%
+  endif %}
 </head>
