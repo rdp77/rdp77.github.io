@@ -21,15 +21,17 @@
 
   <!--Favicon-->
   <link href="{{ "/assets/icon/favicon.ico" | absolute_url }}" rel=" shortcut
-  icon" type='image/x-icon' /> <link rel="apple-touch-icon" sizes="180x180"
-  href="{{ "/assets/icon/apple-icon-180x180.png" | absolute_url }}"> <link
-  rel="icon" type="image/png" sizes="192x192" href="{{
-  "/assets/icon/android-icon-192x192.png" | absolute_url }}"> <link rel="icon"
-  type="image/png" sizes="32x32" href="{{ "/assets/icon/favicon-32x32.png" |
-  absolute_url }}"> <link rel="icon" type="image/png" sizes="96x96" href="{{
-  "/assets/icon/favicon-96x96.png" | absolute_url }}"> <link rel="icon"
-  type="image/png" sizes="16x16" href="{{ "/assets/icon/favicon-16x16.png" |
-  absolute_url }}"> <meta name="msapplication-TileImage" content="{{
+  icon" type='image/x-icon' />
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/assets/icon/apple-icon-180x180.png" | absolute_url }}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{
+  "/assets/icon/android-icon-192x192.png" | absolute_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "/assets/icon/favicon-32x32.png" |
+  absolute_url }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{
+  "/assets/icon/favicon-96x96.png" | absolute_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "/assets/icon/favicon-16x16.png" |
+  absolute_url }}">
+  <meta name="msapplication-TileImage" content="{{
   "/assets/icon/android-icon-144x144.png" | absolute_url }}">
 
   <!-- Mobile Specific Metas -->
@@ -39,8 +41,7 @@
   <!-- Load Fonts -->
   <link
     href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="/assets/css/glitche-basic.css" />
@@ -52,9 +53,14 @@
   <link rel="stylesheet" href="/assets/css/dark.css" />
 
   <!-- Breadcrumb Structured Data -->
-  {% if page.name == 'awards.md' %} {% include breadcrumb_awards.html %} {%
-  elseif page.name == 'resume.md' %} {% include breadcrumb_resume.html %} {%
-  elseif page.name == 'portfolio.md' %} {% include breadcrumb_portfolio.html %}
-  {% elseif page.name == 'contact.md' %} {% include breadcrumb_contact.html %}
+  {% if page.name == 'awards.md' %}
+  {% include breadcrumb_awards.html %}
+  {% elseif page.name == 'resume.md' %}
+  {% include breadcrumb_resume.html %}
+  {% elseif page.name == 'portfolio.md' %}
+  {% include breadcrumb_portfolio.html %}
+  {% elseif page.name == 'contact.md' %}
+  {% include breadcrumb_contact.html %}
   {% endif %}
+
 </head>

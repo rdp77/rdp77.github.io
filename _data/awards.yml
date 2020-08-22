@@ -42,3 +42,8 @@
   image: /assets/img/certification/lintasarta4.png
   class: f-certification
   category: Certification
+
+- title: "Oracle Certificate Of Recognition"
+  image: /assets/img/certification/oracle_certificate_of_recognition.png
+  class: f-certification
+  category: Certification
