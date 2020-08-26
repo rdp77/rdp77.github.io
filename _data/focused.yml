@@ -1,4 +1,4 @@
-- icon: ion-social-html5
+- icon: ion-code
   name: Front-end
   desc: Morbi nulla arcu, pellentesque sed egestas in.
 
@@ -7,11 +7,11 @@
   desc: Morbi nulla arcu, pellentesque sed egestas in.
 
 - icon: ion-ios-search-strong
-  name: Investigation
+  name: Investigation and analysis
   desc: Morbi nulla arcu, pellentesque sed egestas in.
 
-- icon: ion-code
-  name: Programming
+- icon: ion-speakerphone
+  name: Digital Marketing
   desc: Morbi nulla arcu, pellentesque sed egestas in.
 
 - icon: ion-help-buoy
