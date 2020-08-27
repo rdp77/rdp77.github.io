@@ -74,3 +74,17 @@
   action: View Project
   link: https://github.com/rdp77/SportsSkuyy/releases
   class: f-programming
+
+- title: Stack Games
+  category: Programming
+  image: assets/img/portfolio/stack-games.png
+  titlecontent: "Stack Games With Laravel Framework And MongoDB"
+  content:
+    Stack games are made to meet the needs of gamers for game portals and game information, stack
+    games are built with backend features that can be accessed through
+    <a target=_blank rel=noopener class=link href=https://stackgames.herokuapp.com/login>this page</a> and are not
+    published on the front page of the stack games, this makes the page even more difficult to access. The
+    game stack was created using MongoDB as the NoSQL database.
+  action: View Project
+  link: https://stackgames.herokuapp.com/
+  class: f-programming
