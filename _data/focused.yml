@@ -16,7 +16,7 @@
 
 - icon: ion-help-buoy
   name: Awesome Supports
-  desc: Providing support to the community, clients and even internet citizens like me to create <a target=_blank rel=noopener href=https://www.backupotak.com/>blogs</a> and join the community.
+  desc: Providing support to the community, clients and even internet citizens like me to create <a target=_blank rel=noopener class=link href=https://www.backupotak.com/>blogs</a> and join the community.
 
 - icon: ion-social-chrome
   name: Web Development
