@@ -47,3 +47,8 @@
   image: /assets/img/certification/oracle_certificate_of_recognition.png
   class: f-certification
   category: Certification
+
+- title: SHOWSHWO
+  image: /assets/img/works/work4.jpg
+  class: f-ocertification
+  category: Other-Certification

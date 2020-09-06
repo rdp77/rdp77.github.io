@@ -82,9 +82,33 @@
   content:
     Stack games are made to meet the needs of gamers for game portals and game information, stack
     games are built with backend features that can be accessed through
-    <a target=_blank rel=noopener class=link href=https://stackgames.herokuapp.com/login>this page</a> and are not
-    published on the front page of the stack games, this makes the page even more difficult to access. The
-    game stack was created using MongoDB as the NoSQL database.
+    <a target=_blank rel=noopener class=link href=https://stackgames.herokuapp.com/login>this page</a> and
+    are not published on the front page of the stack games, this makes the page even more difficult to
+    access. The game stack was created using MongoDB as the NoSQL database.
   action: View Project
   link: https://stackgames.herokuapp.com/
+  class: f-programming
+
+- title: Personal Web
+  category: Programming
+  image: assets/img/portfolio/code.png
+  titlecontent: "A Personal Web For Everyone And Free"
+  content:
+    This is my small project that aims to organize information about myself. This personal web is
+    built using html and css, while for version 2 and above, it uses third-party libraries for css and
+    javascript. Meanwhile, the latest version itself is a website that is currently running using a static
+    site generator assisted by Jekyll.
+  action: View Project
+  link: https://github.com/rdp77/personal-web
+  class: f-programming
+
+- title: Our Enterprise
+  category: Programming
+  image: assets/img/portfolio/stack-games.png
+  titlecontent: "Our Enterprise Build With Gatsby"
+  content:
+    Our Enterprise is a service business that serves quite a number of services, our enterprise
+    website is created using Javascript with the help of Gatsby and deployed using Vercel.
+  action: View Project
+  link: https://ourenterprise.vercel.app/
   class: f-programming
