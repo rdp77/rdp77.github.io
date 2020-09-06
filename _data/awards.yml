@@ -13,8 +13,8 @@
   class: f-certification
   category: Certification
 
-- title: SHOWSHWO
-  image: /assets/img/works/work4.jpg
+- title: Piagam Penghargaan
+  image: /assets/img/awards/piagam_penghargaan.jpg
   class: f-awards
   category: Awards
 
@@ -30,25 +30,63 @@
 
 - title: "Lintasarta Developer Talk Online Series #2 - Simple Animation on Android"
   image: /assets/img/certification/lintasarta2.png
-  class: f-certification
-  category: Certification
+  class: f-ocertification
+  category: Other-Certification
 
 - title: "Lintasarta Developer Talk Online Series #3 - Boost Android App using Android Jetpack"
   image: /assets/img/certification/lintasarta3.png
-  class: f-certification
-  category: Certification
+  class: f-ocertification
 
 - title: "Lintasarta Developer Talk Online Series #4 - Best Practices and Lessons Learned as a Developer"
   image: /assets/img/certification/lintasarta4.png
-  class: f-certification
-  category: Certification
+  category: Other-Certification
 
 - title: "Oracle Certificate Of Recognition"
   image: /assets/img/certification/oracle_certificate_of_recognition.png
   class: f-certification
   category: Certification
 
-- title: SHOWSHWO
-  image: /assets/img/works/work4.jpg
+- title: Unmask Cyber Crime
+  image: /assets/img/certification/unmask.jpg
   class: f-ocertification
   category: Other-Certification
+
+- title: Javascript Tutorial Course
+  image: /assets/img/certification/js_sololearn.jpg
+  class: f-certification
+  category: Certification
+
+- title: SQL Fundamentals Course
+  image: /assets/img/certification/sql_sololearn.jpg
+  class: f-certification
+  category: Certification
+
+- title: Cisco IT Essentials
+  image: /assets/img/certification/itessentials_cisco.jpg
+  class: f-certification
+  category: Certification
+
+- title: Basic English Conversation
+  image: /assets/img/certification/basic_english1.jpg
+  class: f-ocertification
+  category: Other-Certification
+
+- title: Praktek Kerja Industri Diskominfo
+  image: /assets/img/certification/prakerin_diskominfo.jpg
+  class: f-certification
+  category: Certification
+
+- title: Praktek Kerja Industri Broadband Learning Center
+  image: /assets/img/certification/prakerin_blc.jpg
+  class: f-certification
+  category: Certification
+
+- title: Piagam Penghargaan
+  image: /assets/img/awards/piagam_penghargaan1.jpg
+  class: f-awards
+  category: Awards
+
+- title: Certificate Of Competency
+  image: /assets/img/certification/radnet.jpg
+  class: f-certification
+  category: Certification
