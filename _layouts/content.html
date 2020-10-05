@@ -21,11 +21,7 @@
                     <div class="vertical-center">
                         <div class="started-content">
                             <div class="h-title glitch-effect" data-text="{{ page.titlecontent }}">
-                                {% if page.name == 'awards.md' %}
-                                {{ page.first }} <span>{{ page.last }}</span>
-                                {% else %}
                                 {{ page.titlecontent }}
-                                {% endif %}
                             </div>
                             <div class="h-subtitle typing-bread">
                                 <p><a href="/">Home</a> / <a href="{{ page.permalink }}">{{ page.titlecontent }}</a></p>
@@ -62,23 +58,14 @@
             {% else %}
             <div class="section works">
                 <div class="content">
-
                     {% include filter.html %}
-
                     <div class="box-items portfolio-items">
-
-                        {% if page.name == 'portfolio.md' %}
                         {% include portfolio.html %}
-                        {% else %}
-                        {% include awards.html %}
-                        {% endif %}
-
                         <div class="clear"></div>
                     </div>
                 </div>
             </div>
             {% endif %}
-
         </div>
         {% include footer.html %}
 </body>

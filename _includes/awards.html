@@ -1,4 +1,4 @@
-{% for awd in site.data.awards %}
+<!-- {% for awd in site.data.awards %}
 <div class="box-item {{ awd.class }} link">
   <div class="image">
     <a href="{{ awd.image | absolute_url }}" class="has-popup-image">
@@ -19,4 +19,76 @@
     </a>
   </div>
 </div>
-{% endfor %}
+{% endfor %} -->
+
+<div class="section resume">
+  <div class="content">
+    <div class="cols">
+      <div class="col col-md">
+        <div class="title">
+          <div class="title_inner">Awards</div>
+        </div>
+        <div class="resume-items">
+          {% for awd in site.data.awards %}
+          <div class="resume-item active">
+            <div class="date">{{ awd.vendor }}</div>
+            <div class="name">{{ awd.title }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col col-md">
+        <div class="title">
+          <div class="title_inner"></div>
+        </div>
+        <div class="resume-items">
+          {% for awds in site.data.awards2 %}
+          <div class="resume-item active">
+            <div class="date">{{ awds.vendor }}</div>
+            <div class="name">{{ awds.title }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section resume">
+  <div class="content">
+    <div class="cols">
+      <div class="col col-md">
+        <div class="title">
+          <div class="title_inner">Certification</div>
+        </div>
+        <div class="resume-items">
+          {% for ctf in site.data.certification %}
+          <div class="resume-item">
+            <div class="date">{{ ctf.vendor }}</div>
+            <div class="name">{{ ctf.title }}</div>
+            <p>
+              {{ ctf.code }}
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col col-md">
+        <div class="title">
+          <div class="title_inner"></div>
+        </div>
+        <div class="resume-items">
+          {% for ctfs in site.data.certification2 %}
+          <div class="resume-item">
+            <div class="date">{{ ctfs.vendor }}</div>
+            <div class="name">{{ ctfs.title }}</div>
+            <p>
+              {{ ctfs.code }}
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

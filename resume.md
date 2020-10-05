@@ -1,7 +1,7 @@
 ---
 title: Resume | Moh Ravi Dwi Putra
 titlecontent: Resume
-layout: resume
+layout: simple
 permalink: /resume
 ---
 
