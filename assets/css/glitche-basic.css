@@ -70,6 +70,10 @@ body::-webkit-scrollbar-track {
   -webkit-box-sizing: border-box;
 }
 
+.resume-items .resume-item p {
+  user-select: text;
+}
+
 .clear {
   clear: both;
 }
@@ -608,6 +612,7 @@ blockquote {
 /* 16. Animations */
 /* Glitch Animations */
 @media (min-width: 580px) {
+
   .glitch-effect,
   .glitch-effect-white {
     position: relative;
