@@ -597,7 +597,7 @@ blockquote {
 
 /* 15. Cursor */
 .cursor {
-  position: fixed;
+  position: fixed;  
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -606,7 +606,7 @@ blockquote {
   transition: transform 0.2s;
   background-color: #f26b38;
   mix-blend-mode: difference;
-  display: none;
+  display: none;  
 }
 
 /* 16. Animations */

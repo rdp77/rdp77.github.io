@@ -454,10 +454,12 @@ $(function () {
 		Calculate Age
 	*/
 
-  function calculate_age(dob) {
-    var diff_ms = Date.now() - dob.getTime();
-    var age_dt = new Date(diff_ms);
-    return Math.abs(age_dt.getUTCFullYear() - 1970);
+  function calculate_age(date) {
+    var dob = new Date(date);
+    var month_diff = Date.now() - dob.getTime();
+    var age_dt = new Date(month_diff);
+    var year = age_dt.getUTCFullYear();
+    return Math.abs(year - 1970);
   }
-  $("#myage").text(calculate_age(new Date(2000, 8, 26)));
+  $("#myage").text(calculate_age("08/26/2000"));
 });
