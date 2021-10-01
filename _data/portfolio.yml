@@ -102,6 +102,17 @@
   link: https://github.com/rdp77/personal-web
   class: f-programming
 
+- title: Messi Love Circumcision
+  category: Programming
+  image: assets/img/portfolio/wordpress.png
+  titlecontent: "Messi Love Circumcision"
+  content:
+    Portfolio website developed using wordpress and has several special features such as mark location, 
+    google business and contacts available on the website.
+  action: View Project
+  link: https://sunattidaksakit.com/
+  class: f-programming
+
 - title: Our Enterprise
   category: Programming
   image: assets/img/portfolio/ourenterprise.png
@@ -111,4 +122,68 @@
     website is created using Javascript with the help of Gatsby and deployed using Vercel.
   action: View Project
   link: https://ourenterprise.vercel.app/
+  class: f-programming
+
+- title: Pode
+  category: Programming
+  image: assets/img/portfolio/code.png
+  titlecontent: "Portofolio Design With Jekyll"
+  content:
+    Website portfolio for designers built using the popular Ruby programming language and using 
+    the Jekyll static site generator to make websites faster in data processing and loading.
+  action: View Project
+  link: https://pode.netlify.app/
+  class: f-programming
+
+- title: Veyaz
+  category: Programming
+  image: assets/img/portfolio/veyaz.png
+  titlecontent: "Veyaz Laravel Templates"
+  content:
+    A premium template designed for Laravel programmers to make their work easier, Veyaz is already 
+    integrated with several much-needed libraries and is certainly very helpful. For UI Veyaz uses 
+    Bootstrap and jQuery as a javascript library, Veyaz also supports asynchronous web applications 
+    (server side processing) such as AJAX and axios.
+  action: View Project
+  link: https://veyaz.herokuapp.com/
+  class: f-programming
+
+- title: Cooperative Sumber Rejeki
+  category: Programming
+  image: assets/img/portfolio/ksp-sumberrejeki.png
+  titlecontent: "Cooperative Sumber Rejeki"
+  content:
+    This cooperative application aims to calculate the estimate of how many months or weeks the 
+    borrower can borrow from the cooperative, this application can also issue reports on a daily, 
+    weekly or monthly basis. With this application, borrowers and sales or cooperative owners can carry 
+    out savings and loan activities smoothly. This application is made using the Laravel Framework and Ajax 
+    as Server Side Processing.
+  action: View Project
+  link: https://ksp-sumberrejeki.com/
+  class: f-programming
+
+- title: Andromart
+  category: Programming
+  image: assets/img/portfolio/ksp-sumberrejeki.png
+  titlecontent: "Cooperative Sumber Rejeki"
+  content:
+    This cooperative application aims to calculate the estimate of how many months or weeks the 
+    borrower can borrow from the cooperative, this application can also issue reports on a daily, 
+    weekly or monthly basis. With this application, borrowers and sales or cooperative owners can carry 
+    out savings and loan activities smoothly. This application is made using the Laravel Framework and Ajax 
+    as Server Side Processing.
+  action: View Project
+  link: https://ksp-sumberrejeki.com/
+  class: f-programming
+
+- title: Andromart
+  category: Programming
+  image: assets/img/portfolio/andromart.png
+  titlecontent: "Cooperative Sumber Rejeki"
+  content:
+    An application that uses the Point Of Sale system as its main feature, and other supporting 
+    features such as inventory (warehouse) and company profile. Andromart itself uses the Laravel 
+    Framework and Ajax as Server Side Processing.
+  action: View Project
+  link: https://andromartindonesia.com/
   class: f-programming
