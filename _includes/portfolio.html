@@ -29,6 +29,21 @@
         <p>
           {{ port.content }}
         </p>
+        {% if port.category == 'Programming' %}
+        <div class="category">Login Using</div>
+        <div class="info-list">
+          <ul>
+            <li style="width: 45%;">
+              <strong>Username:</strong>
+              {{ port.username }}
+            </li>
+            <li style="width: 45%;">
+              <strong>Password:</strong>
+              {{ port.password }}
+            </li>
+          </ul>
+        </div>
+        {% endif %}
         <a href="{{ port.link }}" target="_blank" class="btn" rel="noreferrer noopener" data-text="{{ port.action }}">
           {{ port.action }}
         </a>
