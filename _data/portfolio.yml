@@ -229,6 +229,6 @@
   username: admin
   password: admin
   action: View Project
-  link: https://andromartindonesia.com/
+  link: https://report-management-bb.herokuapp.com/
   class: f-programming
   display: unset
