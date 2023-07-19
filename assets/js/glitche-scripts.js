@@ -28,438 +28,151 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-$(function () {
+document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
-  $(window).on("unload", function () {});
+  // Store frequently used elements in variables
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+  const cursor = document.querySelector(".cursor");
+  const preloaderInner = document.querySelector(".preloader .pre-inner");
+  const topMenuLinks = document.querySelectorAll(".top-menu li a");
 
-  /* Check Link */
-  if (window.location.hostname == "rdp77.github.io") {
-    window.location.replace("https://ravidwiputra.my.id");
+  // Function to change cursor appearance
+  function changeCursorStyle(scaleValue) {
+    cursor.style.transform = `scale(${scaleValue})`;
   }
 
-  /* Set full height in blocks */
-  var width = $(window).width();
-  var height = $(window).height();
-  $(".section.started").css({
-    height: height - 60,
-  });
-
-  /* Typed preload text */
-  $(".typed-load").typed({
-    stringsElement: $(".typing-load"),
-    loop: true,
-  });
-
-  /* Preloader */
-  // $(window).on("load", function () {
-  $("body").css("overflow", "hidden");
-  $(".cursor").css("display", "none");
-  $(".preloader .pre-inner").fadeOut(2000, function () {
-    /* Preload hide */
-    $(".preloader").fadeOut();
-    $("body").addClass("loaded");
-    $("body").css("overflow", "visible");
-    $(".cursor").css("display", "unset");
-
-    /* Typed subtitle */
-    $(".typed-subtitle").typed({
-      stringsElement: $(".typing-subtitle"),
-      loop: true,
-    });
-
-    /* Typed breadcrumbs */
-    $(".typed-bread").typed({
-      stringsElement: $(".typing-bread"),
-      showCursor: false,
-    });
-
-    /* One Page Nav */
-    var url_hash = location.hash;
-    var sectionElem = $(url_hash);
-    if (url_hash.indexOf("#section-") == 0 && sectionElem.length) {
-      $("body, html").animate(
-        {
-          scrollTop: $(url_hash).offset().top - 70,
-        },
-        400
-      );
-    }
-  });
-  // });
-
-  /*Fade-out animation between load pages*/
-  $("header .top-menu, .typed-bread").on("click", "div", function () {
-    var link = $(this).attr("href");
-    if (link.indexOf("#section-") == 0) {
-      if (!$("body").hasClass("home")) {
-        location.href = "/" + link;
-      }
-
-      $("body, html").animate(
-        {
-          scrollTop: $(link).offset().top - 110,
-        },
-        400
-      );
-      if ($("header").hasClass("active")) {
-        $(".menu-btn").trigger("click");
-      }
-    } else {
-      $("body").removeClass("loaded");
-      setTimeout(function () {
-        location.href = "" + link;
-      }, 500);
-    }
-    return false;
-  });
-
-  /*Menu mobile*/
-  $("header").on("click", ".menu-btn", function () {
-    if ($("header").hasClass("active")) {
-      $("header").removeClass("active");
-      $("body").addClass("loaded");
-    } else {
-      $("header").addClass("active");
-      $("body").removeClass("loaded");
-    }
-    return false;
-  });
-
-  /* Hide mouse button on scroll */
-  $(window).scroll(function () {
-    if ($(this).scrollTop() >= 1 /*$('#blue_bor').offset().top*/) {
-      $(".mouse_btn").fadeOut();
-    } else {
-      $(".mouse_btn").fadeIn();
-    }
-  });
-
-  /* On click mouse button, page scroll down */
-  $(".section").on("click", ".mouse_btn", function () {
-    $("body,html").animate(
-      {
-        scrollTop: height - 150,
-      },
-      800
-    );
-  });
-
-  $("body").on(
-    {
-      mouseenter: function () {
-        $(this).addClass("glitch-effect-white");
-      },
-      mouseleave: function () {
-        $(this).removeClass("glitch-effect-white");
-        $(".top-menu ul li.active a.btn").addClass("glitch-effect-white");
-      },
-    },
-    "a.btn, .btn"
-  );
-
-  /*Lazy image*/
-  $(function () {
-    $(".lazy").lazy({
-      effect: "fadeIn",
-      effectTime: 2000,
-      threshold: 0,
-    });
-  });
-
-  /* Initialize masonry items */
-  var $container_clients = $(".section.clients .box-items");
-  $container_clients.imagesLoaded(function () {
-    $container_clients.isotope({
-      itemSelector: ".box-item",
-    });
-  });
-
-  /* Initialize masonry items */
-  var $container_blog = $(".section.blog .box-items");
-  $container_blog.imagesLoaded(function () {
-    $container_blog.isotope({
-      itemSelector: ".box-item",
-    });
-  });
-
-  /*
-		Initialize portfolio items
-	*/
-  var $container = $(".section.works .box-items");
-  $container.imagesLoaded(function () {
-    $container.isotope({
-      itemSelector: ".box-item",
-    });
-  });
-
-  /*
-		Filter items on button click
-	*/
-  $(".filters").on("click", ".btn-group", function () {
-    var filterValue = $(this).find("input").val();
-    $container.isotope({
-      filter: filterValue,
-    });
-    $(".filters .btn-group label").removeClass("glitch-effect");
-    $(this).find("label").addClass("glitch-effect");
-  });
-
-  /*
-		Gallery popup
-	*/
-  if (
-    /\.(?:jpg|jpeg|gif|png)$/i.test($(".gallery-item:first a").attr("href"))
-  ) {
-    $(".gallery-item a").magnificPopup({
-      gallery: {
-        enabled: true,
-      },
-      type: "image",
-      closeBtnInside: false,
-      fixedContentPos: true,
-      mainClass: "mfp-fade",
-    });
-  }
-
-  /*
-		Media popup
-	*/
-  $(".has-popup-media").magnificPopup({
-    type: "inline",
-    overflowY: "auto",
-    fixedContentPos: true,
-    closeBtnInside: true,
-    mainClass: "mfp-fade",
-  });
-
-  /*
-		Image popup
-	*/
-  $(".has-popup-image").magnificPopup({
-    type: "image",
-    closeOnContentClick: true,
-    fixedContentPos: true,
-    mainClass: "mfp-fade",
-    image: {
-      verticalFit: true,
-    },
-  });
-
-  /*
-		Video popup
-	*/
-  $(".has-popup-video").magnificPopup({
-    disableOn: 700,
-    type: "iframe",
-    iframe: {
-      patterns: {
-        youtube_short: {
-          index: "youtu.be/",
-          id: "youtu.be/",
-          src: "https://www.youtube.com/embed/%id%?autoplay=1",
-        },
-      },
-    },
-    removalDelay: 160,
-    preloader: false,
-    fixedContentPos: false,
-    mainClass: "mfp-fade",
-    callbacks: {
-      markupParse: function (template, values, item) {
-        template.find("iframe").attr("allow", "autoplay");
-      },
-    },
-  });
-
-  /*
-		Music popup
-	*/
-  $(".has-popup-music").magnificPopup({
-    disableOn: 700,
-    type: "iframe",
-    removalDelay: 160,
-    preloader: false,
-    fixedContentPos: false,
-    mainClass: "mfp-fade",
-  });
-
-  /*
-		Gallery popup
-	*/
-  $(".has-popup-gallery").on("click", function () {
-    var gallery = $(this).attr("href");
-
-    $(gallery)
-      .magnificPopup({
-        delegate: "a",
-        type: "image",
-        closeOnContentClick: false,
-        mainClass: "mfp-fade",
-        removalDelay: 160,
-        fixedContentPos: false,
-        gallery: {
-          enabled: true,
-        },
-      })
-      .magnificPopup("open");
-
-    return false;
-  });
-
-  /*
-		Custom Cursor
-	*/
-
-  var cursor = $(".cursor");
-
-  $(window).mousemove(function (e) {
-    cursor.css({
-      top: e.clientY - cursor.height() / 2,
-      left: e.clientX - cursor.width() / 2,
-    });
-  });
-
-  $(window)
-    .mouseleave(function () {
-      cursor.css({
-        opacity: "0",
+  // Event listener to change cursor appearance on link hover
+  function setCursorHoverEffect() {
+    const links = document.querySelectorAll(".link");
+    links.forEach((link) => {
+      link.addEventListener("mouseenter", function () {
+        changeCursorStyle(3.2);
       });
-    })
-    .mouseenter(function () {
-      cursor.css({
-        opacity: "1",
-      });
-    });
 
-  $(".link")
-    .mouseenter(function () {
-      cursor.css({
-        transform: "scale(3.2)",
-      });
-    })
-    .mouseleave(function () {
-      cursor.css({
-        transform: "scale(1)",
-      });
-    });
-
-  $(window)
-    .mousedown(function () {
-      cursor.css({
-        transform: "scale(.2)",
-      });
-    })
-    .mouseup(function () {
-      cursor.css({
-        transform: "scale(1)",
-      });
-    });
-
-  /* Resize function */
-  $(window).resize(function () {
-    var width = $(window).width();
-    var height = $(window).height();
-
-    $(".section.started").css({
-      height: height - 60,
-    });
-
-    /* Dotted Skills Line On Resize Window */
-    var skills_dotted = $(".skills-list.dotted .progress");
-    var skills_dotted_w = skills_dotted.width();
-    if (skills_dotted.length) {
-      skills_dotted.find(".percentage .da").css({
-        width: skills_dotted_w + 1,
-      });
-    }
-  });
-
-  if (width < 840) {
-    $(".section.started").css({
-      height: height - 30,
-    });
-    $(window).mouseenter(function () {
-      cursor.css({
-        opacity: "0",
-        display: "none",
-      });
-    });
-  } else {
-    $(window).mouseenter(function () {
-      cursor.css({
-        opacity: "1",
-        display: "unset",
+      link.addEventListener("mouseleave", function () {
+        changeCursorStyle(1);
       });
     });
   }
 
-  /* One Page Menu Nav */
-  if ($(".section").length && $(".top-menu li a").length) {
-    $(window).on("scroll", function () {
-      var scrollPos = $(window).scrollTop();
-      $(".top-menu ul li a").each(function () {
-        if ($(this).attr("href").indexOf("#section-") == 0) {
-          var currLink = $(this);
-          var refElement = $(currLink.attr("href"));
-          if (refElement.length) {
-            if (refElement.offset().top <= scrollPos + 120) {
-              $(".top-menu ul li").removeClass("active");
-              currLink.closest("li").addClass("active");
+  // Event listener to change cursor appearance on click
+  function setCursorClickEffect() {
+    window.addEventListener("mousedown", function () {
+      changeCursorStyle(0.2);
+    });
+
+    window.addEventListener("mouseup", function () {
+      changeCursorStyle(1);
+    });
+  }
+
+  // Function to set heights of "started" section and skills dotted line
+  function setElementHeights() {
+    const startedSection = document.querySelector(".section.started");
+    startedSection.style.height = `${windowHeight - 60}px`;
+
+    const skillsDotted = document.querySelector(".skills-list.dotted .progress");
+    if (skillsDotted) {
+      const skillsDottedWidth = skillsDotted.clientWidth;
+      const percentage = skillsDotted.querySelector(".percentage .da");
+      percentage.style.width = `${skillsDottedWidth}px`;
+    }
+  }
+
+  // Function to set sticky menu effect on scrolling
+  function setStickyMenuEffect() {
+    window.addEventListener("scroll", function () {
+      const scrollPos = window.scrollY;
+      topMenuLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (href.startsWith("#section-")) {
+          const sectionElem = document.querySelector(href);
+          if (sectionElem) {
+            if (sectionElem.offsetTop <= scrollPos + 120) {
+              const activeLinks = document.querySelectorAll(".top-menu ul li");
+              activeLinks.forEach((activeLink) => {
+                activeLink.classList.remove("active");
+              });
+              link.closest("li").classList.add("active");
             }
           }
-          if (scrollPos == 0) {
-            $(".top-menu ul li").removeClass("active");
+          if (scrollPos === 0) {
+            const activeLinks = document.querySelectorAll(".top-menu ul li");
+            activeLinks.forEach((activeLink) => {
+              activeLink.classList.remove("active");
+            });
           }
         }
       });
     });
   }
 
-  /*
-		Dotted Skills Line
-	*/
+  // Function to set preloader effect and display after loading
+  function setPreloaderEffect() {
+    document.body.style.overflow = "hidden";
+    cursor.style.display = "none";
 
-  function skills() {
-    var skills_dotted = $(".skills.dotted .progress");
-    var skills_dotted_w = skills_dotted.width();
-    if (skills_dotted.length) {
-      skills_dotted.append(
-        '<span class="dg"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>'
-      );
-      skills_dotted
-        .find(".percentage")
-        .append(
-          '<span class="da"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>'
-        );
-      skills_dotted.find(".percentage .da").css({
-        width: skills_dotted_w,
+    preloaderInner.addEventListener("animationend", function () {
+      const preloader = document.querySelector(".preloader");
+      preloader.style.display = "none";
+      document.body.classList.add("loaded");
+      document.body.style.overflow = "visible";
+      cursor.style.display = "unset";
+
+      // Initialize Typed subtitle and breadcrumbs after preloader finishes
+      new Typed(".typed-subtitle", {
+        stringsElement: ".typing-subtitle",
+        loop: true,
       });
-    }
-  }
-  setTimeout(skills, 1000);
 
-  /*
-		Circle Skills Line
-	*/
-
-  var skills_circles = $(".skills.circles .progress");
-  if (skills_circles.length) {
-    skills_circles.append(
-      '<div class="slice"><div class="bar"></div><div class="fill"></div></div>'
-    );
+      new Typed(".typed-bread", {
+        stringsElement: ".typing-bread",
+        showCursor: false,
+      });
+    });
   }
 
-  /*
-		Calculate Age
-	*/
+  // Function to change cursor appearance on movement
+  function setCursorMovementEffect() {
+    window.addEventListener("mousemove", function (event) {
+      cursor.style.top = `${event.clientY - cursor.clientHeight / 2}px`;
+      cursor.style.left = `${event.clientX - cursor.clientWidth / 2}px`;
+    });
 
-  function calculate_age(date) {
-    var dob = new Date(date);
-    var month_diff = Date.now() - dob.getTime();
-    var age_dt = new Date(month_diff);
-    var year = age_dt.getUTCFullYear();
-    return Math.abs(year - 1970);
+    window.addEventListener("mouseleave", function () {
+      cursor.style.opacity = "0";
+    });
+
+    window.addEventListener("mouseenter", function () {
+      cursor.style.opacity = "1";
+    });
   }
-  $("#myage").text(calculate_age("08/26/2000"));
+
+  // Initialize all necessary functions
+  setCursorHoverEffect();
+  setCursorClickEffect();
+  setElementHeights();
+  setStickyMenuEffect();
+  setPreloaderEffect();
+  setCursorMovementEffect();
+
+  // Code to display different cursor at different screen resolutions
+  if (windowWidth < 840) {
+    const startedSection = document.querySelector(".section.started");
+    startedSection.style.height = `${windowHeight - 30}px`;
+
+    window.addEventListener("mouseenter", function () {
+      cursor.style.opacity = "0";
+      cursor.style.display = "none";
+    });
+  } else {
+    window.addEventListener("mouseenter", function () {
+      cursor.style.opacity = "1";
+      cursor.style.display = "unset";
+    });
+  }
 });
+
+
