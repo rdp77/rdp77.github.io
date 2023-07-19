@@ -63,8 +63,7 @@ const cursorElement = document.querySelector(".cursor");
 cursorElement.style.display = "none";
 
 setTimeout(function () {
-    let preloader = document.querySelector(".preloader");
-    preloader.style.opacity = "0";
+    preloaderInner.style.opacity = "0";
     setTimeout(function () {
         /* Preload hide */
         let preloader = document.querySelector(".preloader");
@@ -96,7 +95,7 @@ setTimeout(function () {
                 behavior: "smooth"
             });
         }
-    }, 1000);
+    }, 2000);
 }, 2000);
 
 /*Fade-out animation between load pages*/
