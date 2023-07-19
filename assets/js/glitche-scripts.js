@@ -42,20 +42,28 @@ window.addEventListener("unload", function () {
 /* Initialize */
 document.body.style.overflow = "hidden";
 
+function initializeTyped(elementSelector, stringsSelector) {
+    const element = document.querySelector(elementSelector);
+    const stringsElement = document.querySelector(stringsSelector);
+
+    if (!element || !stringsElement) {
+        return;
+    }
+
+    new Typed(element, {
+        stringsElement: stringsElement,
+        loop: true,
+        typeSpeed: 50,
+    });
+}
+
 /* Set full height in blocks */
 const width = window.innerWidth;
 const height = window.innerHeight;
 document.querySelector(".section.started").style.height = height - 60 + "px";
 
 /* Typed preload text */
-const typedLoadElement = document.querySelector(".typed-load");
-const typingLoadElement = document.querySelector(".typing-load");
-
-new Typed(typedLoadElement, {
-    stringsElement: typingLoadElement,
-    loop: true,
-    typeSpeed: 50,
-});
+initializeTyped(".typed-load", ".typing-load");
 
 /* Preloader */
 const preloaderInner = document.querySelector(".preloader .pre-inner");
@@ -72,29 +80,10 @@ setTimeout(function () {
         cursorElement.style.display = "unset";
 
         /* Typed subtitle */
-        const subtitleElement = document.querySelector(".typed-subtitle");
-        const subtitleStringsElement = document.querySelector(".typing-subtitle");
-
-        if (subtitleElement && subtitleStringsElement) {
-            new Typed(subtitleElement, {
-                stringsElement: subtitleStringsElement,
-                loop: true,
-                typeSpeed: 50,
-            });
-        }
+        initializeTyped(".typed-subtitle", ".typing-subtitle");
 
         /* Typed breadcrumbs */
-        const breadcrumbsElement = document.querySelector(".typed-bread");
-        const breadcrumbsStringsElement = document.querySelector(".typing-bread");
-
-        if (breadcrumbsElement && breadcrumbsStringsElement) {
-            new Typed(breadcrumbsElement, {
-                stringsElement: breadcrumbsStringsElement,
-                showCursor: false,
-                typeSpeed: 50,
-            });
-        }
-
+        initializeTyped(".typed-bread", ".typing-bread");
 
         /* One-Page Nav */
         let urlHash = window.location.hash;
@@ -191,8 +180,16 @@ menuBtn.addEventListener("click", function () {
     return false;
 });
 
-
 /* Hide mouse button on scroll */
+$(window).scroll(function () {
+    if ($(this).scrollTop() >= 1 ) {
+        $(".mouse_btn").fadeOut();
+    } else {
+        $(".mouse_btn").fadeIn();
+    }
+});
+
+/* On click mouse button, page scroll down */
 $(".section").on("click", ".mouse_btn", function () {
     $("body,html").animate(
         {
@@ -215,69 +212,20 @@ $("body").on(
     "a.btn, .btn"
 );
 
-function mouseFadeIn(element) {
-    let opacity = 0;
-    element.style.display = "block";
-    const fadeEffect = setInterval(function () {
-        if (opacity < 1) {
-            opacity += 0.02;
-            element.style.opacity = opacity;
-        } else {
-            clearInterval(fadeEffect);
-        }
-    }, 10);
-}
-
-
-/* On click mouse button, page scroll down */
-const sections = document.querySelectorAll(".section");
-
-sections.forEach(function (section) {
-    section.addEventListener("click", function () {
-        scrollTo(height - 150, 800);
-    });
-});
-
-const btns = document.querySelectorAll("a.btn, .btn");
-
-btns.forEach(function (btn) {
-    btn.addEventListener("mouseenter", function () {
-        this.classList.add("glitch-effect-white");
-    });
-
-    btn.addEventListener("mouseleave", function () {
-        this.classList.remove("glitch-effect-white");
-        document.querySelector(".top-menu ul li.active a.btn").classList.add("glitch-effect-white");
-    });
-});
-
-function scrollTo(targetPosition, duration) {
-    const startPosition = window.scrollY;
-    const distance = targetPosition - startPosition;
-    let startTimestamp = null;
-
-    function scrollStep(timestamp) {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const elapsed = timestamp - startTimestamp;
-        const progress = Math.min(elapsed / duration, 1);
-        const newPosition = startPosition + distance * progress;
-        window.scrollTo(0, newPosition);
-
-        if (progress < 1) {
-            requestAnimationFrame(scrollStep);
-        }
-    }
-
-    requestAnimationFrame(scrollStep);
-}
-
-
 /*Lazy image*/
-$(function () {
-    $(".lazy").lazy({
-        effect: "fadeIn",
-        effectTime: 2000,
-        threshold: 0,
+document.addEventListener("DOMContentLoaded", function() {
+    const lazyElements = document.querySelectorAll(".lazy");
+    lazyElements.forEach(function(element) {
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("fade-in");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0 });
+
+        observer.observe(element);
     });
 });
 
@@ -425,88 +373,78 @@ $(".has-popup-gallery").on("click", function () {
       Custom Cursor
   */
 
-var cursor = $(".cursor");
+const cursor = document.querySelector(".cursor");
 
-$(window).mousemove(function (e) {
-    cursor.css({
-        top: e.clientY - cursor.height() / 2,
-        left: e.clientX - cursor.width() / 2,
+window.addEventListener("mousemove", function(e) {
+    cursor.style.top = e.clientY - cursor.offsetHeight / 2 + "px";
+    cursor.style.left = e.clientX - cursor.offsetWidth / 2 + "px";
+});
+
+window.addEventListener("mouseleave", function() {
+    cursor.style.opacity = "0";
+});
+
+window.addEventListener("mouseenter", function() {
+    cursor.style.opacity = "1";
+});
+
+const linkElements = document.querySelectorAll(".link");
+
+linkElements.forEach(function(link) {
+    link.addEventListener("mouseenter", function() {
+        cursor.style.transform = "scale(3.2)";
+    });
+
+    link.addEventListener("mouseleave", function() {
+        cursor.style.transform = "scale(1)";
     });
 });
 
-$(window)
-    .mouseleave(function () {
-        cursor.css({
-            opacity: "0",
-        });
-    })
-    .mouseenter(function () {
-        cursor.css({
-            opacity: "1",
-        });
-    });
+window.addEventListener("mousedown", function() {
+    cursor.style.transform = "scale(.2)";
+});
 
-$(".link")
-    .mouseenter(function () {
-        cursor.css({
-            transform: "scale(3.2)",
-        });
-    })
-    .mouseleave(function () {
-        cursor.css({
-            transform: "scale(1)",
-        });
-    });
-
-$(window)
-    .mousedown(function () {
-        cursor.css({
-            transform: "scale(.2)",
-        });
-    })
-    .mouseup(function () {
-        cursor.css({
-            transform: "scale(1)",
-        });
-    });
+window.addEventListener("mouseup", function() {
+    cursor.style.transform = "scale(1)";
+});
 
 /* Resize function */
-$(window).resize(function () {
-    var width = $(window).width();
-    var height = $(window).height();
-
-    $(".section.started").css({
-        height: height - 60,
-    });
+window.addEventListener("resize", function() {
+    let sectionStarted = document.querySelector(".section.started");
+    if (sectionStarted) {
+        sectionStarted.style.height = height - 60 + "px";
+    }
 
     /* Dotted Skills Line On Resize Window */
-    var skills_dotted = $(".skills-list.dotted .progress");
-    var skills_dotted_w = skills_dotted.width();
-    if (skills_dotted.length) {
-        skills_dotted.find(".percentage .da").css({
-            width: skills_dotted_w + 1,
+    let skillsDotted = document.querySelectorAll(".skills-list.dotted .progress");
+    if (skillsDotted.length) {
+        skillsDotted.forEach(function(progress) {
+            let skillsDottedWidth = progress.offsetWidth;
+            let daElement = progress.querySelector(".percentage .da");
+            if (daElement) {
+                daElement.style.width = skillsDottedWidth + 1 + "px";
+            }
         });
     }
 });
 
 if (width < 840) {
-    $(".section.started").css({
-        height: height - 30,
-    });
-    $(window).mouseenter(function () {
-        cursor.css({
-            opacity: "0",
-            display: "none",
-        });
+    let sectionStarted = document.querySelector(".section.started");
+    if (sectionStarted) {
+        sectionStarted.style.height = height - 30 + "px";
+    }
+
+    window.addEventListener("mouseenter", function() {
+        cursor.style.opacity = "0";
+        cursor.style.display = "none";
     });
 } else {
-    $(window).mouseenter(function () {
-        cursor.css({
-            opacity: "1",
-            display: "unset",
-        });
+    window.addEventListener("mouseenter", function() {
+        cursor.style.opacity = "1";
+        cursor.style.display = "unset";
     });
 }
+
 
 /* One Page Menu Nav */
 if ($(".section").length && $(".top-menu li a").length) {
@@ -530,51 +468,56 @@ if ($(".section").length && $(".top-menu li a").length) {
     });
 }
 
-/*
-      Dotted Skills Line
-  */
-
+/* Dotted Skills Line */
 function skills() {
-    var skills_dotted = $(".skills.dotted .progress");
-    var skills_dotted_w = skills_dotted.width();
-    if (skills_dotted.length) {
-        skills_dotted.append(
-            '<span class="dg"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>'
-        );
-        skills_dotted
-            .find(".percentage")
-            .append(
-                '<span class="da"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>'
-            );
-        skills_dotted.find(".percentage .da").css({
-            width: skills_dotted_w,
+    let skillsDotted = document.querySelectorAll(".skills.dotted .progress");
+    if (skillsDotted.length) {
+        skillsDotted.forEach(function(progress) {
+            let skillsDottedWidth = progress.offsetWidth;
+
+            let dgElement = document.createElement("span");
+            dgElement.className = "dg";
+            for (let i = 0; i < 10; i++) {
+                dgElement.innerHTML += "<span></span>";
+            }
+            progress.appendChild(dgElement);
+
+            let percentageElement = progress.querySelector(".percentage");
+            let daElement = document.createElement("span");
+            daElement.className = "da";
+            for (let i = 0; i < 10; i++) {
+                daElement.innerHTML += "<span></span>";
+            }
+            percentageElement.appendChild(daElement);
+
+            let daElements = percentageElement.querySelectorAll(".da");
+            daElements.forEach(function(da) {
+                da.style.width = skillsDottedWidth + "px";
+            });
         });
     }
 }
 
 setTimeout(skills, 1000);
 
-/*
-      Circle Skills Line
-  */
-
-var skills_circles = $(".skills.circles .progress");
-if (skills_circles.length) {
-    skills_circles.append(
-        '<div class="slice"><div class="bar"></div><div class="fill"></div></div>'
-    );
+/* Circle Skills Line */
+let skillsCircles = document.querySelectorAll(".skills.circles .progress");
+if (skillsCircles.length) {
+    skillsCircles.forEach(function(progress) {
+        let sliceElement = document.createElement("div");
+        sliceElement.className = "slice";
+        sliceElement.innerHTML = '<div class="bar"></div><div class="fill"></div>';
+        progress.appendChild(sliceElement);
+    });
 }
 
-/*
-      Calculate Age
-  */
-
-function calculate_age(date) {
-    var dob = new Date(date);
-    var month_diff = Date.now() - dob.getTime();
-    var age_dt = new Date(month_diff);
-    var year = age_dt.getUTCFullYear();
+/* Calculate Age */
+function calculateAge(date) {
+    let dob = new Date(date);
+    let monthDiff = Date.now() - dob.getTime();
+    let ageDt = new Date(monthDiff);
+    let year = ageDt.getUTCFullYear();
     return Math.abs(year - 1970);
 }
 
-$("#myage").text(calculate_age("08/26/2000"));
+document.getElementById("myage").textContent = calculateAge("08/26/2000");
