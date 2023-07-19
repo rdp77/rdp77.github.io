@@ -58,83 +58,81 @@ new Typed(typedLoadElement, {
 });
 
 /* Preloader */
-document.addEventListener("DOMContentLoaded", function() {
-    const preloaderInner = document.querySelector(".preloader .pre-inner");
-    const cursorElement = document.querySelector(".cursor");
-    cursorElement.style.display = "none";
+const preloaderInner = document.querySelector(".preloader .pre-inner");
+const cursorElement = document.querySelector(".cursor");
+cursorElement.style.display = "none";
 
-    setTimeout(function () {
-        fadeOut(preloaderInner, 2000, function() {
-            /* Preload hide */
-            let preloader = document.querySelector(".preloader");
-            preloader.style.display = "none";
-            document.body.classList.add("loaded");
-            document.body.style.overflow = "visible";
-            cursorElement.style.display = "unset";
+setTimeout(function () {
+    fadeOut(preloaderInner, 2000, function () {
+        /* Preload hide */
+        let preloader = document.querySelector(".preloader");
+        preloader.style.display = "none";
+        document.body.classList.add("loaded");
+        document.body.style.overflow = "visible";
+        cursorElement.style.display = "unset";
 
-            /* Typed subtitle */
-            new Typed(".typed-subtitle", {
-                stringsElement: document.querySelector(".typing-subtitle"),
-                loop: true,
-                typeSpeed: 50,
-            });
-
-            /* Typed breadcrumbs */
-            new Typed(".typed-bread", {
-                stringsElement: document.querySelector(".typing-bread"),
-                showCursor: false,
-                typeSpeed: 50,
-            });
-
-            /* One-Page Nav */
-            let urlHash = window.location.hash;
-            let sectionElem = document.querySelector(urlHash);
-            if (urlHash.startsWith("#section-") && sectionElem) {
-                smoothScrollTo(sectionElem.offsetTop - 70, 400);
-            }
+        /* Typed subtitle */
+        new Typed(".typed-subtitle", {
+            stringsElement: document.querySelector(".typing-subtitle"),
+            loop: true,
+            typeSpeed: 50,
         });
-    }, 2000);
 
-    function fadeOut(element, duration, callback) {
-        let opacity = 1;
-        let startTime = null;
+        /* Typed breadcrumbs */
+        new Typed(".typed-bread", {
+            stringsElement: document.querySelector(".typing-bread"),
+            showCursor: false,
+            typeSpeed: 50,
+        });
 
-        function fade(currentTime) {
-            if (!startTime) startTime = currentTime;
-            const elapsedTime = currentTime - startTime;
-            opacity = 1 - (elapsedTime / duration);
-            element.style.opacity = opacity;
-
-            if (opacity <= 0) {
-                callback();
-            } else {
-                requestAnimationFrame(fade);
-            }
+        /* One-Page Nav */
+        let urlHash = window.location.hash;
+        let sectionElem = document.querySelector(urlHash);
+        if (urlHash.startsWith("#section-") && sectionElem) {
+            smoothScrollTo(sectionElem.offsetTop - 70, 400);
         }
+    });
+}, 2000);
 
-        requestAnimationFrame(fade);
+function fadeOut(element, duration, callback) {
+    let opacity = 1;
+    let startTime = null;
+
+    function fade(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const elapsedTime = currentTime - startTime;
+        opacity = 1 - (elapsedTime / duration);
+        element.style.opacity = opacity;
+
+        if (opacity <= 0) {
+            callback();
+        } else {
+            requestAnimationFrame(fade);
+        }
     }
 
-    function smoothScrollTo(targetPosition, duration) {
-        const startPosition = window.scrollY;
-        const distance = targetPosition - startPosition;
-        let startTime = null;
+    requestAnimationFrame(fade);
+}
 
-        function scrollTo(currentTime) {
-            if (!startTime) startTime = currentTime;
-            const elapsedTime = currentTime - startTime;
-            const progress = Math.min(elapsedTime / duration, 1);
-            const newPosition = startPosition + (distance * progress);
-            window.scrollTo(0, newPosition);
+function smoothScrollTo(targetPosition, duration) {
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
 
-            if (progress < 1) {
-                requestAnimationFrame(scrollTo);
-            }
+    function scrollTo(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        const newPosition = startPosition + (distance * progress);
+        window.scrollTo(0, newPosition);
+
+        if (progress < 1) {
+            requestAnimationFrame(scrollTo);
         }
-
-        requestAnimationFrame(scrollTo);
     }
-});
+
+    requestAnimationFrame(scrollTo);
+}
 
 /*Fade-out animation between load pages*/
 document.addEventListener("click", function (event) {
@@ -184,33 +182,32 @@ menuBtn.addEventListener("click", function () {
 
 
 /* Hide mouse button on scroll */
-const mouseBtn = document.querySelector(".mouse_btn");
-
-window.addEventListener("scroll", function() {
-    if (window.scrollY >= 1 ) {
-        mouseFadeOut(mouseBtn);
-    } else {
-        mouseFadeIn(mouseBtn);
-    }
+$(".section").on("click", ".mouse_btn", function () {
+    $("body,html").animate(
+        {
+            scrollTop: height - 150,
+        },
+        800
+    );
 });
 
-function mouseFadeOut(element) {
-    let opacity = 1;
-    const fadeEffect = setInterval(function() {
-        if (opacity > 0) {
-            opacity -= 0.02;
-            element.style.opacity = opacity;
-        } else {
-            clearInterval(fadeEffect);
-            element.style.display = "none";
-        }
-    }, 10);
-}
+$("body").on(
+    {
+        mouseenter: function () {
+            $(this).addClass("glitch-effect-white");
+        },
+        mouseleave: function () {
+            $(this).removeClass("glitch-effect-white");
+            $(".top-menu ul li.active a.btn").addClass("glitch-effect-white");
+        },
+    },
+    "a.btn, .btn"
+);
 
 function mouseFadeIn(element) {
     let opacity = 0;
     element.style.display = "block";
-    const fadeEffect = setInterval(function() {
+    const fadeEffect = setInterval(function () {
         if (opacity < 1) {
             opacity += 0.02;
             element.style.opacity = opacity;
@@ -224,20 +221,20 @@ function mouseFadeIn(element) {
 /* On click mouse button, page scroll down */
 const sections = document.querySelectorAll(".section");
 
-sections.forEach(function(section) {
-    section.addEventListener("click", function() {
+sections.forEach(function (section) {
+    section.addEventListener("click", function () {
         scrollTo(height - 150, 800);
     });
 });
 
 const btns = document.querySelectorAll("a.btn, .btn");
 
-btns.forEach(function(btn) {
-    btn.addEventListener("mouseenter", function() {
+btns.forEach(function (btn) {
+    btn.addEventListener("mouseenter", function () {
         this.classList.add("glitch-effect-white");
     });
 
-    btn.addEventListener("mouseleave", function() {
+    btn.addEventListener("mouseleave", function () {
         this.classList.remove("glitch-effect-white");
         document.querySelector(".top-menu ul li.active a.btn").classList.add("glitch-effect-white");
     });
