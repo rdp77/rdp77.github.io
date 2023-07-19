@@ -51,7 +51,7 @@ document.querySelector(".section.started").style.height = height - 60 + "px";
 const typedLoadElement = document.querySelector(".typed-load");
 const typingLoadElement = document.querySelector(".typing-load");
 
-const typedLoad = new Typed(typedLoadElement, {
+new Typed(typedLoadElement, {
     stringsElement: typingLoadElement,
     loop: true,
     typeSpeed: 50,
@@ -63,8 +63,7 @@ const cursorElement = document.querySelector(".cursor");
 cursorElement.style.display = "none";
 
 setTimeout(function () {
-    preloaderInner.style.opacity = "0";
-    setTimeout(function () {
+    fadeOut(preloaderInner, 2000, function() {
         /* Preload hide */
         let preloader = document.querySelector(".preloader");
         preloader.style.display = "none";
@@ -90,13 +89,50 @@ setTimeout(function () {
         let urlHash = window.location.hash;
         let sectionElem = document.querySelector(urlHash);
         if (urlHash.startsWith("#section-") && sectionElem) {
-            window.scrollTo({
-                top: sectionElem.offsetTop - 70,
-                behavior: "smooth"
-            });
+            smoothScrollTo(sectionElem.offsetTop - 70, 400);
         }
-    }, 2000);
+    });
 }, 2000);
+
+function fadeOut(element, duration, callback) {
+    let opacity = 1;
+    let startTime = null;
+
+    function fade(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const elapsedTime = currentTime - startTime;
+        opacity = 1 - (elapsedTime / duration);
+        element.style.opacity = opacity;
+
+        if (opacity <= 0) {
+            callback();
+        } else {
+            requestAnimationFrame(fade);
+        }
+    }
+
+    requestAnimationFrame(fade);
+}
+
+function smoothScrollTo(targetPosition, duration) {
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    function scrollTo(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        const newPosition = startPosition + (distance * progress);
+        window.scrollTo(0, newPosition);
+
+        if (progress < 1) {
+            requestAnimationFrame(scrollTo);
+        }
+    }
+
+    requestAnimationFrame(scrollTo);
+}
 
 /*Fade-out animation between load pages*/
 document.addEventListener("click", function (event) {
