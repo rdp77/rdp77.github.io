@@ -170,48 +170,97 @@ document.addEventListener("click", function (event) {
 
 
 /*Menu mobile*/
-$("header").on("click", ".menu-btn", function () {
-    if ($("header").hasClass("active")) {
-        $("header").removeClass("active");
-        $("body").addClass("loaded");
-    } else {
-        $("header").addClass("active");
-        $("body").removeClass("loaded");
-    }
+const header = document.querySelector("header");
+const menuBtn = header.querySelector(".menu-btn");
+const body = document.body;
+
+menuBtn.addEventListener("click", function () {
+    header.classList.toggle("active");
+    body.classList.toggle("loaded");
     return false;
 });
 
+
 /* Hide mouse button on scroll */
-$(window).scroll(function () {
-    if ($(this).scrollTop() >= 1 /*$('#blue_bor').offset().top*/) {
-        $(".mouse_btn").fadeOut();
+const mouseBtn = document.querySelector(".mouse_btn");
+
+window.addEventListener("scroll", function() {
+    if (window.scrollY >= 1 ) {
+        mouseFadeOut(mouseBtn);
     } else {
-        $(".mouse_btn").fadeIn();
+        mouseFadeIn(mouseBtn);
     }
 });
 
+function mouseFadeOut(element) {
+    let opacity = 1;
+    const fadeEffect = setInterval(function() {
+        if (opacity > 0) {
+            opacity -= 0.02;
+            element.style.opacity = opacity;
+        } else {
+            clearInterval(fadeEffect);
+            element.style.display = "none";
+        }
+    }, 10);
+}
+
+function mouseFadeIn(element) {
+    let opacity = 0;
+    element.style.display = "block";
+    const fadeEffect = setInterval(function() {
+        if (opacity < 1) {
+            opacity += 0.02;
+            element.style.opacity = opacity;
+        } else {
+            clearInterval(fadeEffect);
+        }
+    }, 10);
+}
+
+
 /* On click mouse button, page scroll down */
-$(".section").on("click", ".mouse_btn", function () {
-    $("body,html").animate(
-        {
-            scrollTop: height - 150,
-        },
-        800
-    );
+const sections = document.querySelectorAll(".section");
+
+sections.forEach(function(section) {
+    section.addEventListener("click", function() {
+        scrollTo(height - 150, 800);
+    });
 });
 
-$("body").on(
-    {
-        mouseenter: function () {
-            $(this).addClass("glitch-effect-white");
-        },
-        mouseleave: function () {
-            $(this).removeClass("glitch-effect-white");
-            $(".top-menu ul li.active a.btn").addClass("glitch-effect-white");
-        },
-    },
-    "a.btn, .btn"
-);
+const btns = document.querySelectorAll("a.btn, .btn");
+
+btns.forEach(function(btn) {
+    btn.addEventListener("mouseenter", function() {
+        this.classList.add("glitch-effect-white");
+    });
+
+    btn.addEventListener("mouseleave", function() {
+        this.classList.remove("glitch-effect-white");
+        document.querySelector(".top-menu ul li.active a.btn").classList.add("glitch-effect-white");
+    });
+});
+
+function scrollTo(targetPosition, duration) {
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    let startTimestamp = null;
+
+    function scrollStep(timestamp) {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const elapsed = timestamp - startTimestamp;
+        const progress = Math.min(elapsed / duration, 1);
+        const newPosition = startPosition + distance * progress;
+        window.scrollTo(0, newPosition);
+
+        if (progress < 1) {
+            requestAnimationFrame(scrollStep);
+        }
+    }
+
+    requestAnimationFrame(scrollStep);
+}
+
 
 /*Lazy image*/
 $(function () {
