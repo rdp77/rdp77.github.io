@@ -69,7 +69,7 @@ setTimeout(function () {
         preloader.style.display = "none";
         document.body.classList.add("loaded");
         document.body.style.overflow = "visible";
-        cursor.style.display = "unset";
+        cursorElement.style.display = "unset";
 
         /* Typed subtitle */
         new Typed(".typed-subtitle", {
@@ -115,7 +115,7 @@ function fadeOut(element, duration, callback) {
 }
 
 function smoothScrollTo(targetPosition, duration) {
-    const startPosition = window.pageYOffset;
+    const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
     let startTime = null;
 
