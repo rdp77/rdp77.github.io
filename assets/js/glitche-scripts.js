@@ -99,8 +99,13 @@ const hidePreloader = function () {
     }
 };
 
-preInnerElement.addEventListener("animationend", hidePreloader);
-hidePreloader();
+const animatePreloader = function () {
+    preInnerElement.addEventListener("animationend", hidePreloader);
+    preloaderElement.classList.add("animate");
+};
+
+// Call the animatePreloader function after the content has finished loading
+window.addEventListener("load", animatePreloader);
 
 /*Fade-out animation between load pages*/
 document.addEventListener("click", function (event) {
