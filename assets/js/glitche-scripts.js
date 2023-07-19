@@ -58,54 +58,28 @@ const typedLoad = new Typed(typedLoadElement, {
 });
 
 /* Preloader */
-const preInnerElement = document.querySelector(".preloader .pre-inner");
-const preloaderElement = document.querySelector(".preloader");
+const preloaderInner = document.querySelector(".preloader .pre-inner");
 const cursorElement = document.querySelector(".cursor");
 cursorElement.style.display = "none";
 
-const hidePreloader = function () {
+setTimeout(function () {
     /* Preload hide */
-    preloaderElement.style.display = "none";
+    let preloader = document.querySelector(".preloader");
+    preloader.style.display = "none";
     document.body.classList.add("loaded");
     document.body.style.overflow = "visible";
-    cursorElement.style.display = "unset";
-
-    /* Typed subtitle */
-    const typedSubtitleElement = document.querySelector(".typed-subtitle");
-    const typingSubtitleElement = document.querySelector(".typing-subtitle");
-    new Typed(typedSubtitleElement, {
-        stringsElement: typingSubtitleElement,
-        loop: true,
-        typeSpeed: 50,
-    });
-
-    /* Typed breadcrumbs */
-    const typedBreadElement = document.querySelector(".typed-bread");
-    const typingBreadElement = document.querySelector(".typing-bread");
-    new Typed(typedBreadElement, {
-        stringsElement: typingBreadElement,
-        showCursor: false,
-        typeSpeed: 50,
-    });
+    cursor.style.display = "unset";
 
     /* One-Page Nav */
-    const urlHash = location.hash;
-    const sectionElem = document.querySelector(urlHash);
+    let urlHash = window.location.hash;
+    let sectionElem = document.querySelector(urlHash);
     if (urlHash.startsWith("#section-") && sectionElem) {
         window.scrollTo({
             top: sectionElem.offsetTop - 70,
-            behavior: "smooth",
+            behavior: "smooth"
         });
     }
-};
-
-const animatePreloader = function () {
-    preInnerElement.addEventListener("animationend", hidePreloader);
-    preloaderElement.classList.add("animate");
-};
-
-// Call the animatePreloader function after the content has finished loading
-window.addEventListener("load", animatePreloader);
+}, 2000);
 
 /*Fade-out animation between load pages*/
 document.addEventListener("click", function (event) {
@@ -492,7 +466,3 @@ function calculate_age(date) {
 }
 
 $("#myage").text(calculate_age("08/26/2000"));
-
-
-
-
