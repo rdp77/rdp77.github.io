@@ -72,18 +72,29 @@ setTimeout(function () {
         cursorElement.style.display = "unset";
 
         /* Typed subtitle */
-        new Typed(".typed-subtitle", {
-            stringsElement: document.querySelector(".typing-subtitle"),
-            loop: true,
-            typeSpeed: 50,
-        });
+        const subtitleElement = document.querySelector(".typed-subtitle");
+        const subtitleStringsElement = document.querySelector(".typing-subtitle");
+
+        if (subtitleElement && subtitleStringsElement) {
+            new Typed(subtitleElement, {
+                stringsElement: subtitleStringsElement,
+                loop: true,
+                typeSpeed: 50,
+            });
+        }
 
         /* Typed breadcrumbs */
-        new Typed(".typed-bread", {
-            stringsElement: document.querySelector(".typing-bread"),
-            showCursor: false,
-            typeSpeed: 50,
-        });
+        const breadcrumbsElement = document.querySelector(".typed-bread");
+        const breadcrumbsStringsElement = document.querySelector(".typing-bread");
+
+        if (breadcrumbsElement && breadcrumbsStringsElement) {
+            new Typed(breadcrumbsElement, {
+                stringsElement: breadcrumbsStringsElement,
+                showCursor: false,
+                typeSpeed: 50,
+            });
+        }
+
 
         /* One-Page Nav */
         let urlHash = window.location.hash;
