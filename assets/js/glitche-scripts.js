@@ -58,50 +58,48 @@ const typedLoad = new Typed(typedLoadElement, {
 });
 
 /* Preloader */
-document.addEventListener("DOMContentLoaded", function() {
-    const preloaderInnerElement = document.querySelector(".preloader .pre-inner");
-    const cursorElement = document.querySelector(".cursor");
-    cursorElement.style.display = "none";
+const preInnerElement = document.querySelector(".preloader .pre-inner");
+const preloaderElement = document.querySelector(".preloader");
+const cursorElement = document.querySelector(".cursor");
+cursorElement.style.display = "none";
 
-    const hidePreloader = function() {
-        /* Preload hide */
-        const preloaderElement = document.querySelector(".preloader");
-        preloaderElement.style.display = "none";
-        document.body.classList.add("loaded");
-        document.body.style.overflow = "visible";
-        cursorElement.style.display = "unset";
+const hidePreloader = function () {
+    /* Preload hide */
+    preloaderElement.style.display = "none";
+    document.body.classList.add("loaded");
+    document.body.style.overflow = "visible";
+    cursorElement.style.display = "unset";
 
-        /* Typed subtitle */
-        const typedSubtitleElement = document.querySelector(".typed-subtitle");
-        const typingSubtitleElement = document.querySelector(".typing-subtitle");
-        new Typed(typedSubtitleElement, {
-            stringsElement: typingSubtitleElement,
-            loop: true,
-            typeSpeed: 50,
+    /* Typed subtitle */
+    const typedSubtitleElement = document.querySelector(".typed-subtitle");
+    const typingSubtitleElement = document.querySelector(".typing-subtitle");
+    new Typed(typedSubtitleElement, {
+        stringsElement: typingSubtitleElement,
+        loop: true,
+        typeSpeed: 50,
+    });
+
+    /* Typed breadcrumbs */
+    const typedBreadElement = document.querySelector(".typed-bread");
+    const typingBreadElement = document.querySelector(".typing-bread");
+    new Typed(typedBreadElement, {
+        stringsElement: typingBreadElement,
+        showCursor: false,
+        typeSpeed: 50,
+    });
+
+    /* One-Page Nav */
+    const urlHash = location.hash;
+    const sectionElem = document.querySelector(urlHash);
+    if (urlHash.startsWith("#section-") && sectionElem) {
+        window.scrollTo({
+            top: sectionElem.offsetTop - 70,
+            behavior: "smooth",
         });
+    }
+};
 
-        /* Typed breadcrumbs */
-        const typedBreadElement = document.querySelector(".typed-bread");
-        const typingBreadElement = document.querySelector(".typing-bread");
-        new Typed(typedBreadElement, {
-            stringsElement: typingBreadElement,
-            showCursor: false,
-            typeSpeed: 50,
-        });
-
-        /* One-Page Nav */
-        const urlHash = location.hash;
-        const sectionElem = document.querySelector(urlHash);
-        if (urlHash.startsWith("#section-") && sectionElem) {
-            window.scrollTo({
-                top: sectionElem.offsetTop - 70,
-                behavior: "smooth",
-            });
-        }
-    };
-
-    preloaderInnerElement.addEventListener("animationend", hidePreloader);
-});
+preInnerElement.addEventListener("animationend", hidePreloader);
 
 
 /*Fade-out animation between load pages*/
