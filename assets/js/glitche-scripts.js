@@ -1,7 +1,12 @@
 // Version: 1.3
 "use strict";
 
-//Google Analytics
+/* Check Link */
+if (window.location.hostname === "rdp77.github.io") {
+    window.location.replace("https://ravidwiputra.web.id");
+}
+
+/* Google Analytics */
 window.dataLayer = window.dataLayer || [];
 
 function gtag() {
@@ -12,7 +17,7 @@ gtag("js", new Date());
 
 gtag("config", "UA-56428090-2");
 
-// Load Service Worker
+/* Load Service Worker */
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", function () {
         navigator.serviceWorker.register("/sw.js", {scope: "/"}).then(
@@ -38,11 +43,6 @@ window.addEventListener("unload", function () {
 document.body.style.overflow = "hidden";
 const cursorElement = document.querySelector(".cursor");
 cursorElement.style.display = "none";
-
-/* Check Link */
-if (window.location.hostname === "rdp77.github.io") {
-    window.location.replace("https://ravidwiputra.web.id");
-}
 
 /* Set full height in blocks */
 const width = window.innerWidth;
