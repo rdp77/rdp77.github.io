@@ -100,7 +100,7 @@ const hidePreloader = function () {
 };
 
 preInnerElement.addEventListener("animationend", hidePreloader);
-
+hidePreloader();
 
 /*Fade-out animation between load pages*/
 document.addEventListener("click", function (event) {
