@@ -73,6 +73,20 @@ setTimeout(function () {
         document.body.style.overflow = "visible";
         cursor.style.display = "unset";
 
+        /* Typed subtitle */
+        new Typed(".typed-subtitle", {
+            stringsElement: document.querySelector(".typing-subtitle"),
+            loop: true,
+            typeSpeed: 50,
+        });
+
+        /* Typed breadcrumbs */
+        new Typed(".typed-bread", {
+            stringsElement: document.querySelector(".typing-bread"),
+            showCursor: false,
+            typeSpeed: 50,
+        });
+
         /* One-Page Nav */
         let urlHash = window.location.hash;
         let sectionElem = document.querySelector(urlHash);
