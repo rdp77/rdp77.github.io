@@ -56,6 +56,7 @@ const typingLoadElement = document.querySelector(".typing-load");
 const typedLoad = new Typed(typedLoadElement, {
     stringsElement: typingLoadElement,
     loop: true,
+    typeSpeed: 50,
 });
 
 /* Preloader */
@@ -74,6 +75,7 @@ const hidePreloader = function () {
     new Typed(typedSubtitleElement, {
         stringsElement: typingSubtitleElement,
         loop: true,
+        typeSpeed: 50,
     });
 
     /* Typed breadcrumbs */
@@ -82,6 +84,7 @@ const hidePreloader = function () {
     new Typed(typedBreadElement, {
         stringsElement: typingBreadElement,
         showCursor: false,
+        typeSpeed: 50,
     });
 
     /* One-Page Nav */
@@ -95,7 +98,7 @@ const hidePreloader = function () {
     }
 };
 
-preloaderInnerElement.addEventListener("animationend", hidePreloader);
+preloaderInnerElement.addEventListener("DOMContentLoaded", hidePreloader);
 
 /*Fade-out animation between load pages*/
 document.addEventListener("click", function (event) {
