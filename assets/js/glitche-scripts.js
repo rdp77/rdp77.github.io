@@ -63,22 +63,26 @@ const cursorElement = document.querySelector(".cursor");
 cursorElement.style.display = "none";
 
 setTimeout(function () {
-    /* Preload hide */
     let preloader = document.querySelector(".preloader");
-    preloader.style.display = "none";
-    document.body.classList.add("loaded");
-    document.body.style.overflow = "visible";
-    cursor.style.display = "unset";
+    preloader.style.opacity = "0";
+    setTimeout(function () {
+        /* Preload hide */
+        let preloader = document.querySelector(".preloader");
+        preloader.style.display = "none";
+        document.body.classList.add("loaded");
+        document.body.style.overflow = "visible";
+        cursor.style.display = "unset";
 
-    /* One-Page Nav */
-    let urlHash = window.location.hash;
-    let sectionElem = document.querySelector(urlHash);
-    if (urlHash.startsWith("#section-") && sectionElem) {
-        window.scrollTo({
-            top: sectionElem.offsetTop - 70,
-            behavior: "smooth"
-        });
-    }
+        /* One-Page Nav */
+        let urlHash = window.location.hash;
+        let sectionElem = document.querySelector(urlHash);
+        if (urlHash.startsWith("#section-") && sectionElem) {
+            window.scrollTo({
+                top: sectionElem.offsetTop - 70,
+                behavior: "smooth"
+            });
+        }
+    }, 1000);
 }, 2000);
 
 /*Fade-out animation between load pages*/
