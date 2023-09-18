@@ -7,7 +7,7 @@ const RelatedLinks: React.FC = () => {
         <>
             <div className="soc">
                 {RELATED_LINKS.map((item) => (
-                    <ButtonIcon key={item.link} link={item.link} icon={item.icon}/>
+                    <ButtonIcon key={item.link} link={item.link} icon={item.icon} label={item.label}/>
                 ))}
             </div>
         </>

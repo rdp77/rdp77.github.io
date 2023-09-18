@@ -1,22 +1,21 @@
 import React from "react";
 import Link from "next/link";
-import {usePathname} from 'next/navigation';
-import {WEBSITE_SLOGAN} from "@/app/constant/summary";
 
 interface ButtonIconProps {
     autoOpen?: boolean;
     rel?: string;
+    label: string;
     link: string;
     icon: string
 }
 
-const ButtonIcon: React.FC<ButtonIconProps> = ({autoOpen = true, rel = "noopener", link, icon,}) => {
+const ButtonIcon: React.FC<ButtonIconProps> = ({autoOpen = true, rel = "noopener", label, link, icon,}) => {
     const target = autoOpen ? "_blank" : "_self";
 
     return (
-        <a href={link} target={target} rel={rel}>
+        <Link href={link} target={target} rel={rel} aria-label={label}>
             <span className={icon}></span>
-        </a>
+        </Link>
     );
 };
 
