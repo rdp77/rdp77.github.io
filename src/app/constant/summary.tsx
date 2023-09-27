@@ -1,14 +1,32 @@
+import {
+    faGithub,
+    faYoutube,
+    faFacebook,
+    faLinkedin,
+    faTelegram,
+    faInstagram,
+    faBloggerB
+} from '@fortawesome/free-brands-svg-icons';
+import {IconDefinition} from "@fortawesome/free-solid-svg-icons";
+
 export const TEXT_LOADING = "loading...";
 export const WEBSITE_NAME = "Moh Ravi Dwi Putra";
 export const WEBSITE_SUBTITLE = ['Software Engineer', 'Tech Enthusiast', 'Content Creator', 'Digital Marketer', 'Full Stack Developer']
 export const WEBSITE_SLOGAN = "Make it as beautiful and functional as possible."
-export const RELATED_LINKS = [
-    {label: "Github", link: "https://github.com/rdp77", icon: "ion ion-social-github"},
-    {label: "YouTube", link: "https://www.youtube.com/@ravidwiputra77", icon: "ion ion-social-youtube"},
-    {label: "Facebook", link: "https://web.facebook.com/ravidwiputra77/", icon: "ion ion-social-facebook"},
-    {label: "Blog", link: "https://www.backupotak.com/", icon: "ion ion-earth"},
-    {label: "Linkedin", link: "https://www.linkedin.com/in/rdp77", icon: "ion ion-social-linkedin"},
-    {label: "Telegram", link: "https://t.me/rdp77", icon: "ion ion-paper-airplane"},
-    {label: "Instagram", link: "https://www.instagram.com/raviravdp/", icon: "ion ion-social-instagram-outline"},
+
+export interface RelatedLinks {
+    label: string;
+    link: string;
+    icon: IconDefinition;
+}
+
+export const RELATED_LINKS: RelatedLinks[] = [
+    {label: "Github", link: "https://github.com/rdp77", icon: faGithub},
+    {label: "YouTube", link: "https://www.youtube.com/@ravidwiputra", icon: faYoutube},
+    {label: "Facebook", link: "https://web.facebook.com/ravidwiputra77/", icon: faFacebook},
+    {label: "Blog", link: "https://www.backupotak.com/", icon: faBloggerB},
+    {label: "Linkedin", link: "https://www.linkedin.com/in/ravidwiputra", icon: faLinkedin},
+    {label: "Telegram", link: "https://t.me/rdp77", icon: faTelegram},
+    {label: "Instagram", link: "https://www.instagram.com/raviravdp/", icon: faInstagram},
 ];
 

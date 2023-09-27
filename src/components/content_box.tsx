@@ -1,18 +1,20 @@
 import React from "react";
+import {IconDefinition} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 interface ContentBoxProps {
-    iconClass: string;
+    icon: IconDefinition;
     name: string;
     linkHref: string;
     linkText: string;
 }
 
 const ContentBox: React.FC<ContentBoxProps> = (
-    {iconClass, name, linkHref, linkText,}) => {
+    {icon, name, linkHref, linkText,}) => {
     return (
         <div className="service-item content-box">
             <div className="icon">
-                <i className={iconClass}></i>
+                <FontAwesomeIcon icon={icon} size={"sm"} fixedWidth style={{verticalAlign:'top',paddingRight:'10px'}}/>
             </div>
             <div className="name">
                 <span>{name}</span>

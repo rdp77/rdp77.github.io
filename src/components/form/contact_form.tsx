@@ -1,8 +1,21 @@
-import React, {useRef, useState} from "react";
+import React, {useRef, useState, useEffect} from "react";
+import {getCalApi} from "@calcom/embed-react";
 
 const ContactForm: React.FC = () => {
     const [result, setResult] = useState<string | null>(null);
     const formRef = useRef<HTMLFormElement | null>(null);
+
+    useEffect(() => {
+        (async function () {
+            const cal = await getCalApi();
+            cal("ui", {
+                theme: "dark",
+                styles: {
+                    branding: {brandColor: "#000000"},
+                }
+            });
+        })();
+    }, []);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -52,7 +65,12 @@ const ContactForm: React.FC = () => {
                     <div className="group-val ct-gr">
                         <textarea name="message" placeholder="Message" required/>
                     </div>
-                    <button className="btn fill mouse-hover" type="submit" data-text="Send Message">Send Message
+                    <button className="btn fill mouse-hover" style={{marginRight: "20px"}} type={"button"}
+                            data-cal-link="rdp77"
+                            data-text="Book Me">Book Me
+                    </button>
+                    <button className="btn fill mouse-hover" type="submit"
+                            data-text="Send Message">Send Message
                     </button>
                 </form>
                 {result && <p>{result}</p>}

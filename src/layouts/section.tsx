@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import TypedText from "@/components/typed";
+import {faAngleDoubleDown} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 interface ContentBoxProps {
     name: string;
@@ -56,42 +58,42 @@ const Section: React.FC<ContentBoxProps> = (
     };
 
     return (
-    <>
-        <div className="section started" style={{ height: `${sectionHeight}px` }}>
-            <div className="centrize full-width">
-                <div className="vertical-center">
-                    <div className="started-content">
-                        <div className="h-title glitch-effect" data-text={name}>
-                            {name}
-                        </div>
-                        {withBreadcrumbs ? (
-                            <>
-                                <div className="h-subtitle typing-bread">
-                                    <p>
-                                        <Link href="/">Home</Link> /{" "}
-                                        {linkHref && <Link href={formattedLinkHref}>{name}</Link>}
-                                    </p>
-                                </div>
-                                <span className="typed-bread link"></span>
-                            </>
-                        ) : (
-                            <div className="h-subtitle typing-subtitle">
-                                <TypedText texts={subtitle}/>
+        <>
+            <div className="section started" style={{height: `${sectionHeight}px`}}>
+                <div className="centrize full-width">
+                    <div className="vertical-center">
+                        <div className="started-content">
+                            <div className="h-title glitch-effect" data-text={name}>
+                                {name}
                             </div>
-                        )}
+                            {withBreadcrumbs ? (
+                                <>
+                                    <div className="h-subtitle typing-bread">
+                                        <p>
+                                            <Link href="/">Home</Link> /{" "}
+                                            {linkHref && <Link href={formattedLinkHref}>{name}</Link>}
+                                        </p>
+                                    </div>
+                                    <span className="typed-bread link"></span>
+                                </>
+                            ) : (
+                                <div className="h-subtitle typing-subtitle">
+                                    <TypedText texts={subtitle}/>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
+                {withBreadcrumbs && showMouseBtn && (
+                    <a role="button" className="mouse-btn" onClick={handleMouseBtnClick}>
+                        <FontAwesomeIcon className={"ion"} icon={faAngleDoubleDown} size={"xs"}/>
+                    </a>
+                )}
             </div>
-            {withBreadcrumbs && showMouseBtn && (
-                <a role="button" className="mouse-btn" onClick={handleMouseBtnClick}>
-                    <span className="ion ion-mouse"></span>
-                </a>
-            )}
-        </div>
-        {children}
-    </>
-)
-    ;
+            {children}
+        </>
+    )
+        ;
 };
 
 export default Section;
