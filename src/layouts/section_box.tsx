@@ -1,7 +1,9 @@
 import React from "react";
+import {IconDefinition} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 interface item {
-    icon: string;
+    icon: IconDefinition;
     name: string;
     description: React.ReactNode;
 }
@@ -21,7 +23,8 @@ const BoxSection: React.FC<BoxSectionProps> = ({title, items}) => {
                 <div className="service-items">
                     {items.map((item, index) => (
                         <div className="service-item" key={item.name}>
-                            <div className="icon"><span className={item.icon}></span></div>
+                            <div className="icon"><FontAwesomeIcon icon={item.icon} size={"sm"}
+                                                                   style={{verticalAlign: "unset"}}/></div>
                             <div className="name">{item.name}</div>
                             {item.description}
                         </div>

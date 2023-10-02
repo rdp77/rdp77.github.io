@@ -1,14 +1,23 @@
 import React from "react";
+import {
+    faBullhorn,
+    faCode,
+    faLifeRing,
+    faMagnifyingGlass,
+    faMobileScreen,
+    IconDefinition
+} from "@fortawesome/free-solid-svg-icons";
+import {faChrome} from "@fortawesome/free-brands-svg-icons";
 
 export interface SoftSkillData {
-    icon: string;
+    icon: IconDefinition;
     name: string;
     description: React.ReactNode;
 }
 
 const softSkillData: SoftSkillData[] = [
     {
-        icon: "ion ion-code",
+        icon: faCode,
         name: "Front-end",
         description: (
             <p>
@@ -17,7 +26,7 @@ const softSkillData: SoftSkillData[] = [
             </p>),
     },
     {
-        icon: "ion ion-ipad",
+        icon: faMobileScreen,
         name: "Mobile Application",
         description: (
             <p>
@@ -26,7 +35,7 @@ const softSkillData: SoftSkillData[] = [
             </p>),
     },
     {
-        icon: "ion ion-ios-search-strong",
+        icon: faMagnifyingGlass,
         name: "Investigation and Analysis",
         description: (
             <p>
@@ -35,7 +44,7 @@ const softSkillData: SoftSkillData[] = [
             </p>),
     },
     {
-        icon: "ion ion-speakerphone",
+        icon: faBullhorn,
         name: "Digital Marketing",
         description: (
             <p>
@@ -44,7 +53,7 @@ const softSkillData: SoftSkillData[] = [
             </p>),
     },
     {
-        icon: "ion ion-help-buoy",
+        icon: faLifeRing,
         name: "Awesome Supports",
         description: (
             <p>
@@ -54,7 +63,7 @@ const softSkillData: SoftSkillData[] = [
             </p>),
     },
     {
-        icon: "ion ion-social-chrome",
+        icon: faChrome,
         name: "Web Development",
         description: (
             <p>

@@ -63,10 +63,6 @@ const MetaData: React.FC<MetaDataProps> = ({title}) => {
             {/* eslint-disable-next-line @next/next/no-css-tags */}
             <link rel="stylesheet" href="/assets/css/layout.css"/>
             {/* eslint-disable-next-line @next/next/no-css-tags */}
-            <link rel="stylesheet" href="/assets/css/ionicons.css"/>
-            {/* eslint-disable-next-line @next/next/no-css-tags */}
-            <link rel="stylesheet" href="/assets/css/magnific-popup.css"/>
-            {/* eslint-disable-next-line @next/next/no-css-tags */}
             <link rel="stylesheet" href="/assets/css/animate.min.css"/>
             {/* eslint-disable-next-line @next/next/no-css-tags */}
             <link rel="stylesheet" href="/assets/css/orange.css"/>

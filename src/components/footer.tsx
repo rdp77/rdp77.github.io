@@ -1,7 +1,6 @@
 import React from "react";
 import {WEBSITE_SLOGAN} from "@/app/constant/summary";
 import RelatedLinks from "@/components/related_links";
-import Link from "next/link";
 
 export default function Footer() {
     return (

@@ -1286,12 +1286,12 @@ a.btn,
 }
 
 .skills.list ul li .name:before {
-  content: "\f121";
+  font-family: "Font Awesome 6 Free";
+  content: "\f00c";
   position: absolute;
   left: 0;
   top: 3px;
   display: inline-block;
-  font-family: "Ionicons";
   color: #f26b38;
   speak: none;
   font-style: normal;

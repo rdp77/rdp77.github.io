@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
-import Link from "next/link";
 import TypedText from "@/components/typed";
 import {faAngleDoubleDown} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Breadcrumb from "@/components/breadcrumb";
 
 interface ContentBoxProps {
+    parentName?: string;
+    linkParent?: string,
     name: string;
     subtitle?: string[];
     linkHref?: string;
@@ -13,8 +15,7 @@ interface ContentBoxProps {
 }
 
 const Section: React.FC<ContentBoxProps> = (
-    {name, linkHref, withBreadcrumbs = false, subtitle = [], children}) => {
-    const formattedLinkHref = "/" + linkHref;
+    {parentName, linkParent, name, linkHref, withBreadcrumbs = false, subtitle = [], children}) => {
     const [showMouseBtn, setShowMouseBtn] = useState(true);
     const [sectionHeight, setSectionHeight] = useState<number>(0);
 
@@ -66,21 +67,13 @@ const Section: React.FC<ContentBoxProps> = (
                             <div className="h-title glitch-effect" data-text={name}>
                                 {name}
                             </div>
-                            {withBreadcrumbs ? (
-                                <>
-                                    <div className="h-subtitle typing-bread">
-                                        <p>
-                                            <Link href="/">Home</Link> /{" "}
-                                            {linkHref && <Link href={formattedLinkHref}>{name}</Link>}
-                                        </p>
+                            {withBreadcrumbs ?
+                                <Breadcrumb name={name} linkHref={linkHref} linkParent={linkParent}
+                                            parentName={parentName}/> : (
+                                    <div className="h-subtitle typing-subtitle">
+                                        <TypedText texts={subtitle}/>
                                     </div>
-                                    <span className="typed-bread link"></span>
-                                </>
-                            ) : (
-                                <div className="h-subtitle typing-subtitle">
-                                    <TypedText texts={subtitle}/>
-                                </div>
-                            )}
+                                )}
                         </div>
                     </div>
                 </div>
