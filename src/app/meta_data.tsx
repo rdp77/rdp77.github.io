@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from "react";
 import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/app/constant/meta_data";
-import defaultImage from "../../assets/image/portfolio/ourenterprise.png";
+import defaultImage from "../assets/image/avatar.png";
 import {description} from "@/app/data/about";
 
 interface MetaDataProps {
