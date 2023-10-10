@@ -31,10 +31,12 @@ export default function WorkSection() {
         else isotope.current?.arrange({filter: `.${filterKey}`});
     }, [filterKey]);
 
+    const categories = uniqueCategories.filter((category) => !category.includes(' '));
+
     return (
         <div className="section works" data-scroll-target="true">
             <div className="content">
-                <FilterButtons categories={uniqueCategories} filterKey={filterKey} onFilterChange={setFilterKey}/>
+                <FilterButtons categories={categories} filterKey={filterKey} onFilterChange={setFilterKey}/>
                 <PortfolioSection portfolioData={portfolioData}/>
                 <div className="clear"></div>
             </div>

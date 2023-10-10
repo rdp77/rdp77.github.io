@@ -26,7 +26,9 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({id, category, permalink, t
                 </Link>
             </div>
             <div className="desc">
-                <div className="category">{category}</div>
+                <div className="category">
+                    {category.includes(' ') ? category.replace(' ', ' & ') : category}
+                </div>
                 <Link href={permalink} className="name mouse-hover">
                     {title}
                 </Link>

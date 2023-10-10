@@ -130,7 +130,7 @@ export const portfolioData: PortfolioData[] = [
     },
     {
         id: 17,
-        title: "Pasar Perkebunan",
+        title: "Farmer Distribution",
         category: "App",
         image: imageAssets.FarmerDistribution,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -201,19 +201,12 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 27,
         title: "Hardware Maintenance Management",
-        category: "Mobile",
+        category: "App Mobile",
         image: imageAssets.HMM,
         content: <NetworkInstallationUniversityAirlangga/>
     },
     {
         id: 28,
-        title: "Hardware Maintenance Management",
-        category: "App",
-        image: imageAssets.HMM,
-        content: <NetworkInstallationUniversityAirlangga/>
-    },
-    {
-        id: 29,
         title: "PT. Modern Coco International",
         category: "Website",
         image: imageAssets.ModernCocoInternational,
@@ -221,7 +214,7 @@ export const portfolioData: PortfolioData[] = [
     },
 ].map((portfolio) => ({
     ...portfolio,
-    permalink: "/portfolio/" + convertToPermalink(portfolio.title),
+    permalink: "portfolio/" + convertToPermalink(portfolio.title),
 }));
 
 export const uniqueCategories = Array.from(new Set(portfolioData.map(item => item.category)));

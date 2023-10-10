@@ -32,15 +32,16 @@ export default function Sitemap(): MetadataRoute.Sitemap {
     const paths = pagesList.map((page) => {
         const relativePath = path.relative(pagesPath, page);
         const pagePath = relativePath.replace(/\.tsx?$/, '').replace(/\\+/g, '/');
-        return pagePath === 'index' ? '' : pagePath;
-    });
+        return pagePath.includes('index') ? pagePath.replace('index', '') : pagePath;
+    }).filter((pagePath) => pagePath !== '404' && pagePath !== 'portfolio/[permalink]');
 
-    const mainPage = paths.map((path) => ({
+    const mainPage: { url: string; lastModified: string }[] = paths.map((path) => ({
         url: `${baseUrl}${path}`,
         lastModified: "2020-03-31T19:11:30+01:00",
     }))
 
-    const portfolioPages = portfolioPermalinks.map((url) => ({
+    const portfolioPermalinksUnique: string[] = Array.from(new Set(portfolioPermalinks.map(item => item)));
+    const portfolioPages: { url: string; lastModified: string }[] = portfolioPermalinksUnique.map((url) => ({
         url: `${baseUrl}${url}`,
         lastModified: "2020-03-31T19:11:30+01:00",
     }));

@@ -10,7 +10,7 @@ const PortfolioDetail = () => {
     const {permalink} = router.query;
 
     const portfolio =
-        portfolioData.find((item) => item.permalink === "/portfolio/" + permalink);
+        portfolioData.find((item) => item.permalink === "portfolio/" + permalink);
 
     if (!portfolio) {
         return NotFoundPage();
