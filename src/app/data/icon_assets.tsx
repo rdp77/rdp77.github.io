@@ -5,6 +5,8 @@ import icon32 from "../../assets/icon/favicon-32x32.png"
 import icon96 from "../../assets/icon/favicon-96x96.png"
 import icon16 from "../../assets/icon/favicon-16x16.png"
 import icon144 from "../../assets/icon/ms-icon-144x144.png"
+import icon48 from "../../assets/icon/android-icon-48x48.png"
+import icon72 from "../../assets/icon/android-icon-72x72.png"
 
 export const iconAssets: Record<string, string> = {
     favicon: favicon.src,
@@ -12,6 +14,8 @@ export const iconAssets: Record<string, string> = {
     icon180: icon180.src,
     icon144: icon144.src,
     icon96: icon96.src,
+    icon72:icon72.src,
+    icon48: icon48.src,
     icon32: icon32.src,
     icon16: icon16.src,
 };

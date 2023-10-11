@@ -24,6 +24,7 @@ const MetaData: React.FC<MetaDataProps> = ({title}) => {
             <meta property="og:locale" content="en_US"/>
             <meta property="og:site_name" content={title}/>
             <meta property="og:image" content={defaultImageUrl}/>
+            <meta property="og:image:alt" content={title} />
             <meta property="og:title" content={title}/>
             <meta property="og:description" content={description}/>
             <meta property="og:url" content={currentUrl}/>
@@ -35,6 +36,7 @@ const MetaData: React.FC<MetaDataProps> = ({title}) => {
 
             {/*Twitter Meta Tags*/}
             <meta property="twitter:image" content={defaultImageUrl}/>
+            <meta property="twitter:image:alt" content={title} />
             <meta property="twitter:card" content={defaultImageUrl}/>
             <meta property="twitter:title" content={title}/>
             <meta property="twitter:description" content={description}/>
