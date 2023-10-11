@@ -1,5 +1,6 @@
 import Document, {Html, Head, Main, NextScript} from 'next/document'
 import React from "react";
+import {iconAssets} from "@/app/data/icon_assets";
 
 class MyDocument extends Document {
     render() {
@@ -42,8 +43,16 @@ class MyDocument extends Document {
                     <meta content="#26272c" name="msapplication-navbutton-color"/>
                     <meta content="#26272c" name="apple-mobile-web-app-status-bar-style"/>
 
+                    {/*Favicon*/}
+                    <link href={iconAssets.favicon} rel="shortcut icon" type='image/x-icon'/>
+                    <link rel="apple-touch-icon" sizes="180x180" href={iconAssets.icon180}/>
+                    <link rel="icon" type="image/png" sizes="192x192" href={iconAssets.icon192}/>
+                    <link rel="icon" type="image/png" sizes="32x32" href={iconAssets.icon32}/>
+                    <link rel="icon" type="image/png" sizes="96x96" href={iconAssets.icon96}/>
+                    <link rel="icon" type="image/png" sizes="16x16" href={iconAssets.icon16}/>
+                    <meta name="msapplication-TileImage" content={iconAssets.icon144}/>
+
                     {/*Mobile Specific Metas*/}
-                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <link rel="manifest" href="/assets/manifest.json"/>
                 </Head>
                 <body>

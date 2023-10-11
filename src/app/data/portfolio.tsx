@@ -3,8 +3,6 @@ import {imageAssets} from "@/app/data/portfolio_assets";
 import {StaticImageData} from "next/image";
 import NetworkInstallationUniversityAirlangga from "@/app/data/portfolio/network_installation_university_airlangga";
 import React from "react";
-import FirstMedia from "@/assets/image/portfolio/first-media.png";
-import Sakpattana from "@/assets/image/portfolio/sakpattana.png";
 
 export interface PortfolioData {
     id: number;
