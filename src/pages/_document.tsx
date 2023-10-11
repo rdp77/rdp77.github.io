@@ -51,9 +51,6 @@ class MyDocument extends Document {
                     <link rel="icon" type="image/png" sizes="96x96" href={iconAssets.icon96}/>
                     <link rel="icon" type="image/png" sizes="16x16" href={iconAssets.icon16}/>
                     <meta name="msapplication-TileImage" content={iconAssets.icon144}/>
-
-                    {/*Mobile Specific Metas*/}
-                    <link rel="manifest" href="/assets/manifest.json"/>
                 </Head>
                 <body>
                 <Main/>

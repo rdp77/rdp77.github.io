@@ -1,11 +1,10 @@
 import {MetadataRoute} from 'next'
 import {iconAssets} from "@/app/data/icon_assets";
 
-export default function manifest(): MetadataRoute.Manifest {
+export default function Manifest(): MetadataRoute.Manifest {
     return {
         name: 'Moh Ravi Dwi Putra',
         short_name: 'rdp77',
-        lang: 'en',
         description: 'Moh Ravi Dwi Putra profile website, which contains important information about him such as your resume, portfolio, awards, certification, and contact.',
         start_url: '/',
         scope: '/',

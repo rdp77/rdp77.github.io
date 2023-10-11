@@ -1,3 +1,7 @@
+const withPWA = require('next-pwa')({
+    dest: 'public'
+})
+
 const nextConfig = {
     i18n: {
         locales: ["en", "id"],
@@ -9,4 +13,4 @@ const nextConfig = {
     }
 }
 
-module.exports = nextConfig
+module.exports = withPWA(nextConfig)
