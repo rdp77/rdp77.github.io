@@ -1,4 +1,6 @@
-import { useEffect } from 'react';
+'use client'
+
+import React, { useEffect } from 'react';
 
 const Cursor: React.FC = () => {
     useEffect(() => {

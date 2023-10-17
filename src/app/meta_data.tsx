@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React from "react";
 import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/app/constant/meta_data";
 import defaultImage from "../assets/image/avatar.png";
-import {description} from "@/app/data/about";
+import {description} from "@/data/about";
 import {useRouter} from 'next/router';
 
 interface MetaDataProps {
@@ -11,12 +11,14 @@ interface MetaDataProps {
 
 const MetaData: React.FC<MetaDataProps> = ({title}) => {
     const defaultImageUrl = defaultImage.src;
-    const currentUrl = process.env.APP_URL + useRouter().asPath.replace('/', '');
+    // const currentUrl = process.env.APP_URL + useRouter().asPath.replace('/', '');
+    // const navigation = useNavigation();
+    const currentUrl = 'asdasd';
 
     return (
         <Head>
             {/*HTML Meta Tags*/}
-            <title>{title}</title>
+            {/*<title>{title}</title>*/}
             <meta name="description" content={WEBSITE_DESCRIPTION}/>
             <meta name="keywords" content={WEBSITE_KEYWORDS}/>
 

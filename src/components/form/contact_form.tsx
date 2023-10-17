@@ -1,3 +1,5 @@
+'use client'
+
 import React, {useRef, useState, useEffect} from "react";
 import {getCalApi} from "@calcom/embed-react";
 

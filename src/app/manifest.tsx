@@ -1,5 +1,5 @@
 import {MetadataRoute} from 'next'
-import {iconAssets} from "@/app/data/icon_assets";
+import {iconAssets} from "@/data/icon_assets";
 
 export default function Manifest(): MetadataRoute.Manifest {
     return {

@@ -1,12 +1,14 @@
+'use client'
+
 import {useEffect, useRef} from 'react';
 import TypedText from '@/components/typed';
-import {useRouter} from 'next/router';
+import {usePathname} from 'next/navigation';
 import {TEXT_LOADING} from '@/app/constant/summary';
 
 const Loader = () => {
     const preloaderInnerRef = useRef<HTMLDivElement>(null);
     const cursorElementRef = useRef<HTMLDivElement>(null);
-    const router = useRouter();
+    const pathName = usePathname() ?? '/';
 
     useEffect(() => {
         const preloaderInner = preloaderInnerRef.current;
@@ -24,7 +26,7 @@ const Loader = () => {
                     preloader.style.display = 'none';
                 }
                 document.body.classList.add('loaded');
-                document.body.style.overflow = router.pathname !== '/' ? 'visible' : 'hidden';
+                document.body.style.overflow = pathName !== '/' ? 'visible' : 'hidden';
                 if (cursorElement) {
                     cursorElement.style.display = 'unset';
                 }
@@ -34,7 +36,7 @@ const Loader = () => {
         return () => {
             clearTimeout(timeoutId);
         };
-    }, [router.pathname]);
+    }, [pathName]);
 
     function fadeOut(element: HTMLElement, duration: number, callback: () => void) {
         let opacity = 1;

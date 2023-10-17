@@ -1,7 +1,7 @@
 import {MetadataRoute} from 'next'
 import path from 'path';
 import fs from 'fs';
-import {portfolioPermalinks} from "@/app/data/portfolio";
+import {portfolioPermalinks} from "@/data/portfolio";
 
 function getPagesList(dir: string, fileList: string[] = []): string[] {
     const files = fs.readdirSync(dir);

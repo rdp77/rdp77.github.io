@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import {usePathname} from 'next/navigation';
-import {menuData} from "@/app/data/menu";
+import {menuData} from "@/data/menu";
 
 function MenuItem({href, title, button = false}: {
     href: string,
