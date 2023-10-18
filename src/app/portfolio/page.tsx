@@ -1,6 +1,11 @@
 import React from 'react';
 import Section from "@/components/layouts/section";
 import WorkSection from "@/components/layouts/section_work";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'Portfolio',
+}
 
 export default function PortfolioPage() {
     return (

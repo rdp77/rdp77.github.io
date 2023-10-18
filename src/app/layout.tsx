@@ -2,12 +2,24 @@ import React from 'react';
 import {WEBSITE_NAME} from "@/data/constant/summary";
 import Script from "next/script";
 import {iconAssets} from "@/data/icon_assets";
-import { config } from '@fortawesome/fontawesome-svg-core'
+import {config} from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import {Metadata} from "next";
+import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta_data";
+
 config.autoAddCss = false
 
 interface LayoutProps {
     children: React.ReactNode;
+}
+
+export const metadata: Metadata = {
+    title: {
+        default: WEBSITE_NAME,
+        template: '%s | ' + WEBSITE_NAME
+    },
+    description: WEBSITE_DESCRIPTION,
+    keywords: WEBSITE_KEYWORDS,
 }
 
 const RootLayout: React.FC<LayoutProps> = ({children}) => {
@@ -30,7 +42,6 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
                 <link rel="stylesheet" href="/assets/css/orange.css"/>
                 {/* eslint-disable-next-line @next/next/no-css-tags */}
                 <link rel="stylesheet" href="/assets/css/dark.css"/>
-                <title>{WEBSITE_NAME}</title>
 
                 {/*Meta Robots Search*/}
                 <meta charSet="UTF-8"/>

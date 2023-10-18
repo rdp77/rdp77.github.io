@@ -1,25 +1,18 @@
 'use client'
 
 import React, {useEffect} from "react";
+import {Type} from "@/data/enum/type"
 
-interface item {
-    name: string;
-    percentage: number;
-}
-
-export enum Type {
-    Progress = "progress",
-    Dot = "dotted",
-    Circle = "circle",
-}
-
-interface CircleSectionProps {
+interface SectionProps {
     title: string;
     type?: Type;
-    items: item[];
+    items: {
+        name: string;
+        percentage: number;
+    }[];
 }
 
-const CircleSection: React.FC<CircleSectionProps> = ({title, items, type = Type.Progress}) => {
+const ProgressSection: React.FC<SectionProps> = ({title, items, type = Type.Progress}) => {
     let classNameType;
     switch (type) {
         case Type.Dot:
@@ -98,4 +91,4 @@ const CircleSection: React.FC<CircleSectionProps> = ({title, items, type = Type.
     );
 };
 
-export default CircleSection;
+export default ProgressSection;

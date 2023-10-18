@@ -3,6 +3,7 @@ import Section from "@/components/layouts/section";
 import ListSection from "@/components/layouts/section_line";
 import awardsData from "@/data/awards";
 import certificationData from "@/data/certification";
+import {Metadata} from "next";
 
 const awardsColumn = {
     title: "Awards",
@@ -13,6 +14,10 @@ const certificationColumn = {
     title: "Certification",
     items: certificationData,
 };
+
+export const metadata: Metadata = {
+    title: 'Awards & Certification',
+}
 
 export default function AwardsPage() {
     return (

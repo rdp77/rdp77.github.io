@@ -1,10 +1,8 @@
-'use client'
-
 import React from 'react';
 import Section from "@/components/layouts/section";
 import AboutSection from "@/components/layouts/section_about";
 import ResumeSection from "@/components/layouts/section_line";
-import SkillSection, {Type} from "@/components/layouts/section_progress";
+import SkillSection from "@/components/layouts/section_progress";
 import ListSkillSection from "@/components/layouts/section_list";
 import FocusedSection from "@/components/layouts/section_box";
 import experienceData from "@/data/experience";
@@ -14,6 +12,8 @@ import hardSkillData from "@/data/hard_skill";
 import knowledgeData from "@/data/knowledge";
 import otherSkillData from "@/data/other_skill";
 import focusedData from "@/data/focused";
+import {Metadata} from "next";
+import {Type} from "@/data/enum/type"
 
 const experienceColumn = {
     title: "Experience",
@@ -24,6 +24,10 @@ const educationColumn = {
     title: "Education",
     items: educationData,
 };
+
+export const metadata: Metadata = {
+    title: 'Resume',
+}
 
 export default function ResumePage() {
     return (

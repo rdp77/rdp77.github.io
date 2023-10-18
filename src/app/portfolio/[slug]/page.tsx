@@ -1,8 +1,9 @@
+'use client'
+
 import React from "react";
 import {portfolioData} from "@/data/portfolio";
 import Section from "@/components/layouts/section";
-import ErrorPage from "@/app/error";
-import {NextPage} from "next";
+import NotFoundPage from "@/app/not-found";
 
 interface PageProps {
     params: {
@@ -10,13 +11,12 @@ interface PageProps {
     };
 }
 
-const PortfolioDetail: NextPage<PageProps> = ({params}) => {
+const PortfolioDetail: React.FC<PageProps> = ({params}) => {
 
-    const portfolio =
-        portfolioData.find((item) => item.permalink === "portfolio/" + params.slug);
+    const portfolio = portfolioData.find((item) => item.permalink === `portfolio/${params.slug}`);
 
     if (!portfolio) {
-        return <ErrorPage statusCode={404}/>
+       return <NotFoundPage/>
     }
 
     return (

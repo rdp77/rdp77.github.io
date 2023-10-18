@@ -1,9 +1,12 @@
 import Section from "@/components/layouts/section";
-import {NextPage} from 'next';
+import {Metadata} from 'next';
 import React from "react";
-import ErrorPage from "@/app/error";
 
-const NotFoundPage: NextPage = () => {
+export const metadata: Metadata = {
+    title: '404 : Pages Not Found'
+}
+
+const NotFoundPage: React.FC = () => {
     const title = `ERROR 404`;
     const message = `Oops! That page can't be found.`;
 
@@ -11,4 +14,5 @@ const NotFoundPage: NextPage = () => {
         <Section name={title} subtitle={[message]}></Section>
     );
 }
+
 export default NotFoundPage;
