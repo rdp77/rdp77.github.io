@@ -3,7 +3,6 @@ import React from "react";
 import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta-data";
 import defaultImage from "../assets/image/avatar.png";
 import {description} from "@/data/about";
-import {useRouter} from 'next/router';
 
 interface MetaDataProps {
     title: string;

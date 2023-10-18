@@ -6,7 +6,9 @@ interface item {
 
 interface ListSectionProps {
     title: string;
-    items: item[];
+    items: {
+        name: string
+    }[];
 }
 
 const ListSection: React.FC<ListSectionProps> = ({title, items}) => {

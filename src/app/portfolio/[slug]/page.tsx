@@ -1,5 +1,3 @@
-'use client'
-
 import React from "react";
 import {portfolioData} from "@/data/portfolio";
 import Section from "@/components/layouts/section";
