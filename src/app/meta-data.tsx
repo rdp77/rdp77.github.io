@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from "react";
-import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta_data";
+import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta-data";
 import defaultImage from "../assets/image/avatar.png";
 import {description} from "@/data/about";
 import {useRouter} from 'next/router';

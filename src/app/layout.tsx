@@ -1,11 +1,11 @@
 import React from 'react';
 import {WEBSITE_NAME} from "@/data/constant/summary";
 import Script from "next/script";
-import {iconAssets} from "@/data/icon_assets";
+import {iconAssets} from "@/data/icon-assets";
 import {config} from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import {Metadata} from "next";
-import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta_data";
+import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta-data";
 
 config.autoAddCss = false
 

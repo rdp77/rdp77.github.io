@@ -3,8 +3,8 @@
 import React, {useEffect, useRef, useState} from "react";
 import Isotope from "isotope-layout";
 import {portfolioData, uniqueCategories} from "@/data/portfolio";
-import PortfolioSection from "@/components/layouts/section_portfolio";
-import FilterButtons from "@/components/filtered_button";
+import PortfolioSection from "@/components/layouts/section-portfolio";
+import FilterButtons from "@/components/filtered-button";
 
 export default function WorkSection() {
     // init one ref to store the future isotope object

@@ -1,5 +1,5 @@
-import ContentBox from "@/components/content_box";
-import ContactForm from "@/components/form/contact_form";
+import ContentBox from "@/components/content-box";
+import ContactForm from "@/components/form/contact-form";
 import {
     faEnvelope,
     faLocationDot,

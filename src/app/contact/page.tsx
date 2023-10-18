@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactSection from "@/components/layouts/section_contact";
+import ContactSection from "@/components/layouts/section-contact";
 import Section from "@/components/layouts/section";
 import {Metadata} from "next";
 
