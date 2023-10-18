@@ -1,4 +1,4 @@
-import {convertToPermalink} from "../app/utils/permalink";
+import {convertToPermalink} from "@/utils/permalink";
 import {imageAssets} from "@/data/portfolio_assets";
 import {StaticImageData} from "next/image";
 import NetworkInstallationUniversityAirlangga from "@/data/portfolio/network_installation_university_airlangga";

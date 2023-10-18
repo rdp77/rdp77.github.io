@@ -1,7 +1,10 @@
 import React from 'react';
-import {WEBSITE_NAME} from "@/app/constant/summary";
+import {WEBSITE_NAME} from "@/data/constant/summary";
 import Script from "next/script";
 import {iconAssets} from "@/data/icon_assets";
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 
 interface LayoutProps {
     children: React.ReactNode;

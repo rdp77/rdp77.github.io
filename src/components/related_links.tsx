@@ -1,5 +1,5 @@
 import React from "react";
-import {RELATED_LINKS} from "@/app/constant/summary";
+import {RELATED_LINKS} from "@/data/constant/summary";
 import ButtonIcon from "@/components/button_icon";
 
 const RelatedLinks: React.FC = () => {

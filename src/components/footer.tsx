@@ -1,5 +1,5 @@
 import React from "react";
-import {WEBSITE_SLOGAN} from "@/app/constant/summary";
+import {WEBSITE_SLOGAN} from "@/data/constant/summary";
 import RelatedLinks from "@/components/related_links";
 
 export default function Footer() {

@@ -31,3 +31,5 @@ export const menuData: MenuData[] = [
         button: true,
     },
 ];
+
+export const mainPermalinks = menuData.map(item => item.url);

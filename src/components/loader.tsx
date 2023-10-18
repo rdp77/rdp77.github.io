@@ -3,7 +3,7 @@
 import {useEffect, useRef} from 'react';
 import TypedText from '@/components/typed';
 import {usePathname} from 'next/navigation';
-import {TEXT_LOADING} from '@/app/constant/summary';
+import {TEXT_LOADING} from '@/data/constant/summary';
 
 const Loader = () => {
     const preloaderInnerRef = useRef<HTMLDivElement>(null);
