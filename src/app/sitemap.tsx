@@ -8,13 +8,13 @@ export default function Sitemap(): MetadataRoute.Sitemap {
 
     const mainPages: { url: string; lastModified: string }[] = mainPermalinks.map((url) => ({
         url: `${baseUrl}${url}`,
-        lastModified: "2020-03-31T19:11:30+01:00",
+        lastModified: new Date().toISOString(),
     }));
 
     const portfolioPermalinksUnique: string[] = Array.from(new Set(portfolioPermalinks.map(item => item)));
     const portfolioPages: { url: string; lastModified: string }[] = portfolioPermalinksUnique.map((url) => ({
         url: `${baseUrlEnv}${url}`,
-        lastModified: "2020-03-31T19:11:30+01:00",
+        lastModified: new Date().toISOString(),
     }));
 
     return [...mainPages, ...portfolioPages];
