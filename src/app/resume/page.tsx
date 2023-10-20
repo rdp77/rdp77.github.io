@@ -14,6 +14,7 @@ import otherSkillData from "@/data/other-skill";
 import focusedData from "@/data/focused";
 import {Metadata} from "next";
 import {Type} from "@/data/enum/type"
+import {WEBSITE_NAME} from "@/data/constant/summary";
 
 const experienceColumn = {
     title: "Experience",
@@ -26,7 +27,7 @@ const educationColumn = {
 };
 
 export const metadata: Metadata = {
-    title: 'Resume',
+    title: 'Resume | ' + WEBSITE_NAME,
 }
 
 export default function ResumePage() {

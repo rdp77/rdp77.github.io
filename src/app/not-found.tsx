@@ -3,7 +3,7 @@ import {Metadata} from 'next';
 import React from "react";
 
 export const metadata: Metadata = {
-    title: '404 : Pages Not Found'
+    title: 'Pages Not Found'
 }
 
 const NotFoundPage: React.FC = () => {

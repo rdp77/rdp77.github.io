@@ -17,12 +17,12 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({id, category, permalink, t
                 <Link href={permalink} className="mouse-hover">
                     <Image src={image} alt={title} width={500} height={500}/>
                     <span className="info">
-            <span className="centrize full-width">
-              <span className="vertical-center">
-                <span className="ion ion-ios-book-outline"></span>
-              </span>
-            </span>
-          </span>
+                        <span className="centrize full-width">
+                             <span className="vertical-center">
+                                 <span className="ion ion-ios-book-outline"></span>
+                             </span>
+                        </span>
+                    </span>
                 </Link>
             </div>
             <div className="desc">

@@ -6,26 +6,78 @@ import {config} from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import {Metadata} from "next";
 import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta-data";
+import {Roboto_Mono} from 'next/font/google';
+import defaultImage from "@/assets/image/avatar.png";
 
 config.autoAddCss = false
+
+const robotoMono = Roboto_Mono({
+    weight: ['100', '300', '400', '500', '700'],
+    style: ['normal', 'italic'],
+    subsets: ['latin', 'cyrillic'],
+    display: 'swap',
+})
 
 interface LayoutProps {
     children: React.ReactNode;
 }
 
 export const metadata: Metadata = {
-    title: {
-        default: WEBSITE_NAME,
-        template: '%s | ' + WEBSITE_NAME
-    },
+    metadataBase: new URL(process.env.APP_URL?.toString() ?? '/'),
+    title: WEBSITE_NAME,
+    creator: WEBSITE_NAME,
+    publisher: WEBSITE_NAME,
     description: WEBSITE_DESCRIPTION,
     keywords: WEBSITE_KEYWORDS,
+    category: 'Personal Web',
+    alternates: {
+        canonical: process.env.APP_URL
+    },
+    authors: {
+        name: WEBSITE_NAME,
+        url: process.env.APP_URL,
+    },
+    verification: {
+        google: '8FB68inDTkKFOhWeQv2l6zfpF7oYJEn6wqZDOTDd6dk',
+    },
+    openGraph: {
+        type:'profile',
+        firstName: 'Moh Ravi',
+        lastName: 'Dwi Putra',
+        gender: 'Male',
+        username: 'rdp77',
+        siteName: WEBSITE_NAME,
+        emails: 'hi@ravidwiputra.web.id',
+        phoneNumbers: '+6285159997670',
+        locale: 'en_US',
+        alternateLocale: 'id',
+        title: WEBSITE_NAME,
+        description: WEBSITE_DESCRIPTION,
+        url: process.env.APP_URL,
+        countryName: 'Indonesia',
+        images: defaultImage.src,
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: WEBSITE_NAME,
+        description: WEBSITE_DESCRIPTION,
+        images: [defaultImage.src],
+        creator: '@ravidwiputra'
+    },
+    robots: {
+        follow: true,
+        index: true,
+        googleBot: {
+            follow: true,
+            index: true,
+        }
+    }
 }
 
 const RootLayout: React.FC<LayoutProps> = ({children}) => {
     return (
         <>
-            <html>
+            <html className={robotoMono.className}>
             <head>
                 {/* eslint-disable-next-line @next/next/no-page-custom-font */}
                 <link
@@ -56,7 +108,6 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
                 <meta name="rating" content="general"/>
                 <meta name="revisit-after" content="1 days"/>
                 <meta name="MSSmartTagsPreventParsing" content="true"/>
-                <meta name="googlebot" content="index, follow"/>
                 <meta name="Googlebot-Image" content="follow, all"/>
                 <meta name="msnbot" content="follow, all"/>
                 <meta name="Slurp" content="follow, all"/>

@@ -1,12 +1,37 @@
 import React from "react";
 import {portfolioData} from "@/data/portfolio";
 import Section from "@/components/layouts/section";
-import NotFoundPage from "@/app/not-found";
+import {notFound} from "next/navigation";
 
-interface PageProps {
-    params: {
-        slug: string;
-    };
+type PageProps = {
+    params: { slug: string },
+}
+
+export async function generateMetadata({params}: PageProps) {
+    try {
+        const portfolio = portfolioData.find((item) => item.permalink === `portfolio/${params.slug}`);
+
+        if (!portfolio) {
+            return {
+                title: 'Pages Not Found | Portfolio',
+                description: 'Portfolio is Not Found'
+            }
+        }
+
+        return {
+            title: portfolio.title + ' | Portfolio',
+            description: portfolio.title,
+            alternates: {
+                canonical: `portfolio/${params.slug}`
+            },
+        }
+    } catch (error) {
+        console.error(error);
+        return {
+            title: 'Not Found | Portfolio',
+            description: 'Portfolio is Not Found'
+        }
+    }
 }
 
 const PortfolioDetail: React.FC<PageProps> = ({params}) => {
@@ -14,7 +39,7 @@ const PortfolioDetail: React.FC<PageProps> = ({params}) => {
     const portfolio = portfolioData.find((item) => item.permalink === `portfolio/${params.slug}`);
 
     if (!portfolio) {
-       return <NotFoundPage/>
+        return notFound();
     }
 
     return (
