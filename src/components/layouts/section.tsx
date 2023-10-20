@@ -80,7 +80,7 @@ const Section: React.FC<ContentBoxProps> = (
                     </div>
                 </div>
                 {withBreadcrumbs && showMouseBtn && (
-                    <a role="button" className="mouse-btn" onClick={handleMouseBtnClick}>
+                    <a role="button" className="mouse-btn" onClick={handleMouseBtnClick} aria-label="Scroll Down">
                         <FontAwesomeIcon className={"ion"} icon={faAngleDoubleDown} size={"xs"}/>
                     </a>
                 )}

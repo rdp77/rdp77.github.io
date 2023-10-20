@@ -77,7 +77,7 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<LayoutProps> = ({children}) => {
     return (
         <>
-            <html className={robotoMono.className}>
+            <html className={robotoMono.className} lang="en">
             <head>
                 {/* eslint-disable-next-line @next/next/no-page-custom-font */}
                 <link

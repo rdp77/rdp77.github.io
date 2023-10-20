@@ -40,7 +40,8 @@ export default function Manifest(): MetadataRoute.Manifest {
             {
                 src: iconAssets.icon192,
                 sizes: '192x192',
-                type: 'image/png'
+                type: 'image/png',
+                purpose: 'maskable',
             }
         ],
     }
