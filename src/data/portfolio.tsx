@@ -21,6 +21,8 @@ import BatuBeling from "@/data/portfolio/batubeling";
 export interface PortfolioData {
     id: number;
     title: string;
+    description: string;
+    keywords: string[];
     category: string;
     image: StaticImageData;
     permalink: string;
@@ -31,6 +33,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 1,
         title: "Universitas Airlangga",
+        description: "Network Installation University Airlangga Campus B : Mikrotik, Surabaya, Indonesia",
+        keywords: ["mikrotik", "Airlangga", "Airlangga Campus B", "Network Installation"],
         category: "Networking",
         image: imageAssets.Networking,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -38,6 +42,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 2,
         title: "Dryas Library",
+        description: "Library Online App web with Laravel, and managed data with PostGreSQL and AJAX to data live",
+        keywords: ["Laravel", "Library Online", "API", "Website", "PostGreSQL", "AJAX"],
         category: "App",
         image: imageAssets.DryasLibrary,
         content: <DryasLibrary/>
@@ -45,6 +51,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 3,
         title: "Warunk Zaman Now",
+        description: "Network Installation with parallel network, managed by Mikrotik and TPLink Switch",
+        keywords: ["Mikrotik", "Network Installation", "Taman Apsari Surabaya"],
         category: "Networking",
         image: imageAssets.Networking,
         content: <WarunkZamanNow/>
@@ -52,6 +60,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 4,
         title: "Corona",
+        description: "App to monitoring COVID-19 in the world with filtering features in Indonesia and many countries",
+        keywords: ["Flutter", "API", "Laravel"],
         category: "App",
         image: imageAssets.Corona,
         content: <Corona/>
@@ -59,6 +69,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 5,
         title: "Traffic Light Simulation",
+        description: "App to simulation traffic light with 4 roads and 4 cars to simulate, use VB.net to created this",
+        keywords: ["Visual Basic", "Visual Basic .NET", "GUI"],
         category: "App",
         image: imageAssets.Networking,
         content: <TrafficLightSimulation/>
@@ -66,6 +78,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 6,
         title: "Sports Skuyy",
+        description: "App to train the body to exercise based on calories, build with Java and kotlin",
+        keywords: ["Java", "Kotlin", "MySQL", "Android Studio"],
         category: "Mobile",
         image: imageAssets.SportsSkuyy,
         content: <SportsSkuyy/>
@@ -73,6 +87,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 7,
         title: "Stack Games",
+        description: "Gaming portal, to multiple game landing pages and top-up features with Xendit Payment Gateway",
+        keywords: ["Laravel", "MySQL", "AJAX", "Xendit"],
         category: "App",
         image: imageAssets.StackGames,
         content: <StackGames/>
@@ -80,6 +96,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 8,
         title: "Personal Web",
+        description: "Web portfolio for my personal documentation, using newer technology stacks and fastest performance",
+        keywords: ["Jekyll", "Static Site Generator", "Ruby", "Javascript", "NextJS"],
         category: "App",
         image: imageAssets.Code,
         content: <PersonalWeb/>
@@ -87,6 +105,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 9,
         title: "Messi Kasih Khitan",
+        description: "Landing page website using wordpress to create Messi Kasih Khitan business website",
+        keywords: ["Messi Kasih Khitan", "Wordpress", "SEO", "Sidoarjo"],
         category: "Website",
         image: imageAssets.Wordpress,
         content: <MessiKasihKhitan/>
@@ -94,6 +114,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 10,
         title: "Our Enterprise",
+        description: "Website portal or landing page to describe our Company with Gatsby for tech stack",
+        keywords: ["Gatsby", "Javascript", "Our Enterprise"],
         category: "App",
         image: imageAssets.OurEnterprise,
         content: <OurEnterprise/>
@@ -101,6 +123,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 11,
         title: "Pode",
+        description: "Web portfolio to present image portfolios, to support designers or 3D mockup portfolios",
+        keywords: ["Jekyll", "Ruby", "Portfolio Web"],
         category: "App",
         image: imageAssets.Code,
         content: <Pode/>
@@ -108,6 +132,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 12,
         title: "Veyaz",
+        description: "Veyaz is template Laravel Developer to fastest developing and create new project Laravel",
+        keywords: ["Template", "Laravel", "Livewire"],
         category: "App",
         image: imageAssets.Veyaz,
         content: <Veyaz/>
@@ -115,6 +141,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 13,
         title: "KSP Sumber Rejeki",
+        description: "Web application to support accounting, savings and loans at KSP Sumber Rejeki, built with Laravel",
+        keywords: ["KSP Sumber Rejeki", "Laravel", "Accounting"],
         category: "App",
         image: imageAssets.KSPSumberRejeki,
         content: <KSPSumberRejeki/>
@@ -122,6 +150,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 14,
         title: "Andromart",
+        description: "Applications to enable advanced inventory and accounting data, for example, balance sheets",
+        keywords: ["Andromart", "Laravel", "Accounting"],
         category: "App",
         image: imageAssets.Andromart,
         content: <Andromart/>
@@ -129,6 +159,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 15,
         title: "Report Management BatuBeling",
+        description: "Report management to support online employee reports in BatuBeling Company",
+        keywords: ["Batu Beling", "BatuBeling", "Report Management", "Laravel"],
         category: "App",
         image: imageAssets.BatuBeling,
         content: <BatuBeling/>
@@ -136,6 +168,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 16,
         title: "CV. Bima Sakti",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "Website",
         image: imageAssets.Wordpress,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -143,6 +177,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 17,
         title: "Farmer Distribution",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "App",
         image: imageAssets.FarmerDistribution,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -150,6 +186,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 18,
         title: "First Media Surabaya",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "Website",
         image: imageAssets.FirstMedia,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -157,6 +195,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 19,
         title: "Sakpattana Jawa Timur",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "Website",
         image: imageAssets.Sakpattana,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -164,6 +204,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 20,
         title: "CV. Putra Kubota",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "Website",
         image: imageAssets.Kubota,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -171,6 +213,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 21,
         title: "CV. Wahyu Dewanagari",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "Website",
         image: imageAssets.WahyuDewanagari,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -178,6 +222,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 22,
         title: "CSR Cleaning",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "Digital-Marketing",
         image: imageAssets.CSRCleaning,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -185,6 +231,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 23,
         title: "IKAPENS",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "Mobile",
         image: imageAssets.IKAPENS,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -192,6 +240,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 24,
         title: "AsiaCommerce",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "App",
         image: imageAssets.AsiaCommerce,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -199,6 +249,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 25,
         title: "PolaPedia",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "App",
         image: imageAssets.PolaPedia,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -206,6 +258,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 26,
         title: "Wara Wara",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "Mobile",
         image: imageAssets.Code,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -213,6 +267,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 27,
         title: "Hardware Maintenance Management",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "App Mobile",
         image: imageAssets.HMM,
         content: <NetworkInstallationUniversityAirlangga/>
@@ -220,6 +276,8 @@ export const portfolioData: PortfolioData[] = [
     {
         id: 28,
         title: "PT. Modern Coco International",
+        description: "Moh Ravi Dwi Putra",
+        keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "Website",
         image: imageAssets.ModernCocoInternational,
         content: <NetworkInstallationUniversityAirlangga/>

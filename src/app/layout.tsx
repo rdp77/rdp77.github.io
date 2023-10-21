@@ -24,7 +24,6 @@ interface LayoutProps {
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.APP_URL?.toString() ?? '/'),
-    title: WEBSITE_NAME,
     creator: WEBSITE_NAME,
     publisher: WEBSITE_NAME,
     description: WEBSITE_DESCRIPTION,

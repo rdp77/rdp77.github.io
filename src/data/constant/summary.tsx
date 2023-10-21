@@ -5,7 +5,7 @@ import {
     faLinkedin,
     faTelegram,
     faInstagram,
-    faBloggerB
+    faBloggerB, faXTwitter
 } from '@fortawesome/free-brands-svg-icons';
 import {IconDefinition} from "@fortawesome/free-solid-svg-icons";
 
@@ -28,5 +28,6 @@ export const RELATED_LINKS: RelatedLinks[] = [
     {label: "Linkedin", link: "https://www.linkedin.com/in/ravidwiputra", icon: faLinkedin},
     {label: "Telegram", link: "https://t.me/rdp77", icon: faTelegram},
     {label: "Instagram", link: "https://www.instagram.com/ravidwiputraa/", icon: faInstagram},
+    {label: "Twitter", link: "https://twitter.com/ravidwiputra/", icon: faXTwitter},
 ];
 

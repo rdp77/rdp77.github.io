@@ -2,9 +2,7 @@ import React from "react";
 import {portfolioData} from "@/data/portfolio";
 import Section from "@/components/layouts/section";
 import {notFound} from "next/navigation";
-import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta-data";
 import {WEBSITE_NAME} from "@/data/constant/summary";
-import defaultImage from "@/assets/image/avatar.png";
 
 type PageProps = {
     params: { slug: string },
@@ -23,8 +21,8 @@ export async function generateMetadata({params}: PageProps) {
 
         return {
             title: portfolio.title + ' | Portfolio',
-            description: portfolio.title,
-            keywords: WEBSITE_KEYWORDS,
+            description: portfolio.description,
+            keywords: portfolio.keywords,
             alternates: {
                 canonical: `portfolio/${params.slug}`
             },
@@ -35,14 +33,14 @@ export async function generateMetadata({params}: PageProps) {
                 tags: portfolio.category,
                 siteName: WEBSITE_NAME,
                 title: portfolio.title,
-                description: portfolio.title,
+                description: portfolio.description,
                 url: `portfolio/${params.slug}`,
                 images: portfolio.image.src,
             },
             twitter: {
                 card: 'summary_large_image',
                 title: portfolio.title,
-                description: portfolio.title,
+                description: portfolio.description,
                 images: [portfolio.image.src],
             },
             robots: {
