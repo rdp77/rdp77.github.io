@@ -18,6 +18,9 @@ const certificationColumn = {
 
 export const metadata: Metadata = {
     title: 'Awards & Certification | ' + WEBSITE_NAME,
+    alternates: {
+        canonical: 'awards-certification'
+    },
 }
 
 export default function AwardsPage() {

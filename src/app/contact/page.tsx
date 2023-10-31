@@ -6,6 +6,9 @@ import {WEBSITE_NAME} from "@/data/constant/summary";
 
 export const metadata: Metadata = {
     title: 'Contact | ' + WEBSITE_NAME,
+    alternates: {
+        canonical: 'contact'
+    },
 }
 
 export default function ContactPage() {

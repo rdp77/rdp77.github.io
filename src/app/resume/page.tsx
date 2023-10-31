@@ -28,6 +28,9 @@ const educationColumn = {
 
 export const metadata: Metadata = {
     title: 'Resume | ' + WEBSITE_NAME,
+    alternates: {
+        canonical: 'resume'
+    },
 }
 
 export default function ResumePage() {

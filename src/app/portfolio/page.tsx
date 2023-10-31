@@ -6,6 +6,9 @@ import {WEBSITE_NAME} from "@/data/constant/summary";
 
 export const metadata: Metadata = {
     title: 'Portfolio | ' + WEBSITE_NAME,
+    alternates: {
+        canonical: 'portfolio'
+    },
 }
 
 export default function PortfolioPage() {
