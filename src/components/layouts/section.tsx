@@ -66,9 +66,9 @@ const Section: React.FC<ContentBoxProps> = (
                 <div className="centrize full-width">
                     <div className="vertical-center">
                         <div className="started-content">
-                            <div className="h-title glitch-effect" data-text={name}>
+                            <h1 className="h-title glitch-effect" data-text={name}>
                                 {name}
-                            </div>
+                            </h1>
                             {withBreadcrumbs ?
                                 <Breadcrumb name={name} linkHref={linkHref} linkParent={linkParent}
                                             parentName={parentName}/> : (
