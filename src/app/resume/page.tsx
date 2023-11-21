@@ -35,17 +35,15 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
     return (
-        <>
-            <Section name="Resume" linkHref="resume" withBreadcrumbs={true}>
-                <AboutSection></AboutSection>
-                <ResumeSection columns={[educationColumn]}/>
-                <ResumeSection columns={[experienceColumn]}/>
-                <SkillSection title="Soft Skills" items={softSkillData} type={Type.Dot}></SkillSection>
-                <SkillSection title="Hard Skills" items={hardSkillData}></SkillSection>
-                <SkillSection title="Other Skills" items={otherSkillData} type={Type.Circle}></SkillSection>
-                <ListSkillSection title="Knowledge" items={knowledgeData}></ListSkillSection>
-                <FocusedSection title="Focused" items={focusedData}></FocusedSection>
-            </Section>
-        </>
+        <Section name="Resume" linkHref="resume" withBreadcrumbs={true}>
+            <AboutSection></AboutSection>
+            <ResumeSection columns={[educationColumn]}/>
+            <ResumeSection columns={[experienceColumn]}/>
+            <SkillSection title="Soft Skills" items={softSkillData} type={Type.Dot}></SkillSection>
+            <SkillSection title="Hard Skills" items={hardSkillData}></SkillSection>
+            <SkillSection title="Other Skills" items={otherSkillData} type={Type.Circle}></SkillSection>
+            <ListSkillSection title="Knowledge" items={knowledgeData}></ListSkillSection>
+            <FocusedSection title="Focused" items={focusedData}></FocusedSection>
+        </Section>
     );
 }

@@ -15,7 +15,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({id, category, permalink, t
         <div key={id} className={`box-item ${category}`}>
             <div className="image">
                 <Link href={permalink} className="mouse-hover">
-                    <Image src={image} alt={title} width={500} height={500}/>
+                    <Image src={image} alt={title} width={500} height={500} placeholder="blur"/>
                     <span className="info">
                         <span className="centrize full-width">
                              <span className="vertical-center">

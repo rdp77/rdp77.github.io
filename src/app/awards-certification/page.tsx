@@ -25,11 +25,9 @@ export const metadata: Metadata = {
 
 export default function AwardsPage() {
     return (
-        <>
-            <Section name="Awards & Certification" linkHref="awards" withBreadcrumbs={true}>
-                <ListSection columns={[awardsColumn]}/>
-                <ListSection columns={[certificationColumn]}/>
-            </Section>
-        </>
+        <Section name="Awards & Certification" linkHref="awards-certification" withBreadcrumbs={true}>
+            <ListSection columns={[awardsColumn]}/>
+            <ListSection columns={[certificationColumn]}/>
+        </Section>
     );
 }

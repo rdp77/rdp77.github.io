@@ -13,10 +13,8 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
     return (
-        <>
-            <Section name="Portfolio" linkHref="portfolio" withBreadcrumbs={true}>
-                <WorkSection></WorkSection>
-            </Section>
-        </>
+        <Section name="Portfolio" linkHref="portfolio" withBreadcrumbs={true}>
+            <WorkSection></WorkSection>
+        </Section>
     );
 }
