@@ -18,11 +18,12 @@ export interface SoftSkillData {
 const softSkillData: SoftSkillData[] = [
     {
         icon: faCode,
-        name: "Front-end",
+        name: "Development Software",
         description: (
             <p>
-                Always learn new technology by relying on the information spread on the internet and then applying it to
-                the web front-end.
+                Take action and add to the portfolio personally or as a team by creating an organization for While we
+                create websites based on client requests, we also take the initiative to sell products. You can search
+                for it with keywords <a target="_blank" className="link" href="https://www.wreative.com/">Wreative</a>.
             </p>),
     },
     {
@@ -58,7 +59,7 @@ const softSkillData: SoftSkillData[] = [
         description: (
             <p>
                 Providing support to the community, clients, and even internet citizens like me to create <a
-                target="_blank" rel="noopener" className="link" href="https://www.backupotak.com/">blogs</a> and join
+                target="_blank" className="link" href="https://www.backupotak.com/">blogs</a> and join
                 the community.
             </p>),
     },
