@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         alternateLocale: 'id',
         title: pageTitle,
         description: WEBSITE_DESCRIPTION,
-        url: `coontact`,
+        url: `contact`,
         countryName: 'Indonesia',
         images: defaultImage.src,
     },
