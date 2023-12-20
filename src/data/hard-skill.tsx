@@ -13,12 +13,12 @@ const hardSkillData: HardSkillData[] = [
         percentage: 80
     },
     {
-        name: "Design",
-        percentage: 77
+        name: "UI/UX",
+        percentage: 80
     },
     {
         name: "Content Creator",
-        percentage: 80
+        percentage: 77
     },
 ];
 
