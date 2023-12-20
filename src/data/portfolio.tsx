@@ -17,6 +17,10 @@ import Veyaz from "@/data/portfolio/veyaz";
 import KSPSumberRejeki from "@/data/portfolio/ksp-sumber-rejeki";
 import Andromart from "@/data/portfolio/andromart";
 import BatuBeling from "@/data/portfolio/batubeling";
+import FarmerDistribution from "@/data/portfolio/farmer-distribution";
+import AsiaCommerce from "@/data/portfolio/asiacommerce";
+import HardwareMaintenanceManagement from "@/data/portfolio/hmm";
+import PolaPedia from "@/data/portfolio/polapedia";
 
 export interface PortfolioData {
     id: number;
@@ -181,7 +185,7 @@ export const portfolioData: PortfolioData[] = [
         keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "App",
         image: imageAssets.FarmerDistribution,
-        content: <NetworkInstallationUniversityAirlangga/>
+        content: <FarmerDistribution/>
     },
     {
         id: 18,
@@ -244,7 +248,7 @@ export const portfolioData: PortfolioData[] = [
         keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "App",
         image: imageAssets.AsiaCommerce,
-        content: <NetworkInstallationUniversityAirlangga/>
+        content: <AsiaCommerce/>
     },
     {
         id: 25,
@@ -253,7 +257,7 @@ export const portfolioData: PortfolioData[] = [
         keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "App",
         image: imageAssets.PolaPedia,
-        content: <NetworkInstallationUniversityAirlangga/>
+        content: <PolaPedia/>
     },
     {
         id: 26,
@@ -271,7 +275,7 @@ export const portfolioData: PortfolioData[] = [
         keywords: ["Moh", "Ravi", "Dwi", "Putra", "rdp77"],
         category: "App Mobile",
         image: imageAssets.HMM,
-        content: <NetworkInstallationUniversityAirlangga/>
+        content: <HardwareMaintenanceManagement/>
     },
     {
         id: 28,
