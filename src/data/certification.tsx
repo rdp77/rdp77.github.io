@@ -86,9 +86,9 @@ const certificationData: CertificationData[] = [
     },
     {
         id:14,
-        title: "Cisco",
-        name: "Cisco IT Essentials",
-        desc: "",
+        title: "Cisco Networking Academy",
+        name: "IT Essentials",
+        desc: "#9190197",
     },
     {
         id:15,
@@ -113,6 +113,36 @@ const certificationData: CertificationData[] = [
         title: "PT. Rahajasa Media Internet",
         name: "Certificate Of Competency",
         desc: "135A/PIMP/SMKR.SBY/III/2018",
+    },
+    {
+        id:19,
+        title: "BuildWithAngga",
+        name: "Flutter Mobile Developer",
+        desc: "ToYhyizkTl",
+    },
+    {
+        id:20,
+        title: "Karier.mu",
+        name: "Menyusun Strategi Pemasaran dan Penjualan dengan Kecerdasan Buatan (AI)",
+        desc: "#9190197",
+    },
+    {
+        id:21,
+        title: "Badan Nasional Sertifikasi Profesi (BNSP)",
+        name: "Software Development",
+        desc: "J.62019.251400.5.0000285.2021",
+    },
+    {
+        id:22,
+        title: "Great Learning",
+        name: "Software Testing Fundamentals",
+        desc: "",
+    },
+    {
+        id:23,
+        title: "IBM",
+        name: "Python for Data Science",
+        desc: "#9190197",
     },
 ];
 

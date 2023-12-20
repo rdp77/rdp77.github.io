@@ -7,9 +7,15 @@ const SportsSkuyy: React.FC = () => {
             <p>
                 This application is a simple application that functions to track exercise activities based on the
                 level that has been executed, this application also records calories from the movements that have been
-                done. In each movement, the number of calories burned is set and this is based on our team&apos;s analysis.
+                done. In each movement, the number of calories burned is set and this is based on our team&apos;s
+                analysis.
                 This application is built using Java and Firebase as realtime data.
             </p>
+            <h4>Tech Stacks :</h4>
+            <ul>
+                <li>- Flutter</li>
+                <li>- Firebase Realtime Database</li>
+            </ul>
         </div>
     );
 };

@@ -9,6 +9,10 @@ const TrafficLightSimulation: React.FC = () => {
                 that will run alternately with the time it runs at the traffic light. This program is built with the
                 VB.NET programming language.
             </p>
+            <h4>Tech Stacks :</h4>
+            <ul>
+                <li>- Visual Basic .NET</li>
+            </ul>
         </div>
     );
 };

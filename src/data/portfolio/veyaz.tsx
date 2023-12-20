@@ -10,6 +10,13 @@ const Veyaz: React.FC = () => {
                 Bootstrap and jQuery as a javascript library, Veyaz also supports asynchronous web applications
                 (server side processing) such as AJAX and axios.
             </p>
+            <h4>Tech Stacks :</h4>
+            <ul>
+                <li>- Laravel Framework</li>
+                <li>- MySQL</li>
+                <li>- Laravel Liveware</li>
+                <li>- Laragon for Local Development</li>
+            </ul>
         </div>
     );
 };

@@ -10,6 +10,13 @@ const StackGames: React.FC = () => {
                 this page and are not published on the front page of the stack games, this makes the page even
                 more difficult to access. The game stack was created using MongoDB as the NoSQL database.
             </p>
+            <h4>Tech Stacks :</h4>
+            <ul>
+                <li>- Laravel Framework</li>
+                <li>- PostGreSQL</li>
+                <li>- AJAX</li>
+                <li>- Laragon for Local Development</li>
+            </ul>
         </div>
     );
 };

@@ -10,6 +10,11 @@ const NetworkInstallationUniversityAirlangga: React.FC = () => {
                 We did the network installation installed on the 5th floor of the building,
                 the installation was carried out by 6 people and also including me.
             </p>
+            <p>
+                Installation was carried out within 1 day, with several stages such as survey, installation and the last
+                is finishing. finishing. It was done quickly because several places had been provided, making it easier
+                for my team to execute. making it easier for my team to execute immediately.
+            </p>
         </div>
     );
 };
