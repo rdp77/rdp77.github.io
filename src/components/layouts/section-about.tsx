@@ -34,7 +34,7 @@ const AboutSection = () => {
                     </div>
                     <div className="bts">
                         <a
-                            href="https://drive.google.com/file/d/11hmDAS5JmTgjmmf4KoB4SjBZMwnFWsqy/view"
+                            href="https://drive.google.com/file/d/1i21Utnz47t_iMScqVPwz_LIx5zS2RYY3/view"
                             target="_blank"
                             className="btn fill link"
                             data-text="Download CV"

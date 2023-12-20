@@ -1,9 +1,5 @@
 import React from "react";
 
-interface item {
-    name: string;
-}
-
 interface ListSectionProps {
     title: string;
     items: {

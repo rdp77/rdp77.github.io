@@ -21,8 +21,8 @@ const otherSkillData: OtherSkillData[] = [
         percentage: 85
     },
     {
-        name: "Microcontroller",
-        percentage: 76
+        name: "DevOps",
+        percentage: 77
     }
 ];
 

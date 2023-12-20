@@ -87,6 +87,8 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
             {/* eslint-disable-next-line @next/next/no-css-tags */}
             <link rel="stylesheet" href="/assets/css/layout.css"/>
             {/* eslint-disable-next-line @next/next/no-css-tags */}
+            <link rel="stylesheet" href="/assets/css/ionicons.css"/>
+            {/* eslint-disable-next-line @next/next/no-css-tags */}
             <link rel="stylesheet" href="/assets/css/animate.min.css"/>
             {/* eslint-disable-next-line @next/next/no-css-tags */}
             <link rel="stylesheet" href="/assets/css/orange.css"/>
@@ -117,7 +119,8 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
                 name="search engines"
                 content="aeiwi, alexa, alltheWeb, altavista, aol netfind, anzwers, canada, directhit, euroseek, excite, overture, go, google, hotbot. infomak, kanoodle, lycos, mastersite, national directory, northern light, searchit, simplesearch, Websmostlinked, webtop, what-u-seek, aol, yahoo, webcrawler, infoseek, excite, magellan, looksmart, bing, cnet, googlebot"
             />
-            <meta name="ahrefs-site-verification" content="b850a8261da5283732a7d275f2ca5d60d7241d12a5e3ed0e6f344d91cb22721c"/>
+            <meta name="ahrefs-site-verification"
+                  content="b850a8261da5283732a7d275f2ca5d60d7241d12a5e3ed0e6f344d91cb22721c"/>
 
             {/*Color*/}
             <meta content="#26272c" name="theme-color"/>

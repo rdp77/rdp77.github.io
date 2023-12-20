@@ -1286,8 +1286,8 @@ a.btn,
 }
 
 .skills.list ul li .name:before {
-  font-family: "Font Awesome 6 Free";
-  content: "\f00c";
+  font-family: "Ionicons";
+  content: "\f121";
   position: absolute;
   left: 0;
   top: 3px;

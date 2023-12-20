@@ -26,12 +26,18 @@ const experienceData: ExperienceData[] = [
     },
     {
         id: 4,
-        title: "2020 - 2021",
-        name: "Web Developer - CV. Batu Beling",
-        desc: "Become a Fullstack Developer by developing and creating internal systems the company uses the Laravel Framework, besides that I also act as IT Support if needed and carry out routine maintenance of the CMS website. I also set the strategy related to digital marketing needed to Get more feedback on social media and websites.",
+        title: "2018 - 2020",
+        name: "Full Stack Developer - Wreative",
+        desc: "Creating trusted branding, as well as introducing superior products to facilitate data processing and maintenance. Create custom application development services, maintenance and portfolio websites to make it easier to raise integrity.",
     },
     {
         id: 5,
+        title: "2020 - 2021",
+        name: "Full Stack Developer - CV. Batu Beling",
+        desc: "Become a Fullstack Developer by developing and creating internal systems the company uses the Laravel Framework, besides that I also act as IT Support if needed and carry out routine maintenance of the CMS website. I also set the strategy related to digital marketing needed to Get more feedback on social media and websites.",
+    },
+    {
+        id: 6,
         title: "2022 - Now",
         name: "Back End Developer - AsiaCommerce Network",
         desc: "Build API Service for mobile and Front End needs, make improvements and maintenance to available APIs and learn to implement new technologies such as GraphQL, currently still using the Laravel Framework with CI / CD support.",

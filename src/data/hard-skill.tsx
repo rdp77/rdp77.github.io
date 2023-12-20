@@ -6,7 +6,7 @@ export interface HardSkillData {
 const hardSkillData: HardSkillData[] = [
     {
         name: "Programming",
-        percentage: 90
+        percentage: 95
     },
     {
         name: "Networking",
@@ -14,7 +14,7 @@ const hardSkillData: HardSkillData[] = [
     },
     {
         name: "UI/UX",
-        percentage: 80
+        percentage: 89
     },
     {
         name: "Content Creator",
