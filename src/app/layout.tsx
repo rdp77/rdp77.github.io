@@ -3,6 +3,7 @@ import {WEBSITE_NAME} from "@/data/constant/summary";
 import {iconAssets} from "@/data/icon-assets";
 import {config} from '@fortawesome/fontawesome-svg-core'
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import {Metadata} from "next";
 import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta-data";
@@ -77,6 +78,7 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
     return (
         <html className={robotoMono.className} lang="en">
         <head>
+            <title>{WEBSITE_NAME}</title>
             {/* eslint-disable-next-line @next/next/no-page-custom-font */}
             <link
                 href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic&display=swap"
@@ -138,8 +140,9 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
         </head>
         <body>
         <main>
-            {children}
+        {children}
         </main>
+        <SpeedInsights />
         <Analytics />
         </body>
         </html>
