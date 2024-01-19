@@ -1,8 +1,8 @@
 import React from 'react';
 import {WEBSITE_NAME} from "@/data/constant/summary";
-import Script from "next/script";
 import {iconAssets} from "@/data/icon-assets";
 import {config} from '@fortawesome/fontawesome-svg-core'
+import { Analytics } from '@vercel/analytics/react';
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import {Metadata} from "next";
 import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta-data";
@@ -140,16 +140,8 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
         <main>
             {children}
         </main>
+        <Analytics />
         </body>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-51LP1W0ZK4"/>
-        <Script id="google-analytics">
-            {`
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', 'G-51LP1W0ZK4');
-                `}
-        </Script>
         </html>
     );
 };
