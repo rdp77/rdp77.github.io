@@ -78,7 +78,6 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
     return (
         <html className={robotoMono.className} lang="en">
         <head>
-            <title>{WEBSITE_NAME}</title>
             {/* eslint-disable-next-line @next/next/no-page-custom-font */}
             <link
                 href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic&display=swap"
@@ -137,10 +136,13 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
             <link rel="icon" type="image/png" sizes="96x96" href={iconAssets.icon96}/>
             <link rel="icon" type="image/png" sizes="16x16" href={iconAssets.icon16}/>
             <meta name="msapplication-TileImage" content={iconAssets.icon144}/>
+
+            {/*Viewport*/}
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
         </head>
         <body>
         <main>
-        {children}
+            {children}
         </main>
         <SpeedInsights />
         <Analytics />

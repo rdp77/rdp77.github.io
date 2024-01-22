@@ -16,7 +16,6 @@ import {Metadata} from "next";
 import {Type} from "@/data/enum/type"
 import {WEBSITE_NAME} from "@/data/constant/summary";
 import {WEBSITE_DESCRIPTION} from "@/data/constant/meta-data";
-import page from "@/app/portfolio/[slug]/page";
 import defaultImage from "@/assets/image/avatar.png";
 
 const experienceColumn = {
