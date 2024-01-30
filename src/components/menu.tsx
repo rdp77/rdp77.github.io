@@ -19,7 +19,7 @@ function MenuItem({href, title, button = false}: {
 
     return (
         <li itemProp="name">
-            <Link href={href} className={customClass} itemProp={"name"} rel="noopener noreferrer">{title}</Link>
+            <Link href={href} className={customClass} itemProp={"name"}>{title}</Link>
         </li>
     );
 }

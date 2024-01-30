@@ -1,4 +1,7 @@
+const production = process.env.NODE_ENV === 'production'
+
 const withPWA = require('next-pwa')({
+    disable: !production,
     dest: 'public'
 })
 

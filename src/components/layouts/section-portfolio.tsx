@@ -43,20 +43,18 @@ interface PortfolioSectionProps {
 
 const PortfolioSection: React.FC<PortfolioSectionProps> = ({portfolioData}) => {
     return (
-        <>
-            <div className="box-items">
-                {portfolioData.map((item) => (
-                    <PortfolioItem
-                        key={item.id}
-                        id={item.id}
-                        category={item.category}
-                        permalink={item.permalink}
-                        title={item.title}
-                        image={item.image}
-                    />
-                ))}
-            </div>
-        </>
+        <div className="box-items">
+            {portfolioData.map((item) => (
+                <PortfolioItem
+                    key={item.id}
+                    id={item.id}
+                    category={item.category}
+                    permalink={item.permalink}
+                    title={item.title}
+                    image={item.image}
+                />
+            ))}
+        </div>
     );
 };
 
