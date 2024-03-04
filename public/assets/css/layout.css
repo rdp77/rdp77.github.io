@@ -14,7 +14,7 @@
 	11. Blog
 	12. Footer
 	13. Popups
-  14. Layout Creative
+    14. Layout Creative
 */
 
 /* 1. Header */
@@ -258,7 +258,7 @@ header .head-top .top-menu ul li.active .btn {
 
 .section.started .started-content .h-title {
   font-size: 68px;
-  font-family: "Roboto Mono";
+  font-family: var(--font-roboto);
   color: #141414;
   font-weight: 700;
   text-transform: uppercase;
@@ -1082,7 +1082,7 @@ footer .copy {
 .section.started.layout-post-creative .started-content .h-title {
   font-size: 34px;
   line-height: 1.4;
-  font-family: "Roboto";
+  font-family: var(--font-roboto);
   font-weight: 500;
   text-transform: none;
   letter-spacing: 0em;

@@ -19,19 +19,8 @@ interface ContentBoxProps {
 const Section: React.FC<ContentBoxProps> = (
     {parentName, linkParent, name, linkHref, withBreadcrumbs = false, subtitle = [], children}) => {
     const [showMouseBtn, setShowMouseBtn] = useState(true);
-    const [sectionHeight, setSectionHeight] = useState<number>(0);
 
     useEffect(() => {
-        /* Resize function */
-        const handleResize = () => {
-            const height = window.innerHeight - 60;
-            setSectionHeight(height);
-        };
-
-        handleResize();
-
-        window.addEventListener("resize", handleResize);
-
         const handleScroll = () => {
             if (window.scrollY >= 1) {
                 setShowMouseBtn(false);
@@ -43,7 +32,6 @@ const Section: React.FC<ContentBoxProps> = (
         window.addEventListener("scroll", handleScroll);
 
         return () => {
-            window.removeEventListener("resize", handleResize);
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
@@ -62,7 +50,7 @@ const Section: React.FC<ContentBoxProps> = (
 
     return (
         <>
-            <div className="section started" style={{height: `${sectionHeight}px`}}>
+            <div className="section started" style={{height: "90vh"}}>
                 <div className="centrize full-width">
                     <div className="vertical-center">
                         <div className="started-content">
@@ -85,7 +73,7 @@ const Section: React.FC<ContentBoxProps> = (
                     </a>
                 )}
             </div>
-            {children}
+                {children}
         </>
     )
         ;

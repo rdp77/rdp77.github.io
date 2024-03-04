@@ -24,7 +24,6 @@ export const RELATED_LINKS: RelatedLinks[] = [
     {label: "Github", link: "https://github.com/rdp77", icon: faGithub},
     {label: "YouTube", link: "https://www.youtube.com/@ravidwiputra", icon: faYoutube},
     {label: "Facebook", link: "https://web.facebook.com/ravidwiputra77/", icon: faFacebook},
-    {label: "Blog", link: "https://www.backupotak.com/", icon: faBloggerB},
     {label: "Linkedin", link: "https://www.linkedin.com/in/ravidwiputra", icon: faLinkedin},
     {label: "Telegram", link: "https://t.me/rdp77", icon: faTelegram},
     {label: "Instagram", link: "https://www.instagram.com/ravidwiputraa/", icon: faInstagram},

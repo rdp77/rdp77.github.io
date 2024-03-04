@@ -2,22 +2,32 @@ import React from 'react';
 import {WEBSITE_NAME} from "@/data/constant/summary";
 import {iconAssets} from "@/data/icon-assets";
 import {config} from '@fortawesome/fontawesome-svg-core'
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import {Analytics} from '@vercel/analytics/react';
+import {SpeedInsights} from '@vercel/speed-insights/next';
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import {Metadata} from "next";
 import {WEBSITE_DESCRIPTION, WEBSITE_KEYWORDS} from "@/data/constant/meta-data";
 import {Roboto_Mono} from 'next/font/google';
 import defaultImage from "@/assets/image/avatar.png";
+import Loader from "@/components/loader";
+import Menu from "@/components/menu";
+import Footer from "@/components/footer";
+import Cursor from "@/components/cursor";
+import "@css/basic.css";
+import "@css/layout.css";
+import "@css/ionicons.css";
+import "@css/animate.min.css";
+import "@css/orange.css";
+import "@css/dark.css";
 
 config.autoAddCss = false
 
 const robotoMono = Roboto_Mono({
-    weight: ['100', '300', '400', '500', '700'],
-    style: ['normal', 'italic'],
-    subsets: ['latin', 'cyrillic'],
-    display: 'swap',
-})
+    subsets: ["latin"],
+    weight: ["100", "300", "400", "500", "700"],
+    variable: "--font-roboto",
+    display: "swap",
+});
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -78,24 +88,6 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
     return (
         <html className={robotoMono.className} lang="en">
         <head>
-            {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-            <link
-                href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic&display=swap"
-                rel="stylesheet"
-            />
-            {/* eslint-disable-next-line @next/next/no-css-tags */}
-            <link rel="stylesheet" href="/assets/css/basic.css"/>
-            {/* eslint-disable-next-line @next/next/no-css-tags */}
-            <link rel="stylesheet" href="/assets/css/layout.css"/>
-            {/* eslint-disable-next-line @next/next/no-css-tags */}
-            <link rel="stylesheet" href="/assets/css/ionicons.css"/>
-            {/* eslint-disable-next-line @next/next/no-css-tags */}
-            <link rel="stylesheet" href="/assets/css/animate.min.css"/>
-            {/* eslint-disable-next-line @next/next/no-css-tags */}
-            <link rel="stylesheet" href="/assets/css/orange.css"/>
-            {/* eslint-disable-next-line @next/next/no-css-tags */}
-            <link rel="stylesheet" href="/assets/css/dark.css"/>
-
             {/*Meta Robots Search*/}
             <meta charSet="UTF-8"/>
             <meta httpEquiv="Content-Language" content="all-language"/>
@@ -140,12 +132,22 @@ const RootLayout: React.FC<LayoutProps> = ({children}) => {
             {/*Viewport*/}
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
         </head>
-        <body>
-        <main>
-            {children}
-        </main>
-        <SpeedInsights />
-        <Analytics />
+        <body className={robotoMono.variable}>
+        <Loader/>
+        <Cursor/>
+        <div className="container">
+            <Menu/>
+            <div className="wrapper">
+                {children}
+            </div>
+            <Footer/>
+            <div className="line top"></div>
+            <div className="line bottom"></div>
+            <div className="line left"></div>
+            <div className="line right"></div>
+        </div>
+        <SpeedInsights/>
+        <Analytics/>
         </body>
         </html>
     );
