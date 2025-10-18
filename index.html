@@ -1,76 +1,473 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class=""> <!-- 'dark' class will be toggled here -->
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="3;url=https://ravidwiputra.web.id">
-    <title>Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moh Ravi Dwi Putra - Developer & Creator</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome (for Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         body {
-            background: #ecf0f1;
+            font-family: 'Inter', sans-serif;
+        }
+        .saweria-yellow {
+            background-color: #FFD400;
+        }
+        .saweria-yellow:hover {
+            background-color: #E6BF00;
         }
 
-        .load {
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6); }
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        /* Stagger Animation for Links */
+        .link-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .link-item:nth-child(1) { animation-delay: 0.1s; }
+        .link-item:nth-child(2) { animation-delay: 0.2s; }
+        .link-item:nth-child(3) { animation-delay: 0.3s; }
+        .link-item:nth-child(4) { animation-delay: 0.4s; }
+        .link-item:nth-child(5) { animation-delay: 0.5s; }
+        .link-item:nth-child(6) { animation-delay: 0.6s; }
+        .link-item:nth-child(7) { animation-delay: 0.7s; }
+        .link-item:nth-child(8) { animation-delay: 0.8s; }
+        .link-item:nth-child(9) { animation-delay: 0.9s; }
+        .link-item:nth-child(10) { animation-delay: 1.0s; }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Fixed Typing Animation */
+        .typing-container {
+            position: relative;
+            display: inline-block;
+            min-height: 1.5em;
+        }
+
+        .typing-text {
+            opacity: 0;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: currentColor;
+            animation: blink 1s infinite;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            /*change these sizes to fit into your project*/
-            width: 100px;
-            height: 100px;
+            top: 0;
         }
 
-        .load hr {
-            border: 0;
-            margin: 0;
-            width: 40%;
-            height: 40%;
-            position: absolute;
-            border-radius: 50%;
-            animation: spin 2s ease infinite;
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
 
-        .load :first-child {
-            background: #19a68c;
-            animation-delay: -1.5s;
+        /* Icon Rotation on Hover */
+        .rotate-icon:hover i {
+            transform: rotate(360deg);
+            transition: transform 0.6s ease-in-out;
         }
 
-        .load :nth-child(2) {
-            background: #f63d3a;
-            animation-delay: -1s;
+        /* Bounce Animation for Social Icons */
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            animation: bounce 0.6s ease;
         }
 
-        .load :nth-child(3) {
-            background: #fda543;
-            animation-delay: -0.5s;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
-        .load :last-child {
-            background: #193b48;
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.3s ease;
         }
 
-        @keyframes spin {
-            0%,
-            100% {
-                transform: translate(0);
-            }
-            25% {
-                transform: translate(160%);
-            }
-            50% {
-                transform: translate(160%, 160%);
-            }
-            75% {
-                transform: translate(0, 160%);
-            }
+        .card-hover:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Shimmer Effect */
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
     </style>
+    <script>
+        // Tailwind dark mode configuration
+        tailwind.config = {
+          darkMode: 'class',
+        }
+    </script>
 </head>
-<body>
-<div class="load">
-    <hr/>
-    <hr/>
-    <hr/>
-    <hr/>
-</div>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <!-- Main Container -->
+    <div class="w-full max-w-4xl mx-auto p-4 relative">
+        
+        <!-- Theme Toggle Button -->
+        <div class="absolute top-4 right-4 z-10">
+            <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5 rotate-icon">
+                <i id="theme-toggle-dark-icon" class="fa-regular fa-moon text-lg hidden transition-transform duration-300"></i>
+                <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-lg hidden transition-transform duration-300"></i>
+            </button>
+        </div>
+
+        <!-- Profile Section -->
+        <header class="text-center pt-12 pb-6">
+            <!-- Profile Picture -->
+            <img class="w-32 h-32 rounded-full object-cover border-4 border-white dark:border-gray-700 shadow-lg mx-auto float-animation pulse-glow" src="https://placehold.co/200x200/3B82F6/FFFFFF?text=RDP" alt="Moh Ravi Dwi Putra">
+            
+            <!-- Profile Info -->
+            <div class="mt-4">
+                <div class="flex items-center justify-center gap-2">
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Moh Ravi Dwi Putra</h1>
+                    <!-- Verified Badge (SVG) -->
+                    <svg class="w-6 h-6 text-blue-500 rotate-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a.75.75 0 00-1.06-1.06L9 10.94l-1.72-1.72a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.06 0l3.75-3.75z" clip-rule="evenodd" /></svg>
+                </div>
+                <p class="text-lg text-gray-500 dark:text-gray-400 mt-1">@rdp77</p>
+                <div class="mt-3 max-w-2xl mx-auto">
+                    <p class="text-gray-700 dark:text-gray-300">Full Stack Developer | Content Creator | Tech Enthusiast</p>
+                    <div class="typing-container mt-2 text-gray-700 dark:text-gray-300">
+                        <span id="typing-text" class="typing-text">Building amazing web experiences and sharing knowledge with the community.</span>
+                        <span class="typing-cursor" id="typing-cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Links Section -->
+        <main class="mt-8 space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Connect With Me</h2>
+            
+            <!-- Link Item 1: GitHub -->
+            <a href="https://github.com/rdp77" target="_blank" class="link-item group flex items-center w-full p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm card-hover relative overflow-hidden">
+                <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                <div class="text-2xl mr-4 rotate-icon"><i class="fab fa-github text-gray-600 dark:text-gray-300"></i></div>
+                <div class="text-left flex-grow relative z-10">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">GitHub</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Check out my projects and contributions.</p>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </a>
+
+            <!-- Link Item 2: YouTube -->
+            <a href="https://youtube.com/@ravidwiputra" target="_blank" class="link-item group flex items-center w-full p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm card-hover relative overflow-hidden">
+                <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                <div class="text-2xl mr-4 rotate-icon"><i class="fab fa-youtube text-gray-600 dark:text-gray-300"></i></div>
+                <div class="text-left flex-grow relative z-10">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">YouTube</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Tech tutorials and development videos.</p>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </a>
+
+            <!-- Link Item 3: Instagram -->
+            <a href="https://instagram.com/ravidwiputraa" target="_blank" class="link-item group flex items-center w-full p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm card-hover relative overflow-hidden">
+                <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                <div class="text-2xl mr-4 rotate-icon"><i class="fab fa-instagram text-gray-600 dark:text-gray-300"></i></div>
+                <div class="text-left flex-grow relative z-10">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">Instagram</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Behind the scenes and daily updates.</p>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </a>
+
+            <!-- Link Item 4: TikTok -->
+            <a href="https://tiktok.com/@ravidwiputraa" target="_blank" class="link-item group flex items-center w-full p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm card-hover relative overflow-hidden">
+                <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                <div class="text-2xl mr-4 rotate-icon"><i class="fab fa-tiktok text-gray-600 dark:text-gray-300"></i></div>
+                <div class="text-left flex-grow relative z-10">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">TikTok</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Quick coding tips and tech content.</p>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </a>
+
+            <!-- Link Item 5: X (Twitter) -->
+            <a href="https://x.com/ravidwiputra" target="_blank" class="link-item group flex items-center w-full p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm card-hover relative overflow-hidden">
+                <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                <div class="text-2xl mr-4 rotate-icon"><i class="fab fa-x-twitter text-gray-600 dark:text-gray-300"></i></div>
+                <div class="text-left flex-grow relative z-10">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">X (Twitter)</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Tech thoughts and quick updates.</p>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </a>
+
+            <!-- Link Item 6: LinkedIn -->
+            <a href="https://linkedin.com/in/ravidwiputra" target="_blank" class="link-item group flex items-center w-full p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm card-hover relative overflow-hidden">
+                <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                <div class="text-2xl mr-4 rotate-icon"><i class="fab fa-linkedin text-gray-600 dark:text-gray-300"></i></div>
+                <div class="text-left flex-grow relative z-10">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">LinkedIn</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Professional network and career updates.</p>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </a>
+
+            <!-- Link Item 7: Blog -->
+            <a href="https://backupotak.com" target="_blank" class="link-item group flex items-center w-full p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm card-hover relative overflow-hidden">
+                <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                <div class="text-2xl mr-4 rotate-icon"><i class="fas fa-blog text-gray-600 dark:text-gray-300"></i></div>
+                <div class="text-left flex-grow relative z-10">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">My Blog</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Tech articles and tutorials on backupotak.com</p>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </a>
+
+            <!-- Link Item 8: Portfolio Website -->
+            <a href="https://ravidwiputra.web.id" target="_blank" class="link-item group flex items-center w-full p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm card-hover relative overflow-hidden">
+                <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                <div class="text-2xl mr-4 rotate-icon"><i class="fas fa-globe text-gray-600 dark:text-gray-300"></i></div>
+                <div class="text-left flex-grow relative z-10">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">Portfolio Website</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Explore my work and projects.</p>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </a>
+
+            <!-- Link Item 9: Discord -->
+            <a href="https://discord.gg/Vvstd5Jz" target="_blank" class="link-item group flex items-center w-full p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm card-hover relative overflow-hidden">
+                <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                <div class="text-2xl mr-4 rotate-icon"><i class="fab fa-discord text-gray-600 dark:text-gray-300"></i></div>
+                <div class="text-left flex-grow relative z-10">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">Discord Community</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Join our developer community discussions.</p>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </a>
+
+            <!-- Link Item 10: Email -->
+            <a href="mailto:hi@ravidwiputra.web.id" class="link-item group flex items-center w-full p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm card-hover relative overflow-hidden">
+                <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                <div class="text-2xl mr-4 rotate-icon"><i class="fas fa-envelope text-gray-600 dark:text-gray-300"></i></div>
+                <div class="text-left flex-grow relative z-10">
+                    <h3 class="font-semibold text-gray-900 dark:text-white">Email</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Get in touch for collaborations.</p>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </a>
+        </main>
+
+        <!-- Support Section -->
+        <section class="mt-12 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Support My Work</h2>
+            <div class="space-y-4">
+                <!-- Baris Pertama: Saweria & Ko-fi -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <!-- Saweria -->
+                    <a href="https://saweria.co/rdp77" target="_blank" class="group flex items-center w-full p-4 saweria-yellow rounded-lg shadow-sm card-hover text-gray-900 relative overflow-hidden">
+                        <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                        <div class="text-2xl mr-4 rotate-icon"><i class="fas fa-heart"></i></div>
+                        <div class="text-left flex-grow relative z-10">
+                            <h3 class="font-semibold">Saweria</h3>
+                            <p class="text-sm opacity-80">Help fuel my creative journey!</p>
+                        </div>
+                        <div class="group-hover:text-gray-700 transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    </a>
+
+                    <!-- Ko-fi -->
+                    <a href="https://ko-fi.com/rdp77" target="_blank" class="group flex items-center w-full p-4 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-sm card-hover text-white relative overflow-hidden">
+                        <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                        <div class="text-2xl mr-4 rotate-icon"><i class="fas fa-coffee"></i></div>
+                        <div class="text-left flex-grow relative z-10">
+                            <h3 class="font-semibold">Ko-fi</h3>
+                            <p class="text-sm opacity-90">Show some love and support!</p>
+                        </div>
+                        <div class="group-hover:text-blue-200 transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    </a>
+                </div>
+
+                <!-- Baris Kedua: GitHub Sponsors (Full Width) -->
+                <a href="https://github.com/sponsors/rdp77" target="_blank" class="group flex items-center w-full p-4 bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow-sm card-hover text-white relative overflow-hidden">
+                    <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100"></div>
+                    <div class="text-2xl mr-4 rotate-icon"><i class="fab fa-github"></i></div>
+                    <div class="text-left flex-grow relative z-10">
+                        <h3 class="font-semibold">GitHub Sponsors</h3>
+                        <p class="text-sm opacity-90">Sponsor my open source projects and contributions.</p>
+                    </div>
+                    <div class="group-hover:text-gray-300 transition-colors relative z-10"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Social Media Icons -->
+        <footer class="flex items-center justify-center gap-6 mt-8 py-4">
+            <a href="https://github.com/rdp77" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 social-icon"><i class="fab fa-github fa-2x"></i></a>
+            <a href="https://youtube.com/@rdp77" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 social-icon"><i class="fab fa-youtube fa-2x"></i></a>
+            <a href="https://instagram.com/rdp77" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 social-icon"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://x.com/rdp77" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 social-icon"><i class="fab fa-x-twitter fa-2x"></i></a>
+            <a href="https://discord.gg/yourserverinvite" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 social-icon"><i class="fab fa-discord fa-2x"></i></a>
+        </footer>
+
+        <!-- Copyright -->
+        <div class="text-center text-gray-500 dark:text-gray-400 text-sm mt-4 pb-8">
+            © 2024 Moh Ravi Dwi Putra. Made with ❤️ and lots of ☕
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Improved Typing Animation
+            function startTypingAnimation() {
+                const text = "Building amazing web experiences and sharing knowledge with the community.";
+                const typingTextElement = document.getElementById('typing-text');
+                const cursorElement = document.getElementById('typing-cursor');
+                let index = 0;
+
+                // Initially hide text and show cursor
+                typingTextElement.style.opacity = '1';
+                typingTextElement.textContent = '';
+                
+                function typeCharacter() {
+                    if (index < text.length) {
+                        typingTextElement.textContent += text.charAt(index);
+                        index++;
+                        setTimeout(typeCharacter, 50); // Adjust typing speed here
+                    } else {
+                        // Hide cursor after typing is complete
+                        setTimeout(() => {
+                            cursorElement.style.display = 'none';
+                        }, 2000);
+                    }
+                }
+
+                // Start typing after a short delay
+                setTimeout(typeCharacter, 1500);
+            }
+
+            // Start typing animation
+            startTypingAnimation();
+
+            // Theme Toggle Logic
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+            // Check initial theme from localStorage. Default to light mode.
+            if (localStorage.getItem('color-theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                themeToggleLightIcon.classList.remove('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggleDarkIcon.classList.remove('hidden');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                // toggle icons inside button
+                themeToggleDarkIcon.classList.toggle('hidden');
+                themeToggleLightIcon.classList.toggle('hidden');
+
+                // if set via local storage previously
+                if (localStorage.getItem('color-theme')) {
+                    if (localStorage.getItem('color-theme') === 'light') {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    }
+                // if NOT set via local storage previously
+                } else {
+                    if (document.documentElement.classList.contains('dark')) {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    } else {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    }
+                }
+            });
+
+            // Add smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Add loading animation for links
+            document.querySelectorAll('a[target="_blank"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    this.style.opacity = '0.7';
+                    setTimeout(() => {
+                        this.style.opacity = '1';
+                    }, 200);
+                });
+            });
+
+            // Add scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.link-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
 </body>
 </html>
