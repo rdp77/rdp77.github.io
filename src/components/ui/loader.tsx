@@ -1,21 +1,29 @@
-"use client";
+"use client"
 
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
+import { motion } from "motion/react"
+import { cn } from "@/lib/utils"
+import { useRedirect } from "@/hooks/use-redirect"
 
 interface LoaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  title?: string;
-  subtitle?: string;
-  size?: "sm" | "md" | "lg";
+  title?: string
+  subtitle?: string
+  size?: "sm" | "md" | "lg"
+  /** Destination opened once `delay` has elapsed. Omit to never navigate. */
+  to?: string
+  /** Milliseconds to show the loader before navigating. Defaults to 3000. */
+  delay?: number
 }
 
 export default function Loader({
-  title = "Configuring your account...",
-  subtitle = "Please wait while we prepare everything for you",
+  title = "You are being redirected...",
+  subtitle = "Please wait a moment, we're taking you to your destination",
   size = "md",
+  to,
+  delay,
   className,
   ...props
-}: LoaderProps) {
+}: Readonly<LoaderProps>) {
+  useRedirect(to, delay)
   const sizeConfig = {
     sm: {
       container: "size-20",
@@ -38,15 +46,15 @@ export default function Loader({
       spacing: "space-y-4",
       maxWidth: "max-w-64",
     },
-  };
+  }
 
-  const config = sizeConfig[size];
+  const config = sizeConfig[size]
 
   return (
     <div
       className={cn(
         "flex flex-col items-center justify-center gap-8 p-8",
-        className,
+        className
       )}
       {...props}
     >
@@ -250,7 +258,7 @@ export default function Loader({
           }}
           className={cn(
             config.titleClass,
-            "font-medium text-black/90 leading-[1.15] tracking-[-0.02em] antialiased dark:text-white/90",
+            "leading-[1.15] font-medium tracking-[-0.02em] text-black/90 antialiased dark:text-white/90"
           )}
           initial={{ opacity: 0, y: 12 }}
           transition={{
@@ -281,7 +289,7 @@ export default function Loader({
           }}
           className={cn(
             config.subtitleClass,
-            "font-normal text-black/60 leading-[1.45] tracking-[-0.01em] antialiased dark:text-white/60",
+            "leading-[1.45] font-normal tracking-[-0.01em] text-black/60 antialiased dark:text-white/60"
           )}
           initial={{ opacity: 0, y: 8 }}
           transition={{
@@ -305,5 +313,5 @@ export default function Loader({
         </motion.p>
       </motion.div>
     </div>
-  );
+  )
 }

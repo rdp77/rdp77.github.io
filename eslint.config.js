@@ -6,7 +6,14 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores([
+    'dist',
+    // Third-party skill templates and tooling output, not project source.
+    '.agents',
+    'graphify-out',
+    '.remember',
+    '.codegraph',
+  ]),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [

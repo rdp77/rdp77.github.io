@@ -1,16 +1,16 @@
 {
   "0": "package.json",
-  "1": "compilerOptions",
+  "1": "tsconfig.json",
   "2": "components.json",
-  "3": "layout.tsx",
+  "3": "theme-provider.tsx",
   "4": "dependencies",
   "5": "devDependencies",
   "6": "loader.tsx",
   "7": "button.tsx",
   "8": "scripts",
-  "9": "tailwind",
-  "10": "Next.js template",
-  "11": "AGENTS.md",
-  "12": "postcss.config.mjs",
-  "13": "CLAUDE.md"
+  "9": "compilerOptions",
+  "10": "React + TypeScript + Vite + shadcn/ui",
+  "11": "compilerOptions",
+  "12": "app_globals",
+  "13": "lib_utils_cn"
 }
