@@ -1,0 +1,16 @@
+{
+  "0": "package.json",
+  "1": "compilerOptions",
+  "2": "components.json",
+  "3": "layout.tsx",
+  "4": "dependencies",
+  "5": "devDependencies",
+  "6": "loader.tsx",
+  "7": "button.tsx",
+  "8": "scripts",
+  "9": "tailwind",
+  "10": "Next.js template",
+  "11": "AGENTS.md",
+  "12": "postcss.config.mjs",
+  "13": "CLAUDE.md"
+}
