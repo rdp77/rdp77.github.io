@@ -1,7 +1,7 @@
 import Loader from "@/components/ui/loader"
 
 /** Where the loader sends the user after `REDIRECT_DELAY`. */
-const REDIRECT_TO = "https://ravidwiputra.pages.dev/"
+const REDIRECT_TO = "https://ravidwiputra.web.id/"
 /** How long the loader (and its animation) stays on screen, in milliseconds. */
 const REDIRECT_DELAY = 3000
 
