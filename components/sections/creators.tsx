@@ -2,21 +2,32 @@
 
 import { Tabs } from "radix-ui";
 import { Heart, MessageCircle, Share2, Play, Bookmark, Eye, ThumbsUp } from "lucide-react";
+import { useState } from "react";
 import { m } from "motion/react";
 import { Section } from "@/components/ui/primitives";
 import { profile } from "@/lib/profile";
+import type { Yt } from "@/lib/data/youtube";
 import { SocialIcon } from "@/components/social-icon";
 
 const soon = <span className="rounded-sm bg-carbon px-2 py-0.5 font-mono text-xs text-white">Coming soon</span>;
 const thumb = "bg-gradient-to-br from-wisteria to-tint";
 const link = (l: string) => profile.socials.find((s) => s.label === l)?.href ?? "#";
 
-function Head({ platform }: { platform: string }) {
+// Remote channel photo; falls back to the local avatar if it fails to load.
+function Avatar({ src }: { src: string }) {
+  const [url, setUrl] = useState(src);
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src={url} alt="" width={40} height={40} onError={() => setUrl("/avatar.jpg")} className="size-10 rounded-full object-cover" />;
+}
+
+function Head({ platform, live, avatar }: { platform: string; live?: boolean; avatar?: string | null }) {
   return (
     <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-      <span className="grid size-10 place-items-center bg-carbon text-white"><SocialIcon label={platform} /></span>
-      <div className="min-w-0"><p className="font-medium">@{link(platform).split("/").pop()?.replace("@", "")}</p><p className="text-xs text-faint">{platform} · posts will appear here</p></div>
-      <span className="ml-auto flex items-center gap-3">{soon}<a href={link(platform)} target="_blank" rel="noopener noreferrer" className="border border-fg px-3 py-1.5 text-xs font-medium hover:bg-tint">Follow</a></span>
+      {avatar
+        ? <Avatar src={avatar} />
+        : <span className="grid size-10 place-items-center bg-carbon text-white"><SocialIcon label={platform} /></span>}
+      <div className="min-w-0"><p className="font-medium">@{link(platform).split("/").pop()?.replace("@", "")}</p><p className="text-xs text-faint">{platform} · {live ? "latest videos" : "posts will appear here"}</p></div>
+      <span className="ml-auto flex items-center gap-3">{!live && soon}<a href={link(platform)} target="_blank" rel="noopener noreferrer" className="border border-fg px-3 py-1.5 text-xs font-medium hover:bg-tint">Follow</a></span>
     </div>
   );
 }
@@ -37,24 +48,32 @@ const TikTok = () => (
   </div>
 );
 
-// YouTube: 16:9 cards with title + meta
-const YouTube = () => (
+// YouTube: live 16:9 cards from the channel's public feed
+const nf = new Intl.NumberFormat("en", { notation: "compact" });
+const YouTube = ({ videos, avatar }: Yt) => (
   <div className="border border-line">
-    <Head platform="YouTube" />
-    <ul className="grid gap-5 p-4 sm:grid-cols-2 lg:grid-cols-3">
-      {[0, 1, 2].map((i) => (
-        <li key={i} className={i === 2 ? "max-lg:hidden" : ""}>
-          <div className={`relative aspect-video ${thumb}`}>
-            <Play className="absolute left-1/2 top-1/2 size-9 -translate-x-1/2 -translate-y-1/2 text-fg/60" aria-hidden />
-            <span className="absolute bottom-1.5 right-1.5 bg-carbon px-1.5 font-mono text-[11px] text-white">12:34</span>
-          </div>
-          <div className="mt-3 flex gap-3" aria-hidden>
-            <span className="size-9 shrink-0 rounded-full bg-line" />
-            <div className="min-w-0 flex-1 space-y-2"><div className="h-3 w-full bg-line" /><div className="h-3 w-2/3 bg-line" /><p className="flex items-center gap-3 text-xs text-faint"><span className="inline-flex items-center gap-1"><Eye size={12} />— views</span><span className="inline-flex items-center gap-1"><ThumbsUp size={12} />—</span></p></div>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <Head platform="YouTube" live={videos.length > 0} avatar={avatar} />
+    {videos.length === 0 ? <p className="p-4 text-sm text-muted">Videos unavailable right now.</p> : (
+      <ul className="grid gap-5 p-4 sm:grid-cols-2 lg:grid-cols-3">
+        {videos.map((v) => (
+          <li key={v.id}>
+            <a href={`https://www.youtube.com/watch?v=${v.id}`} target="_blank" rel="noopener noreferrer" className="group block">
+              <div className="relative aspect-video overflow-hidden bg-line">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={v.thumb} alt="" loading="lazy" className="size-full object-cover transition-transform group-hover:scale-105" />
+                <Play className="absolute left-1/2 top-1/2 size-9 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 drop-shadow transition-opacity group-hover:opacity-100" aria-hidden />
+              </div>
+              <p className="mt-3 line-clamp-2 text-sm font-medium group-hover:text-violet">{v.title}</p>
+              <p className="mt-1 flex items-center gap-3 text-xs text-faint">
+                <span className="inline-flex items-center gap-1"><Eye size={12} />{nf.format(v.views)} views</span>
+                {v.likes != null && <span className="inline-flex items-center gap-1"><ThumbsUp size={12} />{nf.format(v.likes)}</span>}
+                <time dateTime={v.published}>{new Date(v.published).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })}</time>
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
   </div>
 );
 
@@ -76,16 +95,15 @@ const Instagram = () => (
 );
 
 // Replace a tab's `content` with a real embed later; nothing else changes.
-const tabs = [
-  { id: "tiktok", label: "TikTok", content: <TikTok /> },
-  { id: "youtube", label: "YouTube", content: <YouTube /> },
-  { id: "instagram", label: "Instagram", content: <Instagram /> },
-];
-
-export function Creators() {
+export function Creators({ yt }: { yt: Yt }) {
+  const tabs = [
+    { id: "tiktok", label: "TikTok", content: <TikTok /> },
+    { id: "youtube", label: "YouTube", content: <YouTube {...yt} /> },
+    { id: "instagram", label: "Instagram", content: <Instagram /> },
+  ];
   return (
     <Section h1 id="creators" title="Content & community">
-      <p className="-mt-6 mb-8 max-w-xl text-muted">Preview of how each channel will look once content goes live. Layouts are placeholders.</p>
+      <p className="-mt-6 mb-8 max-w-xl text-muted">YouTube shows my latest videos live; TikTok and Instagram layouts are placeholders until content goes live.</p>
       <Tabs.Root defaultValue="tiktok">
         <Tabs.List aria-label="Platforms" className="flex overflow-x-auto overflow-y-hidden border-b border-line [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border-b border-line">
           {tabs.map((t) => (
