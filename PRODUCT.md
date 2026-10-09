@@ -7,7 +7,7 @@
 web
 
 ## Users
-Two equal audiences: hiring managers/clients evaluating Moh Ravi Dwi Putra (rdp77) as a full-stack developer, and developer peers/followers of his open-source and creator work. Jobs: judge credibility quickly, then contact, hire, follow, or sponsor.
+Two equal audiences: hiring managers/clients evaluating Moh Ravi Dwi Putra (rdp77) as a software engineer, and developer peers/followers of his open-source and creator work. Jobs: judge credibility quickly, then contact, hire, follow, or sponsor.
 
 ## Product Purpose
 Personal portfolio framed as a developer dashboard / "personal operating system". Shows who he is, what he has built, and how he works. Success: visitors reach contact, sponsor, or follow actions.

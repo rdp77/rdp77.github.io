@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   title: { default: `${profile.name} — ${profile.role}`, template: `%s · ${profile.name}` },
   description: profile.tagline,
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/logo-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+      { url: "/logo-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
+    ],
+  },
   openGraph: { type: "website", url: siteUrl, siteName: profile.name, title: `${profile.name} — ${profile.role}`, description: profile.tagline },
   twitter: { card: "summary_large_image", title: `${profile.name} — ${profile.role}`, description: profile.tagline },
 };

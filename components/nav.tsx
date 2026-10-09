@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, m } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User, Clapperboard, LayoutDashboard, FolderGit2, Mail } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { profile } from "@/lib/profile";
@@ -10,11 +11,11 @@ import { Container } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
 
 export const routes = [
-  { href: "/about", label: "About" },
-  { href: "/creators", label: "Creators" },
-  { href: "/", label: "Dashboard" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+  { href: "/about", icon: User, label: "About" },
+  { href: "/creators", icon: Clapperboard, label: "Creators" },
+  { href: "/", icon: LayoutDashboard, label: "Dashboard" },
+  { href: "/projects", icon: FolderGit2, label: "Projects" },
+  { href: "/contact", icon: Mail, label: "Contact" },
 ];
 
 export function Nav() {
@@ -29,9 +30,11 @@ export function Nav() {
   const isActive = (h: string) => (h === "/" ? path === "/" : path.startsWith(h));
   return (
     <header className="sticky top-0 z-40 bg-bg/80 backdrop-blur-md">
-      <div className="h-1 bg-gradient-to-r from-violet to-marigold" aria-hidden />
       <Container className="relative flex flex-wrap items-center justify-between gap-x-6 border-b border-line md:flex-nowrap">
-        <Link href="/" className="flex h-14 items-center font-mono text-sm font-medium md:h-16" onClick={() => setOpen(false)}>{profile.handle}<span className="text-violet">.</span>dev</Link>
+        <Link href="/" className="flex h-14 items-center gap-2 font-mono text-sm font-medium md:h-16" onClick={() => setOpen(false)}>
+          <Image src="/logo-light.svg" alt="" width={24} height={24} className="size-6" priority />
+          {profile.handle}
+        </Link>
         <button type="button" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen((o) => !o)}
           className="-mr-2 grid size-11 place-items-center rounded-sm hover:bg-tint md:hidden">
           <AnimatePresence mode="wait" initial={false}>
@@ -68,7 +71,7 @@ export function Nav() {
                     <m.li key={r.href} variants={{ hidden: { opacity: 0, x: -12 }, show: { opacity: 1, x: 0 } }} className="border-b border-line last:border-b-0">
                       <Link href={r.href} onClick={() => setOpen(false)} aria-current={active ? "page" : undefined}
                         className={cn("flex h-12 items-center gap-3 text-base font-medium", active ? "text-fg" : "text-muted active:text-fg")}>
-                        <span className={cn("size-1.5", active ? "bg-violet" : "bg-line")} aria-hidden />
+                        <r.icon size={18} className={active ? "text-violet" : "text-muted"} aria-hidden />
                         {r.label}
                       </Link>
                     </m.li>

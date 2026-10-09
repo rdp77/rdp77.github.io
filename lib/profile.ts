@@ -4,7 +4,7 @@ export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rdp77.github
 export const profile = {
   name: "Moh Ravi Dwi Putra",
   handle: "rdp77",
-  role: "Full-stack Developer",
+  role: "Software Engineer",
   tagline: "I build fast, reliable web and mobile products — and keep an eye on them like a production service.",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@example.com", // set NEXT_PUBLIC_CONTACT_EMAIL
   github: "rdp77",
@@ -57,8 +57,8 @@ export const skills: Record<string, { name: string; icon: string }[]> = {
 
 // Most recent first. Placeholder entries.
 export const experience = [
-  { company: "Company Name", position: "Senior Full-stack Developer", duration: "2023 — Present", description: "Placeholder: led development of customer-facing products and internal tooling." },
-  { company: "Previous Company", position: "Full-stack Developer", duration: "2020 — 2023", description: "Placeholder: shipped features across Laravel and React stacks." },
+  { company: "Company Name", position: "Senior Software Engineer", duration: "2023 — Present", description: "Placeholder: led development of customer-facing products and internal tooling." },
+  { company: "Previous Company", position: "Software Engineer", duration: "2020 — 2023", description: "Placeholder: shipped features across Laravel and React stacks." },
   { company: "First Company", position: "Junior Developer", duration: "2018 — 2020", description: "Placeholder: built and maintained websites and APIs." },
 ];
 
