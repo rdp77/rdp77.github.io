@@ -1,5 +1,7 @@
 import { cacheLife } from "next/cache";
 import { getJson, type Widget } from "@/lib/utils";
+import { serverEnv } from "@/lib/env";
+import { reportError } from "@/lib/report";
 import { profile } from "@/lib/profile";
 import { HEATMAP_WEEKS, MS_PER_DAY, SECONDS_PER_DAY } from "@/lib/constants";
 import { sample } from "./samples/ethereum";
@@ -30,7 +32,7 @@ type Scan<T> = { status: string; result: T };
 export async function getEthereum(): Promise<Widget<Eth>> {
   "use cache";
   cacheLife("minutes");
-  const key = process.env.ETHERSCAN_API_KEY;
+  const { etherscanKey: key } = serverEnv();
   const addr = profile.wallet;
   if (!key || /^0x0+$/.test(addr)) return { data: sample, sample: true };
   const q = (a: string) => `https://api.etherscan.io/v2/api?chainid=1&module=account&address=${addr}&apikey=${key}&${a}`;
@@ -58,7 +60,8 @@ export async function getEthereum(): Promise<Widget<Eth>> {
         })),
       },
     };
-  } catch {
+  } catch (err) {
+    reportError("ethereum", err);
     return { data: sample, sample: true };
   }
 }

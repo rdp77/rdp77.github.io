@@ -1,5 +1,7 @@
 import { cacheLife } from "next/cache";
 import { getJson, type Widget } from "@/lib/utils";
+import { serverEnv } from "@/lib/env";
+import { reportError } from "@/lib/report";
 import { profile } from "@/lib/profile";
 import { MS_PER_YEAR } from "@/lib/constants";
 import { sample, sampleWeeks } from "./samples/github";
@@ -74,18 +76,20 @@ function topRepos(own: GhRepo[]): GH["topRepos"] {
 }
 
 async function fetchContributions(user: string, headers: HeadersInit) {
-  const g = await getJson<{ data: { user: { contributionsCollection: ContributionsCollection } } }>(`${API}/graphql`, {
+  const g = await getJson<{ data?: { user?: { contributionsCollection?: ContributionsCollection } } }>(`${API}/graphql`, {
     method: "POST", headers,
     body: JSON.stringify({ query: CONTRIBUTIONS_QUERY, variables: { u: user } }),
   });
-  return g.data.user.contributionsCollection;
+  const cc = g.data?.user?.contributionsCollection;
+  if (!cc) throw new Error("GitHub GraphQL returned no user");
+  return cc;
 }
 
 export async function getGithub(): Promise<Widget<GH>> {
   "use cache";
   cacheLife("hours");
   const user = profile.github;
-  const token = process.env.GITHUB_TOKEN;
+  const { githubToken: token } = serverEnv();
   const headers: HeadersInit = { Accept: "application/vnd.github+json", ...(token ? { Authorization: `Bearer ${token}` } : {}) };
   try {
     const [u, repos, evs] = await Promise.all([
@@ -105,7 +109,8 @@ export async function getGithub(): Promise<Widget<GH>> {
         languages: topLanguages(own), topRepos: topRepos(own), events: parseEvents(evs).slice(0, 6),
       },
     };
-  } catch {
+  } catch (err) {
+    reportError("github", err);
     return { data: sample, sample: true };
   }
 }

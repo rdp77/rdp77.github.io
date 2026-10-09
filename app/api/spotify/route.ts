@@ -1,14 +1,17 @@
 // Now-playing via Spotify Web API. Env: SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN (scope: user-read-currently-playing).
-const { SPOTIFY_CLIENT_ID: id, SPOTIFY_CLIENT_SECRET: secret, SPOTIFY_REFRESH_TOKEN: refresh } = process.env;
+import { serverEnv } from "@/lib/env";
+import { reportError } from "@/lib/report";
+
+type Creds = { id: string; secret: string; refresh: string };
 
 let cached: { token: string; exp: number } | null = null;
 
-async function accessToken() {
+async function accessToken({ id, secret, refresh }: Creds) {
   if (cached && cached.exp > Date.now() + 10_000) return cached.token;
   const res = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: { Authorization: `Basic ${Buffer.from(`${id}:${secret}`).toString("base64")}`, "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({ grant_type: "refresh_token", refresh_token: refresh! }),
+    body: new URLSearchParams({ grant_type: "refresh_token", refresh_token: refresh }),
     cache: "no-store",
   });
   if (!res.ok) throw new Error(`token ${res.status}`);
@@ -30,10 +33,11 @@ export async function GET() {
 }
 
 async function fetchNowPlaying() {
+  const { id, secret, refresh } = serverEnv().spotify;
   if (!id || !secret || !refresh) return { configured: false, playing: false };
   try {
     const res = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
-      headers: { Authorization: `Bearer ${await accessToken()}` },
+      headers: { Authorization: `Bearer ${await accessToken({ id, secret, refresh })}` },
       cache: "no-store",
     });
     if (res.status === 204 || res.status >= 400) return { configured: true, playing: false };
@@ -52,7 +56,8 @@ async function fetchNowPlaying() {
       duration: t.duration_ms,
       at: Date.now(),
     };
-  } catch {
+  } catch (err) {
+    reportError("spotify", err);
     return { configured: true, playing: false };
   }
 }

@@ -1,5 +1,7 @@
 import { cacheLife } from "next/cache";
 import { getJson, type Widget } from "@/lib/utils";
+import { serverEnv } from "@/lib/env";
+import { reportError } from "@/lib/report";
 import { sample } from "./samples/wakatime";
 
 type Slice = { name: string; percent: number; text: string };
@@ -42,7 +44,7 @@ function formatLastActivity(modifiedAt: string | undefined): string {
 export async function getWakatime(): Promise<Widget<Waka>> {
   "use cache";
   cacheLife("hours");
-  const key = process.env.WAKATIME_API_KEY;
+  const { wakatimeKey: key } = serverEnv();
   if (!key) return { data: sample, sample: true };
   try {
     const headers = { Authorization: `Basic ${Buffer.from(key).toString("base64")}` };
@@ -66,7 +68,8 @@ export async function getWakatime(): Promise<Widget<Waka>> {
         lastActivity: formatLastActivity(w.modified_at),
       },
     };
-  } catch {
+  } catch (err) {
+    reportError("wakatime", err);
     return { data: sample, sample: true };
   }
 }

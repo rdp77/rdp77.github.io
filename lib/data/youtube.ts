@@ -1,4 +1,5 @@
 import { cacheLife } from "next/cache";
+import { reportError } from "@/lib/report";
 
 export type YtVideo = { id: string; title: string; thumb: string; views: number; likes: number | null; published: string };
 
@@ -33,7 +34,8 @@ export async function getYoutube(): Promise<Yt> {
       };
     });
     return { videos, avatar };
-  } catch {
+  } catch (err) {
+    reportError("youtube", err);
     return { videos: [], avatar: null };
   }
 }

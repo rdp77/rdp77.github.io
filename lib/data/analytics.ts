@@ -1,6 +1,8 @@
 import { cacheLife } from "next/cache";
 import { getJson, type Widget } from "@/lib/utils";
 import { MS_PER_DAY } from "@/lib/constants";
+import { serverEnv } from "@/lib/env";
+import { reportError } from "@/lib/report";
 import { sample } from "./samples/analytics";
 
 type Row = { label: string; value: number };
@@ -18,7 +20,7 @@ type VRow = Record<string, string | number | null>;
 export async function getAnalytics(): Promise<Widget<Analytics>> {
   "use cache";
   cacheLife("days");
-  const { VERCEL_TOKEN: token, VERCEL_PROJECT_ID: projectId, VERCEL_TEAM_ID: teamId } = process.env;
+  const { token, projectId, teamId } = serverEnv().vercel;
   if (!token || !projectId) return { data: sample, sample: true };
   const headers = { Authorization: `Bearer ${token}` };
   const day = (t: number) => new Date(t).toISOString().slice(0, 10);
@@ -40,7 +42,8 @@ export async function getAnalytics(): Promise<Widget<Analytics>> {
       daily(), by("requestPath"), by("referrerHostname"), by("country"), by("deviceType"),
     ]);
     return { sample: false, data: { provider: "Vercel", visitors: total.data.visitors, pageviews: total.data.pageviews, daily: series, pages, referrers, countries, devices } };
-  } catch {
+  } catch (err) {
+    reportError("analytics", err);
     return { data: sample, sample: true };
   }
 }
