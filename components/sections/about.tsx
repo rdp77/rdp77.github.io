@@ -58,7 +58,7 @@ export function About() {
             <Timeline items={experience.map((e) => ({ title: e.position, sub: e.company, when: e.duration, body: e.description }))} /></section></Reveal>
 
           <Reveal><section id="education" aria-labelledby="edu-h"><h3 id="edu-h" className="h2 mb-6 text-2xl">Education</h3>
-            <Timeline items={education.map((e) => ({ title: e.degree, sub: e.school, when: e.duration }))} /></section></Reveal>
+            <Timeline items={education.map((e) => ({ title: e.degree, sub: e.school, when: e.duration, body: e.description }))} /></section></Reveal>
 
           <Reveal><section id="achievements" aria-labelledby="ach-h"><h3 id="ach-h" className="h2 mb-6 text-2xl">Achievements</h3>
             {groups.map((g) => (

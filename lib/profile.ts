@@ -27,9 +27,9 @@ export const profile = {
 };
 
 export const story = [
-  "I'm a developer who likes products that feel quick, quiet and dependable. I started with PHP and Laravel, moved through React and Next.js, and now build across web, mobile and cloud.",
-  "Outside of client work I make open-source tools, tinker with Web3, and share what I learn as a creator. This site is my personal operating system — the live numbers on the dashboard are real.",
-  "Placeholder copy: replace this story in lib/profile.ts.",
+  "I'm Ravi, a software engineer born in Lamongan and raised in Surabaya. I like products that feel quick, quiet and dependable. I started with networks and Mikrotik in vocational school, then moved into PHP and Laravel, through React and Next.js, and now build across web, mobile and cloud. Today I build back-end APIs at AsiaCommerce Network.",
+  "Outside of client work I make open-source tools, tinker with Web3, and share what I learn as a creator. I enjoy finding defects in free apps and fixing them, and I care about building things that are lightweight, fast and dependable. Building relationships and running small businesses keeps my entrepreneurial side growing, and I like contributing to the growth of people in my country.",
+  "This site is my personal operating system. The live numbers on the dashboard are real.",
 ];
 
 export type StackItem = "nextjs" | "react" | "laravel" | "flutter" | "typescript" | "tailwind" | "mysql" | "postgresql" | "redis" | "docker" | "cloudflare" | "vercel" | "graphql";
@@ -45,25 +45,32 @@ export const projects: {
 ];
 
 export const skills: Record<string, { name: string; icon: string }[]> = {
-  Frontend: [{ name: "React", icon: "siReact" }, { name: "Next.js", icon: "siNextdotjs" }, { name: "TypeScript", icon: "siTypescript" }, { name: "Tailwind CSS", icon: "siTailwindcss" }],
-  Backend: [{ name: "Laravel", icon: "siLaravel" }, { name: "Node.js", icon: "siNodedotjs" }, { name: "GraphQL", icon: "siGraphql" }, { name: "PHP", icon: "siPhp" }],
-  Mobile: [{ name: "Flutter", icon: "siFlutter" }, { name: "Dart", icon: "siDart" }],
-  Cloud: [{ name: "Cloudflare", icon: "siCloudflare" }, { name: "Vercel", icon: "siVercel" }],
-  DevOps: [{ name: "Docker", icon: "siDocker" }, { name: "GitHub Actions", icon: "siGithubactions" }, { name: "Linux", icon: "siLinux" }],
-  Database: [{ name: "MySQL", icon: "siMysql" }, { name: "PostgreSQL", icon: "siPostgresql" }, { name: "Redis", icon: "siRedis" }],
+  Frontend: [{ name: "React", icon: "siReact" }, { name: "Next.js", icon: "siNextdotjs" }, { name: "TypeScript", icon: "siTypescript" }, { name: "Tailwind CSS", icon: "siTailwindcss" }, { name: "HTML5", icon: "siHtml5" }, { name: "CSS", icon: "siCss" }, { name: "Sass", icon: "siSass" }, { name: "jQuery", icon: "siJquery" }, { name: "JavaScript", icon: "siJavascript" }, { name: "Bootstrap", icon: "siBootstrap" }, { name: "Gatsby", icon: "siGatsby" }, { name: "WordPress", icon: "siWordpress" }],
+  Backend: [{ name: "Laravel", icon: "siLaravel" }, { name: "Node.js", icon: "siNodedotjs" }, { name: "GraphQL", icon: "siGraphql" }, { name: "PHP", icon: "siPhp" }, { name: "Python", icon: "siPython" }, { name: "Livewire", icon: "siLivewire" }, { name: "Filament", icon: "siFilament" }, { name: "Java", icon: "siOpenjdk" }, { name: "C#", icon: "siSharp" }, { name: "C++", icon: "siCplusplus" }, { name: "C", icon: "siC" }, { name: "CodeIgniter", icon: "siCodeigniter" }, { name: "Visual Basic .NET", icon: "siDotnet" }],
+  Mobile: [{ name: "Flutter", icon: "siFlutter" }, { name: "Dart", icon: "siDart" }, { name: "Android", icon: "siAndroid" }, { name: "Android Studio", icon: "siAndroidstudio" }, { name: "Firebase", icon: "siFirebase" }],
+  Cloud: [{ name: "Cloudflare", icon: "siCloudflare" }, { name: "Vercel", icon: "siVercel" }, { name: "Netlify", icon: "siNetlify" }, { name: "GitHub Pages", icon: "siGithubpages" }],
+  DevOps: [{ name: "Docker", icon: "siDocker" }, { name: "GitHub Actions", icon: "siGithubactions" }, { name: "Linux", icon: "siLinux" }, { name: "Nginx", icon: "siNginx" }],
+  Database: [{ name: "MySQL", icon: "siMysql" }, { name: "PostgreSQL", icon: "siPostgresql" }, { name: "Redis", icon: "siRedis" }, { name: "MariaDB", icon: "siMariadb" }, { name: "MongoDB", icon: "siMongodb" }],
   Web3: [{ name: "Ethereum", icon: "siEthereum" }, { name: "Solidity", icon: "siSolidity" }],
-  Tools: [{ name: "Git", icon: "siGit" }, { name: "Figma", icon: "siFigma" }, { name: "VS Code", icon: "siVscodium" }],
+  Tools: [{ name: "Git", icon: "siGit" }, { name: "Figma", icon: "siFigma" }, { name: "VS Code", icon: "siVscodium" }, { name: "GitHub", icon: "siGithub" }, { name: "Postman", icon: "siPostman" }, { name: "Jupyter", icon: "siJupyter" }, { name: "Bash", icon: "siGnubash" }],
+  Networking: [{ name: "Mikrotik", icon: "siMikrotik" }, { name: "Cisco", icon: "siCisco" }],
 };
 
-// Most recent first. Placeholder entries.
+// Most recent first.
 export const experience = [
-  { company: "Company Name", position: "Senior Software Engineer", duration: "2023 — Present", description: "Placeholder: led development of customer-facing products and internal tooling." },
-  { company: "Previous Company", position: "Software Engineer", duration: "2020 — 2023", description: "Placeholder: shipped features across Laravel and React stacks." },
-  { company: "First Company", position: "Junior Developer", duration: "2018 — 2020", description: "Placeholder: built and maintained websites and APIs." },
+  { company: "AsiaCommerce Network", position: "Back End Developer", duration: "2022 — Present", description: "Builds and maintains API services for mobile and front end, adopting GraphQL, on Laravel with CI/CD." },
+  { company: "CV. Batu Beling", position: "Full Stack Developer", duration: "2020 — 2021", description: "Developed internal systems with Laravel, provided IT support, maintained the CMS website and set digital marketing strategy." },
+  { company: "Wreative", position: "Full Stack Developer", duration: "2018 — 2020", description: "Built custom applications, maintenance and portfolio websites, and introduced products to simplify data processing." },
+  { company: "Indihome", position: "Technician", duration: "2018", description: "Installed Telkom internet from the customer's home to the ODP, then configured access points and DHCP servers." },
+  { company: "Freelance", position: "Technician", duration: "2017 — 2018", description: "Worked in a team on network installations and Mikrotik configuration, and troubleshot network issues." },
+  { company: "Diskominfo", position: "Internship", duration: "2017", description: "Taught word processing and computer use to the surrounding community, and maintained and optimized the computers used for learning." },
 ];
 
 export const education = [
-  { school: "University Name", degree: "Bachelor of Computer Science", duration: "2014 — 2018" },
+  { school: "University 17 Agustus Surabaya", degree: "University", duration: "2018 — 2022", description: "Learned to manage projects well and to communicate quickly and accurately with new people." },
+  { school: "SMK Rajasa", degree: "Vocational High School", duration: "2015 — 2018", description: "Focused on one field and learned how to run a project well." },
+  { school: "SMP PGRI 1", degree: "Junior High School", duration: "2012 — 2015", description: "Discovered the fun of learning and exploring, with a growing interest in technology." },
+  { school: "SDN Gading VII", degree: "Elementary School", duration: "2006 — 2012", description: "Learned to be an active student and to dare to ask questions." },
 ];
 
 export const achievements: { type: "Award" | "Certification"; name: string; issuer: string; credential: string }[] = [
