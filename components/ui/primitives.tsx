@@ -17,11 +17,12 @@ export function Section({ id, title, children, h1 }: { id: string; eyebrow?: str
   );
 }
 
-export function Card({ title, sample, children, className }: { title: string; sample?: boolean; children: React.ReactNode; className?: string }) {
+export function Card({ title, sample, action, children, className }: { title: string; sample?: boolean; action?: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
     <section aria-label={title} className={cn("min-w-0 border border-line bg-bg p-4 sm:p-6", className)}>
       <header className="mb-5 flex items-center justify-between gap-2">
         <h3 className="text-sm font-medium">{title}</h3>
+        {action}
         {sample && <span className="rounded-full bg-line px-2 py-0.5 font-mono text-xs text-fg" title="API key not configured or request failed">sample data</span>}
       </header>
       {children}
