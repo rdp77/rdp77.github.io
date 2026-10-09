@@ -34,7 +34,7 @@ export function About() {
             <p className="mb-3 font-mono text-xs text-faint">On this page</p>
             <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm lg:block lg:space-y-2">{toc.map((t) => <li key={t.id}><a className="text-muted hover:text-fg" href={`#${t.id}`}>{t.label}</a></li>)}</ul>
           </nav>
-          <a href={profile.resumeUrl} download className={`${btnPrimary} mt-6 text-sm`}><Download size={16} aria-hidden />Download resume</a>
+          <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" className={`${btnPrimary} mt-6 text-sm`}><Download size={16} aria-hidden />Download resume</a>
         </aside>
 
         <div className="min-w-0 space-y-16">

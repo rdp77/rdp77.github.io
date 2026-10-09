@@ -11,7 +11,7 @@ export const profile = {
   wallet: process.env.NEXT_PUBLIC_ETH_ADDRESS ?? "0x0000000000000000000000000000000000000000",
   location: "Indonesia", // placeholder
   timezone: "Asia/Jakarta",
-  resumeUrl: "/resume.pdf", // drop a file in /public
+  resumeUrl: "https://link.wreative.com/ravi",
   socials: [
     { label: "GitHub", href: "https://github.com/rdp77" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/rdp77" },
