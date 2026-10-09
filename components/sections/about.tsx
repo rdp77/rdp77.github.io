@@ -25,7 +25,7 @@ function Timeline({ items }: { items: { title: string; sub: string; when: string
 }
 
 export function About() {
-  const years = [...new Set(achievements.map((a) => a.year))].sort((a, b) => b - a);
+  const groups = ["Award", "Certification"] as const;
   return (
     <Section h1 id="about" eyebrow="About" title="The person behind the code">
       <div className="grid gap-12 lg:grid-cols-[220px_1fr]">
@@ -61,12 +61,12 @@ export function About() {
             <Timeline items={education.map((e) => ({ title: e.degree, sub: e.school, when: e.duration }))} /></section></Reveal>
 
           <Reveal><section id="achievements" aria-labelledby="ach-h"><h3 id="ach-h" className="h2 mb-6 text-2xl">Achievements</h3>
-            {years.map((y) => (
-              <div key={y} className="mb-6">
-                <h4 className="font-mono text-sm text-violet">{y}</h4>
+            {groups.map((g) => (
+              <div key={g} className="mb-6">
+                <h4 className="font-mono text-sm text-violet">{g === "Award" ? "Awards" : "Certifications"}</h4>
                 <ul className="mt-2 divide-y divide-line border-y border-line">
-                  {achievements.filter((a) => a.year === y).map((a) => (
-                    <li key={a.credential} className="py-3"><p className="font-medium">{a.name}</p><p className="text-sm text-muted">{a.issuer} · <span className="font-mono text-xs">{a.credential}</span></p></li>
+                  {achievements.filter((a) => a.type === g).map((a, i) => (
+                    <li key={a.name + i} className="py-3"><p className="font-medium">{a.name}</p><p className="text-sm text-muted">{a.issuer}{a.credential && <> · <span className="font-mono text-xs">{a.credential}</span></>}</p></li>
                   ))}
                 </ul>
               </div>

@@ -66,7 +66,30 @@ export const education = [
   { school: "University Name", degree: "Bachelor of Computer Science", duration: "2014 — 2018" },
 ];
 
-export const achievements: { year: number; name: string; credential: string; issuer: string }[] = [
-  { year: 2026, name: "Certification Name (placeholder)", credential: "CREDENTIAL-ID-0001", issuer: "Issuer" },
-  { year: 2025, name: "Certification Name (placeholder)", credential: "CREDENTIAL-ID-0002", issuer: "Issuer" },
+export const achievements: { type: "Award" | "Certification"; name: string; issuer: string; credential: string }[] = [
+  { type: "Award", name: "Certificate of Award, 2nd Class Winner", issuer: "SMK Rajasa", credential: "" },
+  { type: "Award", name: "Certificate of Award, 3rd Class Winner", issuer: "SMK Rajasa", credential: "" },
+  { type: "Certification", name: "HTML Fundamentals Course", issuer: "SoloLearn", credential: "#1014-11011596" },
+  { type: "Certification", name: "SEO 101: Cara Membuat Website Eksis Di Halaman Depan Google", issuer: "Skill Academy", credential: "B4BBTZ7UKBA4NK" },
+  { type: "Certification", name: "SEO 101: Cara Membuat Website Eksis Di Halaman Depan Google", issuer: "Skill Academy", credential: "HLR743SYF8FE88" },
+  { type: "Certification", name: "PHP Tutorial Course", issuer: "SoloLearn", credential: "#1059-11011596" },
+  { type: "Certification", name: "CSS Fundamentals Course", issuer: "SoloLearn", credential: "#1023-11011596" },
+  { type: "Certification", name: "Lintasarta Developer Talk Online Series #2 - Simple Animation on Android", issuer: "Dicoding", credential: "" },
+  { type: "Certification", name: "Lintasarta Developer Talk Online Series #3 - Boost Android App using Android Jetpack", issuer: "Dicoding", credential: "" },
+  { type: "Certification", name: "Lintasarta Developer Talk Online Series #4 - Best Practices and Lessons Learned as a Developer", issuer: "Dicoding", credential: "" },
+  { type: "Certification", name: "SEO Tutorial for Beginners", issuer: "Udemy", credential: "UC-fc84da27-f5dd-4476-b753-201d4bbdae2e" },
+  { type: "Certification", name: "Primavera Practice in the Classroom", issuer: "Oracle Academy", credential: "" },
+  { type: "Certification", name: "Unmask Cyber Crime", issuer: "Surabaya Hacker Link", credential: "" },
+  { type: "Certification", name: "Javascript Tutorial Course", issuer: "SoloLearn", credential: "#1024-11011596" },
+  { type: "Certification", name: "SQL Fundamentals Course", issuer: "SoloLearn", credential: "#1060-11011596" },
+  { type: "Certification", name: "IT Essentials", issuer: "Cisco Networking Academy", credential: "#9190197" },
+  { type: "Certification", name: "Basic English Conversation", issuer: "Dharma Cendekia Utama", credential: "DCU12016009" },
+  { type: "Certification", name: "Praktek Kerja Industri Diskominfo", issuer: "Dinas Komunikasi dan Informatika", credential: "072/4550/436.6.8/2017" },
+  { type: "Certification", name: "Praktek Kerja Industri Broadband Learning Center", issuer: "SMK Rajasa", credential: "106/SMKR.Sby/H/Prakerin/VIII/2017" },
+  { type: "Certification", name: "Certificate of Competency", issuer: "PT. Rahajasa Media Internet", credential: "135A/PIMP/SMKR.SBY/III/2018" },
+  { type: "Certification", name: "Flutter Mobile Developer", issuer: "BuildWithAngga", credential: "ToYhyizkTl" },
+  { type: "Certification", name: "Menyusun Strategi Pemasaran dan Penjualan dengan Kecerdasan Buatan (AI)", issuer: "Karier.mu", credential: "#9190197" },
+  { type: "Certification", name: "Software Development", issuer: "Badan Nasional Sertifikasi Profesi (BNSP)", credential: "J.62019.251400.5.0000285.2021" },
+  { type: "Certification", name: "Software Testing Fundamentals", issuer: "Great Learning", credential: "" },
+  { type: "Certification", name: "Python for Data Science", issuer: "IBM", credential: "#9190197" },
 ];
