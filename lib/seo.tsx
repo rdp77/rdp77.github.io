@@ -105,3 +105,25 @@ export const contactPage = {
   name: `Contact ${profile.name}`,
   mainEntity: { "@id": ID.person },
 };
+
+export const siteMetadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: { default: `${profile.name} — ${profile.role}`, template: `%s · ${profile.name}` },
+  description: siteDescription,
+  keywords,
+  authors: [{ name: profile.name, url: siteUrl }],
+  creator: profile.name,
+  publisher: profile.name,
+  category: "technology",
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
+  other: { "geo.region": "ID-JI", "geo.placename": "Surabaya", "geo.position": "-7.2575;112.7521", ICBM: "-7.2575, 112.7521" },
+  alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/logo-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+      { url: "/logo-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
+    ],
+  },
+  openGraph: { type: "website", url: siteUrl, siteName: profile.name, title: `${profile.name} — ${profile.role}`, description: siteDescription, locale: "en_US" },
+  twitter: { card: "summary_large_image", title: `${profile.name} — ${profile.role}`, description: siteDescription },
+};

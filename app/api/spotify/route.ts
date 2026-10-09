@@ -3,11 +3,18 @@ import { serverEnv } from "@/lib/env";
 import { reportError } from "@/lib/report";
 
 type Creds = { id: string; secret: string; refresh: string };
+type NowPlaying =
+  | { configured: boolean; playing: false }
+  | { configured: true; playing: true; song: string; artist: string; album: string; art: string; id: string; progress: number; duration: number; at: number };
+
+const TOKEN_SKEW_MS = 10_000;
+// Shared across all visitors: Spotify is hit at most once per TTL, so rate limits don't scale with traffic.
+const NOW_PLAYING_TTL_MS = 10_000;
 
 let cached: { token: string; exp: number } | null = null;
 
 async function accessToken({ id, secret, refresh }: Creds) {
-  if (cached && cached.exp > Date.now() + 10_000) return cached.token;
+  if (cached && cached.exp > Date.now() + TOKEN_SKEW_MS) return cached.token;
   const res = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: { Authorization: `Basic ${Buffer.from(`${id}:${secret}`).toString("base64")}`, "Content-Type": "application/x-www-form-urlencoded" },
@@ -20,19 +27,17 @@ async function accessToken({ id, secret, refresh }: Creds) {
   return cached.token;
 }
 
-// Shared across all visitors: Spotify is hit at most once per TTL, so rate limits don't scale with traffic.
-let last: { body: unknown; exp: number } | null = null;
-const TTL = 10_000;
+let last: { body: NowPlaying; exp: number } | null = null;
 
 export async function GET() {
   const headers = { "Cache-Control": "no-store" };
   if (last && last.exp > Date.now()) return Response.json(last.body, { headers });
   const body = await fetchNowPlaying();
-  last = { body, exp: Date.now() + TTL };
+  last = { body, exp: Date.now() + NOW_PLAYING_TTL_MS };
   return Response.json(body, { headers });
 }
 
-async function fetchNowPlaying() {
+async function fetchNowPlaying(): Promise<NowPlaying> {
   const { id, secret, refresh } = serverEnv().spotify;
   if (!id || !secret || !refresh) return { configured: false, playing: false };
   try {
