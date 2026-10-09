@@ -19,7 +19,7 @@ Portfolio that behaves like an observability dashboard (coding time, GitHub acti
 Next.js (App Router) + TypeScript + Tailwind + Radix; deployed on Vercel/GitHub Pages domain rdp77.github.io. Personal content centralized in `lib/profile.ts`. Contact via Web3Forms + Turnstile.
 
 ## Capabilities and Constraints
-- Widgets: WakaTime, GitHub, Ethereum wallet, Umami analytics, infrastructure status. Mixed data: some live (needs API keys in env), some sample/decorative; sample data shown until keys exist.
+- Widgets: WakaTime, GitHub, Ethereum wallet, Vercel Analytics, infrastructure status. Mixed data: some live (needs API keys in env), some sample/decorative; sample data shown until keys exist.
 - Sections: Dashboard, Projects, Creators (TikTok/YouTube/Instagram tabs, "Coming Soon"), About, Contact.
 - Languages: English and Indonesian copy required (i18n not yet implemented).
 - Must respect prefers-reduced-motion; SEO files present (robots, sitemap).

@@ -1,21 +1,17 @@
 import { cacheLife } from "next/cache";
-import { siteUrl } from "@/lib/profile";
 
 export type Health = "healthy" | "degraded" | "offline" | "unmonitored";
 export type Service = { name: string; health: Health; ms: number | null; uptime: string; lastIncident: string };
 
-// Probed live (cached). Internal services without a health URL are shown as unmonitored
-// until you set STATUS_API_URL / STATUS_DB_URL / STATUS_REDIS_URL / STATUS_SERVER_URL.
+// Probed live (cached).
 const targets = (): { name: string; url?: string }[] => [
-  { name: "Website", url: siteUrl },
-  { name: "API", url: process.env.STATUS_API_URL },
-  { name: "Database", url: process.env.STATUS_DB_URL },
-  { name: "Redis", url: process.env.STATUS_REDIS_URL },
-  { name: "Server", url: process.env.STATUS_SERVER_URL },
   { name: "GitHub API", url: "https://api.github.com/zen" },
   { name: "WakaTime API", url: "https://wakatime.com/api/v1/" },
-  { name: "Vercel API", url: "https://api.vercel.com/" },
-  { name: "Umami API", url: process.env.UMAMI_API_URL ? process.env.UMAMI_API_URL.replace(/\/api\/?$/, "/api/heartbeat") : "https://api.umami.is/v1/me" },
+  { name: "Vercel Analytics API", url: "https://api.vercel.com/" },
+  { name: "Etherscan API", url: "https://api.etherscan.io/v2/chainlist" },
+  { name: "Spotify API", url: "https://api.spotify.com/v1/" },
+  { name: "Online Status API", url: "https://api.lanyard.rest/v1/users/493350564785029142" },
+  { name: "Web3Forms API", url: "https://api.web3forms.com/" },
 ];
 
 async function probe(t: { name: string; url?: string }): Promise<Service> {
