@@ -1,6 +1,7 @@
 import { profile } from "@/lib/profile";
 import { Container } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/motion";
+import { Presence } from "@/components/dashboard/presence";
 
 const meta = [
   ["role", profile.role],
@@ -18,9 +19,12 @@ export function DashboardHero() {
           <p className="font-mono text-xs text-faint">~ / <span className="text-fg">dashboard</span></p>
           <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
             <h1 id="dash-title" className="display text-4xl sm:text-5xl md:text-6xl">Control <span className="grad">panel</span></h1>
-            <p className="inline-flex items-center gap-2 border border-line bg-bg px-3 py-1.5 font-mono text-xs text-ok-fg">
-              <span className="pulse-dot size-2 rounded-full bg-ok-fg" aria-hidden />All systems operational
-            </p>
+            <div className="flex flex-col items-start gap-2 md:items-end">
+              <p className="inline-flex items-center gap-2 border border-line bg-bg px-3 py-1.5 font-mono text-xs text-ok-fg">
+                <span className="pulse-dot size-2 rounded-full bg-ok-fg" aria-hidden />All systems operational
+              </p>
+              <Presence />
+            </div>
           </div>
           <p className="mt-4 max-w-xl text-muted">Live coding time, GitHub activity, wallet, traffic and service health for {profile.name}.</p>
           <dl className="mt-8 grid grid-cols-2 border border-line bg-bg md:grid-cols-4">
