@@ -5,11 +5,13 @@ type Row = { label: string; value: number };
 export type Analytics = {
   provider: "Vercel";
   visitors: number; pageviews: number;
+  daily: { date: string; visitors: number; pageviews: number }[];
   pages: Row[]; referrers: Row[]; countries: Row[]; devices: Row[];
 };
 
 const sample: Analytics = {
   provider: "Vercel", visitors: 1840, pageviews: 5920,
+  daily: Array.from({ length: 30 }, (_, i) => ({ date: new Date(Date.now() - (29 - i) * 864e5).toISOString().slice(0, 10), visitors: 20 + ((i * 37) % 60), pageviews: 50 + ((i * 53) % 130) })),
   pages: [{ label: "/", value: 3200 }, { label: "/projects", value: 1100 }, { label: "/about", value: 820 }],
   referrers: [{ label: "google.com", value: 640 }, { label: "github.com", value: 410 }, { label: "x.com", value: 180 }],
   countries: [{ label: "Indonesia", value: 980 }, { label: "United States", value: 310 }, { label: "Singapore", value: 140 }],
@@ -34,12 +36,17 @@ export async function getAnalytics(): Promise<Widget<Analytics>> {
     const { data } = await getJson<{ data: VRow[] }>(`${API}/aggregate?${q}`, { headers });
     return data.map((r) => ({ label: String(r[dim] || "(direct)"), value: Number(r.pageviews) }));
   };
+  const daily = async () => {
+    const q = new URLSearchParams(base); q.set("by", "day"); q.set("limit", "31");
+    const { data } = await getJson<{ data: { timestamp: string; visitors: number; pageviews: number }[] }>(`${API}/aggregate?${q}`, { headers });
+    return data.map((r) => ({ date: r.timestamp.slice(0, 10), visitors: r.visitors, pageviews: r.pageviews }));
+  };
   try {
-    const [total, pages, referrers, countries, devices] = await Promise.all([
+    const [total, series, pages, referrers, countries, devices] = await Promise.all([
       getJson<{ data: { pageviews: number; visitors: number } }>(`${API}/count?${base}`, { headers }),
-      by("requestPath"), by("referrerHostname"), by("country"), by("deviceType"),
+      daily(), by("requestPath"), by("referrerHostname"), by("country"), by("deviceType"),
     ]);
-    return { sample: false, data: { provider: "Vercel", visitors: total.data.visitors, pageviews: total.data.pageviews, pages, referrers, countries, devices } };
+    return { sample: false, data: { provider: "Vercel", visitors: total.data.visitors, pageviews: total.data.pageviews, daily: series, pages, referrers, countries, devices } };
   } catch {
     return { data: sample, sample: true };
   }
