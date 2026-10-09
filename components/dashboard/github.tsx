@@ -1,8 +1,8 @@
 import { getGithub } from "@/lib/data/github";
 import { Card, Stat, Badge, EmptyState } from "@/components/ui/primitives";
+import { Heatmap } from "@/components/ui/heatmap";
 import { Counter } from "@/components/ui/motion";
 
-const shade = ["bg-line", "bg-violet/25", "bg-violet/50", "bg-violet/75", "bg-violet"];
 
 export async function GithubCard() {
   const { data: d, sample } = await getGithub();
@@ -13,13 +13,7 @@ export async function GithubCard() {
         <Stat label="Followers"><Counter value={d.followers} /></Stat>
         <Stat label="Repositories"><Counter value={d.repos} /></Stat>
       </div>
-      <div className="mt-6 overflow-x-auto" role="img" aria-label={`Contribution graph${d.total ? `, ${d.total} contributions in the last year` : ""}`}>
-        <div className="flex w-max gap-[3px] pb-1">
-          {d.weeks.map((w, i) => (
-            <div key={i} className="flex flex-col gap-[3px]">{w.map((l, j) => <span key={j} className={`size-[10px] ${shade[Math.max(0, l)]}`} />)}</div>
-          ))}
-        </div>
-      </div>
+      <div className="mt-6"><Heatmap weeks={d.weeks} hint={`${d.total} contributions in the last year`} aria={`Contribution graph${d.total ? `, ${d.total} contributions in the last year` : ""}`} /></div>
       <p className="mb-2 mt-6 text-xs text-faint">Recent commits, pull requests &amp; issues</p>
       {d.events.length === 0 ? <EmptyState>No recent public activity.</EmptyState> : (
         <ul className="divide-y divide-line text-sm">

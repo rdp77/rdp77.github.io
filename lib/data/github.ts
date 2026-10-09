@@ -4,15 +4,15 @@ import { profile } from "@/lib/profile";
 
 export type GH = {
   followers: number; repos: number; stars: number;
-  weeks: number[][]; // contribution levels 0-4, [week][day]
+  weeks: { l: number; label: string }[][]; // levels 0-4, [week][day]
   total: number;
   events: { type: "Commit" | "PR" | "Issue"; text: string; repo: string; url: string }[];
 };
 
-function sampleWeeks(): number[][] {
+function sampleWeeks(): GH["weeks"] {
   let s = 7;
   const rnd = () => ((s = (s * 9301 + 49297) % 233280) / 233280);
-  return Array.from({ length: 53 }, () => Array.from({ length: 7 }, () => { const r = rnd(); return r < 0.45 ? 0 : r < 0.7 ? 1 : r < 0.85 ? 2 : r < 0.95 ? 3 : 4; }));
+  return Array.from({ length: 53 }, () => Array.from({ length: 7 }, () => { const r = rnd(); const l = r < 0.45 ? 0 : r < 0.7 ? 1 : r < 0.85 ? 2 : r < 0.95 ? 3 : 4; return { l, label: `Sample · level ${l}` }; }));
 }
 
 const sample: GH = {
@@ -47,13 +47,13 @@ export async function getGithub(): Promise<Widget<GH>> {
     }
     let weeks = sampleWeeks(), total = 0, realGraph = false;
     if (token) {
-      const g = await getJson<{ data: { user: { contributionsCollection: { contributionCalendar: { totalContributions: number; weeks: { contributionDays: { contributionLevel: string }[] }[] } } } } }>("https://api.github.com/graphql", {
+      const g = await getJson<{ data: { user: { contributionsCollection: { contributionCalendar: { totalContributions: number; weeks: { contributionDays: { contributionLevel: string; contributionCount: number; date: string }[] }[] } } } } }>("https://api.github.com/graphql", {
         method: "POST", headers,
-        body: JSON.stringify({ query: `query($u:String!){user(login:$u){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{contributionLevel}}}}}}`, variables: { u: user } }),
+        body: JSON.stringify({ query: `query($u:String!){user(login:$u){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{contributionLevel contributionCount date}}}}}}`, variables: { u: user } }),
       });
       const cal = g.data.user.contributionsCollection.contributionCalendar;
       const lv = ["NONE", "FIRST_QUARTILE", "SECOND_QUARTILE", "THIRD_QUARTILE", "FOURTH_QUARTILE"];
-      weeks = cal.weeks.map((w) => w.contributionDays.map((d) => lv.indexOf(d.contributionLevel)));
+      weeks = cal.weeks.map((w) => w.contributionDays.map((d) => ({ l: lv.indexOf(d.contributionLevel), label: `${d.contributionCount} contribution${d.contributionCount === 1 ? "" : "s"} · ${d.date}` })));
       total = cal.totalContributions; realGraph = true;
     }
     return { sample: !realGraph, data: { followers: u.followers, repos: u.public_repos, stars: repos.reduce((n, r) => n + r.stargazers_count, 0), weeks, total, events: events.slice(0, 6) } };

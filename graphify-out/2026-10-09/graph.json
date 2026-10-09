@@ -4,29 +4,29 @@
   "graph": {},
   "nodes": [
     {
-      "id": "lib_data_github_ev",
-      "label": "Ev",
+      "id": "lib_data_wakatime_slice",
+      "label": "Slice",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "github.tsx",
+      "community_name": "wakatime.tsx",
       "file_type": "code",
-      "norm_label": "ev",
-      "source_file": "lib/data/github.ts",
-      "source_location": "L27"
+      "norm_label": "slice",
+      "source_file": "lib/data/wakatime.ts",
+      "source_location": "L4"
     },
     {
-      "id": "lib_data_github_gh",
-      "label": "GH",
+      "id": "lib_data_wakatime_waka",
+      "label": "Waka",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "github.tsx",
+      "community_name": "wakatime.tsx",
       "file_type": "code",
-      "norm_label": "gh",
-      "source_file": "lib/data/github.ts",
+      "norm_label": "waka",
+      "source_file": "lib/data/wakatime.ts",
       "source_location": "L5"
     },
     {
@@ -41,19 +41,6 @@
       "norm_label": "stackitem",
       "source_file": "lib/profile.ts",
       "source_location": "L35"
-    },
-    {
-      "id": "components_sections_contact_state",
-      "label": "State",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "contact.tsx",
-      "file_type": "code",
-      "norm_label": "state",
-      "source_file": "components/sections/contact.tsx",
-      "source_location": "L8"
     },
     {
       "id": "lib_data_status_health",
@@ -80,6 +67,19 @@
       "norm_label": "service",
       "source_file": "lib/data/status.ts",
       "source_location": "L5"
+    },
+    {
+      "id": "components_sections_contact_state",
+      "label": "State",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "primitives.tsx",
+      "file_type": "code",
+      "norm_label": "state",
+      "source_file": "components/sections/contact.tsx",
+      "source_location": "L8"
     },
     {
       "id": "lib_icons_icon",
@@ -160,29 +160,29 @@
       "source_location": "L31"
     },
     {
-      "id": "lib_data_wakatime_slice",
-      "label": "Slice",
+      "id": "lib_data_github_ev",
+      "label": "Ev",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 6,
       "community_name": "index.tsx",
       "file_type": "code",
-      "norm_label": "slice",
-      "source_file": "lib/data/wakatime.ts",
-      "source_location": "L4"
+      "norm_label": "ev",
+      "source_file": "lib/data/github.ts",
+      "source_location": "L27"
     },
     {
-      "id": "lib_data_wakatime_waka",
-      "label": "Waka",
+      "id": "lib_data_github_gh",
+      "label": "GH",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 6,
       "community_name": "index.tsx",
       "file_type": "code",
-      "norm_label": "waka",
-      "source_file": "lib/data/wakatime.ts",
+      "norm_label": "gh",
+      "source_file": "lib/data/github.ts",
       "source_location": "L5"
     },
     {
@@ -199,52 +199,112 @@
       "source_location": "L9"
     },
     {
-      "id": "components_dashboard_github_githubcard",
-      "label": "GithubCard()",
+      "id": "components_dashboard_wakatime_breakdown",
+      "label": "Breakdown()",
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "github.tsx",
+      "community_name": "wakatime.tsx",
       "file_type": "code",
-      "norm_label": "githubcard()",
-      "source_file": "components/dashboard/github.tsx",
-      "source_location": "L7"
+      "norm_label": "breakdown()",
+      "source_file": "components/dashboard/wakatime.tsx",
+      "source_location": "L5"
     },
     {
-      "id": "components_ui_motion_counter",
-      "label": "Counter()",
+      "id": "components_dashboard_wakatime_wakatimecard",
+      "label": "WakatimeCard()",
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "github.tsx",
+      "community_name": "wakatime.tsx",
       "file_type": "code",
-      "norm_label": "counter()",
+      "norm_label": "wakatimecard()",
+      "source_file": "components/dashboard/wakatime.tsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "components_nav_nav",
+      "label": "Nav()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "wakatime.tsx",
+      "file_type": "code",
+      "norm_label": "nav()",
+      "source_file": "components/nav.tsx",
+      "source_location": "L20"
+    },
+    {
+      "id": "components_ui_motion_bar",
+      "label": "Bar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "wakatime.tsx",
+      "file_type": "code",
+      "norm_label": "bar()",
       "source_file": "components/ui/motion.tsx",
-      "source_location": "L47"
+      "source_location": "L62"
     },
     {
-      "id": "lib_data_github_getgithub",
-      "label": "getGithub()",
+      "id": "components_ui_primitives_badge",
+      "label": "Badge()",
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "github.tsx",
+      "community_name": "wakatime.tsx",
       "file_type": "code",
-      "norm_label": "getgithub()",
-      "source_file": "lib/data/github.ts",
-      "source_location": "L29"
+      "norm_label": "badge()",
+      "source_file": "components/ui/primitives.tsx",
+      "source_location": "L45"
     },
     {
-      "id": "lib_data_github_sampleweeks",
-      "label": "sampleWeeks()",
+      "id": "components_ui_primitives_card",
+      "label": "Card()",
       "_callable": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "github.tsx",
+      "community_name": "wakatime.tsx",
       "file_type": "code",
-      "norm_label": "sampleweeks()",
-      "source_file": "lib/data/github.ts",
-      "source_location": "L12"
+      "norm_label": "card()",
+      "source_file": "components/ui/primitives.tsx",
+      "source_location": "L20"
+    },
+    {
+      "id": "lib_data_wakatime_getwakatime",
+      "label": "getWakatime()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "wakatime.tsx",
+      "file_type": "code",
+      "norm_label": "getwakatime()",
+      "source_file": "lib/data/wakatime.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "lib_data_wakatime_pick",
+      "label": "pick()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "wakatime.tsx",
+      "file_type": "code",
+      "norm_label": "pick()",
+      "source_file": "lib/data/wakatime.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "lib_utils_cn",
+      "label": "cn()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "wakatime.tsx",
+      "file_type": "code",
+      "norm_label": "cn()",
+      "source_file": "lib/utils.ts",
+      "source_location": "L1"
     },
     {
       "id": "app_error_error",
@@ -484,7 +544,7 @@
       "file_type": "code",
       "norm_label": "themeshell()",
       "source_file": "components/theme-shell.tsx",
-      "source_location": "L8"
+      "source_location": "L3"
     },
     {
       "id": "components_dashboard_index_dashboard",
@@ -499,64 +559,52 @@
       "source_location": "L15"
     },
     {
-      "id": "app_contact_page_page",
-      "label": "Page()",
+      "id": "components_contact_aside_localtime",
+      "label": "LocalTime()",
       "_callable": true,
       "_origin": "ast",
       "community": 48,
-      "community_name": "contact.tsx",
+      "community_name": "footer.tsx",
       "file_type": "code",
-      "norm_label": "page()",
-      "source_file": "app/contact/page.tsx",
+      "norm_label": "localtime()",
+      "source_file": "components/contact-aside.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "components_email_link_emaillink",
+      "label": "EmailLink()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "footer.tsx",
+      "file_type": "code",
+      "norm_label": "emaillink()",
+      "source_file": "components/email-link.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "components_social_icon_socialicon",
+      "label": "SocialIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "footer.tsx",
+      "file_type": "code",
+      "norm_label": "socialicon()",
+      "source_file": "components/social-icon.tsx",
       "source_location": "L6"
     },
     {
-      "id": "components_contact_aside_contactaside",
-      "label": "ContactAside()",
+      "id": "components_ui_primitives_techicon",
+      "label": "TechIcon()",
       "_callable": true,
       "_origin": "ast",
       "community": 48,
-      "community_name": "contact.tsx",
+      "community_name": "footer.tsx",
       "file_type": "code",
-      "norm_label": "contactaside()",
-      "source_file": "components/contact-aside.tsx",
-      "source_location": "L22"
-    },
-    {
-      "id": "components_sections_contact_contact",
-      "label": "Contact()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "contact.tsx",
-      "file_type": "code",
-      "norm_label": "contact()",
-      "source_file": "components/sections/contact.tsx",
-      "source_location": "L11"
-    },
-    {
-      "id": "components_sections_contact_contact_onsubmit",
-      "label": "onSubmit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "contact.tsx",
-      "file_type": "code",
-      "norm_label": "onsubmit()",
-      "source_file": "components/sections/contact.tsx",
-      "source_location": "L17"
-    },
-    {
-      "id": "components_ui_primitives_section",
-      "label": "Section()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "contact.tsx",
-      "file_type": "code",
-      "norm_label": "section()",
+      "norm_label": "techicon()",
       "source_file": "components/ui/primitives.tsx",
-      "source_location": "L8"
+      "source_location": "L50"
     },
     {
       "id": "components_dashboard_status_statuscard",
@@ -607,6 +655,18 @@
       "source_location": "L9"
     },
     {
+      "id": "app_contact_page_page",
+      "label": "Page()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "primitives.tsx",
+      "file_type": "code",
+      "norm_label": "page()",
+      "source_file": "app/contact/page.tsx",
+      "source_location": "L6"
+    },
+    {
       "id": "app_page_home",
       "label": "Home()",
       "_callable": true,
@@ -619,16 +679,40 @@
       "source_location": "L5"
     },
     {
-      "id": "components_nav_nav",
-      "label": "Nav()",
+      "id": "components_contact_aside_contactaside",
+      "label": "ContactAside()",
       "_callable": true,
       "_origin": "ast",
       "community": 51,
       "community_name": "primitives.tsx",
       "file_type": "code",
-      "norm_label": "nav()",
-      "source_file": "components/nav.tsx",
-      "source_location": "L20"
+      "norm_label": "contactaside()",
+      "source_file": "components/contact-aside.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "components_sections_contact_contact",
+      "label": "Contact()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "primitives.tsx",
+      "file_type": "code",
+      "norm_label": "contact()",
+      "source_file": "components/sections/contact.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "components_sections_contact_contact_onsubmit",
+      "label": "onSubmit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "primitives.tsx",
+      "file_type": "code",
+      "norm_label": "onsubmit()",
+      "source_file": "components/sections/contact.tsx",
+      "source_location": "L17"
     },
     {
       "id": "components_sections_hero_dashboardhero",
@@ -655,30 +739,6 @@
       "source_location": "L21"
     },
     {
-      "id": "components_ui_primitives_badge",
-      "label": "Badge()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 51,
-      "community_name": "primitives.tsx",
-      "file_type": "code",
-      "norm_label": "badge()",
-      "source_file": "components/ui/primitives.tsx",
-      "source_location": "L45"
-    },
-    {
-      "id": "components_ui_primitives_card",
-      "label": "Card()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 51,
-      "community_name": "primitives.tsx",
-      "file_type": "code",
-      "norm_label": "card()",
-      "source_file": "components/ui/primitives.tsx",
-      "source_location": "L20"
-    },
-    {
       "id": "components_ui_primitives_container",
       "label": "Container()",
       "_callable": true,
@@ -691,16 +751,16 @@
       "source_location": "L4"
     },
     {
-      "id": "components_ui_primitives_emptystate",
-      "label": "EmptyState()",
+      "id": "components_ui_primitives_section",
+      "label": "Section()",
       "_callable": true,
       "_origin": "ast",
       "community": 51,
       "community_name": "primitives.tsx",
       "file_type": "code",
-      "norm_label": "emptystate()",
+      "norm_label": "section()",
       "source_file": "components/ui/primitives.tsx",
-      "source_location": "L41"
+      "source_location": "L8"
     },
     {
       "id": "lib_icons_geticon",
@@ -715,18 +775,6 @@
       "source_location": "L6"
     },
     {
-      "id": "lib_utils_cn",
-      "label": "cn()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 51,
-      "community_name": "primitives.tsx",
-      "file_type": "code",
-      "norm_label": "cn()",
-      "source_file": "lib/utils.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "app_creators_page_page",
       "label": "Page()",
       "_callable": true,
@@ -737,30 +785,6 @@
       "norm_label": "page()",
       "source_file": "app/creators/page.tsx",
       "source_location": "L6"
-    },
-    {
-      "id": "components_contact_aside_localtime",
-      "label": "LocalTime()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "localtime()",
-      "source_file": "components/contact-aside.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "components_email_link_emaillink",
-      "label": "EmailLink()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "emaillink()",
-      "source_file": "components/email-link.tsx",
-      "source_location": "L4"
     },
     {
       "id": "components_sections_creators_creators",
@@ -835,30 +859,6 @@
       "source_location": "L41"
     },
     {
-      "id": "components_social_icon_socialicon",
-      "label": "SocialIcon()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "socialicon()",
-      "source_file": "components/social-icon.tsx",
-      "source_location": "L6"
-    },
-    {
-      "id": "components_ui_primitives_techicon",
-      "label": "TechIcon()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "techicon()",
-      "source_file": "components/ui/primitives.tsx",
-      "source_location": "L50"
-    },
-    {
       "id": "components_dashboard_analytics_analyticscard",
       "label": "AnalyticsCard()",
       "_callable": true,
@@ -895,6 +895,18 @@
       "source_location": "L9"
     },
     {
+      "id": "components_dashboard_github_githubcard",
+      "label": "GithubCard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "index.tsx",
+      "file_type": "code",
+      "norm_label": "githubcard()",
+      "source_file": "components/dashboard/github.tsx",
+      "source_location": "L7"
+    },
+    {
       "id": "components_dashboard_index_skeleton",
       "label": "Skeleton()",
       "_callable": true,
@@ -907,40 +919,28 @@
       "source_location": "L11"
     },
     {
-      "id": "components_dashboard_wakatime_breakdown",
-      "label": "Breakdown()",
+      "id": "components_ui_motion_counter",
+      "label": "Counter()",
       "_callable": true,
       "_origin": "ast",
       "community": 6,
       "community_name": "index.tsx",
       "file_type": "code",
-      "norm_label": "breakdown()",
-      "source_file": "components/dashboard/wakatime.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "components_dashboard_wakatime_wakatimecard",
-      "label": "WakatimeCard()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "index.tsx",
-      "file_type": "code",
-      "norm_label": "wakatimecard()",
-      "source_file": "components/dashboard/wakatime.tsx",
-      "source_location": "L21"
-    },
-    {
-      "id": "components_ui_motion_bar",
-      "label": "Bar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "index.tsx",
-      "file_type": "code",
-      "norm_label": "bar()",
+      "norm_label": "counter()",
       "source_file": "components/ui/motion.tsx",
-      "source_location": "L62"
+      "source_location": "L47"
+    },
+    {
+      "id": "components_ui_primitives_emptystate",
+      "label": "EmptyState()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "index.tsx",
+      "file_type": "code",
+      "norm_label": "emptystate()",
+      "source_file": "components/ui/primitives.tsx",
+      "source_location": "L41"
     },
     {
       "id": "components_ui_primitives_stat",
@@ -991,28 +991,28 @@
       "source_location": "L33"
     },
     {
-      "id": "lib_data_wakatime_getwakatime",
-      "label": "getWakatime()",
+      "id": "lib_data_github_getgithub",
+      "label": "getGithub()",
       "_callable": true,
       "_origin": "ast",
       "community": 6,
       "community_name": "index.tsx",
       "file_type": "code",
-      "norm_label": "getwakatime()",
-      "source_file": "lib/data/wakatime.ts",
-      "source_location": "L30"
+      "norm_label": "getgithub()",
+      "source_file": "lib/data/github.ts",
+      "source_location": "L29"
     },
     {
-      "id": "lib_data_wakatime_pick",
-      "label": "pick()",
+      "id": "lib_data_github_sampleweeks",
+      "label": "sampleWeeks()",
       "_callable": true,
       "_origin": "ast",
       "community": 6,
       "community_name": "index.tsx",
       "file_type": "code",
-      "norm_label": "pick()",
-      "source_file": "lib/data/wakatime.ts",
-      "source_location": "L28"
+      "norm_label": "sampleweeks()",
+      "source_file": "lib/data/github.ts",
+      "source_location": "L12"
     },
     {
       "id": "lib_utils_getjson",
@@ -1535,7 +1535,7 @@
       "node_kind": "heading",
       "norm_label": "agent prompt guide",
       "source_file": "DESIGN.md",
-      "source_location": "L220"
+      "source_location": "L222"
     },
     {
       "id": "design_border_radius",
@@ -1547,7 +1547,7 @@
       "node_kind": "heading",
       "norm_label": "border radius",
       "source_file": "DESIGN.md",
-      "source_location": "L95"
+      "source_location": "L97"
     },
     {
       "id": "design_components",
@@ -1559,7 +1559,7 @@
       "node_kind": "heading",
       "norm_label": "components",
       "source_file": "DESIGN.md",
-      "source_location": "L111"
+      "source_location": "L113"
     },
     {
       "id": "design_css_custom_properties",
@@ -1571,7 +1571,7 @@
       "node_kind": "heading",
       "norm_label": "css custom properties",
       "source_file": "DESIGN.md",
-      "source_location": "L256"
+      "source_location": "L258"
     },
     {
       "id": "design_do",
@@ -1583,7 +1583,7 @@
       "node_kind": "heading",
       "norm_label": "do",
       "source_file": "DESIGN.md",
-      "source_location": "L180"
+      "source_location": "L182"
     },
     {
       "id": "design_do_s_and_don_ts",
@@ -1595,7 +1595,7 @@
       "node_kind": "heading",
       "norm_label": "do's and don'ts",
       "source_file": "DESIGN.md",
-      "source_location": "L178"
+      "source_location": "L180"
     },
     {
       "id": "design_don_t",
@@ -1607,7 +1607,7 @@
       "node_kind": "heading",
       "norm_label": "don't",
       "source_file": "DESIGN.md",
-      "source_location": "L189"
+      "source_location": "L191"
     },
     {
       "id": "design_dropdown_select_input",
@@ -1619,7 +1619,7 @@
       "node_kind": "heading",
       "norm_label": "dropdown / select input",
       "source_file": "DESIGN.md",
-      "source_location": "L163"
+      "source_location": "L165"
     },
     {
       "id": "design_elevation",
@@ -1631,7 +1631,7 @@
       "node_kind": "heading",
       "norm_label": "elevation",
       "source_file": "DESIGN.md",
-      "source_location": "L208"
+      "source_location": "L210"
     },
     {
       "id": "design_feature_card",
@@ -1643,7 +1643,7 @@
       "node_kind": "heading",
       "norm_label": "feature card",
       "source_file": "DESIGN.md",
-      "source_location": "L138"
+      "source_location": "L140"
     },
     {
       "id": "design_ghost_outline_button",
@@ -1655,7 +1655,7 @@
       "node_kind": "heading",
       "norm_label": "ghost outline button",
       "source_file": "DESIGN.md",
-      "source_location": "L118"
+      "source_location": "L120"
     },
     {
       "id": "design_header_navigation",
@@ -1667,7 +1667,7 @@
       "node_kind": "heading",
       "norm_label": "header navigation",
       "source_file": "DESIGN.md",
-      "source_location": "L153"
+      "source_location": "L155"
     },
     {
       "id": "design_illustration_panel_product_mockup",
@@ -1679,7 +1679,7 @@
       "node_kind": "heading",
       "norm_label": "illustration panel (product mockup)",
       "source_file": "DESIGN.md",
-      "source_location": "L158"
+      "source_location": "L160"
     },
     {
       "id": "design_imagery",
@@ -1691,7 +1691,7 @@
       "node_kind": "heading",
       "norm_label": "imagery",
       "source_file": "DESIGN.md",
-      "source_location": "L212"
+      "source_location": "L214"
     },
     {
       "id": "design_layout",
@@ -1703,10 +1703,10 @@
       "node_kind": "heading",
       "norm_label": "layout",
       "source_file": "DESIGN.md",
-      "source_location": "L104"
+      "source_location": "L106"
     },
     {
-      "id": "design_layout_216",
+      "id": "design_layout_218",
       "label": "Layout",
       "_origin": "ast",
       "community": 1,
@@ -1715,7 +1715,7 @@
       "node_kind": "heading",
       "norm_label": "layout",
       "source_file": "DESIGN.md",
-      "source_location": "L216"
+      "source_location": "L218"
     },
     {
       "id": "design_logo_cloud_bar",
@@ -1727,7 +1727,7 @@
       "node_kind": "heading",
       "norm_label": "logo cloud bar",
       "source_file": "DESIGN.md",
-      "source_location": "L133"
+      "source_location": "L135"
     },
     {
       "id": "design_metric_sparkline",
@@ -1739,7 +1739,7 @@
       "node_kind": "heading",
       "norm_label": "metric sparkline",
       "source_file": "DESIGN.md",
-      "source_location": "L173"
+      "source_location": "L175"
     },
     {
       "id": "design_pill_navigation_cta",
@@ -1751,7 +1751,7 @@
       "node_kind": "heading",
       "norm_label": "pill navigation cta",
       "source_file": "DESIGN.md",
-      "source_location": "L123"
+      "source_location": "L125"
     },
     {
       "id": "design_ppneuemontreal_ui_and_body_text_the_workhorse_grotesque_used_for_nav_buttons_body_copy_and_all_functional_interface_elements_the_tight_tracking_at_small_sizes_0_01em_at_12px_and_slight_loosening_at_larger_sizes_0_02em_at_24px_create_optical_balance_across_the_ui_scale_weight_400_is_the_default_weight_500_appears_in_nav_links_and_button_labels_where_a_subtle_emphasis_is_needed_without_switching_faces_font_ppneuemontreal",
@@ -1763,7 +1763,7 @@
       "node_kind": "heading",
       "norm_label": "ppneuemontreal \u2014 ui and body text \u2014 the workhorse grotesque used for nav, buttons, body copy, and all functional interface elements. the tight tracking at small sizes (-0.01em at 12px) and slight loosening at larger sizes (0.02em at 24px) create optical balance across the ui scale. weight 400 is the default; weight 500 appears in nav links and button labels where a subtle emphasis is needed without switching faces. \u00b7 `--font-ppneuemontreal`",
       "source_file": "DESIGN.md",
-      "source_location": "L31"
+      "source_location": "L33"
     },
     {
       "id": "design_ppneuemontrealmono_code_and_technical_labels_the_monospaced_face_for_terminal_badges_code_snippets_and_developer_facing_metadata_the_slight_positive_tracking_0_02_0_025em_is_typical_for_mono_at_small_sizes_to_improve_readability_of_technical_strings_used_in_elements_like_the_git_push_badge_and_command_labels_font_ppneuemontrealmono",
@@ -1775,7 +1775,7 @@
       "node_kind": "heading",
       "norm_label": "ppneuemontrealmono \u2014 code and technical labels \u2014 the monospaced face for terminal badges, code snippets, and developer-facing metadata. the slight positive tracking (0.02-0.025em) is typical for mono at small sizes to improve readability of technical strings. used in elements like the '$ git push' badge and command labels. \u00b7 `--font-ppneuemontrealmono`",
       "source_file": "DESIGN.md",
-      "source_location": "L47"
+      "source_location": "L49"
     },
     {
       "id": "design_primary_dark_button",
@@ -1787,7 +1787,7 @@
       "node_kind": "heading",
       "norm_label": "primary dark button",
       "source_file": "DESIGN.md",
-      "source_location": "L113"
+      "source_location": "L115"
     },
     {
       "id": "design_quick_start",
@@ -1799,7 +1799,7 @@
       "node_kind": "heading",
       "norm_label": "quick start",
       "source_file": "DESIGN.md",
-      "source_location": "L254"
+      "source_location": "L256"
     },
     {
       "id": "design_render_style_reference",
@@ -1823,7 +1823,7 @@
       "node_kind": "heading",
       "norm_label": "roobert \u2014 display and heading text \u2014 used for hero headlines, section titles, and all oversized type. the signature choice is weight 300 for the largest sizes (64-80px), which is anti-convention \u2014 most sites use 600-700 for impact, but render uses whisper-weight to achieve authority through restraint. line-heights compress to 1.00-1.10 at display sizes, creating tight, architectural headlines. tracking tightens aggressively with size (-0.03em at 80px) to compensate for the visual airiness of light weight. \u00b7 `--font-roobert`",
       "source_file": "DESIGN.md",
-      "source_location": "L39"
+      "source_location": "L41"
     },
     {
       "id": "design_similar_brands",
@@ -1835,7 +1835,7 @@
       "node_kind": "heading",
       "norm_label": "similar brands",
       "source_file": "DESIGN.md",
-      "source_location": "L246"
+      "source_location": "L248"
     },
     {
       "id": "design_spacing_scale",
@@ -1847,7 +1847,7 @@
       "node_kind": "heading",
       "norm_label": "spacing scale",
       "source_file": "DESIGN.md",
-      "source_location": "L76"
+      "source_location": "L78"
     },
     {
       "id": "design_status_badge_success_deploying",
@@ -1859,7 +1859,7 @@
       "node_kind": "heading",
       "norm_label": "status badge (success/deploying)",
       "source_file": "DESIGN.md",
-      "source_location": "L168"
+      "source_location": "L170"
     },
     {
       "id": "design_step_indicator_badge",
@@ -1871,7 +1871,7 @@
       "node_kind": "heading",
       "norm_label": "step indicator badge",
       "source_file": "DESIGN.md",
-      "source_location": "L128"
+      "source_location": "L130"
     },
     {
       "id": "design_surfaces",
@@ -1883,7 +1883,7 @@
       "node_kind": "heading",
       "norm_label": "surfaces",
       "source_file": "DESIGN.md",
-      "source_location": "L198"
+      "source_location": "L200"
     },
     {
       "id": "design_tailwind_v4",
@@ -1895,7 +1895,7 @@
       "node_kind": "heading",
       "norm_label": "tailwind v4",
       "source_file": "DESIGN.md",
-      "source_location": "L362"
+      "source_location": "L364"
     },
     {
       "id": "design_terminal_badge",
@@ -1907,7 +1907,7 @@
       "node_kind": "heading",
       "norm_label": "terminal badge",
       "source_file": "DESIGN.md",
-      "source_location": "L143"
+      "source_location": "L145"
     },
     {
       "id": "design_tokens_colors",
@@ -1919,7 +1919,7 @@
       "node_kind": "heading",
       "norm_label": "tokens \u2014 colors",
       "source_file": "DESIGN.md",
-      "source_location": "L10"
+      "source_location": "L12"
     },
     {
       "id": "design_tokens_spacing_shapes",
@@ -1931,7 +1931,7 @@
       "node_kind": "heading",
       "norm_label": "tokens \u2014 spacing & shapes",
       "source_file": "DESIGN.md",
-      "source_location": "L70"
+      "source_location": "L72"
     },
     {
       "id": "design_tokens_typography",
@@ -1943,7 +1943,7 @@
       "node_kind": "heading",
       "norm_label": "tokens \u2014 typography",
       "source_file": "DESIGN.md",
-      "source_location": "L29"
+      "source_location": "L31"
     },
     {
       "id": "design_top_notification_banner",
@@ -1955,7 +1955,7 @@
       "node_kind": "heading",
       "norm_label": "top notification banner",
       "source_file": "DESIGN.md",
-      "source_location": "L148"
+      "source_location": "L150"
     },
     {
       "id": "design_type_scale",
@@ -1967,7 +1967,7 @@
       "node_kind": "heading",
       "norm_label": "type scale",
       "source_file": "DESIGN.md",
-      "source_location": "L55"
+      "source_location": "L57"
     },
     {
       "id": "design_type_system_philosophy",
@@ -1979,7 +1979,7 @@
       "node_kind": "heading",
       "norm_label": "type system philosophy",
       "source_file": "DESIGN.md",
-      "source_location": "L242"
+      "source_location": "L244"
     },
     {
       "id": "agents_skills_next_best_practices_self_hosting",
@@ -3098,48 +3098,37 @@
       "source_location": "L8"
     },
     {
-      "id": "components_dashboard_github",
-      "label": "github.tsx",
+      "id": "components_dashboard_wakatime",
+      "label": "wakatime.tsx",
       "_origin": "ast",
       "community": 12,
-      "community_name": "github.tsx",
+      "community_name": "wakatime.tsx",
       "file_type": "code",
-      "norm_label": "github.tsx",
-      "source_file": "components/dashboard/github.tsx",
+      "norm_label": "wakatime.tsx",
+      "source_file": "components/dashboard/wakatime.tsx",
       "source_location": "L1"
     },
     {
-      "id": "components_dashboard_github_shade",
-      "label": "shade",
+      "id": "lib_data_wakatime",
+      "label": "wakatime.ts",
       "_origin": "ast",
       "community": 12,
-      "community_name": "github.tsx",
+      "community_name": "wakatime.tsx",
       "file_type": "code",
-      "norm_label": "shade",
-      "source_file": "components/dashboard/github.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "lib_data_github",
-      "label": "github.ts",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "github.tsx",
-      "file_type": "code",
-      "norm_label": "github.ts",
-      "source_file": "lib/data/github.ts",
+      "norm_label": "wakatime.ts",
+      "source_file": "lib/data/wakatime.ts",
       "source_location": "L1"
     },
     {
-      "id": "lib_data_github_sample",
+      "id": "lib_data_wakatime_sample",
       "label": "sample",
       "_origin": "ast",
       "community": 12,
-      "community_name": "github.tsx",
+      "community_name": "wakatime.tsx",
       "file_type": "code",
       "norm_label": "sample",
-      "source_file": "lib/data/github.ts",
-      "source_location": "L18"
+      "source_file": "lib/data/wakatime.ts",
+      "source_location": "L13"
     },
     {
       "id": "agents_skills_react_best_practices_rules_rendering_animate_svg_wrapper",
@@ -9128,6 +9117,17 @@
       "source_location": "L1"
     },
     {
+      "id": "components_nav",
+      "label": "nav.tsx",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "layout.tsx",
+      "file_type": "code",
+      "norm_label": "nav.tsx",
+      "source_file": "components/nav.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "components_nav_progress",
       "label": "nav-progress.tsx",
       "_origin": "ast",
@@ -9137,6 +9137,17 @@
       "norm_label": "nav-progress.tsx",
       "source_file": "components/nav-progress.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "components_nav_routes",
+      "label": "routes",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "layout.tsx",
+      "file_type": "code",
+      "norm_label": "routes",
+      "source_file": "components/nav.tsx",
+      "source_location": "L12"
     },
     {
       "id": "components_theme_shell",
@@ -11245,48 +11256,92 @@
       "source_location": "L1"
     },
     {
-      "id": "app_contact_page",
-      "label": "contact/page.tsx",
+      "id": "components_contact_aside",
+      "label": "contact-aside.tsx",
       "_origin": "ast",
       "community": 48,
-      "community_name": "contact.tsx",
+      "community_name": "footer.tsx",
       "file_type": "code",
-      "norm_label": "contact/page.tsx",
-      "source_file": "app/contact/page.tsx",
+      "norm_label": "contact-aside.tsx",
+      "source_file": "components/contact-aside.tsx",
       "source_location": "L1"
     },
     {
-      "id": "app_contact_page_metadata",
-      "label": "metadata",
+      "id": "components_email_link",
+      "label": "email-link.tsx",
       "_origin": "ast",
       "community": 48,
-      "community_name": "contact.tsx",
+      "community_name": "footer.tsx",
       "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/contact/page.tsx",
+      "norm_label": "email-link.tsx",
+      "source_file": "components/email-link.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_footer",
+      "label": "footer.tsx",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "footer.tsx",
+      "file_type": "code",
+      "norm_label": "footer.tsx",
+      "source_file": "components/footer.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_footer_donateicon",
+      "label": "donateIcon",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "footer.tsx",
+      "file_type": "code",
+      "norm_label": "donateicon",
+      "source_file": "components/footer.tsx",
+      "source_location": "L10"
+    },
+    {
+      "id": "components_social_icon",
+      "label": "social-icon.tsx",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "footer.tsx",
+      "file_type": "code",
+      "norm_label": "social-icon.tsx",
+      "source_file": "components/social-icon.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_social_icon_map",
+      "label": "map",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "footer.tsx",
+      "file_type": "code",
+      "norm_label": "map",
+      "source_file": "components/social-icon.tsx",
       "source_location": "L4"
     },
     {
-      "id": "components_sections_contact",
-      "label": "contact.tsx",
+      "id": "lib_profile_profile",
+      "label": "profile",
       "_origin": "ast",
       "community": 48,
-      "community_name": "contact.tsx",
+      "community_name": "footer.tsx",
       "file_type": "code",
-      "norm_label": "contact.tsx",
-      "source_file": "components/sections/contact.tsx",
-      "source_location": "L1"
+      "norm_label": "profile",
+      "source_file": "lib/profile.ts",
+      "source_location": "L4"
     },
     {
-      "id": "components_ui_primitives_btnprimary",
-      "label": "btnPrimary",
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
       "_origin": "ast",
       "community": 48,
-      "community_name": "contact.tsx",
-      "file_type": "code",
-      "norm_label": "btnprimary",
-      "source_file": "components/ui/primitives.tsx",
-      "source_location": "L58"
+      "community_name": "footer.tsx",
+      "file_type": "concept",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L14"
     },
     {
       "id": "components_dashboard_status",
@@ -11859,6 +11914,28 @@
       "source_location": "L1"
     },
     {
+      "id": "app_contact_page",
+      "label": "contact/page.tsx",
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "primitives.tsx",
+      "file_type": "code",
+      "norm_label": "contact/page.tsx",
+      "source_file": "app/contact/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_contact_page_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "primitives.tsx",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/contact/page.tsx",
+      "source_location": "L4"
+    },
+    {
       "id": "app_page",
       "label": "app/page.tsx",
       "_origin": "ast",
@@ -11870,48 +11947,15 @@
       "source_location": "L1"
     },
     {
-      "id": "components_dashboard_ethereum",
-      "label": "ethereum.tsx",
+      "id": "components_sections_contact",
+      "label": "contact.tsx",
       "_origin": "ast",
       "community": 51,
       "community_name": "primitives.tsx",
       "file_type": "code",
-      "norm_label": "ethereum.tsx",
-      "source_file": "components/dashboard/ethereum.tsx",
+      "norm_label": "contact.tsx",
+      "source_file": "components/sections/contact.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "components_dashboard_ethereum_shade",
-      "label": "shade",
-      "_origin": "ast",
-      "community": 51,
-      "community_name": "primitives.tsx",
-      "file_type": "code",
-      "norm_label": "shade",
-      "source_file": "components/dashboard/ethereum.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "components_nav",
-      "label": "nav.tsx",
-      "_origin": "ast",
-      "community": 51,
-      "community_name": "primitives.tsx",
-      "file_type": "code",
-      "norm_label": "nav.tsx",
-      "source_file": "components/nav.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_nav_routes",
-      "label": "routes",
-      "_origin": "ast",
-      "community": 51,
-      "community_name": "primitives.tsx",
-      "file_type": "code",
-      "norm_label": "routes",
-      "source_file": "components/nav.tsx",
-      "source_location": "L12"
     },
     {
       "id": "components_sections_hero",
@@ -11947,6 +11991,17 @@
       "source_location": "L1"
     },
     {
+      "id": "components_ui_primitives_btnprimary",
+      "label": "btnPrimary",
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "primitives.tsx",
+      "file_type": "code",
+      "norm_label": "btnprimary",
+      "source_file": "components/ui/primitives.tsx",
+      "source_location": "L58"
+    },
+    {
       "id": "lib_icons",
       "label": "icons.ts",
       "_origin": "ast",
@@ -11967,17 +12022,6 @@
       "norm_label": "all",
       "source_file": "lib/icons.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "lib_utils",
-      "label": "utils.ts",
-      "_origin": "ast",
-      "community": 51,
-      "community_name": "primitives.tsx",
-      "file_type": "code",
-      "norm_label": "utils.ts",
-      "source_file": "lib/utils.ts",
-      "source_location": "L1"
     },
     {
       "id": "ref_simple_icons",
@@ -12013,50 +12057,6 @@
       "source_location": "L4"
     },
     {
-      "id": "components_contact_aside",
-      "label": "contact-aside.tsx",
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "contact-aside.tsx",
-      "source_file": "components/contact-aside.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_email_link",
-      "label": "email-link.tsx",
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "email-link.tsx",
-      "source_file": "components/email-link.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_footer",
-      "label": "footer.tsx",
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "footer.tsx",
-      "source_file": "components/footer.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_footer_donateicon",
-      "label": "donateIcon",
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "donateicon",
-      "source_file": "components/footer.tsx",
-      "source_location": "L10"
-    },
-    {
       "id": "components_sections_creators",
       "label": "creators.tsx",
       "_origin": "ast",
@@ -12077,50 +12077,6 @@
       "norm_label": "tabs",
       "source_file": "components/sections/creators.tsx",
       "source_location": "L79"
-    },
-    {
-      "id": "components_social_icon",
-      "label": "social-icon.tsx",
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "social-icon.tsx",
-      "source_file": "components/social-icon.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_social_icon_map",
-      "label": "map",
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "map",
-      "source_file": "components/social-icon.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "lib_profile_profile",
-      "label": "profile",
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "code",
-      "norm_label": "profile",
-      "source_file": "lib/profile.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "ref_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "creators.tsx",
-      "file_type": "concept",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L14"
     },
     {
       "id": "ref_radix_ui",
@@ -12781,6 +12737,50 @@
       "source_location": "L1"
     },
     {
+      "id": "components_dashboard_ethereum",
+      "label": "ethereum.tsx",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "index.tsx",
+      "file_type": "code",
+      "norm_label": "ethereum.tsx",
+      "source_file": "components/dashboard/ethereum.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_dashboard_ethereum_shade",
+      "label": "shade",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "index.tsx",
+      "file_type": "code",
+      "norm_label": "shade",
+      "source_file": "components/dashboard/ethereum.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "components_dashboard_github",
+      "label": "github.tsx",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "index.tsx",
+      "file_type": "code",
+      "norm_label": "github.tsx",
+      "source_file": "components/dashboard/github.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_dashboard_github_shade",
+      "label": "shade",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "index.tsx",
+      "file_type": "code",
+      "norm_label": "shade",
+      "source_file": "components/dashboard/github.tsx",
+      "source_location": "L5"
+    },
+    {
       "id": "components_dashboard_index",
       "label": "index.tsx",
       "_origin": "ast",
@@ -12801,17 +12801,6 @@
       "norm_label": "widgets",
       "source_file": "components/dashboard/index.tsx",
       "source_location": "L9"
-    },
-    {
-      "id": "components_dashboard_wakatime",
-      "label": "wakatime.tsx",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "index.tsx",
-      "file_type": "code",
-      "norm_label": "wakatime.tsx",
-      "source_file": "components/dashboard/wakatime.tsx",
-      "source_location": "L1"
     },
     {
       "id": "lib_data_analytics",
@@ -12858,26 +12847,37 @@
       "source_location": "L24"
     },
     {
-      "id": "lib_data_wakatime",
-      "label": "wakatime.ts",
+      "id": "lib_data_github",
+      "label": "github.ts",
       "_origin": "ast",
       "community": 6,
       "community_name": "index.tsx",
       "file_type": "code",
-      "norm_label": "wakatime.ts",
-      "source_file": "lib/data/wakatime.ts",
+      "norm_label": "github.ts",
+      "source_file": "lib/data/github.ts",
       "source_location": "L1"
     },
     {
-      "id": "lib_data_wakatime_sample",
+      "id": "lib_data_github_sample",
       "label": "sample",
       "_origin": "ast",
       "community": 6,
       "community_name": "index.tsx",
       "file_type": "code",
       "norm_label": "sample",
-      "source_file": "lib/data/wakatime.ts",
-      "source_location": "L13"
+      "source_file": "lib/data/github.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "lib_utils",
+      "label": "utils.ts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "index.tsx",
+      "file_type": "code",
+      "norm_label": "utils.ts",
+      "source_file": "lib/utils.ts",
+      "source_location": "L1"
     },
     {
       "id": "agents_skills_next_best_practices_runtime_selection",
@@ -15413,18 +15413,6 @@
       "weight": 1.0
     },
     {
-      "source": "components_theme_shell_themeshell",
-      "target": "lib_utils_cn",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "components/theme-shell.tsx",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
       "source": "components_ui_primitives_badge",
       "target": "lib_utils_cn",
       "relation": "calls",
@@ -16585,19 +16573,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/theme-shell.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "components_theme_shell",
-      "target": "lib_utils_cn",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/theme-shell.tsx",
-      "source_location": "L5",
+      "source_location": "L1",
       "weight": 1.0
     },
     {
@@ -18061,18 +18037,6 @@
     },
     {
       "source": "components_theme_shell",
-      "target": "ref_next",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/theme-shell.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "components_theme_shell",
       "target": "components_nav_progress",
       "relation": "imports_from",
       "_origin": "ast",
@@ -18080,19 +18044,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/theme-shell.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "components_theme_shell",
-      "target": "lib_utils",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/theme-shell.tsx",
-      "source_location": "L5",
+      "source_location": "L1",
       "weight": 1.0
     },
     {
@@ -27738,7 +27690,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/theme-shell.tsx",
-      "source_location": "L8",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -27958,7 +27910,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L113",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
@@ -27969,7 +27921,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L118",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -27980,7 +27932,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L123",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -27991,7 +27943,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L128",
+      "source_location": "L130",
       "weight": 1.0
     },
     {
@@ -28002,7 +27954,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L133",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -28013,7 +27965,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L138",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -28024,7 +27976,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L143",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -28035,7 +27987,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L148",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -28046,7 +27998,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L153",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -28057,7 +28009,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L158",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -28068,7 +28020,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L163",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -28079,7 +28031,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L168",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
@@ -28090,7 +28042,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L173",
+      "source_location": "L175",
       "weight": 1.0
     },
     {
@@ -28101,7 +28053,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L180",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -28112,7 +28064,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L189",
+      "source_location": "L191",
       "weight": 1.0
     },
     {
@@ -28123,7 +28075,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L256",
+      "source_location": "L258",
       "weight": 1.0
     },
     {
@@ -28134,18 +28086,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L362",
-      "weight": 1.0
-    },
-    {
-      "source": "design_render_style_reference",
-      "target": "design_tokens_colors",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "DESIGN.md",
-      "source_location": "L10",
+      "source_location": "L364",
       "weight": 1.0
     },
     {
@@ -28156,7 +28097,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L111",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "design_render_style_reference",
+      "target": "design_tokens_colors",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "DESIGN.md",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -28167,7 +28119,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L178",
+      "source_location": "L180",
       "weight": 1.0
     },
     {
@@ -28178,7 +28130,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L198",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
@@ -28189,7 +28141,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L208",
+      "source_location": "L210",
       "weight": 1.0
     },
     {
@@ -28200,18 +28152,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L212",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
       "source": "design_render_style_reference",
-      "target": "design_layout_216",
+      "target": "design_layout_218",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L216",
+      "source_location": "L218",
       "weight": 1.0
     },
     {
@@ -28222,7 +28174,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L220",
+      "source_location": "L222",
       "weight": 1.0
     },
     {
@@ -28233,7 +28185,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L242",
+      "source_location": "L244",
       "weight": 1.0
     },
     {
@@ -28244,7 +28196,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L246",
+      "source_location": "L248",
       "weight": 1.0
     },
     {
@@ -28255,7 +28207,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L254",
+      "source_location": "L256",
       "weight": 1.0
     },
     {
@@ -28266,7 +28218,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -28277,7 +28229,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L70",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -28288,7 +28240,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L104",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -28299,7 +28251,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L76",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -28310,7 +28262,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L95",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -28321,7 +28273,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L31",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -28332,7 +28284,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L39",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -28343,7 +28295,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -28354,7 +28306,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DESIGN.md",
-      "source_location": "L55",
+      "source_location": "L57",
       "weight": 1.0
     },
     {

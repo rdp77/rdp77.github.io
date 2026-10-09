@@ -1,12 +1,12 @@
 # Graph Report - rdp77.github.io  (2026-10-09)
 
 ## Corpus Check
-- 180 files · ~78,892 words
+- 180 files · ~78,918 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: (none) 2, .ico 1, .css 1)
 
 ## Summary
-- 1243 nodes · 1338 edges · 150 communities (68 shown, 82 thin omitted)
+- 1243 nodes · 1334 edges · 150 communities (68 shown, 82 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
@@ -28,7 +28,7 @@
 - TypeScript Advanced Types
 - Self-Hosting Next.js
 - Next.js Best Practices
-- github.tsx
+- wakatime.tsx
 - Metadata
 - Tailwind CSS Development Patterns
 - compilerOptions
@@ -64,7 +64,7 @@
 - Tailwind CSS Animations & Transitions
 - tailwind-css-patterns/SKILL.md
 - Tailwind CSS Performance Optimization
-- contact.tsx
+- footer.tsx
 - status.tsx
 - next-best-practices/SKILL.md
 - primitives.tsx
@@ -166,7 +166,7 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `Next.js Best Practices` - 20 edges
-2. `next` - 19 edges
+2. `next` - 18 edges
 3. `Tailwind CSS Documentation` - 17 edges
 4. `compilerOptions` - 16 edges
 5. `5. Re-render Optimization` - 16 edges
@@ -181,8 +181,8 @@
   .agents/skills/react-best-practices/AGENTS.md → components/dashboard/index.tsx
 - `Avoid Shared Module State for Request Data` --references--> `Dashboard()`  [INFERRED]
   .agents/skills/react-best-practices/rules/server-no-shared-module-state.md → components/dashboard/index.tsx
-- `ThemeShell()` --calls--> `cn()`  [EXTRACTED]
-  components/theme-shell.tsx → lib/utils.ts
+- `Container()` --calls--> `cn()`  [EXTRACTED]
+  components/ui/primitives.tsx → lib/utils.ts
 - `TechIcon()` --calls--> `getIcon()`  [EXTRACTED]
   components/ui/primitives.tsx → lib/icons.ts
 - `AnalyticsCard()` --calls--> `getAnalytics()`  [EXTRACTED]
@@ -218,8 +218,8 @@ Cohesion: 0.06
 Nodes (34): Article, Breadcrumbs, Crawlability, Critical, FAQ, Font sizes, Heading structure, High priority (+26 more)
 
 ### Community 6 - "index.tsx"
-Cohesion: 0.09
-Nodes (23): AnalyticsCard(), EthereumCard(), widgets, WakatimeCard(), Bar(), Stat(), Analytics, getAnalytics() (+15 more)
+Cohesion: 0.10
+Nodes (26): AnalyticsCard(), EthereumCard(), shade, GithubCard(), shade, widgets, Counter(), EmptyState() (+18 more)
 
 ### Community 7 - "Accessibility Code Patterns"
 Cohesion: 0.07
@@ -241,9 +241,9 @@ Nodes (22): Build-time vs Runtime, Docker Compose, Docker Deployment, Dockerfile
 Cohesion: 0.10
 Nodes (20): Async Patterns, Bundling, Data Patterns, Debug Tricks, Directives, Error Handling, File Conventions, Font Optimization (+12 more)
 
-### Community 12 - "github.tsx"
-Cohesion: 0.27
-Nodes (8): GithubCard(), shade, Counter(), Ev, getGithub(), GH, sample, sampleWeeks()
+### Community 12 - "wakatime.tsx"
+Cohesion: 0.19
+Nodes (11): WakatimeCard(), Nav(), Bar(), Badge(), Card(), getWakatime(), pick(), sample (+3 more)
 
 ### Community 13 - "Metadata"
 Cohesion: 0.11
@@ -331,7 +331,7 @@ Nodes (12): 6.10 Use React DOM Resource Hints, 6.11 Use useTransition Over Manua
 
 ### Community 34 - "layout.tsx"
 Cohesion: 0.11
-Nodes (14): app_globals, inter, jsonLd, metadata, mono, viewport, Footer(), NavProgress() (+6 more)
+Nodes (15): app_globals, inter, jsonLd, metadata, mono, viewport, Footer(), NavProgress() (+7 more)
 
 ### Community 35 - "React Composition Patterns"
 Cohesion: 0.18
@@ -385,21 +385,21 @@ Nodes (7): Card Component, Form Elements, Modal/Dialog, Navigation Bar, React Bu
 Cohesion: 0.20
 Nodes (9): Best Practices for Performance, Bundle Size Optimization, Content Path Best Practices, CSS Optimization Techniques, Development Performance (v4.1+), Minification, Production Build Optimization, PurgeCSS Configuration (+1 more)
 
-### Community 48 - "contact.tsx"
-Cohesion: 0.22
-Nodes (6): metadata, ContactAside(), Contact(), State, btnPrimary, Section()
+### Community 48 - "footer.tsx"
+Cohesion: 0.33
+Nodes (7): EmailLink(), donateIcon, map, SocialIcon(), TechIcon(), profile, lucide-react
 
 ### Community 49 - "status.tsx"
 Cohesion: 0.31
 Nodes (8): label, StatusCard(), tone, getStatus(), Health, probe(), Service, targets()
 
 ### Community 51 - "primitives.tsx"
-Cohesion: 0.15
-Nodes (15): shade, Nav(), routes, DashboardHero(), meta, Reveal(), Badge(), Card() (+7 more)
+Cohesion: 0.12
+Nodes (14): metadata, ContactAside(), Contact(), State, DashboardHero(), meta, Reveal(), btnPrimary (+6 more)
 
 ### Community 52 - "creators.tsx"
-Cohesion: 0.14
-Nodes (13): metadata, EmailLink(), donateIcon, Creators(), Head(), link(), tabs, map (+5 more)
+Cohesion: 0.20
+Nodes (6): metadata, Creators(), Head(), link(), tabs, radix-ui
 
 ### Community 53 - "Image Optimization"
 Cohesion: 0.22

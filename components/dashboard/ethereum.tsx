@@ -1,8 +1,8 @@
 import { getEthereum } from "@/lib/data/ethereum";
 import { ArrowUpRight } from "lucide-react";
+import { Heatmap } from "@/components/ui/heatmap";
 import { Card, Stat, Badge, EmptyState } from "@/components/ui/primitives";
 
-const shade = ["bg-line", "bg-violet/30", "bg-violet/60", "bg-violet"];
 const scan = "https://etherscan.io";
 const more = "inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-violet";
 
@@ -21,14 +21,8 @@ export async function EthereumCard() {
         <Stat label="Failed"><span className="text-xl">{d.failed}</span></Stat>
       </div>
       <p className="mt-4"><Badge>{d.network}</Badge></p>
-      <p className="mb-2 mt-6 text-xs text-faint">Transaction heatmap · last 26 weeks · {d.heatTotal} txs</p>
-      <div className="overflow-x-auto" role="img" aria-label={`Transaction heatmap, ${d.heatTotal} transactions in the last 26 weeks`}>
-        <div className="flex w-max gap-[3px] pb-1">
-          {d.heatmap.map((w, i) => (
-            <div key={i} className="flex flex-col gap-[3px]">{w.map((n, j) => <span key={j} className={`size-[10px] ${n < 0 ? "bg-transparent" : shade[Math.min(3, n)]}`} />)}</div>
-          ))}
-        </div>
-      </div>
+      <p className="mb-2 mt-6 text-xs text-faint">Transaction heatmap · last year · {d.heatTotal} txs</p>
+      <Heatmap weeks={d.heatmap} hint={`${d.heatTotal} transactions`} aria={`Transaction heatmap, ${d.heatTotal} transactions in the last year`} />
       <p className="mb-2 mt-6 text-xs text-faint">Latest transactions</p>
       {d.txs.length === 0 ? <EmptyState>No transactions yet.</EmptyState> : (
         <ul className="divide-y divide-line text-sm">

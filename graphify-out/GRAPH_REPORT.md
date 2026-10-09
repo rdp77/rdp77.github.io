@@ -1,17 +1,17 @@
 # Graph Report - rdp77.github.io  (2026-10-09)
 
 ## Corpus Check
-- 180 files · ~78,918 words
+- 181 files · ~79,148 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: (none) 2, .ico 1, .css 1)
 
 ## Summary
-- 1243 nodes · 1334 edges · 150 communities (68 shown, 82 thin omitted)
+- 1245 nodes · 1340 edges · 152 communities (69 shown, 83 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dee3e95a`
+- Built from commit: `f81dd5a6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -22,13 +22,13 @@
 - Accessibility (a11y)
 - Node.js Backend Patterns
 - SEO optimization
-- index.tsx
+- next
 - Accessibility Code Patterns
 - Cache Components (Next.js 16+)
 - TypeScript Advanced Types
 - Self-Hosting Next.js
 - Next.js Best Practices
-- wakatime.tsx
+- primitives.tsx
 - Metadata
 - Tailwind CSS Development Patterns
 - compilerOptions
@@ -62,17 +62,18 @@
 - 3. Server-Side Performance
 - Sections
 - Tailwind CSS Animations & Transitions
-- tailwind-css-patterns/SKILL.md
+- Tailwind CSS Component Patterns
 - Tailwind CSS Performance Optimization
 - footer.tsx
 - status.tsx
 - next-best-practices/SKILL.md
-- primitives.tsx
+- contact.tsx
 - creators.tsx
 - Image Optimization
 - Route Handlers
 - Scripts
 - Product
+- hero.tsx
 - Directives
 - Detection Rules
 - Runtime Selection
@@ -181,17 +182,17 @@
   .agents/skills/react-best-practices/AGENTS.md → components/dashboard/index.tsx
 - `Avoid Shared Module State for Request Data` --references--> `Dashboard()`  [INFERRED]
   .agents/skills/react-best-practices/rules/server-no-shared-module-state.md → components/dashboard/index.tsx
-- `Container()` --calls--> `cn()`  [EXTRACTED]
-  components/ui/primitives.tsx → lib/utils.ts
 - `TechIcon()` --calls--> `getIcon()`  [EXTRACTED]
   components/ui/primitives.tsx → lib/icons.ts
 - `AnalyticsCard()` --calls--> `getAnalytics()`  [EXTRACTED]
   components/dashboard/analytics.tsx → lib/data/analytics.ts
+- `EthereumCard()` --calls--> `getEthereum()`  [EXTRACTED]
+  components/dashboard/ethereum.tsx → lib/data/ethereum.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (150 total, 82 thin omitted)
+## Communities (152 total, 83 thin omitted)
 
 ### Community 0 - "Node.js Best Practices"
 Cohesion: 0.05
@@ -217,9 +218,9 @@ Nodes (33): API Response Format, Authentication & Authorization, Caching Strateg
 Cohesion: 0.06
 Nodes (34): Article, Breadcrumbs, Crawlability, Critical, FAQ, Font sizes, Heading structure, High priority (+26 more)
 
-### Community 6 - "index.tsx"
+### Community 6 - "next"
 Cohesion: 0.10
-Nodes (26): AnalyticsCard(), EthereumCard(), shade, GithubCard(), shade, widgets, Counter(), EmptyState() (+18 more)
+Nodes (23): GithubCard(), WakatimeCard(), Analytics, Row, sample, VRow, Eth, sample (+15 more)
 
 ### Community 7 - "Accessibility Code Patterns"
 Cohesion: 0.07
@@ -241,9 +242,9 @@ Nodes (22): Build-time vs Runtime, Docker Compose, Docker Deployment, Dockerfile
 Cohesion: 0.10
 Nodes (20): Async Patterns, Bundling, Data Patterns, Debug Tricks, Directives, Error Handling, File Conventions, Font Optimization (+12 more)
 
-### Community 12 - "wakatime.tsx"
-Cohesion: 0.19
-Nodes (11): WakatimeCard(), Nav(), Bar(), Badge(), Card(), getWakatime(), pick(), sample (+3 more)
+### Community 12 - "primitives.tsx"
+Cohesion: 0.13
+Nodes (20): AnalyticsCard(), EthereumCard(), widgets, Nav(), routes, HeatCell, Heatmap(), shade (+12 more)
 
 ### Community 13 - "Metadata"
 Cohesion: 0.11
@@ -306,8 +307,8 @@ Cohesion: 0.14
 Nodes (13): Advanced v4.1 Features, Creating a Reusable Preset, CSS-First Configuration (v4.1+), Custom Plugin Example, Custom Utilities, Enhanced Arbitrary Values, JavaScript Configuration (Legacy), Native CSS Custom Properties (+5 more)
 
 ### Community 28 - "package.json"
-Cohesion: 0.05
-Nodes (39): eslintConfig, dependencies, lucide-react, motion, next, radix-ui, @radix-ui/themes, react (+31 more)
+Cohesion: 0.04
+Nodes (43): eslintConfig, all, getIcon(), Icon, dependencies, lucide-react, motion, next (+35 more)
 
 ### Community 29 - "Tailwind CSS Layout Patterns"
 Cohesion: 0.12
@@ -330,8 +331,8 @@ Cohesion: 0.17
 Nodes (12): 6.10 Use React DOM Resource Hints, 6.11 Use useTransition Over Manual Loading States, 6.1 Animate SVG Wrapper Instead of SVG Element, 6.2 CSS content-visibility for Long Lists, 6.3 Hoist Static JSX Elements, 6.4 Optimize SVG Precision, 6.5 Prevent Hydration Mismatch Without Flickering, 6.6 Suppress Expected Hydration Mismatches (+4 more)
 
 ### Community 34 - "layout.tsx"
-Cohesion: 0.11
-Nodes (15): app_globals, inter, jsonLd, metadata, mono, viewport, Footer(), NavProgress() (+7 more)
+Cohesion: 0.15
+Nodes (11): app_globals, inter, jsonLd, metadata, mono, viewport, Footer(), NavProgress() (+3 more)
 
 ### Community 35 - "React Composition Patterns"
 Cohesion: 0.18
@@ -377,12 +378,12 @@ Nodes (9): 1. Eliminating Waterfalls (async), 2. Bundle Size Optimization (bundl
 Cohesion: 0.20
 Nodes (9): Basic Transitions, Built-in Animations, Common Use Cases, Custom Animations (v4.1+), Global Reduced Motion Support, Motion Preferences, Tailwind CSS Animations & Transitions, Transform Effects (+1 more)
 
-### Community 46 - "tailwind-css-patterns/SKILL.md"
-Cohesion: 0.20
+### Community 46 - "Tailwind CSS Component Patterns"
+Cohesion: 0.29
 Nodes (7): Card Component, Form Elements, Modal/Dialog, Navigation Bar, React Button Component with Variants, Responsive User Card, Tailwind CSS Component Patterns
 
 ### Community 47 - "Tailwind CSS Performance Optimization"
-Cohesion: 0.20
+Cohesion: 0.22
 Nodes (9): Best Practices for Performance, Bundle Size Optimization, Content Path Best Practices, CSS Optimization Techniques, Development Performance (v4.1+), Minification, Production Build Optimization, PurgeCSS Configuration (+1 more)
 
 ### Community 48 - "footer.tsx"
@@ -393,9 +394,9 @@ Nodes (7): EmailLink(), donateIcon, map, SocialIcon(), TechIcon(), profile, luci
 Cohesion: 0.31
 Nodes (8): label, StatusCard(), tone, getStatus(), Health, probe(), Service, targets()
 
-### Community 51 - "primitives.tsx"
-Cohesion: 0.12
-Nodes (14): metadata, ContactAside(), Contact(), State, DashboardHero(), meta, Reveal(), btnPrimary (+6 more)
+### Community 51 - "contact.tsx"
+Cohesion: 0.22
+Nodes (6): metadata, ContactAside(), Contact(), State, btnPrimary, Section()
 
 ### Community 52 - "creators.tsx"
 Cohesion: 0.20
@@ -416,6 +417,10 @@ Nodes (9): Don't Put Script in Head, Google Analytics, Google Tag Manager, Inlin
 ### Community 56 - "Product"
 Cohesion: 0.17
 Nodes (11): Accessibility & Inclusion, Brand Commitments, Capabilities and Constraints, Evidence on Hand, Operating Context, Platform, Positioning, Product (+3 more)
+
+### Community 57 - "hero.tsx"
+Cohesion: 0.40
+Nodes (3): DashboardHero(), meta, Reveal()
 
 ### Community 58 - "Directives"
 Cohesion: 0.29
@@ -468,16 +473,14 @@ Nodes (3): Deploy on Vercel, Getting Started, Learn More
 ## Knowledge Gaps
 - **807 isolated node(s):** `metadata`, `metadata`, `metadata`, `inter`, `mono` (+802 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 925 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **82 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **83 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `React Best Practices` connect `React Best Practices` to `6. Rendering Performance`, `4. Client-Side Data Fetching`, `3. Server-Side Performance`, `5. Re-render Optimization`, `7. JavaScript Performance`, `1. Eliminating Waterfalls`, `2. Bundle Size Optimization`, `8. Advanced Patterns`?**
-  _High betweenness centrality (0.030) - this node is a cross-community bridge._
 - **Why does `3. Server-Side Performance` connect `3. Server-Side Performance` to `React Best Practices`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
-- **Why does `Dashboard()` connect `3. Server-Side Performance` to `primitives.tsx`, `index.tsx`?**
+  _High betweenness centrality (0.030) - this node is a cross-community bridge._
+- **Why does `Dashboard()` connect `3. Server-Side Performance` to `hero.tsx`, `primitives.tsx`?**
   _High betweenness centrality (0.029) - this node is a cross-community bridge._
 - **What connects `metadata`, `metadata`, `metadata` to the rest of the system?**
   _807 weakly-connected nodes found - possible documentation gaps or missing edges._
@@ -487,3 +490,5 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.05128205128205128 - nodes in this community are weakly interconnected._
 - **Should `plan.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
+- **Should `Accessibility (a11y)` be split into smaller, more focused modules?**
+  _Cohesion score 0.05714285714285714 - nodes in this community are weakly interconnected._

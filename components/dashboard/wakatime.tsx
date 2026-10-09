@@ -37,9 +37,9 @@ export async function WakatimeCard() {
           <p className="mb-3 text-xs text-faint">Coding time · last 7 days</p>
           <div className="flex h-28 items-end gap-2" role="img" aria-label="Daily coding time, last 7 days">
             {d.daily.map((x, i) => (
-              <div key={i} className="flex h-full min-w-0 flex-1 flex-col items-center justify-end gap-1">
-                <div className="w-full bg-violet" style={{ height: `${Math.max(2, (x.seconds / maxDay) * 100)}%` }} title={`${x.day}: ${(x.seconds / 3600).toFixed(1)} hrs`} />
-                <span className="font-mono text-[10px] text-faint">{x.day}</span>
+              <div key={i} className="group/b flex h-full min-w-0 flex-1 flex-col items-center justify-end gap-1">
+                <div className="peer w-full bg-violet transition-opacity hover:opacity-80" style={{ height: `${Math.max(2, (x.seconds / maxDay) * 100)}%` }} title={`${x.day}: ${(x.seconds / 3600).toFixed(1)} hrs`} />
+                <span className="font-mono text-[10px] text-faint transition-colors group-hover/b:text-fg">{(x.seconds / 3600).toFixed(1)}h · {x.day}</span>
               </div>
             ))}
           </div>

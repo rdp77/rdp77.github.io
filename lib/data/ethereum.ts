@@ -5,10 +5,10 @@ import { profile } from "@/lib/profile";
 export type Eth = {
   address: string; ens: string | null; balance: string; txCount: number; network: string;
   txs: { hash: string; direction: "in" | "out"; value: string; method: string; fee: string; when: string }[];
-  txCountLabel: string; firstSeen: string; failed: number; heatmap: number[][]; heatTotal: number;
+  txCountLabel: string; firstSeen: string; failed: number; heatmap: { l: number; label: string }[][]; heatTotal: number;
 };
 
-const WEEKS = 26;
+const WEEKS = 52;
 // weeks × 7 days of tx counts, oldest first, ending today (UTC).
 function buildHeatmap(stamps: number[]) {
   const day = 86400;
@@ -16,8 +16,8 @@ function buildHeatmap(stamps: number[]) {
   const start = today - (WEEKS * 7 - 1) - ((today + 4) % 7); // align to Sunday
   const counts = new Map<number, number>();
   for (const t of stamps) { const d = Math.floor(t / day); if (d >= start && d <= today) counts.set(d, (counts.get(d) ?? 0) + 1); }
-  const grid: number[][] = [];
-  for (let w = 0; w < WEEKS + 1; w++) grid.push(Array.from({ length: 7 }, (_, i) => { const d = start + w * 7 + i; return d > today ? -1 : counts.get(d) ?? 0; }));
+  const grid: { l: number; label: string }[][] = [];
+  for (let w = 0; w < WEEKS + 1; w++) grid.push(Array.from({ length: 7 }, (_, i) => { const d = start + w * 7 + i; if (d > today) return { l: -1, label: "" }; const n = counts.get(d) ?? 0; return { l: n === 0 ? 0 : n === 1 ? 1 : n <= 3 ? 2 : n <= 6 ? 3 : 4, label: `${n} tx${n === 1 ? "" : "s"} · ${new Date(d * 86400000).toISOString().slice(0, 10)}` }; }));
   return { grid, total: [...counts.values()].reduce((a, b) => a + b, 0) };
 }
 
@@ -25,7 +25,7 @@ const sample: Eth = {
   address: profile.wallet, ens: null, balance: "0.000", txCount: 0, network: "Ethereum Mainnet",
   txs: [{ hash: "0x…sample", direction: "in", value: "0.05 ETH", method: "Transfer", fee: "0.0002", when: "Sample data" }],
   txCountLabel: "0", firstSeen: "—", failed: 0, heatTotal: 0,
-  heatmap: Array.from({ length: WEEKS + 1 }, (_, w) => Array.from({ length: 7 }, (_, d) => ((w * 7 + d) % 11 === 0 ? 2 : (w + d) % 5 === 0 ? 1 : 0))),
+  heatmap: Array.from({ length: WEEKS + 1 }, (_, w) => Array.from({ length: 7 }, (_, d) => { const l = (w * 7 + d) % 11 === 0 ? 3 : (w + d) % 5 === 0 ? 1 : 0; return { l, label: `Sample · level ${l}` }; })),
 };
 
 type Scan<T> = { status: string; result: T };
