@@ -24,7 +24,7 @@ type VRow = Record<string, string | number | null>;
 
 export async function getAnalytics(): Promise<Widget<Analytics>> {
   "use cache";
-  cacheLife("hours");
+  cacheLife("days");
   const { VERCEL_TOKEN: token, VERCEL_PROJECT_ID: projectId, VERCEL_TEAM_ID: teamId } = process.env;
   if (!token || !projectId) return { data: sample, sample: true };
   const headers = { Authorization: `Bearer ${token}` };
