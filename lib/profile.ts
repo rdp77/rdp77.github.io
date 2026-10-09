@@ -32,16 +32,34 @@ export const story = [
   "This site is my personal operating system. The live numbers on the dashboard are real.",
 ];
 
-export type StackItem = "nextjs" | "react" | "laravel" | "flutter" | "typescript" | "tailwind" | "mysql" | "postgresql" | "redis" | "docker" | "cloudflare" | "vercel" | "graphql";
-
-export const projects: {
-  name: string; description: string; status: "Live" | "Beta" | "Archived";
-  demo?: string; source?: string; stack: StackItem[];
-}[] = [
-  { name: "Portfolio OS", description: "This site: a developer dashboard with live coding, GitHub, wallet and uptime widgets.", status: "Live", demo: "https://rdp77.github.io", source: "https://github.com/rdp77/rdp77.github.io", stack: ["nextjs", "react", "typescript", "tailwind", "vercel"] },
-  { name: "Admin Platform", description: "Placeholder: an admin platform with role-based access and audit logs.", status: "Beta", source: "https://github.com/rdp77", stack: ["laravel", "mysql", "redis", "docker"] },
-  { name: "Offline Mobile App", description: "Placeholder: a cross-platform mobile app with offline sync.", status: "Live", demo: "#", stack: ["flutter", "postgresql", "graphql"] },
-  { name: "Edge API Gateway", description: "Placeholder: an edge-cached API gateway with analytics.", status: "Archived", source: "https://github.com/rdp77", stack: ["typescript", "cloudflare", "redis"] },
+export const projects: { name: string; category: string[]; image: string; description: string; stack: string[] }[] = [
+  { name: "Universitas Airlangga", category: ["Networking"], image: "/projects/network.png", description: "Network infrastructure installation for Universitas Airlangga Campus B, delivered in one day by a six-person team.", stack: ["siCisco"] },
+  { name: "Dryas Library", category: ["Web App"], image: "/projects/dryaslibrary.png", description: "Library management system for University of 17 August 1945 Surabaya: book inventory and shelf organization.", stack: ["siLaravel", "siPostgresql", "siPhp"] },
+  { name: "Warunk Zaman Now", category: ["Networking"], image: "/projects/network.png", description: "Network setup and MikroTik router configuration for a restaurant in Surabaya across three installation points.", stack: ["siMikrotik"] },
+  { name: "Corona", category: ["Web App"], image: "/projects/corona.png", description: "COVID-19 tracker showing cases, recoveries and deaths per Indonesian province from third-party APIs.", stack: ["siLaravel", "siPhp"] },
+  { name: "Traffic Light Simulation", category: ["Desktop"], image: "/projects/network.png", description: "Crossroad traffic light simulation with cars moving in sync with the light timing.", stack: ["siDotnet"] },
+  { name: "Sports Skuyy", category: ["Mobile"], image: "/projects/sportsskuyy.png", description: "Android fitness tracker that logs exercises by difficulty and calculates calories burned per movement.", stack: ["siFlutter", "siFirebase"] },
+  { name: "Stack Games", category: ["Web App"], image: "/projects/stack-games.png", description: "Game portal with a Laravel backend for gamers, with secure data and access control.", stack: ["siLaravel", "siPostgresql"] },
+  { name: "Personal Web", category: ["Website"], image: "/projects/code.png", description: "Personal portfolio website, evolved from Jekyll to Next.js, with PWA support and a Web3Forms contact form.", stack: ["siJekyll", "siNextdotjs", "siTailwindcss", "siVercel"] },
+  { name: "Messi Kasih Khitan", category: ["Website"], image: "/projects/wordpress.png", description: "WordPress site for a circumcision service provider, with location marking, Google Business and contact features.", stack: ["siWordpress"] },
+  { name: "Our Enterprise", category: ["Website"], image: "/projects/ourenterprise.png", description: "Website for a multi-service business, built for both looks and function.", stack: ["siGatsby", "siJavascript", "siVercel"] },
+  { name: "Pode", category: ["Website"], image: "/projects/code.png", description: "Portfolio platform for designers, built as a fast, data-efficient static site.", stack: ["siJekyll", "siRuby"] },
+  { name: "Veyaz", category: ["Web App"], image: "/projects/veyaz.png", description: "Premium Laravel admin template with Bootstrap, jQuery UI and async support via AJAX and axios.", stack: ["siLaravel", "siMysql", "siLivewire"] },
+  { name: "KSP Sumber Rejeki", category: ["Web App"], image: "/projects/ksp-sumberrejeki.png", description: "Cooperative savings and loan system with loan period calculation and daily, weekly and monthly reports.", stack: ["siLaravel", "siMysql"] },
+  { name: "Andromart", category: ["Web App"], image: "/projects/andromart.png", description: "Point-of-sale system with inventory, employees, ledger and balance sheet, stock control and KPI reporting.", stack: ["siLaravel"] },
+  { name: "Report Management BatuBeling", category: ["Web App"], image: "/projects/batubeling.png", description: "Employee daily report system with filtering and export by day, week and month.", stack: ["siLaravel"] },
+  { name: "CV. Bima Sakti", category: ["Website"], image: "/projects/wordpress.png", description: "Company profile website for CV. Bima Sakti.", stack: ["siWordpress"] },
+  { name: "Farmer Distribution", category: ["Web App", "Mobile"], image: "/projects/farmer-distribution.png", description: "Platform connecting farmers with suppliers and raw materials, with price comparison. Laravel API plus Flutter app.", stack: ["siLaravel", "siMysql", "siFlutter"] },
+  { name: "First Media Surabaya", category: ["Website"], image: "/projects/first-media.png", description: "Company website for First Media Surabaya.", stack: ["siWordpress"] },
+  { name: "Sakpattana Jawa Timur", category: ["Website"], image: "/projects/sakpattana.png", description: "Company website for Sakpattana Jawa Timur.", stack: ["siWordpress"] },
+  { name: "CV. Putra Kubota", category: ["Website"], image: "/projects/kubota.png", description: "Company website for CV. Putra Kubota.", stack: ["siWordpress"] },
+  { name: "CV. Wahyu Dewanagari", category: ["Website"], image: "/projects/wahyu-dewanagari.png", description: "Company website for CV. Wahyu Dewanagari.", stack: ["siWordpress"] },
+  { name: "IKAPENS", category: ["Mobile"], image: "/projects/ikapens.png", description: "Mobile app for the IKAPENS alumni community.", stack: ["siFlutter"] },
+  { name: "AsiaCommerce", category: ["Web App"], image: "/projects/asiacommerce.png", description: "E-commerce backend work: API optimization, system integration and less data redundancy.", stack: ["siLaravel", "siMysql", "siGraphql", "siDocker"] },
+  { name: "PolaPedia", category: ["Web App"], image: "/projects/polapedia.png", description: "B2B marketplace for architectural designs, raw materials and construction services.", stack: ["siLaravel", "siMysql"] },
+  { name: "Wara Wara", category: ["Mobile"], image: "/projects/code.png", description: "Mobile application.", stack: ["siFlutter"] },
+  { name: "Hardware Maintenance Management", category: ["Web App", "Mobile"], image: "/projects/hmm.png", description: "Hardware maintenance prediction using MTBF/MTTR metrics and QR code detection. Laravel API plus Flutter app.", stack: ["siLaravel", "siMysql", "siFlutter"] },
+  { name: "PT. Modern Coco International", category: ["Website"], image: "/projects/mci.png", description: "Company website for PT. Modern Coco International.", stack: ["siWordpress"] },
 ];
 
 export const skills: Record<string, { name: string; icon: string }[]> = {

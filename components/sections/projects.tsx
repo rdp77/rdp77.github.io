@@ -1,42 +1,50 @@
-import { projects, type StackItem } from "@/lib/profile";
-import { Section, Badge, TechIcon, btnGhost } from "@/components/ui/primitives";
-import { Stagger, StaggerItem, HoverLift } from "@/components/ui/motion";
-import { ExternalLink, Code2 } from "lucide-react";
+"use client";
 
-const icon: Record<StackItem, string> = {
-  nextjs: "siNextdotjs", react: "siReact", laravel: "siLaravel", flutter: "siFlutter", typescript: "siTypescript", tailwind: "siTailwindcss",
-  mysql: "siMysql", postgresql: "siPostgresql", redis: "siRedis", docker: "siDocker", cloudflare: "siCloudflare", vercel: "siVercel", graphql: "siGraphql",
-};
+import { useState } from "react";
+import Image from "next/image";
+import { projects } from "@/lib/profile";
+import { Section, Badge, TechIcon } from "@/components/ui/primitives";
+import { HoverLift } from "@/components/ui/motion";
+
+const order = ["Web App", "Website", "Mobile", "Desktop", "Networking"];
+const categories = ["All", ...order.filter((c) => projects.some((p) => p.category.includes(c)))];
 
 export function Projects() {
+  const [active, setActive] = useState("All");
+  const list = active === "All" ? projects : projects.filter((p) => p.category.includes(active));
   return (
-    <Section h1 id="projects" eyebrow="Projects" title="Things I've built">
-      <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((p) => (
-          <StaggerItem key={p.name}>
+    <Section h1 id="projects" title="Things I've built">
+      <div role="group" aria-label="Filter by category" className="mb-8 flex flex-wrap gap-2">
+        {categories.map((c) => (
+          <button key={c} type="button" aria-pressed={active === c} onClick={() => setActive(c)}
+            className={`border px-3 py-1.5 text-sm font-medium transition-colors ${active === c ? "border-fg bg-inverse-bg text-inverse-fg" : "border-line text-muted hover:text-fg"}`}>
+            {c}
+          </button>
+        ))}
+      </div>
+      <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {list.map((p) => (
+          <li key={p.name}>
             <HoverLift className="h-full">
               <article className="flex h-full flex-col border border-line bg-bg">
-                {/* Thumbnail placeholder: swap for next/image when assets exist */}
-                <div className="aspect-video bg-tint" role="img" aria-label={`${p.name} thumbnail placeholder`} />
-                <div className="flex flex-1 flex-col p-6">
+                <div className="relative aspect-video bg-tint">
+                  <Image src={p.image} alt={`${p.name} thumbnail`} fill sizes="(min-width:1024px) 380px, (min-width:640px) 50vw, 100vw" className="object-cover" />
+                </div>
+                <div className="flex flex-1 flex-col p-5">
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="text-lg font-medium">{p.name}</h3>
-                    <Badge tone={p.status === "Live" ? "ok" : p.status === "Beta" ? "warn" : "neutral"}>{p.status}</Badge>
+                    <span className="flex flex-wrap justify-end gap-1">{p.category.map((c) => <Badge key={c}>{c}</Badge>)}</span>
                   </div>
                   <p className="mt-2 flex-1 text-sm text-muted">{p.description}</p>
                   <ul className="mt-4 flex flex-wrap gap-3 text-muted" aria-label="Technology stack">
-                    {p.stack.map((s) => <li key={s}><TechIcon icon={icon[s]} /></li>)}
+                    {p.stack.map((s) => <li key={s}><TechIcon icon={s} /></li>)}
                   </ul>
-                  <div className="mt-5 flex gap-3">
-                    {p.demo && <a className={`${btnGhost} !px-3 !py-1.5 text-sm`} href={p.demo} target="_blank" rel="noopener noreferrer"><ExternalLink size={14} aria-hidden />Live demo</a>}
-                    {p.source && <a className={`${btnGhost} !px-3 !py-1.5 text-sm`} href={p.source} target="_blank" rel="noopener noreferrer"><Code2 size={14} aria-hidden />Source</a>}
-                  </div>
                 </div>
               </article>
             </HoverLift>
-          </StaggerItem>
+          </li>
         ))}
-      </Stagger>
+      </ul>
     </Section>
   );
 }
