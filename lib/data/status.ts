@@ -1,7 +1,7 @@
 import { cacheLife } from "next/cache";
 
 export type Health = "healthy" | "degraded" | "offline" | "unmonitored";
-export type Service = { name: string; health: Health; ms: number | null; uptime: string; lastIncident: string };
+export type Service = { name: string; health: Health; ms: number | null };
 
 // Probed live (cached).
 const targets = (): { name: string; url?: string }[] => [
@@ -15,16 +15,16 @@ const targets = (): { name: string; url?: string }[] => [
 ];
 
 async function probe(t: { name: string; url?: string }): Promise<Service> {
-  if (!t.url) return { name: t.name, health: "unmonitored", ms: null, uptime: "—", lastIncident: "—" };
+  if (!t.url) return { name: t.name, health: "unmonitored", ms: null };
   const start = performance.now();
   try {
     const res = await fetch(t.url, { method: "GET", signal: AbortSignal.timeout(5000), redirect: "follow" });
     const ms = Math.round(performance.now() - start);
     // 401/403 still means the service answered.
     const up = res.status < 500;
-    return { name: t.name, health: !up ? "offline" : ms > 1500 ? "degraded" : "healthy", ms, uptime: "—", lastIncident: up ? "None observed" : "Now" };
+    return { name: t.name, health: !up ? "offline" : ms > 1500 ? "degraded" : "healthy", ms };
   } catch {
-    return { name: t.name, health: "offline", ms: null, uptime: "—", lastIncident: "Just now" };
+    return { name: t.name, health: "offline", ms: null };
   }
 }
 
