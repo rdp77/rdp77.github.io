@@ -15,7 +15,7 @@ function Head({ platform }: { platform: string }) {
   return (
     <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
       <span className="grid size-10 place-items-center bg-carbon text-white"><SocialIcon label={platform} /></span>
-      <div className="min-w-0"><p className="font-medium">@{profile.handle}</p><p className="text-xs text-faint">{platform} · posts will appear here</p></div>
+      <div className="min-w-0"><p className="font-medium">@{link(platform).split("/").pop()?.replace("@", "")}</p><p className="text-xs text-faint">{platform} · posts will appear here</p></div>
       <span className="ml-auto flex items-center gap-3">{soon}<a href={link(platform)} target="_blank" rel="noopener noreferrer" className="border border-fg px-3 py-1.5 text-xs font-medium hover:bg-tint">Follow</a></span>
     </div>
   );

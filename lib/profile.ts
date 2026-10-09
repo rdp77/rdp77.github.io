@@ -14,11 +14,11 @@ export const profile = {
   resumeUrl: "https://link.wreative.com/ravi",
   socials: [
     { label: "GitHub", href: "https://github.com/rdp77" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/rdp77" },
-    { label: "X", href: "https://x.com/rdp77" },
-    { label: "Instagram", href: "https://instagram.com/rdp77" },
-    { label: "TikTok", href: "https://tiktok.com/@rdp77" },
-    { label: "YouTube", href: "https://youtube.com/@rdp77" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/ravidwiputra" },
+    { label: "X", href: "https://x.com/ravidwiputra" },
+    { label: "Instagram", href: "https://instagram.com/ravidwiputraa" },
+    { label: "TikTok", href: "https://tiktok.com/@ravidwiputraa" },
+    { label: "YouTube", href: "https://youtube.com/@ravidwiputra" },
   ],
   donate: [
     { label: "GitHub Sponsors", href: "https://github.com/sponsors/rdp77" },

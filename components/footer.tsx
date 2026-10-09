@@ -5,6 +5,8 @@ import { Reveal } from "@/components/ui/motion";
 import { EmailLink } from "@/components/email-link";
 import { SocialIcon } from "@/components/social-icon";
 
+// Shown on the Creators page instead.
+const creatorPlatforms = ["Instagram", "TikTok", "YouTube"];
 const col = "group inline-flex items-center gap-2.5 text-sm text-muted transition-colors hover:text-fg";
 const ico = "shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:text-violet motion-reduce:transition-none";
 const donateIcon: Record<string, React.ReactNode> = { "GitHub Sponsors": <Heart size={16} />, "Buy Me a Coffee": <Coffee size={16} />, Yapp: <Wallet size={16} /> };
@@ -19,7 +21,7 @@ export function Footer() {
         </Reveal>
         <Reveal delay={0.08}>
           <h2 className="mb-3 font-mono text-xs text-faint">Social</h2>
-          <ul className="space-y-2">{profile.socials.map((s) => <li key={s.label}><a className={col} href={s.href} target="_blank" rel="noopener noreferrer"><span className={ico}><SocialIcon label={s.label} size={16} /></span>{s.label}</a></li>)}</ul>
+          <ul className="space-y-2">{profile.socials.filter((s) => !creatorPlatforms.includes(s.label)).map((s) => <li key={s.label}><a className={col} href={s.href} target="_blank" rel="noopener noreferrer"><span className={ico}><SocialIcon label={s.label} size={16} /></span>{s.label}</a></li>)}</ul>
         </Reveal>
         <Reveal delay={0.16}>
           <h2 className="mb-3 font-mono text-xs text-faint">Donate</h2>
