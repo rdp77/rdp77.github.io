@@ -23,6 +23,7 @@ export const profile = {
   donate: [
     { label: "GitHub Sponsors", href: "https://github.com/sponsors/rdp77" },
     { label: "Buy Me a Coffee", href: "https://buymeacoffee.com/rdp77" },
+    { label: "Yapp", href: "https://yapp.ink/rdp77" },
   ],
 };
 
