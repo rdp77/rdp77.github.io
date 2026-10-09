@@ -1,26 +1,62 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+  --bg: #0d0d0d; --fg: #f5f5f5; --line: #2c2c2c; --muted: #b4b4b4; --faint: #9a9a9a;
+  --tint: #1a1226; --wisteria: #2a1747; --inverse-bg: #f5f5f5; --inverse-fg: #0d0d0d;
+  --ok-bg: #0f2a1d; --ok-fg: #5be3aa; --warn-bg: #2d2008; --warn-fg: #f0b45a; --bad-bg: #331216; --bad-fg: #ff8b93;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-tint: var(--tint);
+  --color-wisteria: var(--wisteria);
+  --color-inverse-bg: var(--inverse-bg);
+  --color-inverse-fg: var(--inverse-fg);
+  --color-ok-bg: var(--ok-bg);
+  --color-ok-fg: var(--ok-fg);
+  --color-warn-bg: var(--warn-bg);
+  --color-warn-fg: var(--warn-fg);
+  --color-bad-bg: var(--bad-bg);
+  --color-bad-fg: var(--bad-fg);
+  --color-violet: #8a05ff;
+  --color-marigold: #d67f2e;
+  --color-carbon: #272727;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-padding-top: 72px; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
 }
+
+:focus-visible { outline: 2px solid #8a05ff; outline-offset: 2px; }
+
+.display { font-weight: 300; letter-spacing: -0.03em; line-height: 1.02; }
+.h2 { font-weight: 300; letter-spacing: -0.02em; line-height: 1.08; }
+.grad { background: linear-gradient(to right, #8a05ff, #d67f2e); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Dashboard route: hairline blueprint grid */
+.dash {
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px; background-position: -1px -1px;
+}
+.dash-fade { background: linear-gradient(to bottom, transparent, #0d0d0d 85%); }
+@keyframes pulse-dot { 0%,100% { opacity: 1 } 50% { opacity: .35 } }
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .pulse-dot { animation: none; } }
+
+@keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
