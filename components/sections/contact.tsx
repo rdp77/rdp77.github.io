@@ -11,6 +11,7 @@ const field = "w-full rounded-sm border border-line bg-bg px-3 py-2.5 text-sm pl
 export function Contact() {
   const [state, setState] = useState<State>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [failMsg, setFailMsg] = useState("");
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
   const siteKey = process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY ?? process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
@@ -33,18 +34,19 @@ export function Contact() {
     try {
       fd.append("access_key", accessKey);
       const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
-      const json = (await res.json()) as { success: boolean };
-      if (!json.success) throw new Error();
+      const json = (await res.json()) as { success: boolean; message?: string };
+      if (!json.success) throw new Error(json.message);
       form.reset();
       setState("success");
-    } catch {
+    } catch (err) {
+      setFailMsg(err instanceof Error ? err.message : "");
       setState("error");
     }
   }
 
   return (
     <Section h1 id="contact" eyebrow="Contact" title="Let's talk">
-      {siteKey && <Script src="https://js.hcaptcha.com/1/api.js" strategy="lazyOnload" />}
+      {siteKey && <Script src="https://js.hcaptcha.com/1/api.js?recaptchacompat=off" strategy="lazyOnload" />}
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px]">
       <form onSubmit={onSubmit} noValidate className="grid max-w-2xl min-w-0 content-start gap-5" aria-busy={state === "loading"}>
         {(["name", "email", "subject"] as const).map((k) => (
@@ -61,7 +63,7 @@ export function Contact() {
         </div>
         {siteKey && (
           <div>
-            <div className="h-captcha" data-sitekey={siteKey} data-theme="dark" />
+            <div className="h-captcha" data-sitekey={siteKey} data-theme="dark" data-recaptchacompat="off" />
             {errors.captcha && <p className="mt-1 text-xs text-bad-fg">{errors.captcha}</p>}
           </div>
         )}
@@ -69,7 +71,7 @@ export function Contact() {
           <button type="submit" disabled={state === "loading"} className={`${btnPrimary} disabled:opacity-60`}>{state === "loading" ? "Sending…" : "Send message"}</button>
           <p role="status" aria-live="polite" className="text-sm">
             {state === "success" && <span className="text-ok-fg">Thanks — your message was sent.</span>}
-            {state === "error" && <span className="text-bad-fg">{accessKey ? "Something went wrong. Please try again." : "Form not configured (missing NEXT_PUBLIC_WEB3FORMS_KEY)."}</span>}
+            {state === "error" && <span className="text-bad-fg">{accessKey ? failMsg || "Something went wrong. Please try again." : "Form not configured (missing NEXT_PUBLIC_WEB3FORMS_KEY)."}</span>}
           </p>
         </div>
       </form>
