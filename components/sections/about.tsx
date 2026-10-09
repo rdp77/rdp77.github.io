@@ -1,6 +1,7 @@
 import { story, skills, experience, education, achievements, profile } from "@/lib/profile";
 import { Section, TechIcon, btnPrimary } from "@/components/ui/primitives";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
+import Image from "next/image";
 import { Download } from "lucide-react";
 
 const toc = [
@@ -38,7 +39,7 @@ export function About() {
         </aside>
 
         <div className="min-w-0 space-y-16">
-          <Reveal><section id="story" aria-labelledby="story-h"><h3 id="story-h" className="h2 text-2xl">Story</h3><div className="mt-4 max-w-2xl space-y-4 text-muted">{story.map((p) => <p key={p}>{p}</p>)}</div></section></Reveal>
+          <Reveal><section id="story" aria-labelledby="story-h"><h3 id="story-h" className="h2 text-2xl">Story</h3><div className="mt-4 flex flex-col gap-6 sm:flex-row sm:items-start"><Image src="/avatar.jpg" alt={`Foto ${profile.name}`} width={200} height={200} className="size-40 shrink-0 rounded-2xl object-cover sm:size-48" /><div className="max-w-2xl space-y-4 text-muted">{story.map((p) => <p key={p}>{p}</p>)}</div></div></section></Reveal>
 
           <section id="skills" aria-labelledby="skills-h">
             <h3 id="skills-h" className="h2 text-2xl">Skills</h3>
