@@ -12,7 +12,7 @@ export function Contact() {
   const [state, setState] = useState<State>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const siteKey = process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY ?? process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -24,7 +24,7 @@ export function Contact() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))) next.email = "Enter a valid email.";
     if (v("subject").length < 3) next.subject = "Please add a subject.";
     if (v("message").length < 10) next.message = "Message must be at least 10 characters.";
-    if (siteKey && !v("cf-turnstile-response")) next.captcha = "Please complete the verification.";
+    if (siteKey && !v("h-captcha-response")) next.captcha = "Please complete the verification.";
     setErrors(next);
     if (Object.keys(next).length) return;
     if (!accessKey) { setState("error"); return; }
@@ -44,7 +44,7 @@ export function Contact() {
 
   return (
     <Section h1 id="contact" eyebrow="Contact" title="Let's talk">
-      {siteKey && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="lazyOnload" />}
+      {siteKey && <Script src="https://js.hcaptcha.com/1/api.js" strategy="lazyOnload" />}
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px]">
       <form onSubmit={onSubmit} noValidate className="grid max-w-2xl min-w-0 content-start gap-5" aria-busy={state === "loading"}>
         {(["name", "email", "subject"] as const).map((k) => (
@@ -61,7 +61,7 @@ export function Contact() {
         </div>
         {siteKey && (
           <div>
-            <div className="cf-turnstile" data-sitekey={siteKey} />
+            <div className="h-captcha" data-sitekey={siteKey} />
             {errors.captcha && <p className="mt-1 text-xs text-bad-fg">{errors.captcha}</p>}
           </div>
         )}
