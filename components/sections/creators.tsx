@@ -2,7 +2,7 @@
 
 import { Tabs } from "radix-ui";
 import { Heart, MessageCircle, Share2, Play, Bookmark, Eye, ThumbsUp } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { m } from "motion/react";
 import { Section } from "@/components/ui/primitives";
 import { profile } from "@/lib/profile";
@@ -50,10 +50,16 @@ const TikTok = () => (
 
 // YouTube: live 16:9 cards from the channel's public feed
 const nf = new Intl.NumberFormat("en", { notation: "compact" });
-const YouTube = ({ videos, avatar }: Yt) => (
+function YouTube() {
+  const [yt, setYt] = useState<Yt | null>(null);
+  useEffect(() => {
+    fetch("/api/youtube").then((r) => r.json()).then(setYt).catch(() => setYt({ videos: [], avatar: null }));
+  }, []);
+  const { videos, avatar } = yt ?? { videos: [], avatar: null };
+  return (
   <div className="border border-line">
     <Head platform="YouTube" live={videos.length > 0} avatar={avatar} />
-    {videos.length === 0 ? <p className="p-4 text-sm text-muted">Videos unavailable right now.</p> : (
+    {videos.length === 0 ? <p className="p-4 text-sm text-muted">{yt ? "Videos unavailable right now." : "Loading videos…"}</p> : (
       <ul className="grid gap-5 p-4 sm:grid-cols-2 lg:grid-cols-3">
         {videos.map((v) => (
           <li key={v.id}>
@@ -75,7 +81,8 @@ const YouTube = ({ videos, avatar }: Yt) => (
       </ul>
     )}
   </div>
-);
+  );
+}
 
 // Instagram: profile header + square grid
 const Instagram = () => (
@@ -95,10 +102,10 @@ const Instagram = () => (
 );
 
 // Replace a tab's `content` with a real embed later; nothing else changes.
-export function Creators({ yt }: { yt: Yt }) {
+export function Creators() {
   const tabs = [
     { id: "tiktok", label: "TikTok", content: <TikTok /> },
-    { id: "youtube", label: "YouTube", content: <YouTube {...yt} /> },
+    { id: "youtube", label: "YouTube", content: <YouTube /> },
     { id: "instagram", label: "Instagram", content: <Instagram /> },
   ];
   return (
