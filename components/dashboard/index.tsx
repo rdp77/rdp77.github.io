@@ -4,9 +4,10 @@ import { EthereumCard } from "./ethereum";
 import { AnalyticsCard } from "./analytics";
 import { GithubCard } from "./github";
 import { StatusCard } from "./status";
+import { SpotifyCard } from "./spotify";
 
 // Add a widget: write lib/data/<x>.ts + components/dashboard/<x>.tsx, then list it here.
-const widgets = [WakatimeCard, EthereumCard, GithubCard, AnalyticsCard, StatusCard];
+const widgets = [WakatimeCard, SpotifyCard, EthereumCard, GithubCard, AnalyticsCard, StatusCard];
 
 function Skeleton() {
   return <div role="status" aria-label="Loading widget" className="h-64 animate-pulse border border-line bg-tint md:col-span-2" />;

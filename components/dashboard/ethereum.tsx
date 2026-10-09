@@ -9,18 +9,20 @@ const more = "inline-flex items-center gap-1 text-sm text-muted transition-color
 export async function EthereumCard() {
   const { data: d, sample } = await getEthereum();
   return (
-    <Card title="Ethereum wallet" sample={sample}>
-      <div className="bg-carbon p-4 text-white">
-        <p className="font-mono text-xs text-white/60">{d.ens ?? "No ENS name"}</p>
-        <a href={`${scan}/address/${d.address}`} target="_blank" rel="noopener noreferrer" className="mt-1 block break-all font-mono text-xs hover:underline">{d.address}</a>
+    <Card title="Ethereum wallet" sample={sample} className="md:col-span-3">
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:items-center">
+        <div className="bg-carbon p-4 text-white">
+          <p className="font-mono text-xs text-white/60">{d.ens ?? "No ENS name"}</p>
+          <a href={`${scan}/address/${d.address}`} target="_blank" rel="noopener noreferrer" className="mt-1 block break-all font-mono text-xs hover:underline">{d.address}</a>
+          <p className="mt-3"><Badge>{d.network}</Badge></p>
+        </div>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <Stat label="Balance">{d.balance} ETH</Stat>
+          <Stat label="Transactions">{d.txCountLabel}</Stat>
+          <Stat label="First seen"><span className="text-base">{d.firstSeen}</span></Stat>
+          <Stat label="Failed"><span className="text-xl">{d.failed}</span></Stat>
+        </div>
       </div>
-      <div className="mt-5 grid grid-cols-2 gap-4">
-        <Stat label="Balance">{d.balance} ETH</Stat>
-        <Stat label="Transactions">{d.txCountLabel}</Stat>
-        <Stat label="First seen"><span className="text-base">{d.firstSeen}</span></Stat>
-        <Stat label="Failed"><span className="text-xl">{d.failed}</span></Stat>
-      </div>
-      <p className="mt-4"><Badge>{d.network}</Badge></p>
       <p className="mb-2 mt-6 text-xs text-faint">Transaction heatmap · last year · {d.heatTotal} txs</p>
       <Heatmap weeks={d.heatmap} hint={`${d.heatTotal} transactions`} aria={`Transaction heatmap, ${d.heatTotal} transactions in the last year`} />
       <p className="mb-2 mt-6 text-xs text-faint">Latest transactions</p>

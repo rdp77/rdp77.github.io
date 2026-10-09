@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const URL = "https://api.lanyard.rest/v1/users/493350564785029142";
+export const LANYARD_URL = "https://api.lanyard.rest/v1/users/493350564785029142";
 type State = "loading" | "online" | "offline";
 
 // Discord "online" = online here; anything else (idle, dnd, offline, error) counts as offline.
@@ -13,7 +13,7 @@ export function Presence() {
     let alive = true;
     const load = async () => {
       try {
-        const res = await fetch(URL, { cache: "no-store" });
+        const res = await fetch(LANYARD_URL, { cache: "no-store" });
         const json = await res.json();
         if (alive) setState(json?.data?.discord_status === "online" ? "online" : "offline");
       } catch {

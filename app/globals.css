@@ -59,6 +59,10 @@ body {
 .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .pulse-dot { animation: none; } }
 
+@keyframes eq { 0%,100% { height: 25% } 50% { height: 100% } }
+.eq-bar { height: 25%; animation: eq 1s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .eq-bar { animation: none; height: 60%; } }
+
 @keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
 
 /* Scrollbar: hairline, square, violet on hover */
