@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Nav } from "@/components/nav";
 import { ThemeShell } from "@/components/theme-shell";
 import { Footer } from "@/components/footer";
+import { Cursor } from "@/components/cursor";
 import { Motion } from "@/components/ui/motion";
 import { profile, siteUrl } from "@/lib/profile";
 import "./globals.css";
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Footer />
           </ThemeShell>
         </Motion>
+        <Cursor />
         <Analytics />
       </body>
     </html>
