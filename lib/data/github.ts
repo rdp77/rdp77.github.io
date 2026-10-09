@@ -22,7 +22,7 @@ export type GH = {
 
 type GhUser = { followers: number; public_repos: number; created_at: string };
 type GhRepo = { name: string; full_name: string; html_url: string; fork: boolean; language: string | null; stargazers_count: number };
-type GhEvent = { type: string; repo: { name: string }; payload: { commits?: { message: string }[]; pull_request?: { number: number; title: string; html_url: string }; issue?: { number: number; title: string; html_url: string } } };
+type GhEvent = { type: string; repo: { name: string }; payload: { ref?: string; commits?: { message: string }[]; number?: number; action?: string; pull_request?: { number: number; title?: string; html_url?: string }; issue?: { number: number; title: string; html_url: string } } };
 type ContributionDay = { contributionLevel: string; contributionCount: number; date: string };
 type ContributionsCollection = {
   totalCommitContributions: number; totalPullRequestContributions: number; totalIssueContributions: number; totalPullRequestReviewContributions: number;
@@ -38,11 +38,24 @@ function parseEvents(evs: GhEvent[]): GH["events"] {
   for (const e of evs) {
     const url = `https://github.com/${e.repo.name}`;
     const { commits, pull_request: pr, issue } = e.payload;
-    if (e.type === "PushEvent" && commits?.length) events.push({ type: "Commit", text: commits.at(-1)!.message.split("\n")[0], repo: e.repo.name, url });
-    else if (e.type === "PullRequestEvent" && pr) events.push({ type: "PR", text: `#${pr.number} ${pr.title}`, repo: e.repo.name, url: pr.html_url });
+    if (e.type === "PushEvent") {
+      // GitHub dropped `commits` from PushEvent payloads; fall back to the branch name.
+      const text = commits?.length ? commits.at(-1)!.message.split("\n")[0] : `Pushed to ${e.payload.ref?.replace("refs/heads/", "") ?? "branch"}`;
+      if (!events.some((x) => x.type === "Commit" && x.repo === e.repo.name && x.text === text)) events.push({ type: "Commit", text, repo: e.repo.name, url });
+    }
+    else if (e.type === "PullRequestEvent" && pr) {
+      // Events API no longer includes title/html_url for PRs.
+      events.push({ type: "PR", text: `#${pr.number} ${pr.title ?? `Pull request ${e.payload.action ?? ""}`.trim()}`, repo: e.repo.name, url: pr.html_url ?? `https://github.com/${e.repo.name}/pull/${pr.number}` });
+    }
     else if (e.type === "IssuesEvent" && issue) events.push({ type: "Issue", text: `#${issue.number} ${issue.title}`, repo: e.repo.name, url: issue.html_url });
   }
   return events;
+}
+
+// Keep PRs/issues from being drowned out by pushes: max 3 per type, original order.
+function pickEvents(all: GH["events"]): GH["events"] {
+  const seen: Record<string, number> = {};
+  return all.filter((e) => (seen[e.type] = (seen[e.type] ?? 0) + 1) <= 3).slice(0, 6);
 }
 
 function parseContributions(cc: ContributionsCollection): Pick<GH, "weeks" | "total" | "streak" | "busiest" | "mix"> {
@@ -95,7 +108,7 @@ export async function getGithub(): Promise<Widget<GH>> {
     const [u, repos, evs] = await Promise.all([
       getJson<GhUser>(`${API}/users/${user}`, { headers }),
       getJson<GhRepo[]>(`${API}/users/${user}/repos?per_page=100`, { headers }),
-      getJson<GhEvent[]>(`${API}/users/${user}/events/public?per_page=30`, { headers }),
+      getJson<GhEvent[]>(`${API}/users/${user}/events/public?per_page=100`, { headers }),
     ]);
     const contrib = token ? parseContributions(await fetchContributions(user, headers)) : null;
     const own = repos.filter((r) => !r.fork);
@@ -106,7 +119,7 @@ export async function getGithub(): Promise<Widget<GH>> {
         weeks: contrib?.weeks ?? sampleWeeks(), total: contrib?.total ?? 0,
         joined: u.created_at, joinedYears: Math.max(0, Math.floor((Date.now() - new Date(u.created_at).getTime()) / MS_PER_YEAR)),
         streak: contrib?.streak ?? sample.streak, busiest: contrib?.busiest ?? sample.busiest, mix: contrib?.mix ?? sample.mix,
-        languages: topLanguages(own), topRepos: topRepos(own), events: parseEvents(evs).slice(0, 6),
+        languages: topLanguages(own), topRepos: topRepos(own), events: pickEvents(parseEvents(evs)),
       },
     };
   } catch (err) {
