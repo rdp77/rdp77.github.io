@@ -1,5 +1,7 @@
 import { cacheLife } from "next/cache";
 import { getJson, type Widget } from "@/lib/utils";
+import { MS_PER_DAY } from "@/lib/constants";
+import { sample } from "./samples/analytics";
 
 type Row = { label: string; value: number };
 export type Analytics = {
@@ -7,15 +9,6 @@ export type Analytics = {
   visitors: number; pageviews: number;
   daily: { date: string; visitors: number; pageviews: number }[];
   pages: Row[]; referrers: Row[]; countries: Row[]; devices: Row[];
-};
-
-const sample: Analytics = {
-  provider: "Vercel", visitors: 1840, pageviews: 5920,
-  daily: Array.from({ length: 30 }, (_, i) => ({ date: new Date(Date.now() - (29 - i) * 864e5).toISOString().slice(0, 10), visitors: 20 + ((i * 37) % 60), pageviews: 50 + ((i * 53) % 130) })),
-  pages: [{ label: "/", value: 3200 }, { label: "/projects", value: 1100 }, { label: "/about", value: 820 }],
-  referrers: [{ label: "google.com", value: 640 }, { label: "github.com", value: 410 }, { label: "x.com", value: 180 }],
-  countries: [{ label: "Indonesia", value: 980 }, { label: "United States", value: 310 }, { label: "Singapore", value: 140 }],
-  devices: [{ label: "desktop", value: 1100 }, { label: "mobile", value: 690 }, { label: "tablet", value: 50 }],
 };
 
 // Vercel Web Analytics REST API: https://vercel.com/docs/analytics/web-analytics-api
@@ -29,7 +22,7 @@ export async function getAnalytics(): Promise<Widget<Analytics>> {
   if (!token || !projectId) return { data: sample, sample: true };
   const headers = { Authorization: `Bearer ${token}` };
   const day = (t: number) => new Date(t).toISOString().slice(0, 10);
-  const base = new URLSearchParams({ projectId, since: day(Date.now() - 30 * 864e5), until: day(Date.now()) });
+  const base = new URLSearchParams({ projectId, since: day(Date.now() - 30 * MS_PER_DAY), until: day(Date.now()) });
   if (teamId) base.set("teamId", teamId);
   const by = async (dim: string): Promise<Row[]> => {
     const q = new URLSearchParams(base); q.set("by", dim); q.set("limit", "5");
