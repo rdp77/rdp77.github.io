@@ -61,7 +61,7 @@ export function Contact() {
         </div>
         {siteKey && (
           <div>
-            <div className="h-captcha" data-sitekey={siteKey} />
+            <div className="h-captcha" data-sitekey={siteKey} data-theme="dark" />
             {errors.captcha && <p className="mt-1 text-xs text-bad-fg">{errors.captcha}</p>}
           </div>
         )}
