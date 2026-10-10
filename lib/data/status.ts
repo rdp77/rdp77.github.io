@@ -10,6 +10,7 @@ const targets = (): { name: string; url?: string }[] => [
   { name: "Vercel Analytics API", url: "https://api.vercel.com/" },
   { name: "Etherscan API", url: "https://api.etherscan.io/v2/chainlist" },
   { name: "Spotify API", url: "https://api.spotify.com/v1/" },
+  { name: "YouTube API", url: "https://www.googleapis.com/youtube/v3/" },
   { name: "Online Status API", url: "https://api.lanyard.rest/v1/users/493350564785029142" },
   { name: "Web3Forms API", url: "https://api.web3forms.com/" },
 ];
