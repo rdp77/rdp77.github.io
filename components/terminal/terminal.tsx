@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { TerminalSquare } from "lucide-react";
+import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
 import { profile } from "@/lib/profile";
 import { commands, findCommand } from "./commands";
@@ -51,13 +52,7 @@ function Thinking() {
   );
 }
 
-const Mascot = () => (
-  <svg aria-hidden width="72" height="48" viewBox="0 0 18 12" shapeRendering="crispEdges" fill={C.accent} className="my-1.5">
-    <rect x="3" y="0" width="12" height="2.4" /><rect x="3" y="2.4" width="2" height="2.4" /><rect x="6" y="2.4" width="6" height="2.4" /><rect x="13" y="2.4" width="2" height="2.4" />
-    <rect x="1" y="4.8" width="16" height="2.4" /><rect x="3" y="7.2" width="12" height="2.4" />
-    <rect x="4" y="9.6" width="1" height="2.4" /><rect x="6" y="9.6" width="1" height="2.4" /><rect x="11" y="9.6" width="1" height="2.4" /><rect x="13" y="9.6" width="1" height="2.4" />
-  </svg>
-);
+const Mascot = () => <Image aria-hidden alt="" src="/logo-light.svg" width={64} height={64} className="my-1.5 size-16" />;
 
 const Header = () => (
   <fieldset className="min-w-0 rounded-[6px] border px-3 pb-3.5 pt-1 sm:px-4" style={{ borderColor: C.accent }}>
