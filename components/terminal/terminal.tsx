@@ -97,7 +97,7 @@ const Header = () => (
           Tips for getting started
         </div>
         <div className="truncate">Type / to browse commands</div>
-        <div className="truncate">Try /about or /projects</div>
+        <div className="truncate">Try /about, or just ask about me</div>
         <div className="my-1.5 h-px" style={{ background: C.accent }} />
         <div className="font-semibold" style={{ color: C.accent }}>
           Leaving?
@@ -116,7 +116,11 @@ export function Terminal() {
   const input = useRef<HTMLInputElement>(null);
   const end = useRef<HTMLDivElement>(null);
   const id = useRef(0);
-  const pending = useRef<{ id: number; timer: ReturnType<typeof setTimeout> } | null>(null);
+  const pending = useRef<{
+    id: number;
+    timer?: ReturnType<typeof setTimeout>;
+    abort?: AbortController;
+  } | null>(null);
 
   const matches = value.startsWith("/")
     ? commands.filter((c) => `/${c.name}`.startsWith(value.trim().toLowerCase()))
@@ -154,14 +158,16 @@ export function Terminal() {
   };
   const interrupt = () => {
     if (!pending.current) return false;
-    const { id: eid, timer } = pending.current;
+    const { id: eid, timer, abort } = pending.current;
     clearTimeout(timer);
+    abort?.abort();
     finish(eid, <Tool bad name="Run" arg="interrupted" note="interrupted by user" />);
     return true;
   };
   const close = () => {
     if (pending.current) {
       clearTimeout(pending.current.timer);
+      pending.current.abort?.abort();
       pending.current = null;
     }
     setValue("");
@@ -203,8 +209,28 @@ export function Terminal() {
       );
     } else if (cmd) {
       node = <cmd.Block />;
-    } else {
+    } else if (text.startsWith("/")) {
       node = <Tool bad name="Run" arg={text} note="command not found · type /help" />;
+    } else {
+      const eid = ++id.current;
+      const abort = new AbortController();
+      setHistory((h) => [...h, { id: eid, input: text, node: null }]);
+      pending.current = { id: eid, abort };
+      fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ q: text }),
+        signal: abort.signal,
+      })
+        .then((r) => r.json())
+        .then((d: { answer?: string }) =>
+          finish(eid, <Tool name="Ask" arg={text.slice(0, 40)} note={d.answer ?? "no answer"} />),
+        )
+        .catch((e) => {
+          if (e?.name !== "AbortError")
+            finish(eid, <Tool bad name="Ask" arg={text.slice(0, 40)} note="AI unavailable" />);
+        });
+      return;
     }
     const eid = ++id.current;
     setHistory((h) => [...h, { id: eid, input: text, node: cmd ? null : node }]);
