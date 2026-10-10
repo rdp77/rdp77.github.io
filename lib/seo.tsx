@@ -56,7 +56,6 @@ export const siteGraph = {
       image: `${siteUrl}/avatar.jpg`,
       jobTitle: profile.role,
       description: desc,
-      birthPlace: { "@type": "Place", name: "Lamongan, Indonesia" },
       homeLocation: {
         "@type": "Place",
         name: "Surabaya, East Java, Indonesia",

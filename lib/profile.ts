@@ -28,9 +28,9 @@ export const profile = {
 };
 
 export const story = [
-  "I'm Ravi, a software engineer born in Lamongan and raised in Surabaya. I like products that feel quick, quiet and dependable. I started with networks and Mikrotik in vocational school, then moved into PHP and Laravel, through React and Next.js, and now build across web, mobile and cloud. Today I build back-end APIs at AsiaCommerce Network.",
-  "Outside of client work I make open-source tools, tinker with Web3, and share what I learn as a creator. I enjoy finding defects in free apps and fixing them, and I care about building things that are lightweight, fast and dependable. Building relationships and running small businesses keeps my entrepreneurial side growing, and I like contributing to the growth of people in my country.",
-  "This site is my personal operating system. The live numbers on the dashboard are real.",
+  "I'm Ravi, a full-stack developer with 7+ years of experience building e-commerce solutions, maintaining APIs and integrating systems. I started with networks and Mikrotik in vocational school, then moved into PHP and Laravel, through React and Next.js, and now build across web, mobile and cloud. Today I build back-end APIs at AsiaCommerce Network with Node.js, Docker, GraphQL and REST.",
+  "Outside of client work I make open-source tools, tinker with Web3, and share what I learn as a creator and in my local community. I like products that feel quick, quiet and dependable, and I enjoy finding defects in free apps and fixing them.",
+  "I'm also a dedicated IT support professional who can optimize your systems while teaching your team best practices, so let's talk. This site is my personal operating system. The live numbers on the dashboard are real.",
 ];
 
 export const projects: { name: string; category: string[]; image: string; description: string; stack: string[] }[] = [
@@ -64,12 +64,12 @@ export const projects: { name: string; category: string[]; image: string; descri
 ];
 
 export const skills: Record<string, { name: string; icon: string }[]> = {
-  Frontend: [{ name: "React", icon: "siReact" }, { name: "Next.js", icon: "siNextdotjs" }, { name: "TypeScript", icon: "siTypescript" }, { name: "Tailwind CSS", icon: "siTailwindcss" }, { name: "HTML5", icon: "siHtml5" }, { name: "CSS", icon: "siCss" }, { name: "Sass", icon: "siSass" }, { name: "jQuery", icon: "siJquery" }, { name: "JavaScript", icon: "siJavascript" }, { name: "Bootstrap", icon: "siBootstrap" }, { name: "Gatsby", icon: "siGatsby" }, { name: "WordPress", icon: "siWordpress" }],
+  Frontend: [{ name: "React", icon: "siReact" }, { name: "Next.js", icon: "siNextdotjs" }, { name: "TypeScript", icon: "siTypescript" }, { name: "Tailwind CSS", icon: "siTailwindcss" }, { name: "HTML5", icon: "siHtml5" }, { name: "CSS", icon: "siCss" }, { name: "Sass", icon: "siSass" }, { name: "jQuery", icon: "siJquery" }, { name: "JavaScript", icon: "siJavascript" }, { name: "Bootstrap", icon: "siBootstrap" }, { name: "Gatsby", icon: "siGatsby" }, { name: "WordPress", icon: "siWordpress" }, { name: "Blogger", icon: "siBlogger" }],
   Backend: [{ name: "Laravel", icon: "siLaravel" }, { name: "Node.js", icon: "siNodedotjs" }, { name: "GraphQL", icon: "siGraphql" }, { name: "PHP", icon: "siPhp" }, { name: "Python", icon: "siPython" }, { name: "Livewire", icon: "siLivewire" }, { name: "Filament", icon: "siFilament" }, { name: "Java", icon: "siOpenjdk" }, { name: "C#", icon: "siSharp" }, { name: "C++", icon: "siCplusplus" }, { name: "C", icon: "siC" }, { name: "CodeIgniter", icon: "siCodeigniter" }, { name: "Visual Basic .NET", icon: "siDotnet" }],
   Mobile: [{ name: "Flutter", icon: "siFlutter" }, { name: "Dart", icon: "siDart" }, { name: "Android", icon: "siAndroid" }, { name: "Android Studio", icon: "siAndroidstudio" }, { name: "Firebase", icon: "siFirebase" }],
   Cloud: [{ name: "Cloudflare", icon: "siCloudflare" }, { name: "Vercel", icon: "siVercel" }, { name: "Netlify", icon: "siNetlify" }, { name: "GitHub Pages", icon: "siGithubpages" }],
   DevOps: [{ name: "Docker", icon: "siDocker" }, { name: "Podman", icon: "siPodman" }, { name: "GitHub Actions", icon: "siGithubactions" }, { name: "Linux", icon: "siLinux" }, { name: "Nginx", icon: "siNginx" }],
-  Database: [{ name: "MySQL", icon: "siMysql" }, { name: "PostgreSQL", icon: "siPostgresql" }, { name: "Redis", icon: "siRedis" }, { name: "MariaDB", icon: "siMariadb" }, { name: "MongoDB", icon: "siMongodb" }],
+  Database: [{ name: "MySQL", icon: "siMysql" }, { name: "PostgreSQL", icon: "siPostgresql" }, { name: "Redis", icon: "siRedis" }, { name: "MariaDB", icon: "siMariadb" }, { name: "MongoDB", icon: "siMongodb" }, { name: "phpMyAdmin", icon: "siPhpmyadmin" }],
   Web3: [{ name: "Ethereum", icon: "siEthereum" }, { name: "Solidity", icon: "siSolidity" }],
   Tools: [{ name: "Git", icon: "siGit" }, { name: "Figma", icon: "siFigma" }, { name: "VS Code", icon: "siVscodium" }, { name: "GitHub", icon: "siGithub" }, { name: "Postman", icon: "siPostman" }, { name: "Jupyter", icon: "siJupyter" }, { name: "Bash", icon: "siGnubash" }],
   Networking: [{ name: "Mikrotik", icon: "siMikrotik" }, { name: "Cisco", icon: "siCisco" }],
