@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+/* Tailwind v4 gates hover: behind (hover: hover), so touch screens got nothing.
+   Keep real hover on mouse; on touch, the pressed state stands in for it. */
+@custom-variant hover {
+  @media (hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      @slot;
+    }
+  }
+}
+@custom-variant group-hover {
+  @media (hover: hover) {
+    &:is(:where(.group):hover *) {
+      @slot;
+    }
+  }
+  @media (hover: none) {
+    &:is(:where(.group):active *) {
+      @slot;
+    }
+  }
+}
+
 :root {
   color-scheme: dark;
   --bg: #0d0d0d;
