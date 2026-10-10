@@ -159,6 +159,7 @@ function YouTube() {
                   )}
                   <time dateTime={v.published}>
                     {new Date(v.published).toLocaleDateString("en", {
+                      timeZone: "UTC",
                       year: "numeric",
                       month: "short",
                       day: "numeric",
