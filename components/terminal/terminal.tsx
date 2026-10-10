@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { TerminalSquare } from "lucide-react";
+import { Terminal as TerminalIcon } from "lucide-react";
 import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
 import { profile } from "@/lib/profile";
@@ -27,8 +27,8 @@ export function TerminalFab() {
   }, [open]);
   return (
     <button ref={ref} type="button" onClick={() => setOpen(true)} aria-label="Open terminal mode"
-      className="fixed bottom-5 right-5 z-40 grid size-12 place-items-center rounded-full border border-line bg-inverse-bg text-inverse-fg shadow-lg transition hover:scale-105 hover:bg-violet hover:text-fg">
-      <TerminalSquare className="size-5" aria-hidden />
+      className="fixed bottom-5 right-5 z-40 grid size-[45px] place-items-center border border-fg bg-bg text-fg transition-colors md:bottom-[30px] md:right-[30px]">
+      <TerminalIcon size={30} strokeWidth={1.5} aria-hidden />
     </button>
   );
 }
