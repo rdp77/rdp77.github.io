@@ -182,6 +182,9 @@ export function Terminal() {
               ))}
             </ul>
           )}
+          <div className="flex justify-end px-1 pb-1 text-[12px]" style={{ color: C.dim }}>
+            <span className="min-w-0 break-words text-right"><span aria-hidden>◉</span> design inspired by Claude Code</span>
+          </div>
           <div className="flex min-w-0 items-center border-y py-0.5" style={{ borderColor: "#808080" }}>
             <span aria-hidden>❯</span>
             <input ref={input} value={value} onChange={(e) => { setValue(e.target.value); setSel(0); }} onKeyDown={onKey}
