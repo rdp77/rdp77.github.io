@@ -263,6 +263,8 @@ export const skills: Record<string, { name: string; icon: string }[]> = {
     { name: "Gatsby", icon: "siGatsby" },
     { name: "WordPress", icon: "siWordpress" },
     { name: "Blogger", icon: "siBlogger" },
+    { name: "Webflow", icon: "siWebflow" },
+    { name: "Framer", icon: "siFramer" },
   ],
   Backend: [
     { name: "Laravel", icon: "siLaravel" },
