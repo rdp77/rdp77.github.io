@@ -406,6 +406,7 @@ export const achievements: {
   name: string;
   issuer: string;
   credential: string;
+  date?: string;
 }[] = [
   {
     type: "Award",
@@ -424,24 +425,35 @@ export const achievements: {
     name: "HTML Fundamentals Course",
     issuer: "SoloLearn",
     credential: "#1014-11011596",
+    date: "Mar 2020",
   },
   {
     type: "Certification",
     name: "SEO 101: Cara Membuat Website Eksis Di Halaman Depan Google",
     issuer: "Skill Academy",
     credential: "B4BBTZ7UKBA4NK",
+    date: "Mar 2020",
   },
   {
     type: "Certification",
     name: "SEO 101: Cara Membuat Website Eksis Di Halaman Depan Google",
     issuer: "Skill Academy",
     credential: "HLR743SYF8FE88",
+    date: "Mar 2020",
   },
   {
     type: "Certification",
     name: "PHP Tutorial Course",
     issuer: "SoloLearn",
     credential: "#1059-11011596",
+    date: "Mar 2020",
+  },
+  {
+    type: "Certification",
+    name: "PHP Fundamentals Course",
+    issuer: "SoloLearn",
+    credential: "",
+    date: "Mar 2020",
   },
   {
     type: "Certification",
@@ -472,6 +484,7 @@ export const achievements: {
     name: "SEO Tutorial for Beginners",
     issuer: "Udemy",
     credential: "UC-fc84da27-f5dd-4476-b753-201d4bbdae2e",
+    date: "Jul 2021",
   },
   {
     type: "Certification",
@@ -490,66 +503,77 @@ export const achievements: {
     name: "Javascript Tutorial Course",
     issuer: "SoloLearn",
     credential: "#1024-11011596",
+    date: "Sep 2020",
   },
   {
     type: "Certification",
     name: "SQL Fundamentals Course",
     issuer: "SoloLearn",
     credential: "#1060-11011596",
+    date: "Sep 2020",
   },
   {
     type: "Certification",
     name: "IT Essentials",
     issuer: "Cisco Networking Academy",
     credential: "#9190197",
+    date: "Jun 2018",
   },
   {
     type: "Certification",
     name: "Basic English Conversation",
     issuer: "Dharma Cendekia Utama",
     credential: "DCU12016009",
+    date: "Oct 2017",
   },
   {
     type: "Certification",
     name: "Praktek Kerja Industri Diskominfo",
     issuer: "Dinas Komunikasi dan Informatika",
     credential: "072/4550/436.6.8/2017",
+    date: "Mar 2017",
   },
   {
     type: "Certification",
     name: "Praktek Kerja Industri Broadband Learning Center",
     issuer: "SMK Rajasa",
     credential: "106/SMKR.Sby/H/Prakerin/VIII/2017",
+    date: "Aug 2017",
   },
   {
     type: "Certification",
     name: "Certificate of Competency",
     issuer: "PT. Rahajasa Media Internet",
     credential: "135A/PIMP/SMKR.SBY/III/2018",
+    date: "Mar 2018",
   },
   {
     type: "Certification",
     name: "Flutter Mobile Developer",
     issuer: "BuildWithAngga",
     credential: "ToYhyizkTl",
+    date: "Feb 2022",
   },
   {
     type: "Certification",
     name: "Menyusun Strategi Pemasaran dan Penjualan dengan Kecerdasan Buatan (AI)",
     issuer: "Karier.mu",
     credential: "#9190197",
+    date: "Sep 2023",
   },
   {
     type: "Certification",
     name: "Software Development",
     issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
     credential: "J.62019.251400.5.0000285.2021",
+    date: "Nov 2021 (valid until Nov 2024)",
   },
   {
     type: "Certification",
     name: "Software Testing Fundamentals",
     issuer: "Great Learning",
     credential: "",
+    date: "Dec 2021",
   },
   { type: "Certification", name: "Python for Data Science", issuer: "IBM", credential: "#9190197" },
 ];

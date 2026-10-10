@@ -157,6 +157,7 @@ export function About() {
                           <p className="font-medium">{a.name}</p>
                           <p className="text-sm text-muted">
                             {a.issuer}
+                            {a.date && <> · {a.date}</>}
                             {a.credential && (
                               <>
                                 {" "}
