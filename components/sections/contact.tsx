@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Script from "next/script";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { Section, btnPrimary } from "@/components/ui/primitives";
 import { ContactAside } from "@/components/contact-aside";
 import { validateContact, submitContact, type ContactErrors } from "@/lib/contact";
@@ -41,6 +41,7 @@ function TextField({ name, error }: { name: keyof typeof AUTOCOMPLETE; error?: s
 }
 
 export function Contact() {
+  const [captchaFailed, setCaptchaFailed] = useState(false);
   const [state, setState] = useState<State>("idle");
   const [errors, setErrors] = useState<ContactErrors>({});
   const [failMsg, setFailMsg] = useState("");
@@ -73,9 +74,6 @@ export function Contact() {
 
   return (
     <Section h1 id="contact" eyebrow="Contact" title="Let's talk">
-      {siteKey && (
-        <Script src="https://js.hcaptcha.com/1/api.js?recaptchacompat=off" strategy="lazyOnload" />
-      )}
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px]">
         <form
           onSubmit={onSubmit}
@@ -102,12 +100,15 @@ export function Contact() {
           </div>
           {siteKey && (
             <div>
-              <div
-                className="h-captcha"
-                data-sitekey={siteKey}
-                data-theme="dark"
-                data-recaptchacompat="off"
+              <HCaptcha
+                sitekey={siteKey}
+                theme="dark"
+                onLoad={() => setCaptchaFailed(false)}
+                onError={() => setCaptchaFailed(true)}
               />
+              {captchaFailed && (
+                <FieldError message="Verification failed to load. Disable your ad blocker or open in another browser." />
+              )}
               {errors.captcha && <FieldError message={errors.captcha} />}
             </div>
           )}
