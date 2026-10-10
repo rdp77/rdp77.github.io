@@ -132,6 +132,16 @@ export function Terminal() {
     };
   }, [open]);
 
+  const esc = useRef<() => void>(() => {});
+  useEffect(() => {
+    if (!open) return;
+    const h = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && e.target !== input.current) esc.current();
+    };
+    document.addEventListener("keydown", h);
+    return () => document.removeEventListener("keydown", h);
+  }, [open]);
+
   useEffect(() => {
     end.current?.scrollIntoView({ block: "end" });
   }, [history]);
@@ -157,6 +167,10 @@ export function Terminal() {
     setValue("");
     setSel(0);
     setOpen(false);
+  };
+
+  esc.current = () => {
+    if (!interrupt()) close();
   };
 
   const run = (raw: string) => {
