@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card, Badge } from "@/components/ui/primitives";
 
 type Track = {
@@ -23,6 +23,11 @@ export function SpotifyCard() {
   const [track, setTrack] = useState<Track | null>(null);
   const [ready, setReady] = useState(false);
   const [now, setNow] = useState(() => Date.now());
+  const [listen, setListen] = useState(false);
+  const [noClip, setNoClip] = useState(false);
+  const audio = useRef<HTMLAudioElement>(null);
+  const trackId = track?.id;
+  const query = track ? `${track.artist.split(",")[0]} ${track.song}` : "";
 
   useEffect(() => {
     let alive = true;
@@ -63,6 +68,31 @@ export function SpotifyCard() {
     const tick = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(tick);
   }, [track]);
+
+  // Listen-along: autoplay needs a click, so this only runs after the visitor opts in.
+  useEffect(() => {
+    const a = audio.current;
+    if (!a) return;
+    if (!listen || !trackId) {
+      a.pause();
+      return;
+    }
+    let alive = true;
+    fetch(`/api/spotify/preview?q=${encodeURIComponent(query)}`)
+      .then((r) => r.json())
+      .then(({ url }) => {
+        if (!alive) return;
+        setNoClip(!url);
+        if (!url) return;
+        a.src = url;
+        a.play().catch(() => setListen(false));
+      })
+      .catch(() => alive && setNoClip(true));
+    return () => {
+      alive = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [listen, trackId]);
 
   const dur = track ? track.end - track.start : 0;
   const pos = track ? Math.min(Math.max(now - track.start, 0), dur) : 0;
@@ -137,6 +167,20 @@ export function SpotifyCard() {
                 <span>{mmss(dur)}</span>
               </p>
             </div>
+            <div className="mt-4 flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setListen((v) => !v)}
+                aria-pressed={listen}
+                className="border border-line px-3 py-1.5 text-xs transition-colors hover:border-violet hover:text-violet focus-visible:outline-2 focus-visible:outline-violet"
+              >
+                {listen ? "Stop listening" : "Listen along"}
+              </button>
+            </div>
+            <p className="mt-2 text-xs text-faint" role="status">
+              {noClip ? "No preview clip for this track" : "30s preview clip via Apple Music"}
+            </p>
+            <audio ref={audio} loop preload="none" />
           </div>
         </>
       )}
