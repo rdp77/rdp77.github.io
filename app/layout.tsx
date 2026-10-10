@@ -5,6 +5,7 @@ import { Nav } from "@/components/nav";
 import { ThemeShell } from "@/components/theme-shell";
 import { Footer } from "@/components/footer";
 import { Cursor } from "@/components/cursor";
+import { TerminalProvider, TerminalFab, Terminal } from "@/components/terminal/terminal";
 import { Motion } from "@/components/ui/motion";
 import { JsonLd, siteGraph, siteMetadata } from "@/lib/seo";
 import "./globals.css";
@@ -22,17 +23,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable} antialiased`}>
       <body>
-        <JsonLd data={siteGraph} />
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-inverse-bg focus:px-4 focus:py-2 focus:text-inverse-fg">Skip to content</a>
-        <Motion>
-          <ThemeShell>
-            <Nav />
-            <main id="main" className="flex-1">{children}</main>
-            <Footer />
-          </ThemeShell>
-        </Motion>
-        <Cursor />
-        <Analytics />
+        <TerminalProvider>
+          <JsonLd data={siteGraph} />
+          <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-inverse-bg focus:px-4 focus:py-2 focus:text-inverse-fg">Skip to content</a>
+          <Motion>
+            <ThemeShell>
+              <Nav />
+              <main id="main" className="flex-1">{children}</main>
+              <Footer />
+            </ThemeShell>
+          </Motion>
+          <Cursor />
+          <Analytics />
+          <TerminalFab />
+          <Terminal />
+        </TerminalProvider>
       </body>
     </html>
   );
