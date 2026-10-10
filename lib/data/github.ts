@@ -72,7 +72,8 @@ function parseContributions(cc: ContributionsCollection): Pick<GH, "weeks" | "to
     streak: { current, longest },
     busiest: { count: best.contributionCount, date: best.date },
     mix: { commits: cc.totalCommitContributions, prs: cc.totalPullRequestContributions, issues: cc.totalIssueContributions, reviews: cc.totalPullRequestReviewContributions },
-    weeks: cal.weeks.map((w) => w.contributionDays.map((d) => ({ l: LEVELS.indexOf(d.contributionLevel), label: `${d.contributionCount} contribution${d.contributionCount === 1 ? "" : "s"} · ${d.date}` }))),
+    // First week can start mid-week: pad the first week so days stay aligned to Sunday.
+    weeks: cal.weeks.map((w, wi) => [...(wi === 0 ? Array.from({ length: 7 - w.contributionDays.length }, () => ({ l: -1, label: "" })) : []), ...w.contributionDays.map((d) => ({ l: LEVELS.indexOf(d.contributionLevel), label: `${d.contributionCount} contribution${d.contributionCount === 1 ? "" : "s"} · ${d.date}` }))]),
     total: cal.totalContributions,
   };
 }

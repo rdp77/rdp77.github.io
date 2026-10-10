@@ -3,15 +3,15 @@
 import { useState } from "react";
 
 export type HeatCell = { l: number; label: string }; // l: 0-4, -1 = empty slot
-const shade = ["bg-line", "bg-violet/25", "bg-violet/50", "bg-violet/75", "bg-violet"];
+const shade = ["bg-line", "bg-violet/40", "bg-violet/60", "bg-violet/80", "bg-violet"];
 
 // Year heatmap: cells stretch to fill the card; hover/focus shows a readout.
 export function Heatmap({ weeks, hint, aria }: { weeks: HeatCell[][]; hint: string; aria: string }) {
   const [tip, setTip] = useState<string | null>(null);
   return (
     <div>
-      <div className="overflow-x-auto" role="img" aria-label={aria}>
-        <div className="grid min-w-[640px] gap-[3px] pb-1" style={{ gridTemplateColumns: `repeat(${weeks.length}, minmax(0, 1fr))` }} onMouseLeave={() => setTip(null)}>
+      <div role="img" aria-label={aria}>
+        <div className="grid gap-[3px]" style={{ gridTemplateColumns: `repeat(${weeks.length}, minmax(0, 1fr))` }} onMouseLeave={() => setTip(null)}>
           {weeks.map((w, i) => (
             <div key={i} className="grid gap-[3px]">
               {w.map((c, j) => c.l < 0 ? <span key={j} className="aspect-square" /> : (
