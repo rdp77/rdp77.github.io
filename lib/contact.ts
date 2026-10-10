@@ -1,4 +1,6 @@
-export type ContactErrors = Partial<Record<"name" | "email" | "subject" | "message" | "captcha", string>>;
+export type ContactErrors = Partial<
+  Record<"name" | "email" | "subject" | "message" | "captcha", string>
+>;
 
 export function validateContact(get: (k: string) => string, needsCaptcha: boolean): ContactErrors {
   const next: ContactErrors = {};
@@ -6,7 +8,8 @@ export function validateContact(get: (k: string) => string, needsCaptcha: boolea
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(get("email"))) next.email = "Enter a valid email.";
   if (get("subject").length < 3) next.subject = "Please add a subject.";
   if (get("message").length < 10) next.message = "Message must be at least 10 characters.";
-  if (needsCaptcha && !get("h-captcha-response")) next.captcha = "Please complete the verification.";
+  if (needsCaptcha && !get("h-captcha-response"))
+    next.captcha = "Please complete the verification.";
   return next;
 }
 

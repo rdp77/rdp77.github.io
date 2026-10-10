@@ -5,7 +5,18 @@ import { reportError } from "@/lib/report";
 type Creds = { id: string; secret: string; refresh: string };
 type NowPlaying =
   | { configured: boolean; playing: false }
-  | { configured: true; playing: true; song: string; artist: string; album: string; art: string; id: string; progress: number; duration: number; at: number };
+  | {
+      configured: true;
+      playing: true;
+      song: string;
+      artist: string;
+      album: string;
+      art: string;
+      id: string;
+      progress: number;
+      duration: number;
+      at: number;
+    };
 
 const TOKEN_SKEW_MS = 10_000;
 // Shared across all visitors: Spotify is hit at most once per TTL, so rate limits don't scale with traffic.
@@ -17,7 +28,10 @@ async function accessToken({ id, secret, refresh }: Creds) {
   if (cached && cached.exp > Date.now() + TOKEN_SKEW_MS) return cached.token;
   const res = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
-    headers: { Authorization: `Basic ${Buffer.from(`${id}:${secret}`).toString("base64")}`, "Content-Type": "application/x-www-form-urlencoded" },
+    headers: {
+      Authorization: `Basic ${Buffer.from(`${id}:${secret}`).toString("base64")}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
     body: new URLSearchParams({ grant_type: "refresh_token", refresh_token: refresh }),
     cache: "no-store",
   });
@@ -48,7 +62,8 @@ async function fetchNowPlaying(): Promise<NowPlaying> {
     if (res.status === 204 || res.status >= 400) return { configured: true, playing: false };
     const j = await res.json();
     const t = j.item;
-    if (!j.is_playing || !t || j.currently_playing_type !== "track") return { configured: true, playing: false };
+    if (!j.is_playing || !t || j.currently_playing_type !== "track")
+      return { configured: true, playing: false };
     return {
       configured: true,
       playing: true,

@@ -18,7 +18,11 @@ async function probe(t: { name: string; url?: string }): Promise<Service> {
   if (!t.url) return { name: t.name, health: "unmonitored", ms: null };
   const start = performance.now();
   try {
-    const res = await fetch(t.url, { method: "GET", signal: AbortSignal.timeout(5000), redirect: "follow" });
+    const res = await fetch(t.url, {
+      method: "GET",
+      signal: AbortSignal.timeout(5000),
+      redirect: "follow",
+    });
     const ms = Math.round(performance.now() - start);
     // 401/403 still means the service answered.
     const up = res.status < 500;

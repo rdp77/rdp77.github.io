@@ -58,25 +58,13 @@ container.singleton(
     }),
 );
 
-container.singleton(
-  "userRepository",
-  () => new UserRepository(container.resolve("db")),
-);
+container.singleton("userRepository", () => new UserRepository(container.resolve("db")));
 
-container.singleton(
-  "userService",
-  () => new UserService(container.resolve("userRepository")),
-);
+container.singleton("userService", () => new UserService(container.resolve("userRepository")));
 
-container.register(
-  "userController",
-  () => new UserController(container.resolve("userService")),
-);
+container.register("userController", () => new UserController(container.resolve("userService")));
 
-container.singleton(
-  "authService",
-  () => new AuthService(container.resolve("userRepository")),
-);
+container.singleton("authService", () => new AuthService(container.resolve("userRepository")));
 ```
 
 ## Database Patterns
@@ -206,10 +194,10 @@ export class OrderService {
         );
 
         // Update inventory
-        await client.query(
-          "UPDATE products SET stock = stock - $1 WHERE id = $2",
-          [item.quantity, item.productId],
-        );
+        await client.query("UPDATE products SET stock = stock - $1 WHERE id = $2", [
+          item.quantity,
+          item.productId,
+        ]);
       }
 
       await client.query("COMMIT");
@@ -273,10 +261,9 @@ export class AuthService {
 
   async refreshToken(refreshToken: string) {
     try {
-      const payload = jwt.verify(
-        refreshToken,
-        process.env.REFRESH_TOKEN_SECRET!,
-      ) as { userId: string };
+      const payload = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!) as {
+        userId: string;
+      };
 
       const user = await this.userRepository.findById(payload.userId);
 
@@ -353,11 +340,7 @@ export class CacheService {
 
 // Cache decorator
 export function Cacheable(ttl: number = 300) {
-  return function (
-    target: any,
-    propertyKey: string,
-    descriptor: PropertyDescriptor,
-  ) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
 
     descriptor.value = async function (...args: any[]) {
@@ -387,12 +370,7 @@ export function Cacheable(ttl: number = 300) {
 import { Response } from "express";
 
 export class ApiResponse {
-  static success<T>(
-    res: Response,
-    data: T,
-    message?: string,
-    statusCode = 200,
-  ) {
+  static success<T>(res: Response, data: T, message?: string, statusCode = 200) {
     return res.status(statusCode).json({
       status: "success",
       message,
@@ -408,13 +386,7 @@ export class ApiResponse {
     });
   }
 
-  static paginated<T>(
-    res: Response,
-    data: T[],
-    page: number,
-    limit: number,
-    total: number,
-  ) {
+  static paginated<T>(res: Response, data: T[], page: number, limit: number, total: number) {
     return res.json({
       status: "success",
       data,

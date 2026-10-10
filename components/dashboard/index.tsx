@@ -10,14 +10,22 @@ import { SpotifyCard } from "./spotify";
 const widgets = [WakatimeCard, SpotifyCard, EthereumCard, GithubCard, AnalyticsCard, StatusCard];
 
 function Skeleton() {
-  return <div role="status" aria-label="Loading widget" className="h-64 animate-pulse border border-line bg-tint md:col-span-2" />;
+  return (
+    <div
+      role="status"
+      aria-label="Loading widget"
+      className="h-64 animate-pulse border border-line bg-tint md:col-span-2"
+    />
+  );
 }
 
 export function Dashboard() {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
       {widgets.map((W, i) => (
-        <Suspense key={i} fallback={<Skeleton />}><W /></Suspense>
+        <Suspense key={i} fallback={<Skeleton />}>
+          <W />
+        </Suspense>
       ))}
     </div>
   );

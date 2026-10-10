@@ -1,4 +1,5 @@
 # Render — Style Reference
+
 > Blueprint on brushed aluminum. The interface reads as a clean, geometric engineering document — dark space, hairline rules, and one violet marker line drawing the eye to the action.
 
 **Theme:** dark only (no light mode)
@@ -14,7 +15,7 @@ Render presents a clinical, obsidian-dark canvas for cloud infrastructure — an
 | Name              | Value                                                    | Token                       | Role                                                                                                                                                                                                                                                                                                                             |
 | ----------------- | -------------------------------------------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Obsidian          | `#0d0d0d`                                                | `--color-obsidian`          | Dark supporting neutral for text, icons, and strong contrast. Do not promote it to the primary CTA color                                                                                                                                                                                                                         |
-| Obsidian Canvas   | `#0d0d0d`                                                | `--bg`                      | Page canvas and card surfaces — the dominant base against which all content rests                                                                                                                                                                                                                        |
+| Obsidian Canvas   | `#0d0d0d`                                                | `--bg`                      | Page canvas and card surfaces — the dominant base against which all content rests                                                                                                                                                                                                                                                |
 | Graphite Hairline | `#e3e3e3`                                                | `--color-graphite-hairline` | Borders, dividers, subtle surface tints — the workhorse neutral at 4000+ occurrences that defines structural edges throughout the UI                                                                                                                                                                                             |
 | Smoke             | `#4d4d4d`                                                | `--color-smoke`             | Secondary text, muted nav, footer copy — the soft mid-gray for de-emphasized but still readable text                                                                                                                                                                                                                             |
 | Ash               | `#6b6b6b`                                                | `--color-ash`               | Tertiary text, helper labels, inactive metadata — the quietest text tier for non-essential guidance                                                                                                                                                                                                                              |
@@ -31,6 +32,7 @@ Render presents a clinical, obsidian-dark canvas for cloud infrastructure — an
 ## Tokens — Typography
 
 ### PPNeueMontreal — UI and body text — the workhorse grotesque used for nav, buttons, body copy, and all functional interface elements. The tight tracking at small sizes (-0.01em at 12px) and slight loosening at larger sizes (0.02em at 24px) create optical balance across the UI scale. Weight 400 is the default; weight 500 appears in nav links and button labels where a subtle emphasis is needed without switching faces. · `--font-ppneuemontreal`
+
 - **Substitute:** Inter, Söhne, General Sans
 - **Weights:** 400, 500
 - **Sizes:** 12, 14, 16, 18, 20, 24
@@ -39,6 +41,7 @@ Render presents a clinical, obsidian-dark canvas for cloud infrastructure — an
 - **Role:** UI and body text — the workhorse grotesque used for nav, buttons, body copy, and all functional interface elements. The tight tracking at small sizes (-0.01em at 12px) and slight loosening at larger sizes (0.02em at 24px) create optical balance across the UI scale. Weight 400 is the default; weight 500 appears in nav links and button labels where a subtle emphasis is needed without switching faces.
 
 ### Roobert — Display and heading text — used for hero headlines, section titles, and all oversized type. The signature choice is weight 300 for the largest sizes (64-80px), which is anti-convention — most sites use 600-700 for impact, but Render uses whisper-weight to achieve authority through restraint. Line-heights compress to 1.00-1.10 at display sizes, creating tight, architectural headlines. Tracking tightens aggressively with size (-0.03em at 80px) to compensate for the visual airiness of light weight. · `--font-roobert`
+
 - **Substitute:** Inter (weight 300), Söhne Breit, Söhne
 - **Weights:** 300, 400
 - **Sizes:** 20, 32, 40, 48, 56, 64, 80
@@ -47,6 +50,7 @@ Render presents a clinical, obsidian-dark canvas for cloud infrastructure — an
 - **Role:** Display and heading text — used for hero headlines, section titles, and all oversized type. The signature choice is weight 300 for the largest sizes (64-80px), which is anti-convention — most sites use 600-700 for impact, but Render uses whisper-weight to achieve authority through restraint. Line-heights compress to 1.00-1.10 at display sizes, creating tight, architectural headlines. Tracking tightens aggressively with size (-0.03em at 80px) to compensate for the visual airiness of light weight.
 
 ### PPNeueMontrealMono — Code and technical labels — the monospaced face for terminal badges, code snippets, and developer-facing metadata. The slight positive tracking (0.02-0.025em) is typical for mono at small sizes to improve readability of technical strings. Used in elements like the '$ git push' badge and command labels. · `--font-ppneuemontrealmono`
+
 - **Substitute:** JetBrains Mono, IBM Plex Mono, Berkeley Mono
 - **Weights:** 400, 500
 - **Sizes:** 11, 12, 14
@@ -113,66 +117,79 @@ Render presents a clinical, obsidian-dark canvas for cloud infrastructure — an
 ## Components
 
 ### Primary Dark Button
+
 **Role:** Main call-to-action in hero sections and key conversion points
 
 Filled #0d0d0d button with white text, 2px radius, 20px horizontal padding and 10px vertical padding. PPNeueMontreal 16px weight 500. Optional right-arrow chevron in white. Used for 'Start for free' and 'Get Started' — the dark fill against white canvas creates the strongest possible contrast emphasis without resorting to chromatic color.
 
 ### Ghost Outline Button
+
 **Role:** Secondary action paired with primary CTA
 
 Transparent fill with 1px #0d0d0d border, 2px radius, same padding as primary. PPNeueMontreal 16px weight 500 in #0d0d0d. Used for 'Get in touch' beside the hero primary. The outlined treatment signals secondary hierarchy without introducing a second fill color.
 
 ### Pill Navigation CTA
+
 **Role:** Top-right header call-to-action
 
 Fully rounded (937px radius) #0d0d0d fill with white text. PPNeueMontreal 14px weight 500, 10px 16px padding. Distinct from the rectangular hero buttons — the pill shape signals 'quick entry point' in the persistent header context.
 
 ### Step Indicator Badge
+
 **Role:** Numbered step markers in process sections
 
 8x8 or 10x10 square (2px radius) filled with #8a05ff Plasma Violet, containing a white numeral in PPNeueMontrealMono 12px weight 500. The violet square against the white page is the most prominent use of brand color in the system — reserved for numbered processes to make the sequence scannable.
 
 ### Logo Cloud Bar
+
 **Role:** Social proof section with customer or partner logos
 
 Full-width section with logos in #0d0d0d on white, arranged in a responsive grid (5 columns visible). No cards or containers — logos float directly on the page background. Generous vertical padding (80px+) separates this band from surrounding sections.
 
 ### Feature Card
+
 **Role:** Content blocks for steps, features, or process explanation
 
 White surface on white page, no card shadow or fill. Content separated by typography and spacing alone. 2px radius on any embedded UI elements (input fields, dropdowns shown in illustrations). Uses generous left-aligned text with 20-24px element gaps between heading, description, and visual.
 
 ### Terminal Badge
+
 **Role:** Inline code or command highlight (e.g. '$ git push')
 
 #272727 Carbon background, 2px radius, PPNeueMontrealMono 14px weight 400, white text. 6-8px vertical padding, 10-12px horizontal. The dark mono badge is the signature developer credibility marker — a small block of code language embedded directly in marketing copy.
 
 ### Top Notification Banner
+
 **Role:** Promotional or migration message bar at very top of page
 
 Thin (1px) strip with a subtle gradient background (violet to warm). PPNeueMontreal 12px weight 400 in white text. Centered or left-aligned content with inline link and optional CTA. This is the only place where the gradient system appears at a structural level.
 
 ### Header Navigation
+
 **Role:** Persistent top navigation bar
 
 White background with no border or shadow — sits directly on the page canvas. Logo left, nav links center (PPNeueMontreal 14px weight 500, #0d0d0d), contact/sign-in/CTA right. Sticky behavior implied. No dropdown menus visible at the top level.
 
 ### Illustration Panel (Product Mockup)
+
 **Role:** Hero and feature section right-side visuals
 
 Light #e6daff Wisteria Tint background panel with floating product UI cards inside. The cards are white with 2px radius and thin #e3e3e3 borders, containing miniature line charts, status badges, and service names. The tinted background creates a 'stage' for the product preview without using heavy elevation.
 
 ### Dropdown / Select Input
+
 **Role:** Form controls in step illustrations and actual UI
 
 White fill, 1px #e3e3e3 border, 2px radius. PPNeueMontreal 14px weight 400 in #0d0d0d for value text, #6b6b6b for placeholder. 10-12px padding. No focus ring visible in static state — relies on border darkening to #0d0d0d on interaction.
 
 ### Status Badge (Success/Deploying)
+
 **Role:** Inline status indicators in product mockups
 
 Pill shape (9999px) with light tinted background and dark text. E.g., 'Deploying' uses #e3e3e3 fill with #0d0d0d text; 'Available' uses #dffeed fill (very light green) with #006d4c text. PPNeueMontrealMono 12px. These appear inside illustration panels to show live product states.
 
 ### Metric Sparkline
+
 **Role:** Inline mini-charts in product UI mockups
 
 2px stroke line chart in #8a05ff Plasma Violet, 60-80px wide, 24-32px tall. No axis labels or gridlines. Appears inside service cards in the hero illustration to suggest live monitoring without literal chart furniture.
@@ -180,6 +197,7 @@ Pill shape (9999px) with light tinted background and dark text. E.g., 'Deploying
 ## Do's and Don'ts
 
 ### Do
+
 - Use #0d0d0d for all primary filled buttons — never introduce a chromatic CTA color; the dark-on-white contrast is the system's defining emphasis pattern.
 - Set display headlines (64-80px) in Roobert weight 300 with letter-spacing -0.025em to -0.03em — the whisper-weight with tight tracking is the signature voice.
 - Apply the violet→orange gradient text treatment to a maximum of one phrase per section — typically the last 1-3 words of a hero headline that carry the value proposition.
@@ -189,6 +207,7 @@ Pill shape (9999px) with light tinted background and dark text. E.g., 'Deploying
 - Maintain #e3e3e3 at 1px for all structural borders and dividers — this is the single most-used color in the system and defines the grid.
 
 ### Don't
+
 - Do not use pure #000000 for body text or primary buttons — use #0d0d0d; the slight warmth prevents the harsh contrast of pure black on white.
 - Do not apply the brand violet (#8a05ff) as a large fill or background — keep it to accents under 40px and to step indicators; overuse dilutes its signaling power.
 - Do not use the chromatic accent colors (coral, fuchsia, sky blue) as functional UI colors — they are decorative illustration tones, not status or category indicators.
@@ -222,6 +241,7 @@ The page is a max-width 1200px centered layout on a white canvas. The hero is a 
 ## Agent Prompt Guide
 
 **Quick Color Reference**
+
 - text: #0d0d0d
 - background: #ffffff
 - border: #e3e3e3
@@ -278,9 +298,14 @@ Render's type system operates on three tiers with strict role separation. **Roob
   --color-fuchsia-pop: #f347ff;
 
   /* Typography — Font Families */
-  --font-ppneuemontreal: 'PPNeueMontreal', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-roobert: 'Roobert', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-ppneuemontrealmono: 'PPNeueMontrealMono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-ppneuemontreal:
+    "PPNeueMontreal", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  --font-roobert:
+    "Roobert", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  --font-ppneuemontrealmono:
+    "PPNeueMontrealMono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Typography — Scale */
   --text-caption: 12px;
@@ -382,9 +407,14 @@ Render's type system operates on three tiers with strict role separation. **Roob
   --color-fuchsia-pop: #f347ff;
 
   /* Typography */
-  --font-ppneuemontreal: 'PPNeueMontreal', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-roobert: 'Roobert', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-ppneuemontrealmono: 'PPNeueMontrealMono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-ppneuemontreal:
+    "PPNeueMontreal", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  --font-roobert:
+    "Roobert", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  --font-ppneuemontrealmono:
+    "PPNeueMontrealMono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Typography — Scale */
   --text-caption: 12px;

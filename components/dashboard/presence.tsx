@@ -22,7 +22,10 @@ export function Presence() {
     };
     load();
     const id = setInterval(load, 60_000);
-    return () => { alive = false; clearInterval(id); };
+    return () => {
+      alive = false;
+      clearInterval(id);
+    };
   }, []);
 
   const on = state === "online";
@@ -32,7 +35,10 @@ export function Presence() {
       aria-live="polite"
       className={`inline-flex items-center gap-2 border border-line bg-bg px-3 py-1.5 font-mono text-xs ${on ? "text-ok-fg" : "text-muted"}`}
     >
-      <span className={`size-2 rounded-full ${on ? "pulse-dot bg-ok-fg" : "bg-faint"}`} aria-hidden />
+      <span
+        className={`size-2 rounded-full ${on ? "pulse-dot bg-ok-fg" : "bg-faint"}`}
+        aria-hidden
+      />
       {state === "loading" ? "Checking presence…" : on ? "Online now" : "Offline"}
     </p>
   );

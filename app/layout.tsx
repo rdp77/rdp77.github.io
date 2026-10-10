@@ -10,8 +10,16 @@ import { Motion } from "@/components/ui/motion";
 import { JsonLd, siteGraph, siteMetadata } from "@/lib/seo";
 import "./globals.css";
 
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"], weight: ["300", "400", "500"] });
-const mono = JetBrains_Mono({ variable: "--font-mono", subsets: ["latin"], weight: ["400", "500"] });
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+});
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
 
 export const metadata = siteMetadata;
 
@@ -25,11 +33,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <TerminalProvider>
           <JsonLd data={siteGraph} />
-          <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-inverse-bg focus:px-4 focus:py-2 focus:text-inverse-fg">Skip to content</a>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-inverse-bg focus:px-4 focus:py-2 focus:text-inverse-fg"
+          >
+            Skip to content
+          </a>
           <Motion>
             <ThemeShell>
               <Nav />
-              <main id="main" className="flex-1">{children}</main>
+              <main id="main" className="flex-1">
+                {children}
+              </main>
               <Footer />
             </ThemeShell>
           </Motion>
