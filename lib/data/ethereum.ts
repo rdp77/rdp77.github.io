@@ -67,33 +67,38 @@ export async function getEthereum(): Promise<Widget<Eth>> {
   const q = (a: string) =>
     `https://api.etherscan.io/v2/api?chainid=1&module=account&address=${addr}&apikey=${key}&${a}`;
   try {
-    const [bal, txs, internal, tokens, ens] = await Promise.all([
-      getJson<Scan<string>>(q("action=balance&tag=latest")),
-      getJson<
-        Scan<
-          {
-            hash: string;
-            from: string;
-            value: string;
-            timeStamp: string;
-            isError?: string;
-            functionName?: string;
-            gasUsed?: string;
-            gasPrice?: string;
-            to?: string;
-          }[]
-        >
-      >(q("action=txlist&page=1&offset=1000&sort=desc")),
-      getJson<Scan<{ hash: string; timeStamp: string }[]>>(
-        q("action=txlistinternal&page=1&offset=1000&sort=desc"),
-      ),
-      getJson<Scan<{ hash: string; timeStamp: string }[]>>(
-        q("action=tokentx&page=1&offset=1000&sort=desc"),
-      ),
-      getJson<{ name?: string }>(`https://api.ensideas.com/ens/resolve/${addr}`).catch(
-        () => ({}) as { name?: string },
-      ),
-    ]);
+    // Etherscan's free tier allows 3 calls/sec, so space the requests out instead of firing in parallel.
+    const gap = () => new Promise((r) => setTimeout(r, 400));
+    const ensP = getJson<{ name?: string }>(`https://api.ensideas.com/ens/resolve/${addr}`).catch(
+      () => ({}) as { name?: string },
+    );
+    const bal = await getJson<Scan<string>>(q("action=balance&tag=latest"));
+    if (!/^\d+$/.test(bal.result)) throw new Error(`etherscan: ${bal.result}`);
+    await gap();
+    const txs = await getJson<
+      Scan<
+        {
+          hash: string;
+          from: string;
+          value: string;
+          timeStamp: string;
+          isError?: string;
+          functionName?: string;
+          gasUsed?: string;
+          gasPrice?: string;
+          to?: string;
+        }[]
+      >
+    >(q("action=txlist&page=1&offset=1000&sort=desc"));
+    await gap();
+    const internal = await getJson<Scan<{ hash: string; timeStamp: string }[]>>(
+      q("action=txlistinternal&page=1&offset=1000&sort=desc"),
+    );
+    await gap();
+    const tokens = await getJson<Scan<{ hash: string; timeStamp: string }[]>>(
+      q("action=tokentx&page=1&offset=1000&sort=desc"),
+    );
+    const ens = await ensP;
     const list = Array.isArray(txs.result) ? txs.result : [];
     // Etherscan analytics counts normal, internal and token transfers (unique per hash) over the wallet's whole history.
     const all = new Map<string, number>();
