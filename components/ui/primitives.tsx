@@ -57,4 +57,3 @@ export function TechIcon({ icon, label, size = 18 }: { icon: string; label?: str
 }
 
 export const btnPrimary = "inline-flex items-center gap-2 rounded-sm bg-inverse-bg px-5 py-2.5 text-base font-medium text-inverse-fg transition-opacity hover:opacity-85";
-export const btnGhost = "inline-flex items-center gap-2 rounded-sm border border-fg px-5 py-2.5 text-base font-medium transition-colors hover:bg-tint";

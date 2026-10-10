@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "knip": "knip"
   },
   "dependencies": {
     "@sentry/nextjs": "^11.5.0",
@@ -26,6 +27,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "knip": "^6.40.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },

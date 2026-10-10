@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export const LANYARD_URL = "https://api.lanyard.rest/v1/users/493350564785029142";
+const LANYARD_URL = "https://api.lanyard.rest/v1/users/493350564785029142";
 type State = "loading" | "online" | "offline";
 
 // Discord "online" = online here; anything else (idle, dnd, offline, error) counts as offline.

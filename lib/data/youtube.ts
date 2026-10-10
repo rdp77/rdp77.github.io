@@ -1,7 +1,7 @@
 import { cacheLife } from "next/cache";
 import { reportError } from "@/lib/report";
 
-export type YtVideo = { id: string; title: string; thumb: string; views: number; likes: number | null; published: string };
+type YtVideo = { id: string; title: string; thumb: string; views: number; likes: number | null; published: string };
 
 const CHANNEL_ID = "UCgy1w-3_8D1VMfarucu2lrA";
 const tag = (xml: string, re: RegExp) => xml.match(re)?.[1] ?? "";

@@ -10,7 +10,7 @@ import { profile } from "@/lib/profile";
 import { Container } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
 
-export const routes = [
+const routes = [
   { href: "/about", icon: User, label: "About" },
   { href: "/creators", icon: Clapperboard, label: "Creators" },
   { href: "/", icon: LayoutDashboard, label: "Dashboard" },

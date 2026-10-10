@@ -4,7 +4,7 @@ import { profile, siteUrl, experience, education, skills, projects } from "@/lib
 const ID = { person: `${siteUrl}/#person`, site: `${siteUrl}/#website` };
 const desc = `${profile.name} (${profile.handle}) — ${profile.role} based in Surabaya, Indonesia. Back-end APIs, Laravel, Next.js, Flutter, cloud and Web3.`;
 
-export const keywords = [
+const keywords = [
   "Moh Ravi Dwi Putra", "Ravi Dwi Putra", "rdp77", "Software Engineer", "Back End Developer", "Full Stack Developer",
   "Laravel", "Next.js", "React", "Flutter", "GraphQL", "Web3", "Surabaya", "Indonesia", "Portfolio",
 ];
@@ -20,8 +20,8 @@ export function pageMeta(title: string, description: string, path: string): Meta
     twitter: { card: "summary_large_image", title: `${title} · ${profile.name}`, description },
   };
 }
+const siteDescription = desc;
 
-export const siteDescription = desc;
 
 export function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }} />;
