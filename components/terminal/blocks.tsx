@@ -1,62 +1,66 @@
 import { profile, story, projects, skills, experience, education } from "@/lib/profile";
 
-const Row = ({ k, children }: { k: string; children: React.ReactNode }) => (
-  <div className="flex gap-3"><span className="w-24 shrink-0 text-faint">{k}</span><span className="min-w-0 break-words">{children}</span></div>
+// Palette copied from brainless.swerdlow.dev (Claude Code suite).
+export const C = { fg: "#c0caf5", dim: "#949494", sub: "#8b8fa3", faint: "#565f89", arg: "#7dcfff", ok: "#4ea96f", bad: "#f7768e", accent: "#cd694a" };
+
+export const Tool = ({ name, arg, note, children, bad }: { name: string; arg: string; note: string; children?: React.ReactNode; bad?: boolean }) => (
+  <div className="min-w-0">
+    <div className="flex items-baseline gap-2">
+      <span aria-hidden style={{ color: bad ? C.bad : C.ok }}>⏺</span>
+      <span className="min-w-0 break-words">{name}<span style={{ color: C.faint }}>(</span><span style={{ color: C.arg }}>{arg}</span><span style={{ color: C.faint }}>)</span></span>
+    </div>
+    <div className="flex items-baseline gap-2" style={{ color: C.sub }}>
+      <span aria-hidden className="invisible">⏺</span><span aria-hidden style={{ color: C.faint }}>⎿</span><span className="min-w-0 break-words">{note}</span>
+    </div>
+    {children && <div className="mt-2 space-y-2 pl-[3ch]">{children}</div>}
+  </div>
 );
-const Title = ({ children }: { children: React.ReactNode }) => <div className="mb-2 text-violet">● {children}</div>;
+
+const Row = ({ k, children }: { k: string; children: React.ReactNode }) => (
+  <div className="flex gap-3"><span className="w-[12ch] shrink-0" style={{ color: C.dim }}>{k}</span><span className="min-w-0 break-words">{children}</span></div>
+);
+const Link = ({ href }: { href: string }) => <a href={href} target="_blank" rel="noreferrer" className="underline" style={{ color: C.arg }}>{href}</a>;
 
 export const About = () => (
-  <div><Title>about</Title>
-    <Row k="name">{profile.name} ({profile.handle})</Row>
-    <Row k="role">{profile.role}</Row>
-    <Row k="location">{profile.location}</Row>
-    <div className="mt-3 space-y-2 text-muted">{story.map((p, i) => <p key={i}>{p}</p>)}</div>
-  </div>
+  <Tool name="Read" arg="about" note={`${profile.name} · ${profile.role}`}>
+    {story.map((p, i) => <p key={i}>{p}</p>)}
+  </Tool>
 );
 
 export const Projects = () => (
-  <div><Title>projects ({projects.length})</Title>
-    <ul className="space-y-2">{projects.map((p) => (
-      <li key={p.name}><span className="text-fg">{p.name}</span> <span className="text-faint">[{p.category.join(", ")}]</span>
-        <div className="text-muted">{p.description}</div></li>
-    ))}</ul>
-  </div>
+  <Tool name="Read" arg="projects" note={`Read ${projects.length} projects`}>
+    {projects.map((p) => (
+      <div key={p.name}><span className="font-semibold">{p.name}</span> <span style={{ color: C.dim }}>[{p.category.join(", ")}]</span>
+        <div style={{ color: C.sub }}>{p.description}</div></div>
+    ))}
+  </Tool>
 );
 
 export const Experience = () => (
-  <div><Title>experience</Title>
-    <ul className="space-y-2">{experience.map((e) => (
-      <li key={e.company + e.duration}><span className="text-fg">{e.position}</span> <span className="text-faint">@ {e.company} · {e.duration}</span>
-        <div className="text-muted">{e.description}</div></li>
-    ))}</ul>
-    <div className="mb-2 mt-4 text-violet">● education</div>
-    <ul className="space-y-1">{education.map((e) => (
-      <li key={e.school}><span className="text-fg">{e.school}</span> <span className="text-faint">· {e.degree} · {e.duration}</span></li>
-    ))}</ul>
-  </div>
+  <Tool name="Read" arg="experience" note={`${experience.length} roles · ${education.length} schools`}>
+    {experience.map((e) => (
+      <div key={e.company + e.duration}><span className="font-semibold">{e.position}</span> <span style={{ color: C.dim }}>@ {e.company} · {e.duration}</span>
+        <div style={{ color: C.sub }}>{e.description}</div></div>
+    ))}
+    <div className="pt-1 font-semibold" style={{ color: C.accent }}>Education</div>
+    {education.map((e) => <div key={e.school}>{e.school} <span style={{ color: C.dim }}>· {e.degree} · {e.duration}</span></div>)}
+  </Tool>
 );
 
 export const Skills = () => (
-  <div><Title>skills</Title>
-    {Object.entries(skills).map(([group, items]) => (
-      <Row key={group} k={group.toLowerCase()}>{items.map((s) => s.name).join(", ")}</Row>
-    ))}
-  </div>
+  <Tool name="Read" arg="skills" note={`${Object.keys(skills).length} groups`}>
+    {Object.entries(skills).map(([g, items]) => <Row key={g} k={g.toLowerCase()}>{items.map((s) => s.name).join(", ")}</Row>)}
+  </Tool>
 );
 
 export const Creators = () => (
-  <div><Title>creators</Title>
-    {profile.socials.filter((s) => ["YouTube", "TikTok", "Instagram"].includes(s.label)).map((s) => (
-      <Row key={s.label} k={s.label.toLowerCase()}><a className="underline" href={s.href} target="_blank" rel="noreferrer">{s.href}</a></Row>
-    ))}
-  </div>
+  <Tool name="Read" arg="creators" note="YouTube · TikTok · Instagram">
+    {profile.socials.filter((s) => ["YouTube", "TikTok", "Instagram"].includes(s.label)).map((s) => <Row key={s.label} k={s.label.toLowerCase()}><Link href={s.href} /></Row>)}
+  </Tool>
 );
 
 export const Contact = () => (
-  <div><Title>contact</Title>
-    <Row k="email">{profile.email}</Row>
-    {profile.socials.map((s) => (
-      <Row key={s.label} k={s.label.toLowerCase()}><a className="underline" href={s.href} target="_blank" rel="noreferrer">{s.href}</a></Row>
-    ))}
-  </div>
+  <Tool name="Read" arg="contact" note={profile.email}>
+    {profile.socials.map((s) => <Row key={s.label} k={s.label.toLowerCase()}><Link href={s.href} /></Row>)}
+  </Tool>
 );

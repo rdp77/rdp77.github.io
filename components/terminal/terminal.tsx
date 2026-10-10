@@ -1,8 +1,12 @@
 "use client";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { TerminalSquare } from "lucide-react";
+import { Geist_Mono } from "next/font/google";
 import { profile } from "@/lib/profile";
 import { commands, findCommand } from "./commands";
+import { C, Tool } from "./blocks";
+
+const geist = Geist_Mono({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 type Ctx = { open: boolean; setOpen: (v: boolean) => void };
 const TerminalCtx = createContext<Ctx>({ open: false, setOpen: () => {} });
@@ -30,6 +34,38 @@ export function TerminalFab() {
 
 type Entry = { id: number; input: string; node: ReactNode };
 
+const Mascot = () => (
+  <svg aria-hidden width="72" height="48" viewBox="0 0 18 12" shapeRendering="crispEdges" fill={C.accent} className="my-1.5">
+    <rect x="3" y="0" width="12" height="2.4" /><rect x="3" y="2.4" width="2" height="2.4" /><rect x="6" y="2.4" width="6" height="2.4" /><rect x="13" y="2.4" width="2" height="2.4" />
+    <rect x="1" y="4.8" width="16" height="2.4" /><rect x="3" y="7.2" width="12" height="2.4" />
+    <rect x="4" y="9.6" width="1" height="2.4" /><rect x="6" y="9.6" width="1" height="2.4" /><rect x="11" y="9.6" width="1" height="2.4" /><rect x="13" y="9.6" width="1" height="2.4" />
+  </svg>
+);
+
+const Header = () => (
+  <fieldset className="min-w-0 rounded-[6px] border px-3 pb-3.5 pt-1 sm:px-4" style={{ borderColor: C.accent }}>
+    <legend className="max-w-full truncate px-2" style={{ color: C.accent }}>{profile.handle} terminal <span style={{ color: C.dim }}>v3</span></legend>
+    <div className="grid min-w-0 gap-4 sm:grid-cols-[minmax(0,1fr)_1px_minmax(0,1.1fr)]">
+      <div className="flex min-w-0 flex-col items-center gap-2 py-1 text-center">
+        <div className="font-semibold">Welcome, visitor!</div>
+        <Mascot />
+        <div className="min-w-0 space-y-0.5 break-words" style={{ color: C.dim }}>
+          <div>{profile.name}</div><div>{profile.role}</div><div>~/{profile.handle}.github.io</div>
+        </div>
+      </div>
+      <div aria-hidden className="hidden sm:block" style={{ background: `${C.accent}55` }} />
+      <div className="min-w-0 space-y-1">
+        <div className="font-semibold" style={{ color: C.accent }}>Tips for getting started</div>
+        <div className="truncate">Type / to browse commands</div>
+        <div className="truncate">Try /about or /projects</div>
+        <div className="my-1.5 h-px" style={{ background: C.accent }} />
+        <div className="font-semibold" style={{ color: C.accent }}>Leaving?</div>
+        <div className="truncate">/gui or Esc returns to the website</div>
+      </div>
+    </div>
+  </fieldset>
+);
+
 export function Terminal() {
   const { open, setOpen } = useContext(TerminalCtx);
   const [history, setHistory] = useState<Entry[]>([]);
@@ -53,25 +89,30 @@ export function Terminal() {
 
   if (!open) return null;
 
+  const close = () => { setValue(""); setSel(0); setOpen(false); };
+
   const run = (raw: string) => {
     const text = raw.trim();
     if (!text) return;
     setValue("");
+    setSel(0);
     const cmd = findCommand(text);
-    if (cmd?.name === "gui") { setOpen(false); return; }
+    if (cmd?.name === "gui") { close(); return; }
     let node: ReactNode;
     if (cmd?.name === "help") {
-      node = <ul>{commands.map((c) => <li key={c.name}><span className="text-violet">/{c.name}</span> <span className="text-faint">— {c.hint}</span></li>)}</ul>;
+      node = <Tool name="Help" arg="commands" note={`${commands.length} available`}>
+        {commands.map((c) => <div key={c.name} className="flex"><span className="inline-block w-[14ch] shrink-0" style={{ color: C.arg }}>/{c.name}</span><span style={{ color: C.dim }}>{c.hint}</span></div>)}
+      </Tool>;
     } else if (cmd) {
       node = <cmd.Block />;
     } else {
-      node = <span className="text-bad-fg">command not found: {text}. Type /help.</span>;
+      node = <Tool bad name="Run" arg={text} note="command not found · type /help" />;
     }
     setHistory((h) => [...h, { id: ++id.current, input: text, node }]);
   };
 
   const onKey = (e: React.KeyboardEvent) => {
-    if (e.key === "Escape") { setOpen(false); return; }
+    if (e.key === "Escape") { close(); return; }
     if (matches.length) {
       if (e.key === "ArrowDown") { e.preventDefault(); setSel((s) => (s + 1) % matches.length); return; }
       if (e.key === "ArrowUp") { e.preventDefault(); setSel((s) => (s - 1 + matches.length) % matches.length); return; }
@@ -81,42 +122,46 @@ export function Terminal() {
   };
 
   return (
-    <div role="dialog" aria-modal="true" aria-label="Terminal mode" className="fixed inset-0 z-[60] flex flex-col bg-bg font-mono text-sm text-fg">
-      <header className="flex items-center justify-between gap-3 border-b border-line px-4 py-2 text-faint">
-        <span><span className="text-violet">●</span> {profile.handle} — terminal</span>
-        <span>/help · /gui or Esc to exit</span>
-      </header>
-      <div className="flex-1 overflow-y-auto px-4 py-4">
-        <div className="mx-auto max-w-3xl space-y-4">
-          <p className="text-muted">Welcome. Type <span className="text-violet">/</span> to see commands.</p>
+    <div role="dialog" aria-modal="true" aria-label="Terminal mode"
+      className={`${geist.className} fixed inset-0 z-[60] flex flex-col bg-[#1a1a1a] text-[13px] leading-[1.6] text-[#c0caf5]`}>
+      <div className="flex-1 overflow-y-auto px-4 py-5">
+        <div className="mx-auto max-w-4xl space-y-3">
+          <Header />
           {history.map((h) => (
-            <section key={h.id}>
-              <div className="mb-2"><span className="bg-wisteria px-1.5 text-violet">❯</span> {h.input}</div>
-              <div className="pl-1">{h.node}</div>
-            </section>
+            <div key={h.id} className="space-y-3 pt-1">
+              <div className="flex w-full min-w-0 items-baseline bg-[#3a3a3a]">
+                <span aria-hidden style={{ color: "#4e4e4e" }}>❯</span><span aria-hidden className="inline-block w-[1ch]" />
+                <span className="min-w-0 flex-1 break-words text-white">{h.input}</span>
+              </div>
+              {h.node}
+            </div>
           ))}
           <div ref={end} />
         </div>
       </div>
-      <div className="border-t border-line px-4 py-3">
-        <div className="mx-auto max-w-3xl">
+      <div className="px-4 pb-3">
+        <div className="mx-auto max-w-4xl">
           {matches.length > 0 && (
-            <ul role="listbox" className="mb-2 border border-line bg-tint">
+            <ul role="listbox" aria-label="Slash commands" className="mb-2 space-y-0.5">
               {matches.map((c, i) => (
                 <li key={c.name} role="option" aria-selected={i === sel}
                   onMouseDown={(e) => { e.preventDefault(); run(`/${c.name}`); }}
-                  className={`flex gap-3 px-3 py-1 ${i === sel ? "bg-wisteria text-fg" : "text-muted"}`}>
-                  <span className="text-violet">/{c.name}</span><span className="text-faint">{c.hint}</span>
+                  className="cursor-pointer truncate px-1 py-0.5" style={{ color: i === sel ? "#afd7ff" : C.dim }}>
+                  <span className="inline-block w-[16ch]">/{c.name}</span>{c.hint}
                 </li>
               ))}
             </ul>
           )}
-          <label className="flex items-center gap-2">
-            <span className="text-violet" aria-hidden>❯</span>
+          <div className="flex min-w-0 items-center border-y py-0.5" style={{ borderColor: "#808080" }}>
+            <span aria-hidden>❯</span>
             <input ref={input} value={value} onChange={(e) => { setValue(e.target.value); setSel(0); }} onKeyDown={onKey}
-              aria-label="Terminal command" autoComplete="off" spellCheck={false}
-              className="flex-1 bg-transparent outline-none placeholder:text-faint" placeholder="type / for commands" />
-          </label>
+              aria-label="Prompt" autoComplete="off" spellCheck={false}
+              className="min-w-0 flex-1 bg-transparent py-0.5 pl-[1ch] outline-none" style={{ caretColor: C.fg, caretShape: "block", outline: "none", boxShadow: "none" } as React.CSSProperties} />
+          </div>
+          <div className="mt-1.5 break-words px-1 text-[12px]">
+            <span style={{ color: "#ffd700" }}><span aria-hidden>⏵⏵ </span>terminal mode on</span>
+            <span style={{ color: C.dim }}> (/gui or esc to exit)</span>
+          </div>
         </div>
       </div>
     </div>
