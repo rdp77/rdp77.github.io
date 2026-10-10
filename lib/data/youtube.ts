@@ -11,56 +11,48 @@ type YtVideo = {
 };
 
 const CHANNEL_ID = "UCgy1w-3_8D1VMfarucu2lrA";
-const tag = (xml: string, re: RegExp) => xml.match(re)?.[1] ?? "";
-const decode = (s: string) =>
-  s
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;|&apos;/g, "'");
-
-// Public RSS feed: no API key, latest 15 videos with views/likes.
 export type Yt = { videos: YtVideo[]; avatar: string | null };
 
+const API = "https://www.googleapis.com/youtube/v3";
+
+// Official Data API v3 (~3 quota units/call).
+async function viaApi(key: string): Promise<Yt> {
+  const get = async (path: string) => {
+    const r = await fetch(`${API}/${path}&key=${key}`, { signal: AbortSignal.timeout(8000) });
+    if (!r.ok) throw new Error(`youtube api ${r.status}`);
+    return r.json();
+  };
+  const uploads = "UU" + CHANNEL_ID.slice(2);
+  const [pl, ch] = await Promise.all([
+    get(`playlistItems?part=contentDetails&maxResults=12&playlistId=${uploads}`),
+    get(`channels?part=snippet&id=${CHANNEL_ID}`),
+  ]);
+  const ids = (pl.items ?? []).map((i: any) => i.contentDetails.videoId).join(",");
+  const vids = await get(`videos?part=snippet,statistics&id=${ids}`);
+  const byId = new Map<string, any>((vids.items ?? []).map((v: any) => [v.id, v]));
+  const videos = (pl.items ?? []).flatMap((i: any) => {
+    const v = byId.get(i.contentDetails.videoId);
+    if (!v) return [];
+    return [
+      {
+        id: v.id,
+        title: v.snippet.title,
+        thumb: `https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`,
+        views: Number(v.statistics.viewCount ?? 0),
+        likes: v.statistics.likeCount ? Number(v.statistics.likeCount) : null,
+        published: v.snippet.publishedAt,
+      },
+    ];
+  });
+  const avatar = ch.items?.[0]?.snippet?.thumbnails?.medium?.url ?? null;
+  return { videos, avatar };
+}
+
+// Throws on failure so "use cache" never stores an empty result for hours.
 export async function getYoutube(): Promise<Yt> {
   "use cache";
   cacheLife("hours");
-  try {
-    const [res, page] = await Promise.all([
-      fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`, {
-        signal: AbortSignal.timeout(8000),
-      }),
-      fetch("https://www.youtube.com/@ravidwiputra", {
-        headers: { "User-Agent": "Mozilla/5.0", Cookie: "CONSENT=YES+1" },
-        signal: AbortSignal.timeout(8000),
-      })
-        .then((r) => r.text())
-        .catch(() => ""),
-    ]);
-    if (!res.ok) return { videos: [], avatar: null };
-    const xml = await res.text();
-    const avatar =
-      page.match(/<meta property="og:image" content="([^"]+)"/)?.[1].replace(/=s\d+/, "=s96") ??
-      null;
-    const videos = xml
-      .split("<entry>")
-      .slice(1, 7)
-      .map((e) => {
-        const id = tag(e, /<yt:videoId>([^<]+)/);
-        const likes = tag(e, /starRating count="(\d+)"/);
-        return {
-          id,
-          title: decode(tag(e, /<title>([^<]+)/)),
-          thumb: `https://i.ytimg.com/vi/${id}/mqdefault.jpg`,
-          views: Number(tag(e, /statistics views="(\d+)"/)),
-          likes: likes ? Number(likes) : null,
-          published: tag(e, /<published>([^<]+)/),
-        };
-      });
-    return { videos, avatar };
-  } catch (err) {
-    reportError("youtube", err);
-    return { videos: [], avatar: null };
-  }
+  const key = process.env.YOUTUBE_API_KEY;
+  if (!key) throw new Error("YOUTUBE_API_KEY not set");
+  return viaApi(key);
 }
