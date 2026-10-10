@@ -32,7 +32,24 @@ export function TerminalFab() {
   );
 }
 
-type Entry = { id: number; input: string; node: ReactNode };
+type Entry = { id: number; input: string; node: ReactNode | null };
+
+const VERBS = ["Thinking", "Pondering", "Cooking", "Mulling", "Noodling"];
+const THINK_MS = 1400;
+
+// Mirrors brainless claude-thinking: pulsing glyph, shimmering verb, elapsed + interrupt hint.
+function Thinking() {
+  const [t, setT] = useState(0);
+  useEffect(() => { const i = setInterval(() => setT((n) => n + 1), 200); return () => clearInterval(i); }, []);
+  return (
+    <div role="status" aria-live="polite" className="flex items-center gap-2">
+      <style>{`.cw-verb{background-image:linear-gradient(100deg,#cd694a 43%,#e79475 50%,#cd694a 57%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:cw-shine 2.8s linear infinite}@keyframes cw-shine{from{background-position:100% 0}to{background-position:-100% 0}}@media (prefers-reduced-motion:reduce){.cw-verb{animation:none;background-image:none;color:#cd694a;-webkit-text-fill-color:#cd694a}}`}</style>
+      <span aria-hidden className="inline-block w-[1ch]" style={{ color: C.accent }}>{["·", "✢", "✳", "✶", "✻", "✽"][t % 6]}</span>
+      <span className="cw-verb">{VERBS[Math.floor(t / 10) % VERBS.length]}…</span>
+      <span style={{ color: "#7d7d7d" }}>({Math.floor(t / 5)}s · esc to interrupt)</span>
+    </div>
+  );
+}
 
 const Mascot = () => (
   <svg aria-hidden width="72" height="48" viewBox="0 0 18 12" shapeRendering="crispEdges" fill={C.accent} className="my-1.5">
@@ -74,6 +91,7 @@ export function Terminal() {
   const input = useRef<HTMLInputElement>(null);
   const end = useRef<HTMLDivElement>(null);
   const id = useRef(0);
+  const pending = useRef<{ id: number; timer: ReturnType<typeof setTimeout> } | null>(null);
 
   const matches = value.startsWith("/") ? commands.filter((c) => `/${c.name}`.startsWith(value.trim().toLowerCase())) : [];
 
@@ -89,15 +107,30 @@ export function Terminal() {
 
   if (!open) return null;
 
-  const close = () => { setValue(""); setSel(0); setOpen(false); };
+  const finish = (entryId: number, node: ReactNode) => {
+    pending.current = null;
+    setHistory((h) => h.map((x) => (x.id === entryId ? { ...x, node } : x)));
+  };
+  const interrupt = () => {
+    if (!pending.current) return false;
+    const { id: eid, timer } = pending.current;
+    clearTimeout(timer);
+    finish(eid, <Tool bad name="Run" arg="interrupted" note="interrupted by user" />);
+    return true;
+  };
+  const close = () => {
+    if (pending.current) { clearTimeout(pending.current.timer); pending.current = null; }
+    setValue(""); setSel(0); setOpen(false);
+  };
 
   const run = (raw: string) => {
     const text = raw.trim();
-    if (!text) return;
+    if (!text || pending.current) return;
     setValue("");
     setSel(0);
     const cmd = findCommand(text);
     if (cmd?.name === "gui") { close(); return; }
+    if (cmd?.name === "clear") { setHistory([]); return; }
     let node: ReactNode;
     if (cmd?.name === "help") {
       node = <Tool name="Help" arg="commands" note={`${commands.length} available`}>
@@ -108,11 +141,13 @@ export function Terminal() {
     } else {
       node = <Tool bad name="Run" arg={text} note="command not found · type /help" />;
     }
-    setHistory((h) => [...h, { id: ++id.current, input: text, node }]);
+    const eid = ++id.current;
+    setHistory((h) => [...h, { id: eid, input: text, node: cmd ? null : node }]);
+    if (cmd) pending.current = { id: eid, timer: setTimeout(() => finish(eid, node), THINK_MS) };
   };
 
   const onKey = (e: React.KeyboardEvent) => {
-    if (e.key === "Escape") { close(); return; }
+    if (e.key === "Escape") { if (!interrupt()) close(); return; }
     if (matches.length) {
       if (e.key === "ArrowDown") { e.preventDefault(); setSel((s) => (s + 1) % matches.length); return; }
       if (e.key === "ArrowUp") { e.preventDefault(); setSel((s) => (s - 1 + matches.length) % matches.length); return; }
@@ -133,7 +168,7 @@ export function Terminal() {
                 <span aria-hidden style={{ color: "#4e4e4e" }}>❯</span><span aria-hidden className="inline-block w-[1ch]" />
                 <span className="min-w-0 flex-1 break-words text-white">{h.input}</span>
               </div>
-              {h.node}
+              {h.node ?? <Thinking />}
             </div>
           ))}
           <div ref={end} />

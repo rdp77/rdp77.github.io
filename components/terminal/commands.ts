@@ -13,6 +13,7 @@ export const commands: Cmd[] = [
   { name: "skills", hint: "tools and stacks", Block: Skills },
   { name: "creators", hint: "content channels", Block: Creators },
   { name: "contact", hint: "email and socials", Block: Contact },
+  { name: "clear", hint: "clear the screen", Block: Nothing },
   { name: "gui", hint: "back to the website", Block: Nothing },
 ];
 
