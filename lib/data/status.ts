@@ -5,15 +5,15 @@ export type Service = { name: string; health: Health; ms: number | null };
 
 // Probed live (cached).
 const targets = (): { name: string; url?: string }[] => [
-  { name: "GitHub API", url: "https://api.github.com/zen" },
-  { name: "WakaTime API", url: "https://wakatime.com/api/v1/" },
-  { name: "Vercel Analytics API", url: "https://api.vercel.com/" },
-  { name: "Etherscan API", url: "https://api.etherscan.io/v2/chainlist" },
-  { name: "Spotify API", url: "https://api.spotify.com/v1/" },
-  { name: "YouTube API", url: "https://www.googleapis.com/youtube/v3/" },
-  { name: "AI Model API", url: "https://api.groq.com/openai/v1/models" },
-  { name: "Online Status API", url: "https://api.lanyard.rest/v1/users/493350564785029142" },
-  { name: "Web3Forms API", url: "https://api.web3forms.com/" },
+  { name: "GitHub", url: "https://api.github.com/zen" },
+  { name: "WakaTime", url: "https://wakatime.com/api/v1/" },
+  { name: "Vercel Analytics", url: "https://api.vercel.com/" },
+  { name: "Etherscan", url: "https://api.etherscan.io/v2/chainlist" },
+  { name: "Spotify", url: "https://api.spotify.com/v1/" },
+  { name: "YouTube", url: "https://www.googleapis.com/youtube/v3/" },
+  { name: "AI Model", url: "https://api.groq.com/openai/v1/models" },
+  { name: "Online Status", url: "https://api.lanyard.rest/v1/users/493350564785029142" },
+  { name: "Web3Forms", url: "https://api.web3forms.com/" },
 ];
 
 async function probe(t: { name: string; url?: string }): Promise<Service> {
