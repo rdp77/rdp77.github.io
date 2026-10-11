@@ -47,6 +47,9 @@ const MODELS = ["openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.8-27b"]
 const omit = (v: unknown, key: string) =>
   v && typeof v === "object" ? { ...v, [key]: undefined } : v;
 const OFFTOPIC = "OFFTOPIC";
+// Per-instance answer cache: repeated questions cost no tokens against the Groq limit.
+const CACHE_TTL = 10 * 60_000;
+const cache = new Map<string, { answer: string; at: number }>();
 
 const buildSystem = (
   live: string,
@@ -65,6 +68,9 @@ export async function POST(req: Request) {
   const q = typeof body?.q === "string" ? body.q.trim().slice(0, MAX_INPUT) : "";
   if (!q) return Response.json({ answer: REFUSAL });
   if (!key) return Response.json({ answer: "AI is not configured." }, { status: 503 });
+  const cacheKey = q.toLowerCase();
+  const hit = cache.get(cacheKey);
+  if (hit && Date.now() - hit.at < CACHE_TTL) return Response.json({ answer: hit.answer });
   try {
     const ok = <T>(r: PromiseSettledResult<{ data: T; sample: boolean } | T>) =>
       r.status === "fulfilled" ? r.value : null;
@@ -130,8 +136,17 @@ export async function POST(req: Request) {
     let answer = await ask();
     if (!answer || answer.includes(OFFTOPIC))
       answer = await ask("\nRe-check: the question may be about the LIVE data. Answer it if so.");
-    return Response.json({ answer: !answer || answer.includes(OFFTOPIC) ? REFUSAL : answer });
+    const final = !answer || answer.includes(OFFTOPIC) ? REFUSAL : answer;
+    if (cache.size >= 50) cache.delete(cache.keys().next().value!);
+    cache.set(cacheKey, { answer: final, at: Date.now() });
+    return Response.json({ answer: final });
   } catch (err) {
+    // Rate limits are expected on the free tier: answer politely, don't alert Sentry.
+    if (err instanceof Error && err.message === "groq 429")
+      return Response.json(
+        { answer: "The AI is a bit busy right now (rate limit). Try again in a minute." },
+        { status: 429, headers: { "Retry-After": "60" } },
+      );
     reportError("chat", err);
     return Response.json(
       { answer: "AI is unavailable right now. Try again later." },
