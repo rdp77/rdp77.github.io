@@ -18,8 +18,8 @@ const link = (l: string) => profile.socials.find((s) => s.label === l)?.href ?? 
 // Remote channel photo; falls back to the local avatar if it fails to load.
 function Avatar({ src }: { src: string }) {
   const [url, setUrl] = useState(src);
-  // eslint-disable-next-line @next/next/no-img-element
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={url}
       alt=""

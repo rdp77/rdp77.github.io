@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer";
 import { Cursor } from "@/components/cursor";
 import { TerminalProvider, TerminalFab, Terminal } from "@/components/terminal/terminal";
 import { Motion } from "@/components/ui/motion";
-import { JsonLd, siteGraph, siteMetadata } from "@/lib/seo";
+import { JsonLd, siteGraph } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,7 +21,7 @@ const mono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
-export const metadata = siteMetadata;
+export { siteMetadata as metadata } from "@/lib/seo";
 
 export const viewport: Viewport = {
   themeColor: "#0d0d0d",

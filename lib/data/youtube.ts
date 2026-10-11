@@ -1,5 +1,4 @@
 import { cacheLife } from "next/cache";
-import { reportError } from "@/lib/report";
 
 type YtVideo = {
   id: string;
@@ -12,6 +11,13 @@ type YtVideo = {
 
 const CHANNEL_ID = "UCgy1w-3_8D1VMfarucu2lrA";
 export type Yt = { videos: YtVideo[]; avatar: string | null };
+
+type ApiVideo = {
+  id: string;
+  snippet: { title: string; publishedAt: string };
+  statistics: { viewCount?: string; likeCount?: string };
+};
+type ApiItem = { contentDetails: { videoId: string } };
 
 const API = "https://www.googleapis.com/youtube/v3";
 
@@ -27,10 +33,10 @@ async function viaApi(key: string): Promise<Yt> {
     get(`playlistItems?part=contentDetails&maxResults=12&playlistId=${uploads}`),
     get(`channels?part=snippet&id=${CHANNEL_ID}`),
   ]);
-  const ids = (pl.items ?? []).map((i: any) => i.contentDetails.videoId).join(",");
+  const ids = (pl.items ?? []).map((i: ApiItem) => i.contentDetails.videoId).join(",");
   const vids = await get(`videos?part=snippet,statistics&id=${ids}`);
-  const byId = new Map<string, any>((vids.items ?? []).map((v: any) => [v.id, v]));
-  const videos = (pl.items ?? []).flatMap((i: any) => {
+  const byId = new Map<string, ApiVideo>((vids.items ?? []).map((v: ApiVideo) => [v.id, v]));
+  const videos = (pl.items ?? []).flatMap((i: ApiItem) => {
     const v = byId.get(i.contentDetails.videoId);
     if (!v) return [];
     return [

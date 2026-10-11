@@ -150,8 +150,6 @@ export function Terminal() {
     end.current?.scrollIntoView({ block: "end" });
   }, [history]);
 
-  if (!open) return null;
-
   const finish = (entryId: number, node: ReactNode) => {
     pending.current = null;
     setHistory((h) => h.map((x) => (x.id === entryId ? { ...x, node } : x)));
@@ -175,9 +173,13 @@ export function Terminal() {
     setOpen(false);
   };
 
-  esc.current = () => {
-    if (!interrupt()) close();
-  };
+  useEffect(() => {
+    esc.current = () => {
+      if (!interrupt()) close();
+    };
+  });
+
+  if (!open) return null;
 
   const run = (raw: string) => {
     const text = raw.trim();
