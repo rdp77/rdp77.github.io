@@ -1,18 +1,19 @@
 "use client";
 
 import { Tabs } from "radix-ui";
-import { Heart, MessageCircle, Share2, Play, Bookmark, Eye, ThumbsUp } from "lucide-react";
+import { Play, Eye, ThumbsUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { m } from "motion/react";
 import { Section } from "@/components/ui/primitives";
 import { profile } from "@/lib/profile";
 import type { Yt } from "@/lib/data/youtube";
+import type { Tt } from "@/lib/data/tiktok";
+import type { Ig } from "@/lib/data/instagram";
 import { SocialIcon } from "@/components/social-icon";
 
 const soon = (
   <span className="rounded-sm bg-carbon px-2 py-0.5 font-mono text-xs text-white">Coming soon</span>
 );
-const thumb = "bg-gradient-to-br from-wisteria to-tint";
 const link = (l: string) => profile.socials.find((s) => s.label === l)?.href ?? "#";
 
 // Remote channel photo; falls back to the local avatar if it fails to load.
@@ -52,7 +53,7 @@ function Head({
       <div className="min-w-0">
         <p className="font-medium">@{link(platform).split("/").pop()?.replace("@", "")}</p>
         <p className="text-xs text-faint">
-          {platform} · {live ? "latest videos" : "posts will appear here"}
+          {platform} · {live ? "latest" : "unavailable"}
         </p>
       </div>
       <span className="ml-auto flex items-center gap-3">
@@ -70,37 +71,57 @@ function Head({
   );
 }
 
-// TikTok: vertical 9:16 clips
-const TikTok = () => (
-  <div className="border border-line">
-    <Head platform="TikTok" />
-    <ul className="grid grid-cols-2 gap-3 p-4 sm:grid-cols-3 lg:grid-cols-4">
-      {[0, 1, 2, 3].map((i) => (
-        <li
-          key={i}
-          className={`relative aspect-[9/16] ${thumb} ${i > 1 ? "max-sm:hidden" : ""} ${i === 3 ? "max-lg:hidden" : ""}`}
-        >
-          <Play
-            className="absolute top-1/2 left-1/2 size-8 -translate-x-1/2 -translate-y-1/2 text-fg/60"
-            aria-hidden
-          />
-          <div className="absolute right-2 bottom-2 left-2 space-y-1.5" aria-hidden>
-            <div className="h-2 w-3/4 bg-fg/20" />
-            <div className="h-2 w-1/2 bg-fg/20" />
-          </div>
-          <div
-            className="absolute right-2 bottom-3 hidden flex-col items-center gap-3 text-fg/60 sm:flex"
-            aria-hidden
-          >
-            <Heart size={16} />
-            <MessageCircle size={16} />
-            <Share2 size={16} />
-          </div>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+// TikTok: vertical 9:16 cards from the Display API
+function TikTok() {
+  const [tt, setTt] = useState<Tt | null>(null);
+  useEffect(() => {
+    fetch("/api/tiktok")
+      .then((r) => r.json())
+      .then(setTt)
+      .catch(() => setTt({ videos: [] }));
+  }, []);
+  const videos = tt?.videos ?? [];
+  return (
+    <div className="border border-line">
+      <Head platform="TikTok" live={videos.length > 0} />
+      {videos.length === 0 ? (
+        <p className="p-4 text-sm text-muted">
+          {tt ? "Videos unavailable right now." : "Loading videos…"}
+        </p>
+      ) : (
+        <ul className="grid grid-cols-2 gap-3 p-4 sm:grid-cols-3 lg:grid-cols-4">
+          {videos.map((v) => (
+            <li key={v.id}>
+              <a
+                href={v.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block aspect-[9/16] overflow-hidden bg-line"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={v.thumb}
+                  alt={v.title}
+                  loading="lazy"
+                  className="size-full object-cover transition-transform group-hover:scale-105"
+                />
+                <Play
+                  className="absolute top-1/2 left-1/2 size-9 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 drop-shadow transition-opacity group-hover:opacity-100"
+                  aria-hidden
+                />
+              </a>
+              <p className="mt-2 line-clamp-2 text-xs text-muted">{v.title}</p>
+              <p className="flex items-center gap-1 text-xs text-faint">
+                <Eye className="size-3" aria-hidden />
+                {nf.format(v.views)}
+              </p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 // YouTube: live 16:9 cards from the channel's public feed
 const nf = new Intl.NumberFormat("en", { notation: "compact" });
@@ -175,27 +196,56 @@ function YouTube() {
   );
 }
 
-// Instagram: profile header + square grid
-const Instagram = () => (
-  <div className="border border-line">
-    <Head platform="Instagram" />
-    <div className="grid grid-cols-3 border-b border-line text-center text-sm">
-      {["Posts", "Followers", "Following"].map((l) => (
-        <div key={l} className="p-3">
-          <p className="font-mono">—</p>
-          <p className="text-xs text-faint">{l}</p>
-        </div>
-      ))}
+// Instagram: live profile stats + square grid
+function Instagram() {
+  const [ig, setIg] = useState<Ig | null>(null);
+  useEffect(() => {
+    fetch("/api/instagram")
+      .then((r) => r.json())
+      .then(setIg)
+      .catch(() => setIg({ posts: [], avatar: null, stats: null }));
+  }, []);
+  const { posts, avatar, stats } = ig ?? { posts: [], avatar: null, stats: null };
+  const live = posts.length > 0;
+  return (
+    <div className="border border-line">
+      <Head platform="Instagram" live={live} avatar={avatar} />
+      <div className="grid grid-cols-3 border-b border-line text-center text-sm">
+        {(
+          [
+            ["Posts", stats?.posts],
+            ["Followers", stats?.followers],
+            ["Following", stats?.following],
+          ] as const
+        ).map(([l, v]) => (
+          <div key={l} className="p-3">
+            <p className="font-mono">{v != null ? nf.format(v) : "—"}</p>
+            <p className="text-xs text-faint">{l}</p>
+          </div>
+        ))}
+      </div>
+      {live ? (
+        <ul className="grid grid-cols-3 gap-1 p-1">
+          {posts.map((p) => (
+            <li key={p.id} className="aspect-square overflow-hidden bg-line">
+              <a href={p.url} target="_blank" rel="noopener noreferrer" className="group block size-full">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={p.thumb}
+                  alt={p.caption.slice(0, 100)}
+                  loading="lazy"
+                  className="size-full object-cover transition-transform group-hover:scale-105"
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="p-4 text-sm text-muted">{ig ? "Posts unavailable right now." : "Loading posts…"}</p>
+      )}
     </div>
-    <ul className="grid grid-cols-3 gap-1 p-1">
-      {Array.from({ length: 6 }, (_, i) => (
-        <li key={i} className={`group relative aspect-square ${thumb}`}>
-          <Bookmark className="absolute top-2 right-2 size-4 text-fg/40" aria-hidden />
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+  );
+}
 
 // Replace a tab's `content` with a real embed later; nothing else changes.
 export function Creators() {
@@ -207,8 +257,7 @@ export function Creators() {
   return (
     <Section h1 id="creators" title="Content & community">
       <p className="-mt-6 mb-8 max-w-xl text-muted">
-        YouTube shows my latest videos live; TikTok and Instagram layouts are placeholders until
-        content goes live.
+        YouTube, TikTok and Instagram show my latest content live.
       </p>
       <Tabs.Root defaultValue="tiktok">
         <Tabs.List

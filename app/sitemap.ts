@@ -3,7 +3,7 @@ import { siteUrl } from "@/lib/profile";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  return ["", "/projects", "/creators", "/about", "/contact"].map((p) => ({
+  return ["", "/projects", "/creators", "/about", "/contact", "/privacy", "/terms"].map((p) => ({
     url: `${siteUrl}${p}`,
     lastModified,
     changeFrequency: p === "" ? "daily" : "monthly",

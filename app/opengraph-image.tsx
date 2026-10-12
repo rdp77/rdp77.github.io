@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { profile } from "@/lib/profile";
+import { profile, siteHost } from "@/lib/profile";
 
 export const alt = `${profile.name} — ${profile.role}`;
 export const size = { width: 1200, height: 630 };
@@ -23,7 +23,7 @@ export default function Image() {
       <div
         style={{ fontSize: 40, marginTop: 16, color: "#a3a3a3" }}
       >{`${profile.role} · Surabaya, Indonesia`}</div>
-      <div style={{ fontSize: 28, marginTop: 40, color: "#737373" }}>rdp77.github.io</div>
+      <div style={{ fontSize: 28, marginTop: 40, color: "#737373" }}>{siteHost}</div>
     </div>,
     size,
   );

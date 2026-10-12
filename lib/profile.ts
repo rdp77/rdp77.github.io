@@ -1,5 +1,6 @@
 // Single place to edit personal content. Placeholder values are marked.
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rdp77.github.io";
+export const siteHost = new URL(siteUrl).host;
 
 export const profile = {
   name: "Moh Ravi Dwi Putra",
