@@ -49,6 +49,16 @@ type ContributionsCollection = {
   totalPullRequestContributions: number;
   totalIssueContributions: number;
   totalPullRequestReviewContributions: number;
+  pullRequestContributions: {
+    nodes: {
+      pullRequest: {
+        number: number;
+        title: string;
+        url: string;
+        repository: { nameWithOwner: string };
+      };
+    }[];
+  };
   contributionCalendar: {
     totalContributions: number;
     weeks: { contributionDays: ContributionDay[] }[];
@@ -57,7 +67,7 @@ type ContributionsCollection = {
 
 const API = "https://api.github.com";
 const LEVELS = ["NONE", "FIRST_QUARTILE", "SECOND_QUARTILE", "THIRD_QUARTILE", "FOURTH_QUARTILE"];
-const CONTRIBUTIONS_QUERY = `query($u:String!){user(login:$u){contributionsCollection{totalCommitContributions totalPullRequestContributions totalIssueContributions totalPullRequestReviewContributions contributionCalendar{totalContributions weeks{contributionDays{contributionLevel contributionCount date}}}}}}`;
+const CONTRIBUTIONS_QUERY = `query($u:String!){user(login:$u){contributionsCollection{totalCommitContributions totalPullRequestContributions totalIssueContributions totalPullRequestReviewContributions pullRequestContributions(last:3){nodes{pullRequest{number title url repository{nameWithOwner}}}} contributionCalendar{totalContributions weeks{contributionDays{contributionLevel contributionCount date}}}}}}`;
 
 function parseEvents(evs: GhEvent[]): GH["events"] {
   const events: GH["events"] = [];
@@ -73,27 +83,38 @@ function parseEvents(evs: GhEvent[]): GH["events"] {
         events.push({ type: "Commit", text, repo: e.repo.name, url });
     } else if (e.type === "PullRequestEvent" && pr) {
       // Events API no longer includes title/html_url for PRs.
-      events.push({
-        type: "PR",
-        text: `#${pr.number} ${pr.title ?? `Pull request ${e.payload.action ?? ""}`.trim()}`,
-        repo: e.repo.name,
-        url: pr.html_url ?? `https://github.com/${e.repo.name}/pull/${pr.number}`,
-      });
-    } else if (e.type === "IssuesEvent" && issue)
-      events.push({
-        type: "Issue",
-        text: `#${issue.number} ${issue.title}`,
-        repo: e.repo.name,
-        url: issue.html_url,
-      });
+      const prUrl = pr.html_url ?? `https://github.com/${e.repo.name}/pull/${pr.number}`;
+      // One event per action (opened, closed, ...): keep only the latest per PR.
+      if (!events.some((x) => x.type === "PR" && x.url === prUrl))
+        events.push({
+          type: "PR",
+          text: `#${pr.number} ${pr.title ?? `Pull request ${e.payload.action ?? ""}`.trim()}`,
+          repo: e.repo.name,
+          url: prUrl,
+        });
+    } else if (e.type === "IssuesEvent" && issue) {
+      // One event per action (opened, labeled, ...): keep only the latest per issue.
+      if (!events.some((x) => x.type === "Issue" && x.url === issue.html_url))
+        events.push({
+          type: "Issue",
+          text: `#${issue.number} ${issue.title}`,
+          repo: e.repo.name,
+          url: issue.html_url,
+        });
+    }
   }
   return events;
 }
 
-// Keep PRs/issues from being drowned out by pushes: max 3 per type, original order.
+const EVENT_LIMIT = 5;
+
+// Keep PRs/issues from being drowned out by pushes: max 2 per type first, then
+// fill remaining slots with the rest so we always show EVENT_LIMIT. Original order kept.
 function pickEvents(all: GH["events"]): GH["events"] {
   const seen: Record<string, number> = {};
-  return all.filter((e) => (seen[e.type] = (seen[e.type] ?? 0) + 1) <= 3).slice(0, 6);
+  const picked = new Set(all.filter((e) => (seen[e.type] = (seen[e.type] ?? 0) + 1) <= 2));
+  for (const e of all) if (picked.size < EVENT_LIMIT) picked.add(e);
+  return all.filter((e) => picked.has(e)).slice(0, EVENT_LIMIT);
 }
 
 function parseContributions(
@@ -185,7 +206,17 @@ export async function getGithub(): Promise<Widget<GH>> {
       getJson<GhRepo[]>(`${API}/users/${user}/repos?per_page=100`, { headers }),
       getJson<GhEvent[]>(`${API}/users/${user}/events/public?per_page=100`, { headers }),
     ]);
-    const contrib = token ? parseContributions(await fetchContributions(user, headers)) : null;
+    const cc = token ? await fetchContributions(user, headers) : null;
+    const contrib = cc ? parseContributions(cc) : null;
+    // Events API drops old PRs from its feed; GraphQL keeps real titles and history.
+    const prs: GH["events"] = (cc?.pullRequestContributions.nodes ?? [])
+      .reverse()
+      .map(({ pullRequest: p }) => ({
+        type: "PR",
+        text: `#${p.number} ${p.title}`,
+        repo: p.repository.nameWithOwner,
+        url: p.url,
+      }));
     const own = repos.filter((r) => !r.fork);
     return {
       sample: !contrib,
@@ -205,7 +236,7 @@ export async function getGithub(): Promise<Widget<GH>> {
         mix: contrib?.mix ?? sample.mix,
         languages: topLanguages(own),
         topRepos: topRepos(own),
-        events: pickEvents(parseEvents(evs)),
+        events: pickEvents([...parseEvents(evs).filter((e) => e.type !== "PR"), ...prs]),
       },
     };
   } catch (err) {
