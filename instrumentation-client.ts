@@ -10,6 +10,9 @@ Sentry.init({
   // Add optional integrations for additional features
   integrations: [Sentry.replayIntegration()],
 
+  // FontFace.load() rejects on flaky client connections; not actionable.
+  ignoreErrors: ["NetworkError: A network error occurred."],
+
   // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
   tracesSampleRate: 1,
 
