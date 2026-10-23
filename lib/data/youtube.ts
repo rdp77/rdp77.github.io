@@ -16,6 +16,7 @@ type ApiVideo = {
   id: string;
   snippet: { title: string; publishedAt: string };
   statistics: { viewCount?: string; likeCount?: string };
+  liveStreamingDetails?: object;
 };
 type ApiItem = { contentDetails: { videoId: string } };
 
@@ -30,15 +31,17 @@ async function viaApi(key: string): Promise<Yt> {
   };
   const uploads = "UU" + CHANNEL_ID.slice(2);
   const [pl, ch] = await Promise.all([
-    get(`playlistItems?part=contentDetails&maxResults=12&playlistId=${uploads}`),
+    // Fetch extra: live streams are filtered out below, so 12 would leave gaps.
+    get(`playlistItems?part=contentDetails&maxResults=30&playlistId=${uploads}`),
     get(`channels?part=snippet&id=${CHANNEL_ID}`),
   ]);
   const ids = (pl.items ?? []).map((i: ApiItem) => i.contentDetails.videoId).join(",");
-  const vids = await get(`videos?part=snippet,statistics&id=${ids}`);
+  const vids = await get(`videos?part=snippet,statistics,liveStreamingDetails&id=${ids}`);
   const byId = new Map<string, ApiVideo>((vids.items ?? []).map((v: ApiVideo) => [v.id, v]));
   const videos = (pl.items ?? []).flatMap((i: ApiItem) => {
     const v = byId.get(i.contentDetails.videoId);
-    if (!v) return [];
+    // liveStreamingDetails exists only on live, past-live, and upcoming streams.
+    if (!v || v.liveStreamingDetails) return [];
     return [
       {
         id: v.id,
@@ -50,6 +53,7 @@ async function viaApi(key: string): Promise<Yt> {
       },
     ];
   });
+  videos.splice(12);
   const avatar = ch.items?.[0]?.snippet?.thumbnails?.medium?.url ?? null;
   return { videos, avatar };
 }
