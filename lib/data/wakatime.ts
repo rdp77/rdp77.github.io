@@ -93,7 +93,7 @@ export async function getWakatime(): Promise<Widget<Waka>> {
   const { wakatimeKey: key } = serverEnv();
   if (!key) return { data: sample, sample: true };
   try {
-    const headers = { Authorization: `Basic ${Buffer.from(key).toString("base64")}` };
+    const headers = { Authorization: `Bearer ${key}` };
     const [week, today, all, sums] = await Promise.all([
       getJson<{ data: WakaStats }>(`${API}/stats/last_7_days`, { headers }),
       getJson<{ data: { grand_total: { text: string } } }>(`${API}/status_bar/today`, { headers }),
