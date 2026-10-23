@@ -1,5 +1,7 @@
+import { connection } from "next/server";
 import { getNowPlaying } from "@/lib/data/spotify";
 
 export async function GET() {
+  await connection();
   return Response.json(await getNowPlaying(), { headers: { "Cache-Control": "no-store" } });
 }
