@@ -469,12 +469,14 @@ export const achievements: {
     name: "Lintasarta Developer Talk Online Series #2 - Simple Animation on Android",
     issuer: "Dicoding",
     credential: "",
+    date: "Mar 2020",
   },
   {
     type: "Certification",
     name: "Lintasarta Developer Talk Online Series #3 - Boost Android App using Android Jetpack",
     issuer: "Dicoding",
     credential: "",
+    date: "Apr 2020",
   },
   {
     type: "Certification",
@@ -494,6 +496,7 @@ export const achievements: {
     name: "Primavera Practice in the Classroom",
     issuer: "Oracle Academy",
     credential: "",
+    date: "Nov 2019",
   },
   {
     type: "Certification",
