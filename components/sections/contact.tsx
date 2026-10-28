@@ -8,7 +8,7 @@ import { validateContact, submitContact, type ContactErrors } from "@/lib/contac
 
 type State = "idle" | "loading" | "success" | "error";
 const field =
-  "w-full rounded-sm border border-line bg-bg px-3 py-2.5 text-sm placeholder:text-faint focus:border-fg focus:outline-none";
+  "w-full rounded-sm border border-line bg-bg px-3 py-2.5 text-sm placeholder:text-faint focus:border-fg focus-visible:outline-2 focus-visible:outline-offset-2";
 
 function FieldError({ id, message }: { id?: string; message?: string }) {
   return message ? (
