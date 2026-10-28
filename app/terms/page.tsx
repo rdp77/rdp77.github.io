@@ -40,7 +40,7 @@ export default function Page() {
           unavailable, and I am not liable for any loss from using it.
         </p>
         <h2>Contact</h2>
-        <p>Questions: {profile.email}.</p>
+        <p>Questions: {profile.email ? `${profile.email}.` : "use the contact form."}</p>
       </div>
     </Section>
   );

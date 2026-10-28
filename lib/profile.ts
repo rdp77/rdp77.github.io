@@ -7,8 +7,8 @@ export const profile = {
   handle: "rdp77",
   role: "Software Engineer",
   tagline:
-    "I build fast, reliable web and mobile products — and keep an eye on them like a production service.",
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@example.com", // set NEXT_PUBLIC_CONTACT_EMAIL
+    "I build fast, reliable web and mobile products, and keep an eye on them like a production service.",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "", // set NEXT_PUBLIC_CONTACT_EMAIL; empty hides email
   github: "rdp77",
   wallet: process.env.NEXT_PUBLIC_ETH_ADDRESS ?? "0x0000000000000000000000000000000000000000",
   location: "Indonesia", // placeholder
@@ -334,21 +334,21 @@ export const experience = [
   {
     company: "AsiaCommerce Network",
     position: "Back End Developer",
-    duration: "2022 — Present",
+    duration: "2022 – Present",
     description:
       "Builds and maintains API services for mobile and front end, adopting GraphQL, on Laravel with CI/CD.",
   },
   {
     company: "CV. Batu Beling",
     position: "Full Stack Developer",
-    duration: "2020 — 2021",
+    duration: "2020 – 2021",
     description:
       "Developed internal systems with Laravel, provided IT support, maintained the CMS website and set digital marketing strategy.",
   },
   {
     company: "Wreative",
     position: "Full Stack Developer",
-    duration: "2018 — 2020",
+    duration: "2018 – 2020",
     description:
       "Built custom applications, maintenance and portfolio websites, and introduced products to simplify data processing.",
   },
@@ -362,7 +362,7 @@ export const experience = [
   {
     company: "Freelance",
     position: "Technician",
-    duration: "2017 — 2018",
+    duration: "2017 – 2018",
     description:
       "Worked in a team on network installations and Mikrotik configuration, and troubleshot network issues.",
   },
@@ -379,27 +379,27 @@ export const education = [
   {
     school: "University 17 Agustus Surabaya",
     degree: "University",
-    duration: "2018 — 2022",
+    duration: "2018 – 2022",
     description:
       "Learned to manage projects well and to communicate quickly and accurately with new people.",
   },
   {
     school: "SMK Rajasa",
     degree: "Vocational High School",
-    duration: "2015 — 2018",
+    duration: "2015 – 2018",
     description: "Focused on one field and learned how to run a project well.",
   },
   {
     school: "SMP PGRI 1",
     degree: "Junior High School",
-    duration: "2012 — 2015",
+    duration: "2012 – 2015",
     description:
       "Discovered the fun of learning and exploring, with a growing interest in technology.",
   },
   {
     school: "SDN Gading VII",
     degree: "Elementary School",
-    duration: "2006 — 2012",
+    duration: "2006 – 2012",
     description: "Learned to be an active student and to dare to ask questions.",
   },
 ];

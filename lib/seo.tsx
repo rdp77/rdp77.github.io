@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { profile, siteUrl, experience, education, skills, projects } from "@/lib/profile";
 
 const ID = { person: `${siteUrl}/#person`, site: `${siteUrl}/#website` };
-const desc = `${profile.name} (${profile.handle}) — ${profile.role} based in Surabaya, Indonesia. Back-end APIs, Laravel, Next.js, Flutter, cloud and Web3.`;
+const desc = `${profile.name} (${profile.handle}) · ${profile.role} based in Surabaya, Indonesia. Back-end APIs, Laravel, Next.js, Flutter, cloud and Web3.`;
 
 const keywords = [
   "Moh Ravi Dwi Putra",
@@ -71,7 +71,7 @@ export const siteGraph = {
       "@type": "WebSite",
       "@id": ID.site,
       url: siteUrl,
-      name: `${profile.name} — ${profile.role}`,
+      name: `${profile.name} · ${profile.role}`,
       description: desc,
       inLanguage: "en",
       publisher: { "@id": ID.person },
@@ -151,7 +151,7 @@ export const contactPage = {
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: `${profile.name} — ${profile.role}`, template: `%s · ${profile.name}` },
+  title: { default: `${profile.name} · ${profile.role}`, template: `%s · ${profile.name}` },
   description: siteDescription,
   keywords,
   authors: [{ name: profile.name, url: siteUrl }],
@@ -186,13 +186,13 @@ export const siteMetadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: profile.name,
-    title: `${profile.name} — ${profile.role}`,
+    title: `${profile.name} · ${profile.role}`,
     description: siteDescription,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} — ${profile.role}`,
+    title: `${profile.name} · ${profile.role}`,
     description: siteDescription,
   },
 };

@@ -128,7 +128,7 @@ export function Contact() {
             </button>
             <p role="status" aria-live="polite" className="text-sm">
               {state === "success" && (
-                <span className="text-ok-fg">Thanks — your message was sent.</span>
+                <span className="text-ok-fg">Thanks, your message was sent.</span>
               )}
               {state === "error" && (
                 <span className="text-bad-fg">

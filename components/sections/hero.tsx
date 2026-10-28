@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { Suspense } from "react";
 import { profile } from "@/lib/profile";
-import { Container } from "@/components/ui/primitives";
+import { Container, btnPrimary } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/motion";
 import { getStatus } from "@/lib/data/status";
 import { Presence } from "@/components/dashboard/presence";
@@ -8,8 +9,8 @@ import { Presence } from "@/components/dashboard/presence";
 const meta = [
   ["role", profile.role],
   ["handle", `@${profile.handle}`],
-  ["region", "Asia / Jakarta"],
-  ["refresh", "hourly"],
+  ["region", "Surabaya, Indonesia"],
+  ["timezone", "WIB (UTC+7)"],
 ];
 
 async function StatusPill() {
@@ -42,7 +43,8 @@ export function DashboardHero() {
           </p>
           <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
             <h1 id="dash-title" className="display text-4xl sm:text-5xl md:text-6xl">
-              Control <span className="grad">panel</span>
+              {profile.name.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="grad">{profile.name.split(" ").slice(-1)}</span>
             </h1>
             <div className="flex flex-col items-start gap-2 md:items-end">
               <Suspense
@@ -57,10 +59,24 @@ export function DashboardHero() {
               <Presence />
             </div>
           </div>
-          <p className="mt-4 max-w-xl text-muted">
-            Live coding time, GitHub activity, wallet, traffic and service health for {profile.name}
-            .
-          </p>
+          <p className="mt-4 max-w-xl text-muted">{profile.tagline}</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href="/contact" className={btnPrimary}>
+              Send a message
+            </Link>
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 rounded-sm border border-line px-5 py-2.5 text-base font-medium transition-colors hover:bg-tint"
+            >
+              See projects
+            </Link>
+            <a
+              href={profile.resumeUrl}
+              className="inline-flex items-center gap-2 rounded-sm border border-line px-5 py-2.5 text-base font-medium transition-colors hover:bg-tint"
+            >
+              Résumé
+            </a>
+          </div>
           <dl className="mt-8 grid grid-cols-2 border border-line bg-bg md:grid-cols-4">
             {meta.map(([k, v]) => (
               <div

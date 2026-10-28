@@ -136,7 +136,7 @@ export const Creators = () => (
 );
 
 export const Contact = () => (
-  <Tool name="Read" arg="contact" note={profile.email}>
+  <Tool name="Read" arg="contact" note={profile.email || "use the contact form"}>
     {profile.socials.map((s) => (
       <Row key={s.label} k={s.label.toLowerCase()}>
         <Link href={s.href} />

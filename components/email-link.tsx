@@ -8,6 +8,7 @@ export function EmailLink({
   className?: string;
   arrow?: string;
 }) {
+  if (!profile.email) return null;
   return (
     <a
       className={`group inline-flex max-w-full items-start gap-2 tracking-tight transition-colors duration-200 hover:text-violet ${className}`}

@@ -52,7 +52,7 @@ export default function Page() {
           services. Their own privacy policies apply to that content.
         </p>
         <h2>Your rights</h2>
-        <p>To ask about or delete any message you sent me, contact {profile.email}.</p>
+        <p>To ask about or delete any message you sent me, {profile.email ? `contact ${profile.email}.` : "use the contact form."}</p>
         <h2>Changes</h2>
         <p>This policy may be updated; the date above shows the latest revision.</p>
       </div>
