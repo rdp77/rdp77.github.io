@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { Section, btnPrimary } from "@/components/ui/primitives";
 import { ContactAside } from "@/components/contact-aside";
@@ -31,6 +31,7 @@ function TextField({ name, error }: { name: keyof typeof AUTOCOMPLETE; error?: s
         name={name}
         type={name === "email" ? "email" : "text"}
         className={field}
+        maxLength={name === "email" ? 254 : 100}
         aria-invalid={!!error}
         aria-describedby={error ? `${name}-err` : undefined}
         autoComplete={AUTOCOMPLETE[name]}
@@ -44,6 +45,7 @@ export function Contact() {
   const [captchaFailed, setCaptchaFailed] = useState(false);
   const [state, setState] = useState<State>("idle");
   const [errors, setErrors] = useState<ContactErrors>({});
+  const captcha = useRef<HCaptcha>(null);
   const [failMsg, setFailMsg] = useState("");
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
   const siteKey =
@@ -65,9 +67,11 @@ export function Contact() {
     try {
       await submitContact(fd, accessKey);
       form.reset();
+      captcha.current?.resetCaptcha();
       setState("success");
     } catch (err) {
       setFailMsg(err instanceof Error ? err.message : "");
+      captcha.current?.resetCaptcha();
       setState("error");
     }
   }
@@ -92,6 +96,7 @@ export function Contact() {
               id="message"
               name="message"
               rows={5}
+              maxLength={5000}
               className={field}
               aria-invalid={!!errors.message}
               aria-describedby={errors.message ? "message-err" : undefined}
@@ -101,6 +106,7 @@ export function Contact() {
           {siteKey && (
             <div>
               <HCaptcha
+                ref={captcha}
                 sitekey={siteKey}
                 theme="dark"
                 onLoad={() => setCaptchaFailed(false)}
