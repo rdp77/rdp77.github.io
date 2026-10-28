@@ -29,12 +29,8 @@ export async function EthereumCard() {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           <Stat label="Balance">{d.balance} ETH</Stat>
           <Stat label="Transactions">{d.txCountLabel}</Stat>
-          <Stat label="First seen">
-            <span className="text-base">{d.firstSeen}</span>
-          </Stat>
-          <Stat label="Failed">
-            <span className="text-xl">{d.failed}</span>
-          </Stat>
+          <Stat label="First seen">{d.firstSeen}</Stat>
+          <Stat label="Failed">{d.failed}</Stat>
         </div>
       </div>
       <p className="mt-6 mb-2 text-xs text-faint">

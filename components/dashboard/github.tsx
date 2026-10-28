@@ -57,7 +57,7 @@ export async function GithubCard() {
         <Stat label="Busiest day">
           {d.busiest.count}{" "}
           <span className="font-mono text-xs text-muted">
-            · {fmt(d.busiest.date, { month: "short", day: "numeric", year: "numeric" })}
+            · {fmt(d.busiest.date, { month: "short", day: "numeric" })}
           </span>
         </Stat>
         <Stat label="Reviews & PRs">
