@@ -53,10 +53,6 @@ export function Footer() {
                 </a>
               </li>
             ))}
-            <li className="flex items-start gap-2.5 text-sm text-muted">
-              <TechIcon icon="siEthereum" label="Ethereum" size={16} />
-              <code className="font-mono text-xs break-all">{profile.wallet}</code>
-            </li>
           </ul>
         </Reveal>
       </Container>
