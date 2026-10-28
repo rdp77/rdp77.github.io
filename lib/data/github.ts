@@ -6,6 +6,8 @@ import { profile } from "@/lib/profile";
 import { MS_PER_YEAR } from "@/lib/constants";
 import { sample, sampleWeeks } from "./samples/github";
 
+export type GhEvent = { text: string; repo: string; url: string; date: string; state?: string };
+
 export type GH = {
   followers: number;
   repos: number;
@@ -19,7 +21,7 @@ export type GH = {
   mix: { commits: number; prs: number; issues: number; reviews: number };
   languages: { name: string; percent: number }[];
   topRepos: { name: string; stars: number; language: string | null; url: string }[];
-  events: { type: "Commit" | "PR" | "Issue"; text: string; repo: string; url: string }[];
+  activity: Record<"commits" | "prs" | "issues", GhEvent[]>;
 };
 
 type GhUser = { followers: number; public_repos: number; created_at: string };
@@ -31,34 +33,12 @@ type GhRepo = {
   language: string | null;
   stargazers_count: number;
 };
-type GhEvent = {
-  type: string;
-  repo: { name: string };
-  payload: {
-    ref?: string;
-    commits?: { message: string }[];
-    number?: number;
-    action?: string;
-    pull_request?: { number: number; title?: string; html_url?: string };
-    issue?: { number: number; title: string; html_url: string };
-  };
-};
 type ContributionDay = { contributionLevel: string; contributionCount: number; date: string };
 type ContributionsCollection = {
   totalCommitContributions: number;
   totalPullRequestContributions: number;
   totalIssueContributions: number;
   totalPullRequestReviewContributions: number;
-  pullRequestContributions: {
-    nodes: {
-      pullRequest: {
-        number: number;
-        title: string;
-        url: string;
-        repository: { nameWithOwner: string };
-      };
-    }[];
-  };
   contributionCalendar: {
     totalContributions: number;
     weeks: { contributionDays: ContributionDay[] }[];
@@ -67,54 +47,72 @@ type ContributionsCollection = {
 
 const API = "https://api.github.com";
 const LEVELS = ["NONE", "FIRST_QUARTILE", "SECOND_QUARTILE", "THIRD_QUARTILE", "FOURTH_QUARTILE"];
-const CONTRIBUTIONS_QUERY = `query($u:String!){user(login:$u){contributionsCollection{totalCommitContributions totalPullRequestContributions totalIssueContributions totalPullRequestReviewContributions pullRequestContributions(last:3){nodes{pullRequest{number title url repository{nameWithOwner}}}} contributionCalendar{totalContributions weeks{contributionDays{contributionLevel contributionCount date}}}}}}`;
-
-function parseEvents(evs: GhEvent[]): GH["events"] {
-  const events: GH["events"] = [];
-  for (const e of evs) {
-    const url = `https://github.com/${e.repo.name}`;
-    const { commits, pull_request: pr, issue } = e.payload;
-    if (e.type === "PushEvent") {
-      // GitHub dropped `commits` from PushEvent payloads; fall back to the branch name.
-      const text = commits?.length
-        ? commits.at(-1)!.message.split("\n")[0]
-        : `Pushed to ${e.payload.ref?.replace("refs/heads/", "") ?? "branch"}`;
-      if (!events.some((x) => x.type === "Commit" && x.repo === e.repo.name && x.text === text))
-        events.push({ type: "Commit", text, repo: e.repo.name, url });
-    } else if (e.type === "PullRequestEvent" && pr) {
-      // Events API no longer includes title/html_url for PRs.
-      const prUrl = pr.html_url ?? `https://github.com/${e.repo.name}/pull/${pr.number}`;
-      // One event per action (opened, closed, ...): keep only the latest per PR.
-      if (!events.some((x) => x.type === "PR" && x.url === prUrl))
-        events.push({
-          type: "PR",
-          text: `#${pr.number} ${pr.title ?? `Pull request ${e.payload.action ?? ""}`.trim()}`,
-          repo: e.repo.name,
-          url: prUrl,
-        });
-    } else if (e.type === "IssuesEvent" && issue) {
-      // One event per action (opened, labeled, ...): keep only the latest per issue.
-      if (!events.some((x) => x.type === "Issue" && x.url === issue.html_url))
-        events.push({
-          type: "Issue",
-          text: `#${issue.number} ${issue.title}`,
-          repo: e.repo.name,
-          url: issue.html_url,
-        });
-    }
-  }
-  return events;
-}
+const CONTRIBUTIONS_QUERY = `query($u:String!){user(login:$u){contributionsCollection{totalCommitContributions totalPullRequestContributions totalIssueContributions totalPullRequestReviewContributions contributionCalendar{totalContributions weeks{contributionDays{contributionLevel contributionCount date}}}}}}`;
 
 const EVENT_LIMIT = 5;
+const ITEMS_QUERY = `query($u:String!){user(login:$u){pullRequests(first:5,orderBy:{field:CREATED_AT,direction:DESC}){nodes{number title url state createdAt repository{nameWithOwner}}} issues(first:5,orderBy:{field:CREATED_AT,direction:DESC}){nodes{number title url state createdAt repository{nameWithOwner}}}}}`;
 
-// Keep PRs/issues from being drowned out by pushes: max 2 per type first, then
-// fill remaining slots with the rest so we always show EVENT_LIMIT. Original order kept.
-function pickEvents(all: GH["events"]): GH["events"] {
-  const seen: Record<string, number> = {};
-  const picked = new Set(all.filter((e) => (seen[e.type] = (seen[e.type] ?? 0) + 1) <= 2));
-  for (const e of all) if (picked.size < EVENT_LIMIT) picked.add(e);
-  return all.filter((e) => picked.has(e)).slice(0, EVENT_LIMIT);
+type GhItem = {
+  number: number;
+  title: string;
+  url: string;
+  createdAt: string;
+  state: string;
+  repository: { nameWithOwner: string };
+};
+type GhCommit = {
+  html_url: string;
+  commit: { message: string; author: { date: string } };
+  repository: { full_name: string };
+};
+
+// Events API only keeps 90 days; GraphQL + commit search have no age limit.
+async function fetchActivity(
+  user: string,
+  headers: HeadersInit,
+  hasToken: boolean,
+): Promise<GH["activity"]> {
+  const [commits, items] = await Promise.all([
+    getJson<{ items: GhCommit[] }>(
+      `${API}/search/commits?q=author:${user}&sort=author-date&order=desc&per_page=${EVENT_LIMIT}`,
+      { headers },
+    ).then(
+      (r) => r.items,
+      () => [] as GhCommit[],
+    ),
+    hasToken
+      ? getJson<{
+          data?: {
+            user?: { pullRequests: { nodes: GhItem[] }; issues: { nodes: GhItem[] } };
+          };
+        }>(`${API}/graphql`, {
+          method: "POST",
+          headers,
+          body: JSON.stringify({ query: ITEMS_QUERY, variables: { u: user } }),
+        }).then(
+          (r) => r.data?.user,
+          () => undefined,
+        )
+      : undefined,
+  ]);
+  // Orgs that reject the token return null nodes; drop them.
+  const item = (i: GhItem): GhEvent => ({
+    text: `#${i.number} ${i.title}`,
+    repo: i.repository.nameWithOwner,
+    url: i.url,
+    date: i.createdAt,
+    state: i.state.toLowerCase(),
+  });
+  return {
+    commits: commits.map((c) => ({
+      text: c.commit.message.split("\n")[0],
+      repo: c.repository.full_name,
+      url: c.html_url,
+      date: c.commit.author.date,
+    })),
+    prs: items?.pullRequests.nodes.filter(Boolean).map(item) ?? [],
+    issues: items?.issues.nodes.filter(Boolean).map(item) ?? [],
+  };
 }
 
 function parseContributions(
@@ -201,22 +199,13 @@ export async function getGithub(): Promise<Widget<GH>> {
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
   };
   try {
-    const [u, repos, evs] = await Promise.all([
+    const [u, repos, activity] = await Promise.all([
       getJson<GhUser>(`${API}/users/${user}`, { headers }),
       getJson<GhRepo[]>(`${API}/users/${user}/repos?per_page=100`, { headers }),
-      getJson<GhEvent[]>(`${API}/users/${user}/events/public?per_page=100`, { headers }),
+      fetchActivity(user, headers, !!token),
     ]);
     const cc = token ? await fetchContributions(user, headers) : null;
     const contrib = cc ? parseContributions(cc) : null;
-    // Events API drops old PRs from its feed; GraphQL keeps real titles and history.
-    const prs: GH["events"] = (cc?.pullRequestContributions.nodes ?? [])
-      .reverse()
-      .map(({ pullRequest: p }) => ({
-        type: "PR",
-        text: `#${p.number} ${p.title}`,
-        repo: p.repository.nameWithOwner,
-        url: p.url,
-      }));
     const own = repos.filter((r) => !r.fork);
     return {
       sample: !contrib,
@@ -236,7 +225,7 @@ export async function getGithub(): Promise<Widget<GH>> {
         mix: contrib?.mix ?? sample.mix,
         languages: topLanguages(own),
         topRepos: topRepos(own),
-        events: pickEvents([...parseEvents(evs).filter((e) => e.type !== "PR"), ...prs]),
+        activity,
       },
     };
   } catch (err) {

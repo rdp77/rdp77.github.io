@@ -27,19 +27,22 @@ export async function getTiktok(): Promise<Tt> {
   cacheLife("hours");
   if (!process.env.TIKTOK_REFRESH_TOKEN) return { videos: [] };
   const token = await accessToken();
-  const r = await fetch(
-    `${API}/video/list/?fields=id,title,cover_image_url,share_url,view_count`,
-    {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ max_count: 12 }),
-    },
-  );
+  const r = await fetch(`${API}/video/list/?fields=id,title,cover_image_url,share_url,view_count`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ max_count: 12 }),
+  });
   if (!r.ok) throw new Error(`tiktok list ${r.status}`);
   const j = await r.json();
   return {
     videos: (j.data?.videos ?? []).map(
-      (v: { id: string; title: string; cover_image_url: string; share_url: string; view_count: number }) => ({
+      (v: {
+        id: string;
+        title: string;
+        cover_image_url: string;
+        share_url: string;
+        view_count: number;
+      }) => ({
         id: v.id,
         title: v.title,
         thumb: v.cover_image_url,

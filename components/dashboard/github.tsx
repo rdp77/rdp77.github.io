@@ -1,8 +1,9 @@
 import { getGithub } from "@/lib/data/github";
-import { Card, Stat, Badge, EmptyState } from "@/components/ui/primitives";
+import { Card, Stat } from "@/components/ui/primitives";
 import { Heatmap } from "@/components/ui/heatmap";
 import { profile } from "@/lib/profile";
 import { Counter, Bar } from "@/components/ui/motion";
+import { ActivityTabs } from "./activity";
 
 const fmt = (iso: string, o: Intl.DateTimeFormatOptions) =>
   new Date(iso).toLocaleDateString("en-US", { timeZone: "UTC", ...o });
@@ -124,29 +125,9 @@ export async function GithubCard() {
           )}
         </div>
       </div>
-      <p className="mt-6 mb-2 text-xs text-faint">Recent commits, pull requests &amp; issues</p>
-      {d.events.length === 0 ? (
-        <EmptyState>No recent public activity.</EmptyState>
-      ) : (
-        <ul className="divide-y divide-line text-sm">
-          {d.events.map((e, i) => (
-            <li key={i} className="flex items-center gap-3 py-2">
-              <Badge tone={e.type === "PR" ? "warn" : e.type === "Issue" ? "bad" : "neutral"}>
-                {e.type}
-              </Badge>
-              <a
-                href={e.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="min-w-0 flex-1 truncate hover:underline"
-              >
-                {e.text}
-              </a>
-              <span className="hidden font-mono text-xs text-faint sm:inline">{e.repo}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="mt-6">
+        <ActivityTabs activity={d.activity} />
+      </div>
     </Card>
   );
 }

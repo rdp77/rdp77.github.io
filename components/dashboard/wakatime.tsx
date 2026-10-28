@@ -57,7 +57,7 @@ export async function WakatimeCard() {
                   style={{ height: `${Math.max(2, (x.seconds / maxDay) * 100)}%` }}
                   title={`${x.day}: ${(x.seconds / 3600).toFixed(1)} hrs`}
                 />
-                <span className="font-mono text-[10px] text-faint transition-colors group-hover/b:text-fg">
+                <span className="group-hover/b:text-fg font-mono text-[10px] text-faint transition-colors">
                   {(x.seconds / 3600).toFixed(1)}h · {x.day}
                 </span>
               </div>

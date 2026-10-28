@@ -39,7 +39,13 @@ export async function getInstagram(): Promise<Ig> {
     avatar: me.profile_picture_url ?? null,
     stats: { posts: me.media_count, followers: me.followers_count, following: me.follows_count },
     posts: (media.data ?? []).map(
-      (p: { id: string; media_url: string; thumbnail_url?: string; permalink: string; caption?: string }) => ({
+      (p: {
+        id: string;
+        media_url: string;
+        thumbnail_url?: string;
+        permalink: string;
+        caption?: string;
+      }) => ({
         id: p.id,
         thumb: p.thumbnail_url ?? p.media_url,
         url: p.permalink,

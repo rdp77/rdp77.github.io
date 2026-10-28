@@ -32,24 +32,32 @@ export const sample: GH = {
   topRepos: [
     { name: "rdp77/sample", stars: 120, language: "TypeScript", url: "https://github.com/rdp77" },
   ],
-  events: [
-    {
-      type: "Commit",
-      text: "feat: add dashboard widgets",
-      repo: "rdp77/rdp77.github.io",
-      url: "https://github.com/rdp77",
-    },
-    {
-      type: "PR",
-      text: "Open pull request #12",
-      repo: "rdp77/sample",
-      url: "https://github.com/rdp77",
-    },
-    {
-      type: "Issue",
-      text: "Opened issue #3",
-      repo: "rdp77/sample",
-      url: "https://github.com/rdp77",
-    },
-  ],
+  activity: {
+    commits: [
+      {
+        text: "feat: add dashboard widgets",
+        repo: "rdp77/rdp77.github.io",
+        url: "https://github.com/rdp77",
+        date: "2026-10-24T00:00:00Z",
+      },
+    ],
+    prs: [
+      {
+        text: "#12 Open pull request",
+        repo: "rdp77/sample",
+        url: "https://github.com/rdp77",
+        date: "2026-10-20T00:00:00Z",
+        state: "merged",
+      },
+    ],
+    issues: [
+      {
+        text: "#3 Opened issue",
+        repo: "rdp77/sample",
+        url: "https://github.com/rdp77",
+        date: "2026-10-12T00:00:00Z",
+        state: "open",
+      },
+    ],
+  },
 };
