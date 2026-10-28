@@ -117,7 +117,7 @@ export async function getWakatime(): Promise<Widget<Waka>> {
         daily: mapDaily(sums.data),
         ai: mapAi(w),
         dailyAverage: w.human_readable_daily_average ?? sample.dailyAverage,
-        bestDay: w.best_day ? `${w.best_day.text} · ${w.best_day.date.slice(5)}` : "—",
+        bestDay: w.best_day?.text ?? "—",
         lastActivity: formatLastActivity(w.modified_at),
       },
     };

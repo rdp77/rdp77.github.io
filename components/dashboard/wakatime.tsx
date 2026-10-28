@@ -31,19 +31,13 @@ export async function WakatimeCard() {
   const aiPct = Math.round((d.ai.aiLines / Math.max(1, d.ai.aiLines + d.ai.humanLines)) * 100);
   return (
     <Card title="WakaTime" sample={sample} className="md:col-span-2">
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
         <Stat label="Total">{d.total}</Stat>
         <Stat label="Today">{d.today}</Stat>
         <Stat label="This week">{d.week}</Stat>
-        <Stat label="Last activity">
-          <span className="text-base">{d.lastActivity}</span>
-        </Stat>
-        <Stat label="Daily average">
-          <span className="text-xl">{d.dailyAverage}</span>
-        </Stat>
-        <Stat label="Best day (7d)">
-          <span className="text-xl">{d.bestDay}</span>
-        </Stat>
+        <Stat label="Last activity">{d.lastActivity}</Stat>
+        <Stat label="Daily average">{d.dailyAverage}</Stat>
+        <Stat label="Best day (7d)">{d.bestDay}</Stat>
       </div>
       <div className="mt-8 grid gap-8 lg:grid-cols-2">
         <div>
@@ -73,15 +67,9 @@ export async function WakatimeCard() {
         <div>
           <p className="mb-3 text-xs text-faint">AI-assisted coding · last 7 days</p>
           <div className="grid grid-cols-3 gap-3">
-            <Stat label="Sessions">
-              <span className="text-xl">{d.ai.sessions}</span>
-            </Stat>
-            <Stat label="Prompts">
-              <span className="text-xl">{d.ai.prompts}</span>
-            </Stat>
-            <Stat label="AI lines">
-              <span className="text-xl">{d.ai.aiLines.toLocaleString("en-US")}</span>
-            </Stat>
+            <Stat label="Sessions">{d.ai.sessions}</Stat>
+            <Stat label="Prompts">{d.ai.prompts}</Stat>
+            <Stat label="AI lines">{d.ai.aiLines.toLocaleString("en-US")}</Stat>
           </div>
           <div
             className="mt-4 flex h-2 overflow-hidden bg-line"
