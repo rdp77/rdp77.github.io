@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/primitives";
+import { cn } from "@/lib/utils";
 
 type Info = {
   ip: string | null;
@@ -15,7 +16,7 @@ type Info = {
 };
 
 const btn =
-  "rounded-sm border border-line px-3 py-2 text-sm transition-colors hover:bg-tint focus-visible:outline-2 focus-visible:outline-offset-2 min-h-11";
+  "min-h-11 border border-line px-3 text-sm transition-colors hover:bg-tint focus-visible:outline-2 focus-visible:outline-offset-2";
 
 // Visitor's own public IP + location, from /api/ip (edge headers). Copy as IP only or full block.
 export function IpCard() {
@@ -39,15 +40,14 @@ export function IpCard() {
     get("https://api6.ipify.org", setV6);
   }, []);
 
-  const place = info && [info.city, info.region, info.country].filter(Boolean).join(", ");
   const rows: [string, string | null][] = info
     ? [
         ["IPv4", v4 ?? (info.version === "IPv4" ? info.ip : null)],
         ["IPv6", v6 ?? (info.version === "IPv6" ? info.ip : null)],
         ["ISP", info.isp],
-        ["Country", info.country && `${info.country} (${info.countryCode})`],
-        ["Region", info.region],
         ["City", info.city],
+        ["Region", info.region],
+        ["Country", info.country && `${info.country} (${info.countryCode})`],
         ["Timezone", info.timezone],
       ]
     : [];
@@ -73,32 +73,50 @@ export function IpCard() {
           {failed ? "Could not read your IP right now." : "No IP in this environment (local dev)."}
         </p>
       ) : !info ? (
-        <div className="h-24 animate-pulse bg-tint" role="status" aria-label="Loading your IP" />
+        <div className="h-40 animate-pulse bg-tint" role="status" aria-label="Loading your IP" />
       ) : (
-        <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
-          <div className="min-w-0">
-            <p className="text-xs text-faint">
-              Your public IP{info.version && ` (${info.version})`}
-            </p>
-            <p className="mt-1 font-mono text-2xl tracking-tight break-all sm:text-4xl">
-              {info.ip}
-            </p>
-            {info.isp && <p className="mt-3 text-sm">ISP: {info.isp}</p>}
-            <p className="mt-1 text-sm">{place || "Location unavailable"}</p>
-            {info.timezone && <p className="text-xs text-faint">{info.timezone}</p>}
+        <>
+          <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
+            {rows.slice(0, 2).map(([k, v]) => (
+              <div key={k} className="flex min-w-0 flex-col gap-3 bg-bg p-4 sm:p-5">
+                <p className="text-xs text-faint">{k} address</p>
+                <p
+                  className={cn(
+                    "font-mono text-base tracking-tight break-all sm:text-lg",
+                    !v && "text-faint",
+                  )}
+                >
+                  {v ?? "Not detected"}
+                </p>
+                {v && (
+                  <button
+                    type="button"
+                    className={cn(btn, "mt-auto self-start")}
+                    onClick={() => copy(v, k)}
+                  >
+                    Copy {k}
+                  </button>
+                )}
+              </div>
+            ))}
           </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <button type="button" className={btn} onClick={() => copy(info.ip!, "IP")}>
-              Copy IP
-            </button>
+          <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-4 lg:grid-cols-5">
+            {rows.slice(2).map(([k, v]) => (
+              <div key={k} className="min-w-0">
+                <dt className="text-xs text-faint">{k}</dt>
+                <dd className="mt-1 text-sm break-words">{v || "Unknown"}</dd>
+              </div>
+            ))}
+          </dl>
+          <div className="mt-5 flex flex-wrap items-center gap-3">
             <button type="button" className={btn} onClick={() => copy(full, "Details")}>
-              Copy with location
+              Copy all details
             </button>
-            <span role="status" className="min-w-28 text-xs text-faint">
+            <span role="status" className="text-xs text-faint">
               {msg}
             </span>
           </div>
-        </div>
+        </>
       )}
       <p className="mt-5 text-xs text-faint">
         Read from your request headers, shown only to you, never stored. Location is approximate.
