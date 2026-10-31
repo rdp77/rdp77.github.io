@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Heart, Coffee, Wallet } from "lucide-react";
 import { profile } from "@/lib/profile";
 import { Container, TechIcon } from "@/components/ui/primitives";
@@ -57,7 +58,15 @@ export function Footer() {
         </Reveal>
       </Container>
       <Container className="flex flex-wrap justify-between gap-2 border-t border-line py-6 text-xs text-faint">
-        <span>© {profile.name}</span>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          <span>© {profile.name}</span>
+          <Link href="/privacy" className="py-2 underline-offset-4 hover:text-fg hover:underline">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" className="py-2 underline-offset-4 hover:text-fg hover:underline">
+            Terms
+          </Link>
+        </div>
         <span>Design inspired by Render.com.</span>
       </Container>
     </footer>
