@@ -51,6 +51,22 @@ const OFFTOPIC = "OFFTOPIC";
 const CACHE_TTL = 10 * 60_000;
 const cache = new Map<string, { answer: string; at: number }>();
 
+// Per-instance, best-effort limit per IP: caps Groq/function cost from one abuser (cached answers skip it).
+const RATE_MAX = 8;
+const RATE_WINDOW = 60_000;
+const hits = new Map<string, { n: number; reset: number }>();
+const limited = (req: Request) => {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+  const now = Date.now();
+  const h = hits.get(ip);
+  if (!h || h.reset < now) {
+    if (hits.size >= 500) hits.clear();
+    hits.set(ip, { n: 1, reset: now + RATE_WINDOW });
+    return false;
+  }
+  return ++h.n > RATE_MAX;
+};
+
 const buildSystem = (
   live: string,
 ) => `You are the terminal assistant on ${profile.name}'s personal website (${siteUrl}).
@@ -72,6 +88,11 @@ export async function POST(req: Request) {
   const cacheKey = q.toLowerCase();
   const hit = cache.get(cacheKey);
   if (hit && Date.now() - hit.at < CACHE_TTL) return Response.json({ answer: hit.answer });
+  if (limited(req))
+    return Response.json(
+      { answer: "Too many questions. Try again in a minute." },
+      { status: 429, headers: { "Retry-After": "60" } },
+    );
   try {
     const ok = <T>(r: PromiseSettledResult<{ data: T; sample: boolean } | T>) =>
       r.status === "fulfilled" ? r.value : null;

@@ -21,7 +21,9 @@ export function Presence() {
       }
     };
     load();
-    const id = setInterval(load, 60_000);
+    const id = setInterval(() => {
+      if (document.visibilityState === "visible") load();
+    }, 60_000);
     return () => {
       alive = false;
       clearInterval(id);
