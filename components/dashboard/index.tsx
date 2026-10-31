@@ -5,9 +5,18 @@ import { AnalyticsCard } from "./analytics";
 import { GithubCard } from "./github";
 import { StatusCard } from "./status";
 import { SpotifyCard } from "./spotify";
+import { IpCard } from "./ip";
 
 // Add a widget: write lib/data/<x>.ts + components/dashboard/<x>.tsx, then list it here.
-const widgets = [WakatimeCard, SpotifyCard, GithubCard, AnalyticsCard, StatusCard, EthereumCard];
+const widgets = [
+  IpCard,
+  WakatimeCard,
+  SpotifyCard,
+  GithubCard,
+  AnalyticsCard,
+  StatusCard,
+  EthereumCard,
+];
 
 function Skeleton() {
   return (

@@ -30,6 +30,13 @@ export default function Page() {
           Sentry, which may receive technical data such as your IP address, browser and the page
           where the error happened. I do not use either to identify visitors.
         </p>
+        <h2>IP lookup</h2>
+        <p>
+          The "Your connection" widget on the home page shows your own public IP address, ISP and
+          approximate location. Your IP is requested from ipify by your browser and sent by the
+          server to ipwho.is to find the ISP and location. The result is shown only to you; I do not
+          store or log it. Both services apply their own privacy policies.
+        </p>
         <h2>AI chat</h2>
         <p>
           Questions you type into the chat or terminal assistant are sent to a third-party AI
@@ -48,11 +55,14 @@ export default function Page() {
         <h2>Third parties</h2>
         <p>
           The site may load content or data from YouTube, GitHub, Spotify, WakaTime, Etherscan,
-          Discord (Lanyard), Groq, OpenRouter, TikTok, Instagram (Meta), hCaptcha and similar
-          services. Their own privacy policies apply to that content.
+          ipify, ipwho.is, Discord (Lanyard), Groq, OpenRouter, TikTok, Instagram (Meta), hCaptcha
+          and similar services. Their own privacy policies apply to that content.
         </p>
         <h2>Your rights</h2>
-        <p>To ask about or delete any message you sent me, {profile.email ? `contact ${profile.email}.` : "use the contact form."}</p>
+        <p>
+          To ask about or delete any message you sent me,{" "}
+          {profile.email ? `contact ${profile.email}.` : "use the contact form."}
+        </p>
         <h2>Changes</h2>
         <p>This policy may be updated; the date above shows the latest revision.</p>
       </div>
