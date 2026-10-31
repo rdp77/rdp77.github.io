@@ -33,7 +33,7 @@ export function SpotifyCard() {
     let alive = true;
     const load = async () => {
       try {
-        const sp = await (await fetch("/api/spotify", { cache: "no-store" })).json();
+        const sp = await (await fetch("/api/spotify")).json();
         const start = sp.at - sp.progress;
         if (alive)
           setTrack(
@@ -56,7 +56,9 @@ export function SpotifyCard() {
       }
     };
     load();
-    const poll = setInterval(load, 15_000);
+    const poll = setInterval(() => {
+      if (document.visibilityState === "visible") load();
+    }, 15_000);
     return () => {
       alive = false;
       clearInterval(poll);
