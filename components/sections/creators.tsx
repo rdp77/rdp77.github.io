@@ -93,12 +93,46 @@ function Head({
 function TikTok() {
   const tt = useApi<Tt>("/api/tiktok", { videos: [] });
   const videos = tt?.videos ?? [];
+  const stats = tt?.stats;
+  const live = videos.length > 0 || !!tt?.avatar;
   return (
     <div className="border border-line">
-      <Head platform="TikTok" live={videos.length > 0} />
-      {videos.length === 0 ? (
+      <Head platform="TikTok" live={live} avatar={tt?.avatar} />
+      <div
+        className="grid grid-cols-2 border-b border-line text-center text-sm sm:grid-cols-4"
+        aria-busy={!tt}
+      >
+        {(
+          [
+            ["Videos", stats?.videos],
+            ["Followers", stats?.followers],
+            ["Following", stats?.following],
+            ["Likes", stats?.likes],
+          ] as const
+        ).map(([l, v]) => (
+          <div key={l} className="p-3">
+            {!tt ? (
+              <p className="mx-auto h-5 w-10 animate-pulse bg-tint" aria-hidden />
+            ) : (
+              <p className="font-mono">{v != null ? nf.format(v) : "—"}</p>
+            )}
+            <p className="text-xs text-faint">{l}</p>
+          </div>
+        ))}
+      </div>
+      {!tt ? (
+        <ul
+          className="grid grid-cols-2 gap-3 p-4 sm:grid-cols-3 lg:grid-cols-4"
+          role="status"
+          aria-label="Loading videos"
+        >
+          {Array.from({ length: 4 }, (_, i) => (
+            <li key={i} className="aspect-[9/16] animate-pulse bg-tint" />
+          ))}
+        </ul>
+      ) : videos.length === 0 ? (
         <p className="p-4 text-sm text-muted">
-          {tt ? "Videos unavailable right now." : "Loading videos…"}
+          {live ? "No public videos yet." : "Videos unavailable right now."}
         </p>
       ) : (
         <ul className="grid grid-cols-2 gap-3 p-4 sm:grid-cols-3 lg:grid-cols-4">
