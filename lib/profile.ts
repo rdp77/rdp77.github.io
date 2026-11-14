@@ -18,7 +18,7 @@ export const profile = {
     { label: "GitHub", href: "https://github.com/rdp77" },
     { label: "LinkedIn", href: "https://linkedin.com/in/ravidwiputra" },
     { label: "X", href: "https://x.com/ravidwiputra" },
-    { label: "Instagram", href: "https://instagram.com/ravidwiputraa" },
+    { label: "Instagram", href: "https://instagram.com/ravidwiputra.dev" },
     { label: "TikTok", href: "https://tiktok.com/@ravidwiputraa" },
     { label: "YouTube", href: "https://youtube.com/@ravidwiputra" },
   ],

@@ -11,6 +11,7 @@ const API = "https://graph.instagram.com";
 
 // Refreshing extends the same token another 60d (must be >24h old). Cached daily, so it
 // runs far more often than the expiry; a failure (e.g. token too new) must not break the feed.
+// vercel.json cron hits /api/instagram daily so this runs even with zero visitors.
 async function keepAlive(token: string) {
   "use cache";
   cacheLife("days");

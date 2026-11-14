@@ -206,7 +206,8 @@ function Instagram() {
       .catch(() => setIg({ posts: [], avatar: null, stats: null }));
   }, []);
   const { posts, avatar, stats } = ig ?? { posts: [], avatar: null, stats: null };
-  const live = posts.length > 0;
+  // stats is non-null only when INSTAGRAM_ACCESS_TOKEN is set and the API answered.
+  const live = stats != null;
   return (
     <div className="border border-line">
       <Head platform="Instagram" live={live} avatar={avatar} />
@@ -224,7 +225,7 @@ function Instagram() {
           </div>
         ))}
       </div>
-      {live ? (
+      {posts.length > 0 ? (
         <ul className="grid grid-cols-3 gap-1 p-1">
           {posts.map((p) => (
             <li key={p.id} className="aspect-square overflow-hidden bg-line">
@@ -241,7 +242,9 @@ function Instagram() {
           ))}
         </ul>
       ) : (
-        <p className="p-4 text-sm text-muted">{ig ? "Posts unavailable right now." : "Loading posts…"}</p>
+        <p className="p-4 text-sm text-muted">
+          {!ig ? "Loading posts…" : live ? "No posts yet." : "Posts unavailable right now."}
+        </p>
       )}
     </div>
   );
