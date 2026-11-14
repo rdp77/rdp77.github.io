@@ -278,14 +278,14 @@ export function Creators() {
             <Tabs.Trigger
               key={t.id}
               value={t.id}
-              className="-mb-px border-b-2 border-transparent px-4 py-2.5 text-sm font-medium whitespace-nowrap text-muted hover:text-fg data-[state=active]:border-violet data-[state=active]:text-fg"
+              className="-mb-px border-b-2 border-transparent px-4 outline-none focus-visible:bg-tint py-2.5 text-sm font-medium whitespace-nowrap text-muted hover:text-fg data-[state=active]:border-violet data-[state=active]:text-fg"
             >
               {t.label}
             </Tabs.Trigger>
           ))}
         </Tabs.List>
         {tabs.map((t) => (
-          <Tabs.Content key={t.id} value={t.id} className="pt-6">
+          <Tabs.Content key={t.id} value={t.id} tabIndex={-1} className="pt-6 outline-none">
             <m.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}

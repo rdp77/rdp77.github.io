@@ -29,14 +29,14 @@ export function ActivityTabs({ activity }: { activity: GH["activity"] }) {
           <Tabs.Trigger
             key={t.id}
             value={t.id}
-            className="-mb-px border-b-2 border-transparent px-4 py-2.5 text-sm font-medium whitespace-nowrap text-muted hover:text-fg data-[state=active]:border-violet data-[state=active]:text-fg"
+            className="-mb-px border-b-2 border-transparent px-4 outline-none focus-visible:bg-tint py-2.5 text-sm font-medium whitespace-nowrap text-muted hover:text-fg data-[state=active]:border-violet data-[state=active]:text-fg"
           >
             {t.label}
           </Tabs.Trigger>
         ))}
       </Tabs.List>
       {tabs.map((t) => (
-        <Tabs.Content key={t.id} value={t.id} className="pt-2">
+        <Tabs.Content key={t.id} value={t.id} tabIndex={-1} className="pt-2 outline-none">
           {activity[t.id].length === 0 ? (
             <EmptyState>No public {t.label.toLowerCase()} yet.</EmptyState>
           ) : (
