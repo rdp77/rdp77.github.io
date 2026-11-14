@@ -16,6 +16,24 @@ const soon = (
 );
 const link = (l: string) => profile.socials.find((s) => s.label === l)?.href ?? "#";
 
+// Radix unmounts inactive tabs; keep successful responses so switching back doesn't refetch.
+const loaded = new Map<string, unknown>();
+function useApi<T>(url: string, fallback: T): T | null {
+  const [data, setData] = useState<T | null>(() => (loaded.get(url) as T) ?? null);
+  useEffect(() => {
+    if (loaded.has(url)) return;
+    fetch(url)
+      .then((r) => r.json())
+      .then((j: T) => {
+        loaded.set(url, j);
+        setData(j);
+      })
+      .catch(() => setData(fallback));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url]);
+  return data;
+}
+
 // Remote channel photo; falls back to the local avatar if it fails to load.
 function Avatar({ src }: { src: string }) {
   const [url, setUrl] = useState(src);
@@ -73,13 +91,7 @@ function Head({
 
 // TikTok: vertical 9:16 cards from the Display API
 function TikTok() {
-  const [tt, setTt] = useState<Tt | null>(null);
-  useEffect(() => {
-    fetch("/api/tiktok")
-      .then((r) => r.json())
-      .then(setTt)
-      .catch(() => setTt({ videos: [] }));
-  }, []);
+  const tt = useApi<Tt>("/api/tiktok", { videos: [] });
   const videos = tt?.videos ?? [];
   return (
     <div className="border border-line">
@@ -126,13 +138,7 @@ function TikTok() {
 // YouTube: live 16:9 cards from the channel's public feed
 const nf = new Intl.NumberFormat("en", { notation: "compact" });
 function YouTube() {
-  const [yt, setYt] = useState<Yt | null>(null);
-  useEffect(() => {
-    fetch("/api/youtube")
-      .then((r) => r.json())
-      .then(setYt)
-      .catch(() => setYt({ videos: [], avatar: null }));
-  }, []);
+  const yt = useApi<Yt>("/api/youtube", { videos: [], avatar: null });
   const { videos, avatar } = yt ?? { videos: [], avatar: null };
   return (
     <div className="border border-line">
@@ -198,13 +204,7 @@ function YouTube() {
 
 // Instagram: live profile stats + square grid
 function Instagram() {
-  const [ig, setIg] = useState<Ig | null>(null);
-  useEffect(() => {
-    fetch("/api/instagram")
-      .then((r) => r.json())
-      .then(setIg)
-      .catch(() => setIg({ posts: [], avatar: null, stats: null }));
-  }, []);
+  const ig = useApi<Ig>("/api/instagram", { posts: [], avatar: null, stats: null });
   const { posts, avatar, stats } = ig ?? { posts: [], avatar: null, stats: null };
   // stats is non-null only when INSTAGRAM_ACCESS_TOKEN is set and the API answered.
   const live = stats != null;
@@ -229,12 +229,19 @@ function Instagram() {
         <ul className="grid grid-cols-3 gap-1 p-1">
           {posts.map((p) => (
             <li key={p.id} className="aspect-square overflow-hidden bg-line">
-              <a href={p.url} target="_blank" rel="noopener noreferrer" className="group block size-full">
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block size-full"
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={p.thumb}
                   alt={p.caption.slice(0, 100)}
                   loading="lazy"
+                  // Signed fbcdn URLs expire; hide the broken image, leaving the grey tile.
+                  onError={(e) => (e.currentTarget.hidden = true)}
                   className="size-full object-cover transition-transform group-hover:scale-105"
                 />
               </a>

@@ -16,7 +16,9 @@ async function keepAlive(token: string) {
   "use cache";
   cacheLife("days");
   try {
-    await fetch(`${API}/refresh_access_token?grant_type=ig_refresh_token&access_token=${token}`);
+    await fetch(`${API}/refresh_access_token?grant_type=ig_refresh_token&access_token=${token}`, {
+      signal: AbortSignal.timeout(8000),
+    });
   } catch {}
 }
 
@@ -28,7 +30,9 @@ export async function getInstagram(): Promise<Ig> {
   if (!token) return { posts: [], avatar: null, stats: null };
   await keepAlive(token);
   const q = (p: string, fields: string) =>
-    fetch(`${API}/${p}?fields=${fields}&access_token=${token}`).then((r) => {
+    fetch(`${API}/${p}?fields=${fields}&access_token=${token}`, {
+      signal: AbortSignal.timeout(8000),
+    }).then((r) => {
       if (!r.ok) throw new Error(`instagram ${p} ${r.status}`);
       return r.json();
     });
