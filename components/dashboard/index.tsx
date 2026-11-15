@@ -6,6 +6,7 @@ import { GithubCard } from "./github";
 import { StatusCard } from "./status";
 import { SpotifyCard } from "./spotify";
 import { IpCard } from "./ip";
+import { SetupCard } from "./setup";
 
 // Add a widget: write lib/data/<x>.ts + components/dashboard/<x>.tsx, then list it here.
 const widgets = [
@@ -15,6 +16,7 @@ const widgets = [
   GithubCard,
   AnalyticsCard,
   StatusCard,
+  SetupCard,
   EthereumCard,
 ];
 
