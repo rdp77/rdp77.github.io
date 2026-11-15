@@ -2,12 +2,12 @@ import {
   siteUrl,
   profile,
   story,
-  projects,
   skills,
   experience,
   education,
   achievements,
 } from "@/lib/profile";
+import { projects } from "@/lib/projects";
 import { encode } from "@toon-format/toon";
 import { getWakatime } from "@/lib/data/wakatime";
 import { getGithub } from "@/lib/data/github";

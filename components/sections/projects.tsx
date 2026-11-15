@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { projects } from "@/lib/profile";
+import { projects } from "@/lib/projects";
 import { Section, Badge, TechIcon } from "@/components/ui/primitives";
 import { HoverLift } from "@/components/ui/motion";
 

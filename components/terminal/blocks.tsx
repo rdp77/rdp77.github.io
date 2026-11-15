@@ -1,4 +1,5 @@
-import { profile, story, projects, skills, experience, education } from "@/lib/profile";
+import { profile, story, skills, experience, education } from "@/lib/profile";
+import { projects } from "@/lib/projects";
 
 // Palette copied from brainless.swerdlow.dev (Claude Code suite).
 export const C = {

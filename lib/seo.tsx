@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { profile, siteUrl, experience, education, skills, projects } from "@/lib/profile";
+import { profile, siteUrl, experience, education, skills } from "@/lib/profile";
+import { projects } from "@/lib/projects";
 
 const ID = { person: `${siteUrl}/#person`, site: `${siteUrl}/#website` };
 const desc = `${profile.name} (${profile.handle}) · ${profile.role} based in Surabaya, Indonesia. Back-end APIs, Laravel, Next.js, Flutter, cloud and Web3.`;

@@ -1,4 +1,5 @@
-import { profile, siteUrl, projects } from "@/lib/profile";
+import { profile, siteUrl } from "@/lib/profile";
+import { projects } from "@/lib/projects";
 
 export function GET() {
   const body = `# ${profile.name} (${profile.handle})
