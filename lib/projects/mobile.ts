@@ -20,7 +20,8 @@ export const mobile: Project[] = [
     name: "Wara Wara",
     category: ["Mobile"],
     image: "/og-bg.png",
-    description: "Mobile application.",
+    description:
+      "Arts, culture and literature info app for Wara-wara Project, listing performances and cultural events in Surabaya in one place.",
     stack: ["siFlutter"],
   },
   {
