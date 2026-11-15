@@ -14,6 +14,7 @@ export const profile = {
   location: "Indonesia", // placeholder
   timezone: "Asia/Jakarta",
   resumeUrl: "https://link.wreative.com/ravi",
+  resumeAtsUrl: "https://link.wreative.com/ravi-ats",
   socials: [
     { label: "GitHub", href: "https://github.com/rdp77" },
     { label: "LinkedIn", href: "https://linkedin.com/in/ravidwiputra" },

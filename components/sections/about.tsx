@@ -3,6 +3,7 @@ import { Section, TechIcon, btnPrimary } from "@/components/ui/primitives";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
 import Image from "next/image";
 import { Download } from "lucide-react";
+import { ResumeMenu } from "@/components/resume-menu";
 
 const toc = [
   { id: "story", label: "Story" },
@@ -50,15 +51,10 @@ export function About() {
               ))}
             </ul>
           </nav>
-          <a
-            href={profile.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${btnPrimary} mt-6 text-sm`}
-          >
+          <ResumeMenu className={`${btnPrimary} mt-6 text-sm`}>
             <Download size={16} aria-hidden />
             Download resume
-          </a>
+          </ResumeMenu>
         </aside>
 
         <div className="min-w-0 space-y-16">

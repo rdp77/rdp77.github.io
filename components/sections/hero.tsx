@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { profile } from "@/lib/profile";
 import { Container, btnPrimary } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/motion";
+import { ResumeMenu } from "@/components/resume-menu";
 import { getStatus } from "@/lib/data/status";
 import { Presence } from "@/components/dashboard/presence";
 
@@ -70,12 +71,9 @@ export function DashboardHero() {
             >
               See projects
             </Link>
-            <a
-              href={profile.resumeUrl}
-              className="inline-flex items-center gap-2 rounded-sm border border-line px-5 py-2.5 text-base font-medium transition-colors hover:bg-tint"
-            >
+            <ResumeMenu className="inline-flex items-center gap-2 rounded-sm border border-line px-5 py-2.5 text-base font-medium transition-colors hover:bg-tint">
               Résumé
-            </a>
+            </ResumeMenu>
           </div>
           <dl className="mt-8 grid grid-cols-2 border border-line bg-bg md:grid-cols-4">
             {meta.map(([k, v]) => (
