@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Vercel image optimization quota exceeded (402); serve images as-is.
+  images: { unoptimized: true },
   cacheComponents: true,
   partialPrefetching: true,
   experimental: {
