@@ -83,7 +83,7 @@ export const siteGraph = {
       name: profile.name,
       alternateName: [profile.handle, "Ravi Dwi Putra"],
       url: siteUrl,
-      image: `${siteUrl}/avatar.jpg`,
+      image: `${siteUrl}/avatar.webp`,
       jobTitle: profile.role,
       description: desc,
       homeLocation: {

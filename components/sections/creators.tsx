@@ -35,7 +35,7 @@ function useApi<T>(url: string, fallback: T): T | null {
 }
 
 // Remote channel photo; falls back to the local avatar if it fails to load.
-function Avatar({ src }: { src: string }) {
+function Avatar({ src }: Readonly<{ src: string }>) {
   const [url, setUrl] = useState(src);
   return (
     // eslint-disable-next-line @next/next/no-img-element
@@ -44,7 +44,7 @@ function Avatar({ src }: { src: string }) {
       alt=""
       width={40}
       height={40}
-      onError={() => setUrl("/avatar.jpg")}
+      onError={() => setUrl("/avatar.webp")}
       className="size-10 rounded-full object-cover"
     />
   );
@@ -54,11 +54,11 @@ function Head({
   platform,
   live,
   avatar,
-}: {
+}: Readonly<{
   platform: string;
   live?: boolean;
   avatar?: string | null;
-}) {
+}>) {
   return (
     <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
       {avatar ? (
@@ -312,7 +312,7 @@ export function Creators() {
             <Tabs.Trigger
               key={t.id}
               value={t.id}
-              className="-mb-px border-b-2 border-transparent px-4 outline-none focus-visible:bg-tint py-2.5 text-sm font-medium whitespace-nowrap text-muted hover:text-fg data-[state=active]:border-violet data-[state=active]:text-fg"
+              className="-mb-px border-b-2 border-transparent px-4 py-2.5 text-sm font-medium whitespace-nowrap text-muted outline-none hover:text-fg focus-visible:bg-tint data-[state=active]:border-violet data-[state=active]:text-fg"
             >
               {t.label}
             </Tabs.Trigger>

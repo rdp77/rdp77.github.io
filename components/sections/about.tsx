@@ -65,7 +65,7 @@ export function About() {
               </h3>
               <div className="mt-4 flex flex-col gap-6 sm:flex-row sm:items-start">
                 <Image
-                  src="/avatar.jpg"
+                  src="/avatar.webp"
                   alt={`Foto ${profile.name}`}
                   width={200}
                   height={200}
